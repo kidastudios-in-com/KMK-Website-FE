@@ -8,8 +8,8 @@ const Section1 = () => {
 			style={{
 				width: "100%",
 				background: "#edf6f8",
-				paddingTop: 100,
-				paddingBottom: 100,
+				paddingTop: "140px",
+				paddingBottom: "140px",
 				display: "flex",
 				flexWrap: "wrap",
 				justifyContent: "center",

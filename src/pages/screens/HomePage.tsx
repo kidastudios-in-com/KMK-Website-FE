@@ -101,6 +101,13 @@ const HomePage = () => {
 						backgroundImage: "linear-gradient(to top , #0d2c7b, #6067b5)",
 						// backgroundImage: "linear-gradient(to top , #106052, #0f734d)",
 						borderRadius: "12.5px",
+						"@media only screen and (max-width: 600px)": {
+							paddingLeft: "10px",
+							paddingRight: "10px",
+							marginTop: "10px",
+							borderRadius: "10px",
+							width: "90%",
+						},
 					}}
 				>
 					<Text
@@ -110,13 +117,13 @@ const HomePage = () => {
 						css={{
 							fontWeight: "bolder",
 							"@media only screen and (max-width: 600px)": {
-								fontSize: 14,
-								padding: "1px 5px",
-								width: "auto",
+								fontSize: 19,
+								width: "100%",
+								textAlign: "center",
 							},
 						}}
 					>
-						SEBI Registration No.: INH000009843
+						SEBI Registered: INH000009843
 					</Text>
 				</Box>
 				<Text
@@ -128,12 +135,14 @@ const HomePage = () => {
 						textAlign: "center",
 						lineHeight: 1.2,
 						"@media only screen and (max-width: 764px)": {
-							fontSize: 47.5,
+							fontSize: 50,
+							marginTop: "45px",
 							maxWidth: "85%",
+							textAlign: "left",
 						},
 					}}
 				>
-					Maximise the growth of your funds by investing in High-potential ideas
+					Maximise the growth of your funds by investing in <span style={{color: "#0F5E54", }}>high-potential ideas</span>
 				</Text>
 				{/* <div
 					className="rotating-text-container"
@@ -196,17 +205,18 @@ const HomePage = () => {
 						onPress={() => setVisible(true)}
 						css={{
 							borderRadius: "10000px",
-							// marginTop: 30,
+							marginTop: 10,
 							backgroundColor: "#ff9f24",
 							zIndex: 0,
 							paddingLeft: 50,
 							paddingRight: 50,
 							"@media only screen and (max-width: 600px)": {
-								fontSize: 20,
-								padding: "5px 30px",
-								marginTop: "35px",
-								marginBottom: "5px",
-								// width: "60%",
+								paddingLeft: 25,
+								paddingRight: 25,
+								marginLeft: 0,
+								marginBottom: 0,
+								marginTop: "45px",
+								height: "55px",
 							},
 						}}
 					>
@@ -217,12 +227,12 @@ const HomePage = () => {
 							css={{
 								"@media only screen and (max-width: 600px)": {
 									fontSize: 20,
-									padding: "1px 5px",
+									// padding: "1px 5px",
 									width: "auto",
 								},
 							}}
 						>
-							Read Sample Report
+							Sample Report
 						</Text>
 					</Button>
 					<Modal
@@ -270,7 +280,7 @@ const HomePage = () => {
 						css={{
 							borderRadius: "10000px",
 							display: isLoggedIn ? "none" : "block",
-							// marginTop: 30,
+							marginTop: 10,
 							marginLeft: 30,
 							// backgroundColor: "#0a5b53",
 							backgroundImage: "linear-gradient(to top , #106052, #0f734d)",
@@ -278,12 +288,12 @@ const HomePage = () => {
 							paddingLeft: 50,
 							paddingRight: 50,
 							"@media only screen and (max-width: 600px)": {
-								fontSize: 20,
-								// padding: "5px 10px",
-								marginLeft: 0,
-								marginBottom: 10,
-								marginTop: "10px",
-								width: "65%",
+								paddingLeft: 25,
+								paddingRight: 25,
+								marginLeft: 15,
+								marginBottom: 0,
+								marginTop: "45px",
+								height: "55px",
 							},
 						}}
 						onPress={handleLogin}
@@ -295,7 +305,7 @@ const HomePage = () => {
 							color="White"
 							css={{
 								"@media only screen and (max-width: 600px)": {
-									fontSize: 28,
+									fontSize: 20,
 									// padding: "5px 10px",
 									// marginRight: 10,
 									// marginBottom: 10,
@@ -347,7 +357,7 @@ const HomePage = () => {
 						marginTop: 5,
 						alignItems: "center",
 						"@media only screen and (max-width: 600px)": {
-							marginTop: "7.5px",
+							marginTop: "50px",
 						},
 					}}
 				>
@@ -359,7 +369,7 @@ const HomePage = () => {
 								pointer
 								src={url}
 								stacked
-								style={{ zIndex: 0 }}
+								style={{ zIndex: 0}}
 							/>
 						))}
 					</Avatar.Group>

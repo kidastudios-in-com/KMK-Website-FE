@@ -213,7 +213,7 @@ const StockCard = () => {
 					paddingRight: "40px",
 					paddingTop: "10px",
 					paddingBottom: "10px",
-					marginTop: "25px",
+					marginTop: "50px",
 					display: "flex",
 					// flexDirection: "column",
 					backgroundImage: "linear-gradient(to top , #0d2c7b, #6067b5)",
@@ -226,6 +226,7 @@ const StockCard = () => {
 					size={26}
 					color="#FFF"
 					css={{
+						width: "auto",
 						fontWeight: "bolder",
 						"@media only screen and (max-width: 600px)": {
 							fontSize: 14,
