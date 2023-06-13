@@ -26,8 +26,8 @@ const AboutUs = () => (
 				// gap: 5,
 				justifyContent: "space-between",
 				alignItems: "center",
-				paddingTop: 30,
-				marginLeft: 30,
+				paddingTop: 50,
+				marginLeft: 50,
 				paddingBottom: 60,
 			}}
 		>

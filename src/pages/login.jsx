@@ -7,11 +7,12 @@ const Login = () => {
 			<div
 				style={{
 					display: "flex",
-					maxWidth: "2000px",
+					// maxWidth: "2000px",
 					backgroundColor: "#125a54",
 					justifyContent: "space-between",
 					alignItems: "center",
 					height: "100vh",
+					width: "100vw",
 					margin: "0 auto",
 				}}
 			>

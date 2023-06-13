@@ -38,6 +38,9 @@ const SubscriptionNew = () => {
 					backgroundColor: "#fff",
 					justifyContent: "center",
 					alignItems: "center",
+					"@media only screen and (max-width: 600px)": {
+						paddingBottom: "0px",
+					},
 				}}
 			>
 				<Box sx={{ textAlign: "center", marginBottom: "80px" }}>
@@ -47,9 +50,10 @@ const SubscriptionNew = () => {
 						css={{
 							"@media only screen and (max-width: 600px)": {
 								textAlign: "center",
-								fontSize: 36,
+								fontSize: 45,
 								lineHeight: 1.2,
 								maxWidth: "600px",
+								width: "90%",
 							},
 						}}
 					>
@@ -65,6 +69,7 @@ const SubscriptionNew = () => {
 						alignItems: "center",
 						"@media only screen and (max-width: 600px)": {
 							justifyContent: "center",
+							gap: "20px",
 						},
 					}}
 				>

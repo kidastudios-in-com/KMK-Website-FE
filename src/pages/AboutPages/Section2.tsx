@@ -7,7 +7,7 @@ const Section2 = () => {
 			style={{
 				width: "100%",
 				backgroundColor: "#fff",
-				paddingTop: 50,
+				paddingTop: "50px",
 				paddingBottom: '60px',
 				display: "flex",
 				justifyContent: "center",
@@ -22,7 +22,7 @@ const Section2 = () => {
 					justifyContent: "center",
 					alignItems: "center",
 					margin: "0 auto",
-					padding: "0 20px",
+					padding: "0 30px",
 				}}
 			>
 				<Text
@@ -31,12 +31,28 @@ const Section2 = () => {
 					css={{
 						"@media only screen and (max-width: 600px)": {
 							textAlign: "center",
-							fontSize: 42,
+							fontSize: 52,
 							lineHeight: 1,
+							paddingBottom: "10px",
 						},
 					}}
 				>
 					Meet The Team
+				</Text>
+				<Text
+					b
+					size={25}
+					css={{
+						textAlign: "center",
+						"@media only screen and (max-width: 600px)": {
+							textAlign: "center",
+							fontSize: 17.5,
+							lineHeight: 1.1,
+						},
+					}}
+				>
+					KamayaKya was born when we saw a major opportunity in the market - the Small-Cap segment. If invested at the right time, these companies can give you massive returns. But how do you know which company will grow?
+					Data-driven Research
 				</Text>
 				<div
 					style={{
@@ -76,7 +92,7 @@ const Section2 = () => {
 						style={{
 							display: "flex",
 							flexDirection: "column",
-							marginBottom: "40px",
+							marginBottom: "80px",
 							maxWidth: "300px",
 							alignItems: "center",
 						}}
