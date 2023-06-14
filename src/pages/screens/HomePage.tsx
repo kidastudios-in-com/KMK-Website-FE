@@ -38,29 +38,47 @@ const HomePage = () => {
 	];
 
 	return (
-		<section
-			id="home"
-			style={{
-				display: "flex",
-				justifyContent: "center",
-				alignItems: "center",
-				height: "100%",
-				paddingTop: "10px",
-				backgroundColor: "#fff",
-				paddingBottom: 60,
-			}}
-		>
+
+		<main id="home" style={{
+			backgroundColor: "#fff",
+			display: "flex",
+			flexDirection: "column",
+			justifyContent: "center",
+			alignItems: "center",
+				// paddingBottom: 60,
+		}}>
+		{/*<section*/}
+		{/*	id="home"*/}
+		{/*	style={{*/}
+		{/*		display: "flex",*/}
+		{/*		justifyContent: "center",*/}
+		{/*		alignItems: "center",*/}
+		{/*		height: "100%",*/}
+		{/*		paddingTop: "10px",*/}
+		{/*		backgroundColor: "#fff",*/}
+		{/*		paddingBottom: 60,*/}
+		{/*	}}*/}
+		{/*>*/}
 			<Box
 				sx={{
-					marginTop: "20px",
+					// paddingTop: "30px",
 					display: "flex",
-					flexWrap: "wrap",
+					// flexWrap: "wrap",
 					flexDirection: "column",
 					justifyContent: "center",
 					alignItems: "center",
-					maxWidth: "2000px",
-					"@media only screen and (max-width: 600px)": {
+					width: "100vw",
+					maxWidth: "80rem",
+					"@media only screen and (min-width: 672px)": {
+						paddingTop: "10vh",
+						paddingBottom: "10vh",
+					},"@media only screen and (max-width: 672px)": {
+						// maxHeight: "100vh",
 						marginTop: "0px",
+						justifyContent: "flex-start",
+						alignItems: "flex-start",
+						paddingLeft: "15px",
+						paddingRight: "15px",
 					},
 				}}
 			>
@@ -68,30 +86,31 @@ const HomePage = () => {
 					sx={{
 						paddingLeft: "40px",
 						paddingRight: "40px",
-						paddingTop: "10px",
-						paddingBottom: "10px",
-						marginTop: "25px",
+						paddingTop: "15px",
+						paddingBottom: "15px",
+						// marginTop: "25px",
 						display: "flex",
 						flexDirection: "column",
 						backgroundImage: "linear-gradient(to top , #0d2c7b, #6067b5)",
+						alignItems: "center",
 						// backgroundImage: "linear-gradient(to top , #106052, #0f734d)",
 						borderRadius: "12.5px",
-						"@media only screen and (max-width: 600px)": {
-							paddingLeft: "10px",
-							paddingRight: "10px",
+						"@media only screen and (max-width: 672px)": {
+							paddingLeft: "20px",
+							paddingRight: "20px",
 							marginTop: "10px",
 							borderRadius: "10px",
-							width: "90%",
+							alignItems: "flex-start",
 						},
 					}}
 				>
 					<Text
 						b
-						size={26}
+						size={28}
 						color="#FFF"
 						css={{
 							fontWeight: "bolder",
-							"@media only screen and (max-width: 600px)": {
+							"@media only screen and (max-width: 672px)": {
 								fontSize: 19,
 								width: "100%",
 								textAlign: "center",
@@ -124,29 +143,34 @@ const HomePage = () => {
 					size={70}
 					css={{
 						marginTop: "40px",
-						maxWidth: "70%",
+						// width: "90%",
+						maxWidth: "80rem" /* 1280px */,
 						textAlign: "center",
 						lineHeight: 1.2,
+						paddingLeft: "15px",
+						paddingRight: "15px",
 						"@media only screen and (max-width: 764px)": {
-							fontSize: 50,
-							marginTop: "45px",
-							maxWidth: "85%",
+							fontSize: 55,
+							marginTop: "35px",
+							maxWidth: "100%",
 							textAlign: "left",
 						},
 					}}
 				>
-					Maximise the growth of your funds by investing in <span style={{color: "#0F5E54", }}>high-potential ideas</span>
+					Maximize the growth of your funds by investing in <span style={{color: "#074E47", }}>high-potential ideas</span>
 				</Text>
 				<Text
 					b
 					size={30}
 					css={{
 						marginTop: 10,
-						maxWidth: "50%",
+						maxWidth: "80rem" /* 1280px */,
 						textAlign: "center",
 						color: "#125a54",
 						lineHeight: 1.2,
-						"@media only screen and (max-width: 764px)": {
+						paddingLeft: "15px",
+						paddingRight: "15px",
+						"@media only screen and (max-width: 672px)": {
 							fontSize: 20,
 							maxWidth: "75%",
 							display: "none",
@@ -160,14 +184,20 @@ const HomePage = () => {
 				</Text>
 				<Box
 					sx={{
-						marginTop: "50px",
+						marginTop: "40px",
+						maxWidth: "80rem",
 						display: "flex",
 						flexDirection: "row",
 						flexWrap: "wrap",
-						justifyContent: "center",
-						alignItems: "center",
-						"@media only screen and (max-width: 764px)": {
+						"@media only screen and (min-width: 600px)": {
+							justifyContent: "center",
+							alignItems: "center",
+						},
+						"@media only screen and (max-width: 672px)": {
+							width: "90vw",
 							marginTop: "0",
+							justifyContent: "flex-start",
+							alignItems: "flex-start",
 						},
 					}}
 				>
@@ -182,12 +212,12 @@ const HomePage = () => {
 							zIndex: 0,
 							paddingLeft: 50,
 							paddingRight: 50,
-							"@media only screen and (max-width: 600px)": {
+							"@media only screen and (max-width: 672px)": {
 								paddingLeft: 25,
 								paddingRight: 25,
 								marginLeft: 0,
 								marginBottom: 0,
-								marginTop: "45px",
+								marginTop: "35px",
 								height: "55px",
 							},
 						}}
@@ -197,7 +227,7 @@ const HomePage = () => {
 							size={28}
 							color="White"
 							css={{
-								"@media only screen and (max-width: 600px)": {
+								"@media only screen and (max-width: 672px)": {
 									fontSize: 20,
 									// padding: "1px 5px",
 									width: "auto",
@@ -246,6 +276,7 @@ const HomePage = () => {
 							Close
 						</Button>
 					</Modal>
+					<span style={{width: "10px"}}></span>
 					<Button
 						auto
 						size={"xl"}
@@ -259,12 +290,12 @@ const HomePage = () => {
 							zIndex: 0,
 							paddingLeft: 50,
 							paddingRight: 50,
-							"@media only screen and (max-width: 600px)": {
+							"@media only screen and (max-width: 672px)": {
 								paddingLeft: 25,
 								paddingRight: 25,
-								marginLeft: 15,
+								marginLeft: 0,
 								marginBottom: 0,
-								marginTop: "45px",
+								marginTop: "35px",
 								height: "55px",
 							},
 						}}
@@ -276,7 +307,7 @@ const HomePage = () => {
 							size={28}
 							color="White"
 							css={{
-								"@media only screen and (max-width: 600px)": {
+								"@media only screen and (max-width: 672px)": {
 									fontSize: 20,
 									// padding: "5px 10px",
 									// marginRight: 10,
@@ -326,10 +357,16 @@ const HomePage = () => {
 					sx={{
 						display: "flex",
 						flexDirection: "row",
-						marginTop: 5,
 						alignItems: "center",
-						"@media only screen and (max-width: 600px)": {
-							marginTop: "50px",
+						justifyContent: "center",
+						width: "100%",
+						marginTop: "40px",
+						"@media only screen and (max-width: 672px)": {
+							marginTop: "20px",
+							marginBottom: "10vh",
+							marginLeft: "15px",
+							alignItems: "flex-start",
+							justifyContent: "flex-start",
 						},
 					}}
 				>
@@ -337,7 +374,7 @@ const HomePage = () => {
 						{pictureUsers.map((url, index) => (
 							<Avatar
 								key={index}
-								size="md"
+								size="sm"
 								pointer
 								src={url}
 								stacked
@@ -356,7 +393,8 @@ const HomePage = () => {
 					</Box>
 				</Box>
 			</Box>
-		</section>
+		{/*</section>*/}
+		</main>
 	);
 };
 

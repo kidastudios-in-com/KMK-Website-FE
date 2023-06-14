@@ -27,37 +27,73 @@ const SubscriptionNew = () => {
 	};
 
 	return (
-		<section style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', background: '#fff' }}>
+		<main style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', background: '#fff' }}>
 			<section
 				style={{
-					// paddingTop: "50px",
-					paddingBottom: "80px",
 					display: "flex",
 					flexDirection: "column",
-					maxWidth: "2000px",
+					maxWidth: "80rem",
 					backgroundColor: "#fff",
 					justifyContent: "center",
 					alignItems: "center",
-					"@media only screen and (max-width: 600px)": {
-						paddingBottom: "0px",
+					paddingLeft: "15px",
+					paddingRight: "15px",
+					// "@media only screen and (min-width: 672px)": {
+						paddingTop: "10vh",
+						paddingBottom: "10vh",
+					// },
+					"@media only screen and (max-width: 672px)": {
+						// paddingTop: "10000px",
+						width: "100vw",
 					},
 				}}
 			>
-				<Box sx={{ textAlign: "center", marginBottom: "80px" }}>
+				<Box
+					 style={{
+						 width: "100%",
+						 maxWidth: "80rem",
+						 display: "flex",
+						 flexDirection: "column",
+						 justifyContent: "center",
+						 alignItems: "center",
+						 marginBottom: "80px",
+						 padding: "0 15px",
+						 "@media only screen and (max-width: 672px)": {
+							 paddingTop: "0vh",
+							 width: "100vw",
+							 paddingLeft: "15px",
+							 paddingRight: "15px",
+						 },
+					 }}>
 					<Text
 						b
 						size={70}
 						css={{
-							"@media only screen and (max-width: 600px)": {
-								textAlign: "center",
-								fontSize: 45,
+							"@media only screen and (max-width: 672px)": {
+								textAlign: "left",
+								fontSize: 55,
 								lineHeight: 1.2,
-								maxWidth: "600px",
-								width: "90%",
+								maxWidth: "100%",
+								width: "100%",
 							},
 						}}
 					>
 						Our Subscription Plans
+					</Text>
+					<Text
+						b
+						size={25}
+						css={{
+							textAlign: "center",
+							"@media only screen and (max-width: 672px)": {
+								marginTop: "10px",
+								textAlign: "left",
+								fontSize: 15,
+								lineHeight: 1.1,
+							},
+						}}
+					>
+						Our methodology does not include doing technical analysis of stocks, rather we do research that is deep, thorough and entirely fundamentals based
 					</Text>
 				</Box>
 				<Box
@@ -67,7 +103,7 @@ const SubscriptionNew = () => {
 						flexWrap: "wrap",
 						gap: "40px",
 						alignItems: "center",
-						"@media only screen and (max-width: 600px)": {
+						"@media only screen and (max-width: 672px)": {
 							justifyContent: "center",
 							gap: "20px",
 						},
@@ -89,8 +125,9 @@ const SubscriptionNew = () => {
 							paddingBottom: "50px",
 							paddingLeft: "15px",
 							paddingRight: "15px",
-							"@media only screen and (max-width: 800px)": {
-								order: 2,
+							"@media only screen and (max-width: 672px)": {
+								order: 3,
+								width: "100%",
 							},
 						}}
 					>
@@ -292,8 +329,9 @@ const SubscriptionNew = () => {
 							paddingRight: "15px",
 							backgroundImage:
 								"linear-gradient(to top , #105B54, #0F734D, #0F734D)",
-							"@media only screen and (max-width: 800px)": {
+							"@media only screen and (max-width: 672px)": {
 								order: 1,
+								width: "100%",
 							},
 						}}
 					>
@@ -561,9 +599,9 @@ const SubscriptionNew = () => {
 							color="#fff"
 							css={{ textAlign: "center", marginTop: "10px" }}
 						>
-							at ₹
+							for ₹
 							<span style={{ color: "#fff", fontSize: 36, lineHeight: 1.2 }}>
-								33/day
+								11,800/year
 							</span>
 						</Text>
 
@@ -573,7 +611,7 @@ const SubscriptionNew = () => {
 							color="#FFF"
 							css={{ mt: "0px", opacity: 0.75, lineHeight: 1 }}
 						>
-							Billed Annualy
+							Inclusive of GST
 						</Text>
 					</Card>
 					<Card
@@ -592,8 +630,9 @@ const SubscriptionNew = () => {
 							paddingBottom: "50px",
 							paddingLeft: "15px",
 							paddingRight: "15px",
-							"@media only screen and (max-width: 800px)": {
-								order: 3,
+							"@media only screen and (max-width: 672px)": {
+								order: 2,
+								width: "100%",
 							},
 						}}
 					>
@@ -724,7 +763,7 @@ const SubscriptionNew = () => {
 					</Card>
 				</Box>
 			</section>
-		</section>
+		</main>
 	);
 };
 

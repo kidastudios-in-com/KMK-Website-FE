@@ -12,13 +12,13 @@ const FaqsNew = () => {
 	};
 
 	return (
-		<section
+		<main
 			style={{
 				display: "flex",
 				flexWrap: "wrap",
 				backgroundColor: "#125a54",
-				paddingTop: 50,
-				paddingBottom: 50,
+				paddingTop: "10vh",
+				paddingBottom: "8vh",
 				width: "100%",
 				height: "100%",
 				justifyContent: "center",
@@ -29,9 +29,9 @@ const FaqsNew = () => {
 				style={{
 					display: "flex",
 					flexWrap: "wrap",
-					paddingTop: 50,
-					paddingBottom: 25,
-					maxWidth: "2000px",
+					// paddingTop: 50,
+					// paddingBottom: 25,
+					maxWidth: "80rem",
 					width: "100%",
 					backgroundColor: "#125a54",
 					justifyContent: "center",
@@ -44,7 +44,7 @@ const FaqsNew = () => {
 						flexWrap: "wrap-reverse",
 						flexDirection: "row",
 						justifyContent: "space-between",
-						maxWidth: "1600px",
+						maxWidth: "80rem",
 						// gap: "10%",
 						paddingLeft: "5%",
 						paddingRight: "5%",
@@ -278,7 +278,7 @@ const FaqsNew = () => {
 					</Box>
 				</div>
 			</div>
-		</section>
+		</main>
 	);
 };
 

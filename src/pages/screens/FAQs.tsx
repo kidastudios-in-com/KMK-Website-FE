@@ -13,27 +13,27 @@ import { Link } from "@nextui-org/react";
 
 const FAQs = () => {
 	return (
-		<section
+		<main
 			id="FAQs"
 			style={{
 				display: "flex",
 				justifyContent: "center",
 				alignItems: "center",
 				backgroundColor: "#fff",
-				width: "100%",
+				width: "100vw",
 				height: "100%",
-				paddingTop: 25,
-				paddingBottom: 25,
+				paddingTop: "10vh",
+				paddingBottom: "5vh",
 			}}
 		>
-			<div style={{ width: "100%", maxWidth: "1600px" }}>
+			<div style={{ width: "100%", maxWidth: "80rem" }}>
 				<Box
 					sx={{
 						display: "flex",
 						flexWrap: "wrap",
 						justifyContent: "space-between",
-						maxWidth: "1600px",
-						width: "100%",
+						maxWidth: "80rem",
+						width: "100vw",
 						"@media only screen and (max-width: 600px)": {
 							justifyContent: "center",
 							alignItems: "center",
@@ -175,20 +175,26 @@ const FAQs = () => {
 					</Box>
 				</Box>
 				<Box
-					sx={{ display: "flex", flexDirection: "column", marginTop: "20px" }}
+					sx={{ display: "flex", flexDirection: "column", marginTop: "35px", marginBottom: "35px" }}
 				>
-					<Text b size={18} css={{ lineHeight: 1 }}>
+					<Text
+						b
+						size={15}
+						css={{
+							textAlign: "center",
+							"@media only screen and (max-width: 672px)": {
+								marginTop: "10px",
+								textAlign: "left",
+								fontSize: 15,
+								lineHeight: 1.1,
+							},
+						}}
+					>
 						Kamayakya Wealth Management Pvt. Ltd makes no warranties or
 						representations, express or implied, on products and services
 						offered through the platform. It accepts no liability for any
 						damages or losses, however, caused in connection with the use of, or
 						on the reliance of its research and recommendation services.
-					</Text>
-					<Text
-						b
-						size={18}
-						css={{ marginTop: "10px", lineHeight: 1, marginBottom: "20px" }}
-					>
 						Past performance is not indicative of future returns. Please
 						consider your specific investment requirements, risk tolerance,
 						goal, time frame, risk and reward balance and the cost associated
@@ -216,16 +222,17 @@ const FAQs = () => {
 							alignItems: "center",
 						}}
 					>
-						<img src="MSME logo.png" width={"150px"} height={"100px"} />
+						<img src="MSME logo.png" width={"auto"} height={"50px"} />
 						<Box sx={{
 							display: "flex",
 							flexDirection: "column",
-							// alignItems: "center",
+							alignItems: "flex-start",
+							justifyContent: "flex-start",
 						}}>
-							<Text b size={22} css={{ textAlign: 'start' }}>
+							<Text b size={14} css={{ textAlign: 'start' }}>
 								Udyam Registration Number:
 							</Text>
-							<Text b size={26} css={{ textDecoration: 'underline' }}>
+							<Text b size={20} css={{ textDecoration: 'underline' }}>
 								UDYAM-MH-26-0204983
 							</Text>
 						</Box>
@@ -233,16 +240,17 @@ const FAQs = () => {
 					<Box
 						sx={{ display: "flex", flexDirection: "row", alignItems: "center", }}
 					>
-						<img src="SEBI.png" width={"200px"} height={"100px"} />
+						<img src="SEBI.png" width={"auto"} height={"50px"} />
 						<Box sx={{
 							display: "flex",
 							flexDirection: "column",
-							// alignItems: "center",
+							alignItems: "flex-start",
+							justifyContent: "flex-start",
 						}}>
-						<Text b size={25} css={{ textAlign: 'start' }}>
+						<Text b size={14} css={{ textAlign: 'start' }}>
 							Registration No:
 						</Text>
-						<Text b size={28} css={{ textDecoration: 'underline' }}>
+						<Text b size={20} css={{ textDecoration: 'underline' }}>
 							INH000009843
 						</Text>
 						</Box>
@@ -252,19 +260,20 @@ const FAQs = () => {
 							display: "flex",
 							flexDirection: "row",
 							// maxWidth: "200px",
-							alignItems: "center",
+							alignItems: "flex-start",
+							justifyContent: "flex-start",
 						}}
 					>
-						<img src="Startup India Logo.png" width={"180px"} height={"80px"} />
+						<img src="Startup India Logo.png" width={"auto"} height={"50px"} />
 						<Box sx={{
 							display: "flex",
 							flexDirection: "column",
 							alignItems: "center",
 						}}>
-						<Text b size={22}>
+						<Text b size={14}>
 							Certificate No:
 						</Text>
-						<Text b size={28} css={{ textDecoration: 'underline' }}>
+						<Text b size={20} css={{ textDecoration: 'underline' }}>
 							DIPP95081
 						</Text>
 						</Box>
@@ -299,7 +308,7 @@ const FAQs = () => {
 					</Text>
 				</Box>
 			</div>
-		</section>
+		</main>
 	);
 };
 

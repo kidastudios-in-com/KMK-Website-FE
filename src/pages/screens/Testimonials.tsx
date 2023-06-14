@@ -35,11 +35,11 @@ const Testimonials = () => {
 	  }, []);
 
 	return (
-		<section
+		<main
 			style={{
 				backgroundColor: "#fff",
-				paddingTop: '80px',
-				paddingBottom: 50,
+				paddingTop: '10vh',
+				paddingBottom: "10vh",
 				display: "flex",
 				flexWrap: "wrap",
 				flexDirection: "column",
@@ -177,7 +177,7 @@ const Testimonials = () => {
 					))}
 				</div>
 			</div>
-		</section>
+		</main>
 	);
 };
 

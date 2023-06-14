@@ -5,7 +5,7 @@ import HomePage from "./screens/HomePage";
 // import AboutUs from "./screens/AboutUs";
 import WhyUs from "./screens/WhyUs";
 // import Solutions from "./screens/Solutions";
-import Blogs from "./screens/Blogs";
+import SmallcaseCard from "./screens/smallcaseCard";
 // import Blogs2 from "./screens/blogs2";
 import FAQs from "./screens/FAQs";
 // import Process from "./screens/Process";
@@ -32,7 +32,7 @@ const Home: NextPage = () => {
 			{isLoggedIn ? <NavBar2 /> : <NavBar />}
 			{/* <AuthProvider> */}
 			<HomePage />
-			<Blogs />
+			<SmallcaseCard />
 			<SubscriptionNew />
 			{/* <AboutUs /> */}
 			{/* <Process /> */}

@@ -141,17 +141,22 @@ export default function App() {
 						boxShadow: "none",
 					},
 					".nextui-c-dGYPDG": { height: "0%" },
+					"@media only screen and (max-width: 672px)": {
+						// w: "195px",
+						height: "80px",
+						// left: 15,
+					},
 				}}
 			>
 				<Navbar.Brand
 					css={{
 						zIndex: 99,
-						width: "250px",
-						height: "60px",
-						"@media only screen and (max-width: 600px)": {
+						// width: "250px",
+						height: "80px",
+						"@media only screen and (max-width: 672px)": {
 							// w: "195px",
-							h: "60px",
-							w: "100%",
+							height: "80px",
+							width: "auto",
 							// left: 15,
 						},
 						// position: "fixed",
@@ -161,8 +166,10 @@ export default function App() {
 						onClick={handleHome}
 						src="./kmk-logo (1).png"
 						alt="logo"
-						width="220px"
-						height="60px"
+						style={{
+							width:"auto",
+							height:"55%"
+						}}
 					/>
 				</Navbar.Brand>
 				<Navbar.Toggle
@@ -179,7 +186,7 @@ export default function App() {
 					// onClick={toggleMenu}
 					
 				>
-					<RxHamburgerMenu size={26} />
+					<RxHamburgerMenu size={24} />
 				</Navbar.Toggle> 
 				<div
 					style={{

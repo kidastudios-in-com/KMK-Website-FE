@@ -111,7 +111,7 @@ const WhyUs = () => {
 	};
 
 	return (
-		<section
+		<main
 			id="whyUs"
 			style={{
 				width: "100%",
@@ -119,7 +119,9 @@ const WhyUs = () => {
 				display: "flex",
 				flexDirection: "column",
 				alignItems: "center",
-				background: "#fff",
+				background: "#F9FAFB",
+				paddingTop: "10vh",
+				paddingBottom: "10vh",
 			}}
 		>
 			<Text
@@ -133,7 +135,7 @@ const WhyUs = () => {
 					},
 				}}
 			>
-				TRACK RECORD
+				Track Record
 			</Text>
 			<Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", marginBottom: '50px', }}>
 				<Box
@@ -526,7 +528,7 @@ const WhyUs = () => {
 			>
 				{`View Full Track Record >`}
 			</Button>
-		</section>
+		</main>
 	);
 };
 
