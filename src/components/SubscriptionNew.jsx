@@ -129,7 +129,33 @@ const SubscriptionNew = () => {
 								}}
 							/>
 							<Text b size={18} css={{ lineHeight: 1.2, opacity: 0.9 }}>
-								Unlimited Stock Picks Unlimited Stock Picks
+								Only 3 stocks picks
+							</Text>
+						</Box>
+						<Box
+							sx={{
+								width: "100%",
+								alignSelf: "start",
+								// marginTop: "20px",
+								marginBottom: "10px",
+								display: "flex",
+								flexDirection: "row",
+								alignItems: "center",
+								paddingLeft: "30px",
+								paddingRight: "30px",
+							}}
+						>
+							<CheckCircleIcon
+								sx={{
+									marginRight: "10px",
+									fontSize: 20,
+									alignSelf: "start",
+									marginTop: "5px",
+									opacity: 0.9,
+								}}
+							/>
+							<Text b size={18} css={{ lineHeight: 1.2, opacity: 0.9 }}>
+								Only "Sell" Track Records
 							</Text>
 						</Box>
 						<Box
@@ -154,7 +180,7 @@ const SubscriptionNew = () => {
 								}}
 							/>
 							<Text b size={18} css={{ lineHeight: 1.2, opacity: 0.9 }}>
-								Unlimited Stock Picks Unlimited Stock Picks
+								Only NSE + BSE
 							</Text>
 						</Box>
 						<Box
@@ -179,7 +205,7 @@ const SubscriptionNew = () => {
 								}}
 							/>
 							<Text b size={18} css={{ lineHeight: 1.2, opacity: 0.9 }}>
-								Unlimited Stock Picks Unlimited Stock Picks
+								No Notification Updates
 							</Text>
 						</Box>
 						<Divider

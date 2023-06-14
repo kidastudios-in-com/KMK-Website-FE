@@ -8,6 +8,9 @@ export const REGISTER_URL = `${BASE_URL}/register_admin/`;
 export const VERIFY_TOKEN_URL = `${BASE_URL}/verifyToken`;
 export const REGEN_TOKEN_URL = `${BASE_URL}/regenerateRefreshToken/`;
 
+//Payment
+export const PAYMENT_URL = `${BASE_URL}/create-checkout-session/`;
+
 //Profile URLs
 export const ADMIN_PROFILE_URL = `${BASE_URL}/userprofile/`;
 export const GET_USER = `${BASE_URL}/userprofile/`
@@ -27,3 +30,4 @@ export const REG_USER_MOBILE = `${BASE_URL}/customMobileToken/`;
 export const VERIFY_USER = `${BASE_URL}/auth/token/`;
 export const GET_USERS = `${ADMIN_URL}/getAllUsers/`;
 export const GET_ADMINS = `${ADMIN_URL}/getAllAdmin/`;
+

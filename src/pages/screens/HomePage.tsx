@@ -1,49 +1,24 @@
-import {
-	Text,
-	Button,
-	Avatar,
-	Modal,
-	useModal,
-	Divider,
-} from "@nextui-org/react";
-import React, { useState, useEffect, useContext } from "react";
+import { Text, Button, Avatar, Modal, useModal } from "@nextui-org/react";
+import React, { useState, useContext } from "react";
 import { Box, IconButton } from "@mui/material";
 import { useRouter } from "next/router";
 import CloseIcon from "@mui/icons-material/Close";
 import Login from "@/components/Login";
-import { keyframes } from "@emotion/react";
 import AuthContext from "@/components/AuthContext";
-
-const animationDuration = 500;
-const fadeIn = keyframes`
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-`;
-
-const fadeOut = keyframes`
-  0% { opacity: 1; }
-  100% { opacity: 0; }
-`;
 
 const HomePage = () => {
 	const { isLoggedIn } = useContext(AuthContext);
 	const { setVisible, bindings } = useModal();
 	const [showLoginModal, setShowLoginModal] = useState(false);
-	const words = ["High-potential", "MicroCap", "SmallCap"];
-	const [isFading, setIsFading] = useState(false);
-	const [currentIndex, setCurrentIndex] = useState(0); // Current index of the word
-	const [currentWord, setCurrentWord] = useState(words[currentIndex]); // Current word to display
+	const [showCert, setShowCert] = useState(false);
 
-	useEffect(() => {
-		const timer = setInterval(() => {
-			setCurrentIndex((prevIndex) => (prevIndex + 1) % words.length); // Increment index and loop back to 0 when reaching the end
-			setCurrentWord(words[currentIndex]);
-		}, 3000); // Change word every 3 seconds
+	const handleCert = () => {
+		setShowCert(true);
+	};
 
-		return () => {
-			clearInterval(timer); // Clear the timer when the component unmounts
-		};
-	}, [currentWord]); // Remove currentIndex from the dependency array to prevent re-rendering on word change
+	const handleCertClose = () => {
+		setShowCert(false);
+	};
 
 	const handleLogin = () => {
 		setShowLoginModal(true);
@@ -122,10 +97,28 @@ const HomePage = () => {
 								textAlign: "center",
 							},
 						}}
+						onClick={handleCert}
 					>
 						SEBI Registered: INH000009843
 					</Text>
 				</Box>
+				<Modal
+					width="790px"
+					open={showCert}
+					onClose={handleCertClose}
+					css={{ background: 'transparent', boxShadow: 'none' }}
+				>
+					<img
+						src="Kamayakya-SEBI-License.jpg"
+						alt="SEBI Certificate"
+						style={{height: '90vh', objectFit: "contain" }}
+					/>
+					<Modal.Footer>
+						<Button auto onClick={handleCertClose} css={{ borderRadius: '20px', background: '#ffa12e', fontSize: 18 }}>
+							Close
+						</Button>
+					</Modal.Footer>
+				</Modal>
 				<Text
 					b
 					size={70}
@@ -144,27 +137,6 @@ const HomePage = () => {
 				>
 					Maximise the growth of your funds by investing in <span style={{color: "#0F5E54", }}>high-potential ideas</span>
 				</Text>
-				{/* <div
-					className="rotating-text-container"
-					style={{ display: "flex", flexDirection: "row" }}
-				>
-					<div className="rotating-text-wrapper">
-						<div className="rotating-text-cube">
-							<div className="rotating-text-front">{currentWord}</div> 
-							 <div className="rotating-text-back">{currentWord}</div>
-						</div>
-					</div>
-					<Text b size={70} css={{
-						"@media only screen and (max-width: 764px)": {
-							textAlign: 'center',
-							fontSize: 47.5,
-							maxWidth: "85%",
-						},
-					}}>
-						High-potential ideas
-					</Text>
-				</div> */}
-
 				<Text
 					b
 					size={30}
@@ -242,7 +214,7 @@ const HomePage = () => {
 						aria-describedby="modal-description"
 						{...bindings}
 						css={{
-							alignSelf: 'center',
+							alignSelf: "center",
 							background: "transparent",
 							boxShadow: "none",
 							borderRadius: "0px",

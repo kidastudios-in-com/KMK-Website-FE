@@ -1,4 +1,4 @@
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const stripe = require('stripe')("sk_test_51N3dAPSFPooNZtZaBTEbrtYAMG0BodhAfxLuhxMog0Sv2pc59NbR3yeyWZVtTYZkW0mrnzqtSdW2YE9oEdo3t1vb00YXU8BFoF");
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
@@ -9,10 +9,11 @@ export default async function handler(req, res) {
           {
             // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
             price: 'price_1NE5DPSBuQnJr5tOnimnWE85',
-            quantity: 1,
+            // quantity: 1,
           },
         ],
-        mode: 'payment',
+        mode: 'subscription',
+        
         success_url: `${req.headers.origin}/?success=true`,
         cancel_url: `${req.headers.origin}/?canceled=true`,
       });
@@ -25,3 +26,4 @@ export default async function handler(req, res) {
     res.status(405).end('Method Not Allowed');
   }
 }
+

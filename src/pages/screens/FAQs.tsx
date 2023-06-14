@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa";
 import { BsTelephone } from "react-icons/bs";
 import { CiMail } from "react-icons/ci";
-import { Link } from '@nextui-org/react';
+import { Link } from "@nextui-org/react";
 
 const FAQs = () => {
 	return (
@@ -65,8 +65,9 @@ const FAQs = () => {
 								},
 							}}
 						>
-							    <Link href="/TermsAndCond" css={{ color: 'Black' }}>Terms & Conditions</Link>
-
+							<Link href="/TermsAndCond" css={{ color: "Black" }}>
+								Terms & Conditions
+							</Link>
 						</Text>
 						<Text
 							b
@@ -78,7 +79,9 @@ const FAQs = () => {
 								},
 							}}
 						>
-							<Link href="/PrivacyPolicy" css={{ color: 'Black' }}>Privacy Policy</Link>
+							<Link href="/PrivacyPolicy" css={{ color: "Black" }}>
+								Privacy Policy
+							</Link>
 						</Text>
 						<Text
 							b
@@ -90,7 +93,9 @@ const FAQs = () => {
 								},
 							}}
 						>
-							<Link href="/Disclaimer" css={{ color: 'Black' }}>Disclaimer</Link>
+							<Link href="/Disclaimer" css={{ color: "Black" }}>
+								Disclaimer
+							</Link>
 						</Text>
 						<Text
 							b
@@ -102,12 +107,13 @@ const FAQs = () => {
 								},
 							}}
 						>
-							<Link href="/InvestorCharter" css={{ color: 'Black' }}>Investor Charter</Link>
+							<Link href="/InvestorCharter" css={{ color: "Black" }}>
+								Investor Charter
+							</Link>
 						</Text>
 						<Text
 							b
 							size={20}
-							
 							css={{
 								"@media only screen and (max-width: 600px)": {
 									fontSize: 12,
@@ -115,7 +121,9 @@ const FAQs = () => {
 								},
 							}}
 						>
-							<Link href="/Complaints" css={{ color: 'Black' }}>Complaints</Link>
+							<Link href="/Complaints" css={{ color: "Black" }}>
+								Complaints
+							</Link>
 						</Text>
 					</Box>
 					<Box
@@ -167,29 +175,99 @@ const FAQs = () => {
 					</Box>
 				</Box>
 				<Box
+					sx={{ display: "flex", flexDirection: "column", marginTop: "20px" }}
+				>
+					<Text b size={18} css={{ lineHeight: 1 }}>
+						Kamayakya Wealth Management Pvt. Ltd makes no warranties or
+						representations, express or implied, on products and services
+						offered through the platform. It accepts no liability for any
+						damages or losses, however, caused in connection with the use of, or
+						on the reliance of its research and recommendation services.
+					</Text>
+					<Text
+						b
+						size={18}
+						css={{ marginTop: "10px", lineHeight: 1, marginBottom: "20px" }}
+					>
+						Past performance is not indicative of future returns. Please
+						consider your specific investment requirements, risk tolerance,
+						goal, time frame, risk and reward balance and the cost associated
+						with the investment before choosing a fund, or designing a portfolio
+						that suits your needs. Performance and returns of any investment
+						portfolio can neither be predicted nor guaranteed.
+					</Text>
+				</Box>
+				<Box
 					sx={{
 						display: "flex",
 						alignSelf: "center",
 						textAlign: "center",
-						justifyContent: 'space-evenly',
+						justifyContent: "space-evenly",
 						marginTop: "20px",
-						alignItems: 'center',
-						flexWrap: 'wrap'
+						alignItems: "center",
+						flexWrap: "wrap",
 					}}
 				>
-					<Box sx={{ display: 'flex', flexDirection: 'column', maxWidth: '250px',alignItems: 'center' }}>
+					<Box
+						sx={{
+							display: "flex",
+							flexDirection: "row",
+							// maxWidth: "250px",
+							alignItems: "center",
+						}}
+					>
 						<img src="MSME logo.png" width={"150px"} height={"100px"} />
-						<Text b size={16}>
-							Udyam Registration Number : UDYAM-MH-26-0204983
-						</Text>
+						<Box sx={{
+							display: "flex",
+							flexDirection: "column",
+							// alignItems: "center",
+						}}>
+							<Text b size={22} css={{ textAlign: 'start' }}>
+								Udyam Registration Number:
+							</Text>
+							<Text b size={26} css={{ textDecoration: 'underline' }}>
+								UDYAM-MH-26-0204983
+							</Text>
+						</Box>
 					</Box>
-					<Box sx={{ display: 'flex', flexDirection: 'column', maxWidth: '200px' }}>
+					<Box
+						sx={{ display: "flex", flexDirection: "row", alignItems: "center", }}
+					>
 						<img src="SEBI.png" width={"200px"} height={"100px"} />
-						<Text b size={16}>Registration No : INH000009843</Text>
+						<Box sx={{
+							display: "flex",
+							flexDirection: "column",
+							// alignItems: "center",
+						}}>
+						<Text b size={25} css={{ textAlign: 'start' }}>
+							Registration No:
+						</Text>
+						<Text b size={28} css={{ textDecoration: 'underline' }}>
+							INH000009843
+						</Text>
+						</Box>
 					</Box>
-					<Box sx={{ display: 'flex', flexDirection: 'column', maxWidth: '200px', alignItems: 'center' }}>
+					<Box
+						sx={{
+							display: "flex",
+							flexDirection: "row",
+							// maxWidth: "200px",
+							alignItems: "center",
+						}}
+					>
 						<img src="Startup India Logo.png" width={"180px"} height={"80px"} />
-						<Text b size={16}>Certificate No : DIPP95081</Text>
+						<Box sx={{
+							display: "flex",
+							flexDirection: "column",
+							alignItems: "center",
+						}}>
+						<Text b size={22}>
+							Certificate No:
+						</Text>
+						<Text b size={28} css={{ textDecoration: 'underline' }}>
+							DIPP95081
+						</Text>
+						</Box>
 					</Box>
 				</Box>
 
