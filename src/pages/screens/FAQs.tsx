@@ -33,11 +33,14 @@ const FAQs = () => {
 						flexWrap: "wrap",
 						justifyContent: "space-between",
 						maxWidth: "80rem",
-						width: "100vw",
-						"@media only screen and (max-width: 600px)": {
-							justifyContent: "center",
-							alignItems: "center",
+						width: "100%",
+						"@media only screen and (max-width: 672px)": {
+							justifyContent: "flex-start",
+							alignItems: "flex-start",
 							width: "auto",
+							paddingLeft: "15px",
+							paddingRight: "15px",
+							marginTop: "-5vh",
 						},
 					}}
 				>
@@ -48,10 +51,11 @@ const FAQs = () => {
 							flexDirection: "row",
 							marginTop: "10px",
 							gap: 3,
-							"@media only screen and (max-width: 600px)": {
-								justifyContent: "center",
-								alignItems: "center",
-								width: "auto",
+							"@media only screen and (max-width: 672px)": {
+								justifyContent: "flex-start",
+								alignItems: "flex-start",
+								width: "100vw",
+								marginTop: "20px",
 							},
 						}}
 					>
@@ -59,8 +63,8 @@ const FAQs = () => {
 							b
 							size={20}
 							css={{
-								"@media only screen and (max-width: 600px)": {
-									fontSize: 12,
+								"@media only screen and (max-width: 672px)": {
+									fontSize: 11,
 									width: "auto",
 								},
 							}}
@@ -73,8 +77,8 @@ const FAQs = () => {
 							b
 							size={20}
 							css={{
-								"@media only screen and (max-width: 600px)": {
-									fontSize: 12,
+								"@media only screen and (max-width: 672px)": {
+									fontSize: 11,
 									width: "auto",
 								},
 							}}
@@ -87,8 +91,8 @@ const FAQs = () => {
 							b
 							size={20}
 							css={{
-								"@media only screen and (max-width: 600px)": {
-									fontSize: 12,
+								"@media only screen and (max-width: 672px)": {
+									fontSize: 11,
 									width: "auto",
 								},
 							}}
@@ -101,8 +105,8 @@ const FAQs = () => {
 							b
 							size={20}
 							css={{
-								"@media only screen and (max-width: 600px)": {
-									fontSize: 12,
+								"@media only screen and (max-width: 672px)": {
+									fontSize: 11,
 									width: "auto",
 								},
 							}}
@@ -115,8 +119,8 @@ const FAQs = () => {
 							b
 							size={20}
 							css={{
-								"@media only screen and (max-width: 600px)": {
-									fontSize: 12,
+								"@media only screen and (max-width: 672px)": {
+									fontSize: 11,
 									width: "auto",
 								},
 							}}
@@ -133,8 +137,11 @@ const FAQs = () => {
 							alignItems: "start",
 							gap: "10px",
 							// marginTop: 2,
-							"@media only screen and (max-width: 600px)": {
-								mb: "5px",
+							"@media only screen and (max-width: 672px)": {
+								marginTop: "15px",
+								justifyContent: "flex-start",
+								alignItems: "flex-start",
+								width: "100vw",
 							},
 						}}
 					>
@@ -183,10 +190,12 @@ const FAQs = () => {
 						css={{
 							textAlign: "center",
 							"@media only screen and (max-width: 672px)": {
-								marginTop: "10px",
+								marginTop: "-15px",
 								textAlign: "left",
-								fontSize: 15,
-								lineHeight: 1.1,
+								fontSize: 11,
+								lineHeight: 1.2,
+								paddingLeft: "15px",
+								paddingRight: "15px",
 							},
 						}}
 					>
@@ -209,9 +218,19 @@ const FAQs = () => {
 						alignSelf: "center",
 						textAlign: "center",
 						justifyContent: "space-evenly",
-						marginTop: "20px",
+						marginTop: "50px",
 						alignItems: "center",
 						flexWrap: "wrap",
+						"@media only screen and (max-width: 672px)": {
+							marginTop: "0px",
+							fontSize: 11,
+							lineHeight: 1.2,
+							paddingLeft: "15px",
+							paddingRight: "15px",
+							alignSelf: "flex-start",
+							justifyContent: "flex-start",
+							width: "100vw",
+						},
 					}}
 				>
 					<Box
@@ -220,6 +239,10 @@ const FAQs = () => {
 							flexDirection: "row",
 							// maxWidth: "250px",
 							alignItems: "center",
+							"@media only screen and (max-width: 672px)": {
+								alignSelf: "flex-start",
+								textAlign: "flex-start",
+							},
 						}}
 					>
 						<img src="MSME logo.png" width={"auto"} height={"50px"} />
@@ -229,28 +252,50 @@ const FAQs = () => {
 							alignItems: "flex-start",
 							justifyContent: "flex-start",
 						}}>
-							<Text b size={14} css={{ textAlign: 'start' }}>
+							<Text b size={14} css={{
+								textAlign: 'start',
+								"@media only screen and (max-width: 672px)": {
+									fontSize: "11px",
+									paddingLeft: "10px",
+								},
+							}}>
 								Udyam Registration Number:
 							</Text>
-							<Text b size={20} css={{ textDecoration: 'underline' }}>
+							<Text b size={20} css={{ textDecoration: 'underline',
+								"@media only screen and (max-width: 672px)": {
+									fontSize: "15px",
+									paddingLeft: "10px",
+								}, }}>
 								UDYAM-MH-26-0204983
 							</Text>
 						</Box>
 					</Box>
 					<Box
-						sx={{ display: "flex", flexDirection: "row", alignItems: "center", }}
+						sx={{ display: "flex", flexDirection: "row", alignItems: "center",
+							"@media only screen and (max-width: 672px)": {
+								marginTop: "10px",
+							},
+						}}
 					>
-						<img src="SEBI.png" width={"auto"} height={"50px"} />
+						<img src="SEBI.png" width={"auto"} height={"50px"}/>
 						<Box sx={{
 							display: "flex",
 							flexDirection: "column",
 							alignItems: "flex-start",
 							justifyContent: "flex-start",
 						}}>
-						<Text b size={14} css={{ textAlign: 'start' }}>
+						<Text b size={14} css={{ textAlign: 'start',
+							"@media only screen and (max-width: 672px)": {
+								fontSize: "11px",
+								paddingLeft: "10px",
+							}, }}>
 							Registration No:
 						</Text>
-						<Text b size={20} css={{ textDecoration: 'underline' }}>
+						<Text b size={20} css={{ textDecoration: 'underline',
+							"@media only screen and (max-width: 672px)": {
+								fontSize: "15px",
+								paddingLeft: "10px",
+							}, }}>
 							INH000009843
 						</Text>
 						</Box>
@@ -262,6 +307,9 @@ const FAQs = () => {
 							// maxWidth: "200px",
 							alignItems: "flex-start",
 							justifyContent: "flex-start",
+							"@media only screen and (max-width: 672px)": {
+								marginTop: "10px",
+							},
 						}}
 					>
 						<img src="Startup India Logo.png" width={"auto"} height={"50px"} />
@@ -270,10 +318,19 @@ const FAQs = () => {
 							flexDirection: "column",
 							alignItems: "center",
 						}}>
-						<Text b size={14}>
+						<Text b size={14} css={{
+							textAlign: 'start',
+							"@media only screen and (max-width: 672px)": {
+								fontSize: "11px",
+								paddingLeft: "10px",
+							},}}>
 							Certificate No:
 						</Text>
-						<Text b size={20} css={{ textDecoration: 'underline' }}>
+						<Text b size={20} css={{ textDecoration: 'underline',
+							"@media only screen and (max-width: 672px)": {
+								fontSize: "15px",
+								paddingLeft: "10px",
+							}, }}>
 							DIPP95081
 						</Text>
 						</Box>
@@ -287,7 +344,7 @@ const FAQs = () => {
 						justifyContent: "center",
 						alignItems: "center",
 						marginTop: 2,
-						"@media only screen and (max-width: 600px)": {
+						"@media only screen and (max-width: 672px)": {
 							justifyContent: "center",
 							width: "auto",
 						},
@@ -298,9 +355,13 @@ const FAQs = () => {
 						size={15}
 						color="#525357"
 						css={{
-							"@media only screen and (max-width: 600px)": {
+							marginTop: "20px",
+							"@media only screen and (max-width: 672px)": {
 								fontSize: 12,
-								width: "auto",
+								width: "100vw",
+								paddingLeft: "15px",
+								paddingRight: "15px",
+								color:"#000000",
 							},
 						}}
 					>

@@ -13,7 +13,7 @@ const BlogsPage = () => {
 	return (
 		<div>
 			{isLoggedIn ? <NavBar2 /> : <NavBar />}
-			<BSection1 />
+			{/*<BSection1 />*/}
 			<BSection2 />
 			<FaqsNew />
 			<FAQs />

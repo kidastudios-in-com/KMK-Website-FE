@@ -236,8 +236,8 @@ const StockCard = () => {
 	return (
 		<div
 			style={{
-				maxWidth: "2000px",
-				width: "100%",
+				// maxWidth: "80rem",
+				width: "100vw",
 				display: "flex",
 				flexDirection: "column",
 				paddingBottom: 100,
@@ -247,35 +247,41 @@ const StockCard = () => {
 		>
 			<Box
 				sx={{
-					// width: "600px",
 					paddingLeft: "40px",
 					paddingRight: "40px",
-					paddingTop: "10px",
-					paddingBottom: "10px",
-					marginTop: "50px",
+					paddingTop: "15px",
+					paddingBottom: "15px",
+					marginTop: "5vh",
 					display: "flex",
-					// flexDirection: "column",
+					flexDirection: "column",
 					backgroundImage: "linear-gradient(to top , #0d2c7b, #6067b5)",
+					alignItems: "center",
 					// backgroundImage: "linear-gradient(to top , #106052, #0f734d)",
 					borderRadius: "12.5px",
+					"@media only screen and (max-width: 672px)": {
+						paddingLeft: "20px",
+						paddingRight: "20px",
+						marginTop: "10px",
+						borderRadius: "10px",
+						alignItems: "flex-start",
+					},
 				}}
 			>
 				<Text
 					b
-					size={26}
+					size={28}
 					color="#FFF"
 					css={{
-						width: "auto",
 						fontWeight: "bolder",
-						"@media only screen and (max-width: 600px)": {
-							fontSize: 14,
-							padding: "1px 5px",
-							width: "auto",
+						"@media only screen and (max-width: 672px)": {
+							fontSize: 19,
+							width: "100%",
+							textAlign: "center",
 						},
 					}}
 					onClick={handleCert}
 				>
-					SEBI Registration No.: INH000009843
+					SEBI Registered: INH000009843
 				</Text>
 			</Box>
 			<Modal
@@ -303,45 +309,32 @@ const StockCard = () => {
 				sx={{
 					textAlign: "center",
 					marginBottom: "30px",
-					marginTop: "50px",
+					marginTop: "30px",
 					display: "flex",
 					flexDirection: "column",
 					alignItems: "center",
+
+					"@media only screen and (max-width: 672px)": {
+						marginTop: "30px",
+						borderRadius: "10px",
+						alignItems: "flex-start",
+					},
 				}}
 			>
 				<Text
 					b
 					size={70}
 					css={{
-						"@media only screen and (max-width: 600px)": {
+						"@media only screen and (max-width: 672px)": {
 							textAlign: "center",
-							fontSize: 36,
+							fontSize: 50,
 							lineHeight: 1.2,
+							paddingLeft: "15px",
+							paddingRight: "15px",
 						},
 					}}
 				>
-					Stock Recommendations
-				</Text>
-				<Text
-					b
-					size={35}
-					color="#125a54"
-					css={{
-						width: "80%",
-						lineHeight: 1,
-						"@media only screen and (max-width: 600px)": {
-							textAlign: "center",
-							fontSize: 18,
-							lineHeight: 1.2,
-						},
-					}}
-				>
-					We carefully select these stocks after studying factors such as cash
-					flow, top-line and bottom-line growth, promoter holding, management
-					quality, valuations and more. Some of the fundamental triggers we
-					focus on are capacity expansion, debt reduction, change in management,
-					industry tailwinds, favorable government policies, structural stories,
-					turnaround plays and more.
+					Stocks to buy
 				</Text>
 			</Box>
 			{isLoading && <Loading style={{ marginBottom: "10px" }} />}
@@ -402,7 +395,7 @@ const StockCard = () => {
 							// border: "1px solid #ffa12e",
 							// borderRadius: "10000px",
 							padding: "15px 10px",
-							"@media only screen and (max-width: 600px)": {
+							"@media only screen and (max-width: 672px)": {
 								width: "50%",
 							},
 						}}
@@ -419,7 +412,7 @@ const StockCard = () => {
 							border: "2px solid #ffa12e",
 							color: "#202020",
 							fontSize: 16,
-							"@media only screen and (max-width: 600px)": {
+							"@media only screen and (max-width: 672px)": {
 								width: "auto",
 								"& span": {
 									display: "none",
@@ -462,7 +455,7 @@ const StockCard = () => {
 							border: "2px solid #ffa12e",
 							color: "#202020",
 							fontSize: 16,
-							"@media only screen and (max-width: 600px)": {
+							"@media only screen and (max-width: 672px)": {
 								width: "auto",
 								"& span": {
 									display: "none",
@@ -474,7 +467,7 @@ const StockCard = () => {
 						<span
 							style={{
 								marginLeft: "10px",
-								"@media only screen and (max-width: 600px)": {
+								"@media only screen and (max-width: 672px)": {
 									marginLeft: "0px",
 								},
 							}}
@@ -503,7 +496,7 @@ const StockCard = () => {
 							border: "2px solid #ffa12e",
 							color: "#202020",
 							fontSize: 16,
-							"@media only screen and (max-width: 600px)": {
+							"@media only screen and (max-width: 672px)": {
 								width: "auto",
 								"& span": {
 									display: "none",
@@ -515,7 +508,7 @@ const StockCard = () => {
 						<span
 							style={{
 								marginLeft: "10px",
-								"@media only screen and (max-width: 600px)": {
+								"@media only screen and (max-width: 672px)": {
 									marginLeft: "0px",
 								},
 							}}
@@ -544,8 +537,8 @@ const StockCard = () => {
 					sx={{
 						background: "#fff",
 						boxShadow: "none",
-						"@media only screen and (max-width: 600px)": {
-							gap: "5px",
+						"@media only screen and (max-width: 672px)": {
+							gap: "1vw",
 						},
 					}}
 				>
@@ -554,8 +547,8 @@ const StockCard = () => {
 							<Card
 								isHoverable
 								css={{
-									height: "650px",
-									width: "350px",
+									height: "575px",
+									width: "285px",
 									display: "flex",
 									flexDirection: "column",
 									alignItems: "center",
@@ -569,11 +562,29 @@ const StockCard = () => {
 									paddingRight: "15px",
 									backgroundImage:
 										"linear-gradient(to top , #105B54, #0F734D, #0F734D)",
-									"@media only screen and (max-width: 800px)": {
+									"@media only screen and (max-width: 672px)": {
 										order: 1,
+										width: "48.5vw",
 									},
 								}}
 							>
+								{/* <div
+						style={{
+							display: 'flex',
+							width: "350px",
+							height: "50px",
+							background: "#00d784",
+							textAlign: "center",
+							paddingTop: "3px",
+							paddingBottom: "3px",
+							alignItems: 'center',
+							justifyContent: 'center',
+						}}
+					>
+						<Text b color="#fff" size={14} css={{ alignItems: 'center' }}>
+							SPECIAL OFFER
+						</Text>
+					</div> */}
 								<img
 									src="kamayakya-logo-white.png"
 									style={{ marginTop: "5px", width: "75%" }}
@@ -619,7 +630,7 @@ const StockCard = () => {
 										size={20}
 										css={{ lineHeight: 1.2, opacity: 0.9 }}
 									>
-										2-4 stocks a month
+										2-4 individual stock picks every month
 									</Text>
 								</Box>
 								<Box
@@ -652,7 +663,7 @@ const StockCard = () => {
 										size={20}
 										css={{ lineHeight: 1.2, opacity: 0.9 }}
 									>
-										NSE + BSE + SME
+										NSE + BSE + SME stock picks
 									</Text>
 								</Box>
 								<Box
@@ -685,75 +696,139 @@ const StockCard = () => {
 										size={20}
 										css={{ lineHeight: 1.2, opacity: 0.9 }}
 									>
-										Notifications via Email & WhatsApp
+										WhatsApp & Email updates
 									</Text>
 								</Box>
-								<Box
-									sx={{
-										width: "100%",
-										alignSelf: "start",
-										// marginTop: "20px",
-										marginBottom: "10px",
-										// marginLeft: "5%",
-										display: "flex",
-										flexDirection: "row",
-										alignItems: "center",
-										paddingLeft: "30px",
-										paddingRight: "30px",
-									}}
-								>
-									<CheckCircleIcon
-										sx={{
-											marginRight: "10px",
-											color: "#fff",
-											fontSize: 20,
-											alignSelf: "start",
-											marginTop: "5px",
-											opacity: 0.9,
-										}}
-									/>
-									<Text
-										b
-										color="#fff"
-										size={20}
-										css={{ lineHeight: 1.2, opacity: 0.9 }}
-									>
-										Track Record Reports
-									</Text>
-								</Box>
-								<Box
-									sx={{
-										width: "100%",
-										alignSelf: "start",
-										// marginTop: "20px",
-										marginBottom: "10px",
-										// marginLeft: "5%",
-										display: "flex",
-										flexDirection: "row",
-										alignItems: "center",
-										paddingLeft: "30px",
-										paddingRight: "30px",
-									}}
-								>
-									<CheckCircleIcon
-										sx={{
-											marginRight: "10px",
-											color: "#fff",
-											fontSize: 20,
-											alignSelf: "start",
-											marginTop: "5px",
-											opacity: 0.9,
-										}}
-									/>
-									<Text
-										b
-										color="#fff"
-										size={20}
-										css={{ lineHeight: 1.2, opacity: 0.9 }}
-									>
-										English, Hindi & Gujurati
-									</Text>
-								</Box>
+								{/*<Box*/}
+								{/*	sx={{*/}
+								{/*		width: "100%",*/}
+								{/*		alignSelf: "start",*/}
+								{/*		// marginTop: "20px",*/}
+								{/*		marginBottom: "10px",*/}
+								{/*		// marginLeft: "5%",*/}
+								{/*		display: "flex",*/}
+								{/*		flexDirection: "row",*/}
+								{/*		alignItems: "center",*/}
+								{/*		paddingLeft: "30px",*/}
+								{/*		paddingRight: "30px",*/}
+								{/*	}}*/}
+								{/*>*/}
+								{/*	<CheckCircleIcon*/}
+								{/*		sx={{*/}
+								{/*			marginRight: "10px",*/}
+								{/*			color: "#fff",*/}
+								{/*			fontSize: 20,*/}
+								{/*			alignSelf: "start",*/}
+								{/*			marginTop: "5px",*/}
+								{/*			opacity: 0.9,*/}
+								{/*		}}*/}
+								{/*	/>*/}
+								{/*	<Text*/}
+								{/*		b*/}
+								{/*		color="#fff"*/}
+								{/*		size={20}*/}
+								{/*		css={{ lineHeight: 1.2, opacity: 0.9 }}*/}
+								{/*	>*/}
+								{/*		Unlimited Stock Picks Unlimited Stock Picks*/}
+								{/*	</Text>*/}
+								{/*</Box>*/}
+								{/*<Box*/}
+								{/*	sx={{*/}
+								{/*		width: "100%",*/}
+								{/*		alignSelf: "start",*/}
+								{/*		// marginTop: "20px",*/}
+								{/*		marginBottom: "10px",*/}
+								{/*		// marginLeft: "5%",*/}
+								{/*		display: "flex",*/}
+								{/*		flexDirection: "row",*/}
+								{/*		alignItems: "center",*/}
+								{/*		paddingLeft: "30px",*/}
+								{/*		paddingRight: "30px",*/}
+								{/*	}}*/}
+								{/*>*/}
+								{/*	<CheckCircleIcon*/}
+								{/*		sx={{*/}
+								{/*			marginRight: "10px",*/}
+								{/*			color: "#fff",*/}
+								{/*			fontSize: 20,*/}
+								{/*			alignSelf: "start",*/}
+								{/*			marginTop: "5px",*/}
+								{/*			opacity: 0.9,*/}
+								{/*		}}*/}
+								{/*	/>*/}
+								{/*	<Text*/}
+								{/*		b*/}
+								{/*		color="#fff"*/}
+								{/*		size={20}*/}
+								{/*		css={{ lineHeight: 1.2, opacity: 0.9 }}*/}
+								{/*	>*/}
+								{/*		Unlimited Stock Picks Unlimited Stock Picks*/}
+								{/*	</Text>*/}
+								{/*</Box>*/}
+								{/*<Box*/}
+								{/*	sx={{*/}
+								{/*		width: "100%",*/}
+								{/*		alignSelf: "start",*/}
+								{/*		// marginTop: "20px",*/}
+								{/*		marginBottom: "10px",*/}
+								{/*		// marginLeft: "5%",*/}
+								{/*		display: "flex",*/}
+								{/*		flexDirection: "row",*/}
+								{/*		alignItems: "center",*/}
+								{/*		paddingLeft: "30px",*/}
+								{/*		paddingRight: "30px",*/}
+								{/*	}}*/}
+								{/*>*/}
+								{/*	<CheckCircleIcon*/}
+								{/*		sx={{*/}
+								{/*			marginRight: "10px",*/}
+								{/*			color: "#fff",*/}
+								{/*			fontSize: 20,*/}
+								{/*			alignSelf: "start",*/}
+								{/*			marginTop: "5px",*/}
+								{/*			opacity: 0.9,*/}
+								{/*		}}*/}
+								{/*	/>*/}
+								{/*	<Text*/}
+								{/*		b*/}
+								{/*		color="#fff"*/}
+								{/*		size={20}*/}
+								{/*		css={{ lineHeight: 1.2, opacity: 0.9 }}*/}
+								{/*	>*/}
+								{/*		Unlimited Stock Picks Unlimited Stock Picks*/}
+								{/*	</Text>*/}
+								{/*</Box>*/}
+								{/*<Box*/}
+								{/*	sx={{*/}
+								{/*		width: "100%",*/}
+								{/*		alignSelf: "start",*/}
+								{/*		marginBottom: "10px",*/}
+								{/*		display: "flex",*/}
+								{/*		flexDirection: "row",*/}
+								{/*		alignItems: "center",*/}
+								{/*		paddingLeft: "30px",*/}
+								{/*		paddingRight: "30px",*/}
+								{/*	}}*/}
+								{/*>*/}
+								{/*	<CheckCircleIcon*/}
+								{/*		sx={{*/}
+								{/*			marginRight: "10px",*/}
+								{/*			color: "#fff",*/}
+								{/*			fontSize: 20,*/}
+								{/*			alignSelf: "start",*/}
+								{/*			marginTop: "5px",*/}
+								{/*			opacity: 0.9,*/}
+								{/*		}}*/}
+								{/*	/>*/}
+								{/*	<Text*/}
+								{/*		b*/}
+								{/*		color="#fff"*/}
+								{/*		size={20}*/}
+								{/*		css={{ lineHeight: 1.2, opacity: 0.9 }}*/}
+								{/*	>*/}
+								{/*		Unlimited Stock Picks Unlimited Stock Picks*/}
+								{/*	</Text>*/}
+								{/*</Box>*/}
 								<Divider
 									css={{
 										background: "#fff",
@@ -765,18 +840,16 @@ const StockCard = () => {
 									}}
 								/>
 								<Button
-									// variant="contained"
-									css={{
+									variant="contained"
+									sx={{
 										width: "75%",
-										backgroundImage:
-											"linear-gradient(to top , #FF9D28, #ffa736)",
+										background: "linear-gradient(to top , #fb7716,#fe9807)",
 										paddingTop: "5px",
 										paddingBottom: "5px",
 										borderRadius: "10000px",
 										boxShadow: "none",
 										"&:hover": {
-											backgroundImage:
-												"linear-gradient(to top , #FF9D28, #ffa736)",
+											background: "linear-gradient(to top , #fb7716,#fe9807)",
 										},
 									}}
 									// onClick={handleLoginOrSub}
@@ -792,12 +865,10 @@ const StockCard = () => {
 									color="#fff"
 									css={{ textAlign: "center", marginTop: "10px" }}
 								>
-									at ₹
-									<span
-										style={{ color: "#fff", fontSize: 36, lineHeight: 1.2 }}
-									>
-										33/day
-									</span>
+									for ₹
+									<span style={{ color: "#fff", fontSize: 36, lineHeight: 1.2 }}>
+								11,800/year
+							</span>
 								</Text>
 
 								<Text
@@ -806,7 +877,7 @@ const StockCard = () => {
 									color="#FFF"
 									css={{ mt: "0px", opacity: 0.75, lineHeight: 1 }}
 								>
-									Billed Annualy
+									inclusive of taxes
 								</Text>
 							</Card>
 						</Grid>
@@ -830,7 +901,7 @@ const StockCard = () => {
 								<Card
 									isHoverable
 									css={{
-										height: "650px",
+										height: "575px",
 										width: "285px",
 										display: "flex",
 										flexDirection: "column",
@@ -842,8 +913,8 @@ const StockCard = () => {
 										marginBottom: "0px",
 										boxShadow: "none",
 										filter: "none",
-										"@media only screen and (max-width: 600px)": {
-											width: "170px",
+										"@media only screen and (max-width: 672px)": {
+											width: "48.5vw",
 											height: "570px",
 											borderRadius: "25px",
 										},
@@ -861,7 +932,7 @@ const StockCard = () => {
 											display: "flex",
 											flexDirection: "column",
 											alignItems: "center",
-											"@media only screen and (max-width: 600px)": {
+											"@media only screen and (max-width: 672px)": {
 												marginLeft: "5px",
 												marginRight: "5px",
 											},
@@ -875,7 +946,7 @@ const StockCard = () => {
 												backgroundColor: "#fff",
 												marginBottom: "15px",
 												width: "90%",
-												"@media only screen and (max-width: 600px)": {
+												"@media only screen and (max-width: 672px)": {
 													width: "100%",
 												},
 											}}
@@ -907,7 +978,7 @@ const StockCard = () => {
 													maxWidth: "100%",
 													textAlign: "center",
 													lineHeight: 1.2,
-													"@media only screen and (max-width: 600px)": {
+													"@media only screen and (max-width: 672px)": {
 														fontSize: 18,
 													},
 												}}
@@ -927,8 +998,10 @@ const StockCard = () => {
 												justifyContent: "center",
 												paddingTop: "20px",
 												paddingBottom: "20px",
-												"@media only screen and (max-width: 600px)": {
+												"@media only screen and (max-width: 672px)": {
 													width: "100%",
+													paddingTop: "15px",
+													paddingBottom: "15px",
 												},
 											}}
 										>
@@ -938,6 +1011,9 @@ const StockCard = () => {
 												color="#fff"
 												css={{
 													lineHeight: 1.5,
+													"@media only screen and (max-width: 672px)": {
+														fontSize: 17,
+													},
 												}}
 											>
 												Upside Left
@@ -952,42 +1028,46 @@ const StockCard = () => {
 														lineHeight: 1,
 														marginLeft: "3px",
 														marginRight: "3px",
-														"@media only screen and (max-width: 600px)": {
-															fontSize: 30,
+														"@media only screen and (max-width: 672px)": {
+															fontSize: 40,
 														},
 													}}
 												>
 													{`${Math.round(stock.upside_left)}` || <Loading /> ||
 														"N/A"}
 												</Text>
-												<span style={{ fontSize: 25, color: "#FFF" }}>%</span>
+												<span style={{ fontSize: 25, color: "#FFF",
+													"@media only screen and (max-width: 672px)": {
+														fontSize: 10,
+													},
+												}}>%</span>
 											</div>
-											<Box
-												sx={{
-													display: "flex",
-													flexDirection: "column",
-													alignItems: "center",
-													fontSize: 35,
-													color: "#fff",
-													marginTop: "5px",
-												}}
-											>
-												<Text b size={20} color="#fff" css={{ lineHeight: 1 }}>
-													Target Price
-												</Text>
-												<div
-													style={{
-														display: "flex",
-														flexDirection: "row",
-														alignItems: "center",
-														lineHeight: 1.2,
-														marginTop: "5px",
-													}}
-												>
-													<span style={{ fontSize: 20, opacity: 0.75 }}>₹</span>
-													{`${stock.target_price}`}
-												</div>
-											</Box>
+										{/*	<Box*/}
+										{/*		sx={{*/}
+										{/*			display: "flex",*/}
+										{/*			flexDirection: "column",*/}
+										{/*			alignItems: "center",*/}
+										{/*			fontSize: 35,*/}
+										{/*			color: "#fff",*/}
+										{/*			marginTop: "5px",*/}
+										{/*		}}*/}
+										{/*	>*/}
+										{/*		<Text b size={20} color="#fff" css={{ lineHeight: 1 }}>*/}
+										{/*			Target Price*/}
+										{/*		</Text>*/}
+										{/*		<div*/}
+										{/*			style={{*/}
+										{/*				display: "flex",*/}
+										{/*				flexDirection: "row",*/}
+										{/*				alignItems: "center",*/}
+										{/*				lineHeight: 1.2,*/}
+										{/*				marginTop: "5px",*/}
+										{/*			}}*/}
+										{/*		>*/}
+										{/*			<span style={{ fontSize: 20, opacity: 0.75 }}>₹</span>*/}
+										{/*			{`${stock.target_price}`}*/}
+										{/*		</div>*/}
+										{/*	</Box>*/}
 										</Box>
 										{/* <Box
 										sx={{
@@ -1002,7 +1082,7 @@ const StockCard = () => {
 											backgroundImage:
 												"linear-gradient(to top , #FF9D28, #ffa736)",
 											borderRadius: "10000px",
-											"@media only screen and (max-width: 600px)": {
+											"@media only screen and (max-width: 672px)": {
 												width: "100%",
 											},
 										}}
@@ -1020,11 +1100,68 @@ const StockCard = () => {
 											sx={{
 												mt: "20px",
 												width: "90%",
-												"@media only screen and (max-width: 600px)": {
+												"@media only screen and (max-width: 672px)": {
 													width: "100%",
 												},
 											}}
 										>
+											<div
+											style={{
+												display: "flex",
+												justifyContent: "space-between",
+												alignItems: "center",
+											}}
+										>
+											<div
+												style={{ display: "flex", flexDirection: "column" }}
+											>
+												<Text
+													b
+													css={{
+														lineHeight: 1.1,
+														"@media only screen and (max-width: 672px)": {
+															fontSize: 13,
+														},
+													}}
+													size={15}
+												>
+													MKT. CAP.
+												</Text>
+												<Text
+													b
+													size={15}
+													css={{
+														lineHeight: 1.1,
+														"@media only screen and (max-width: 672px)": {
+															fontSize: 13,
+														},
+													}}
+												>
+													(IN Cr.)
+												</Text>
+											</div>
+											<Text
+												b
+												css={{
+													flex: 1,
+													textAlign: "right",
+													"@media only screen and (max-width: 672px)": {
+														fontSize: 20,
+													},
+												}}
+												size={22}
+											>
+												{`${stock.market_cap}` || <Loading /> || "N/A"}
+											</Text>
+										</div>
+											<Divider
+												height={2}
+												style={{
+													backgroundColor: "#ffa12e",
+													marginTop: "10px",
+													marginBottom: "10px",
+												}}
+											/>
 											<div
 												style={{
 													display: "flex",
@@ -1046,7 +1183,7 @@ const StockCard = () => {
 															b
 															css={{
 																lineHeight: 1.1,
-																"@media only screen and (max-width: 600px)": {
+																"@media only screen and (max-width: 672px)": {
 																	fontSize: 13,
 																},
 															}}
@@ -1059,7 +1196,7 @@ const StockCard = () => {
 															size={15}
 															css={{
 																lineHeight: 1.1,
-																"@media only screen and (max-width: 600px)": {
+																"@media only screen and (max-width: 672px)": {
 																	fontSize: 13,
 																},
 															}}
@@ -1072,7 +1209,7 @@ const StockCard = () => {
 														css={{
 															flex: 1,
 															textAlign: "right",
-															"@media only screen and (max-width: 600px)": {
+															"@media only screen and (max-width: 672px)": {
 																fontSize: 20,
 															},
 														}}
@@ -1090,7 +1227,7 @@ const StockCard = () => {
 														marginBottom: "10px",
 													}}
 												/>
-												{/* <div
+												 <div
 												style={{
 													display: "flex",
 													justifyContent: "space-between",
@@ -1104,7 +1241,7 @@ const StockCard = () => {
 														b
 														css={{
 															lineHeight: 1.1,
-															"@media only screen and (max-width: 600px)": {
+															"@media only screen and (max-width: 672px)": {
 																fontSize: 13,
 															},
 														}}
@@ -1117,7 +1254,7 @@ const StockCard = () => {
 														size={15}
 														css={{
 															lineHeight: 1.1,
-															"@media only screen and (max-width: 600px)": {
+															"@media only screen and (max-width: 672px)": {
 																fontSize: 13,
 															},
 														}}
@@ -1130,7 +1267,7 @@ const StockCard = () => {
 													css={{
 														flex: 1,
 														textAlign: "right",
-														"@media only screen and (max-width: 600px)": {
+														"@media only screen and (max-width: 672px)": {
 															fontSize: 20,
 														},
 													}}
@@ -1138,15 +1275,16 @@ const StockCard = () => {
 												>
 													{`${stock.target_price}` || <Loading /> || "N/A"}
 												</Text>
-											</div> */}
-												{/* <Divider
+											</div>
+												<Divider
 												height={2}
 												style={{
 													backgroundColor: "#ffa12e",
 													marginTop: "10px",
 													marginBottom: "10px",
 												}}
-											/> */}
+											/>
+
 												<div
 													style={{
 														display: "flex",
@@ -1161,64 +1299,7 @@ const StockCard = () => {
 															b
 															css={{
 																lineHeight: 1.1,
-																"@media only screen and (max-width: 600px)": {
-																	fontSize: 13,
-																},
-															}}
-															size={15}
-														>
-															MKT. CAP.
-														</Text>
-														<Text
-															b
-															size={15}
-															css={{
-																lineHeight: 1.1,
-																"@media only screen and (max-width: 600px)": {
-																	fontSize: 13,
-																},
-															}}
-														>
-															(IN Cr.)
-														</Text>
-													</div>
-													<Text
-														b
-														css={{
-															flex: 1,
-															textAlign: "right",
-															"@media only screen and (max-width: 600px)": {
-																fontSize: 20,
-															},
-														}}
-														size={22}
-													>
-														{`${stock.market_cap}` || <Loading /> || "N/A"}
-													</Text>
-												</div>
-												<Divider
-													height={2}
-													style={{
-														backgroundColor: "#ffa12e",
-														marginTop: "10px",
-														marginBottom: "10px",
-													}}
-												/>
-												<div
-													style={{
-														display: "flex",
-														justifyContent: "space-between",
-														alignItems: "center",
-													}}
-												>
-													<div
-														style={{ display: "flex", flexDirection: "column" }}
-													>
-														<Text
-															b
-															css={{
-																lineHeight: 1.1,
-																"@media only screen and (max-width: 600px)": {
+																"@media only screen and (max-width: 672px)": {
 																	fontSize: 13,
 																},
 															}}
@@ -1231,7 +1312,7 @@ const StockCard = () => {
 															size={15}
 															css={{
 																lineHeight: 1.1,
-																"@media only screen and (max-width: 600px)": {
+																"@media only screen and (max-width: 672px)": {
 																	fontSize: 13,
 																},
 															}}
@@ -1244,7 +1325,7 @@ const StockCard = () => {
 														css={{
 															flex: 1,
 															textAlign: "right",
-															"@media only screen and (max-width: 600px)": {
+															"@media only screen and (max-width: 672px)": {
 																fontSize: 20,
 															},
 														}}
@@ -1261,7 +1342,7 @@ const StockCard = () => {
 											bottom: "5px",
 											width: "85%",
 											marginBottom: "25px",
-											"@media only screen and (max-width: 600px)": {
+											"@media only screen and (max-width: 672px)": {
 												width: "90%",
 												justifyContent: "center",
 											},
@@ -1278,7 +1359,7 @@ const StockCard = () => {
 												backgroundImage:
 													"linear-gradient(to top , #FF9D28, #ffa736)",
 												fontSize: 18,
-												"@media only screen and (max-width: 600px)": {
+												"@media only screen and (max-width: 672px)": {
 													fontSize: 15,
 													lineHeight: 1,
 													height: "30px",
@@ -1292,7 +1373,7 @@ const StockCard = () => {
 								<Card
 									isHoverable
 									css={{
-										height: "650px",
+										height: "575px",
 										width: "285px",
 										display: "flex",
 										flexDirection: "column",
@@ -1302,7 +1383,7 @@ const StockCard = () => {
 										border: "2px solid",
 										borderColor: "#ffa12e",
 										marginBottom: "20px",
-										"@media only screen and (max-width: 600px)": {
+										"@media only screen and (max-width: 672px)": {
 											width: "185px",
 											height: "570px",
 											borderRadius: "25px",
@@ -1331,7 +1412,7 @@ const StockCard = () => {
 												backgroundColor: "#fff",
 												marginBottom: "15px",
 												width: "90%",
-												"@media only screen and (max-width: 600px)": {
+												"@media only screen and (max-width: 672px)": {
 													width: "100%",
 												},
 											}}
@@ -1363,7 +1444,7 @@ const StockCard = () => {
 													maxWidth: "100%",
 													textAlign: "center",
 													lineHeight: 1.2,
-													"@media only screen and (max-width: 600px)": {
+													"@media only screen and (max-width: 672px)": {
 														fontSize: 18,
 													},
 												}}
@@ -1383,7 +1464,7 @@ const StockCard = () => {
 												justifyContent: "center",
 												paddingTop: "20px",
 												paddingBottom: "20px",
-												"@media only screen and (max-width: 600px)": {
+												"@media only screen and (max-width: 672px)": {
 													width: "100%",
 												},
 											}}
@@ -1408,7 +1489,7 @@ const StockCard = () => {
 														lineHeight: 1,
 														marginLeft: "3px",
 														marginRight: "3px",
-														"@media only screen and (max-width: 600px)": {
+														"@media only screen and (max-width: 672px)": {
 															fontSize: 30,
 														},
 													}}
@@ -1418,32 +1499,6 @@ const StockCard = () => {
 												</Text>
 												<span style={{ fontSize: 25, color: "#FFF" }}>%</span>
 											</div>
-											<Box
-												sx={{
-													display: "flex",
-													flexDirection: "column",
-													alignItems: "center",
-													fontSize: 35,
-													color: "#fff",
-													marginTop: "5px",
-												}}
-											>
-												<Text b size={20} color="#fff" css={{ lineHeight: 1 }}>
-													Target Price
-												</Text>
-												<div
-													style={{
-														display: "flex",
-														flexDirection: "row",
-														alignItems: "center",
-														lineHeight: 1.2,
-														marginTop: "5px",
-													}}
-												>
-													<span style={{ fontSize: 20, opacity: 0.75 }}>₹</span>
-													{`${stock.target_price}`}
-												</div>
-											</Box>
 										</Box>
 										<Box
 											sx={{
@@ -1458,7 +1513,7 @@ const StockCard = () => {
 												size={20}
 												color="#125a54"
 												css={{
-													"@media only screen and (max-width: 600px)": {
+													"@media only screen and (max-width: 672px)": {
 														fontSize: 18,
 													},
 												}}
@@ -1504,7 +1559,7 @@ const StockCard = () => {
 												backgroundImage:
 													"linear-gradient(to top , #106052, #0f734d)",
 												fontSize: 18,
-												"@media only screen and (max-width: 600px)": {
+												"@media only screen and (max-width: 672px)": {
 													top: "115px",
 													lineHeight: 1,
 													height: "30px",
@@ -1525,7 +1580,7 @@ const StockCard = () => {
 												borderRadius: "10000px",
 												backgroundImage:
 													"linear-gradient(to top , #FF9D28, #ffa736)",
-												"@media only screen and (max-width: 600px)": {
+												"@media only screen and (max-width: 672px)": {
 													top: "125px",
 													lineHeight: 1,
 													height: "30px",
@@ -1554,7 +1609,7 @@ const StockCard = () => {
 													sx={{
 														height: "700px",
 														width: "100%",
-														"@media only screen and (max-width: 600px)": {
+														"@media only screen and (max-width: 672px)": {
 															// width: '500px',
 															// height: '80%',
 														},
@@ -1606,7 +1661,7 @@ const StockCard = () => {
 								<Card
 									variant="flat"
 									css={{
-										height: "650px",
+										height: "575px",
 										width: "285px",
 										display: "flex",
 										flexDirection: "column",
@@ -1618,7 +1673,7 @@ const StockCard = () => {
 										marginBottom: "20px",
 										boxShadow: "none",
 										filter: "none",
-										"@media only screen and (max-width: 600px)": {
+										"@media only screen and (max-width: 672px)": {
 											width: "170px",
 											height: "570px",
 											borderRadius: "25px",
@@ -1647,7 +1702,7 @@ const StockCard = () => {
 												backgroundColor: "#fff",
 												marginBottom: "15px",
 												width: "90%",
-												"@media only screen and (max-width: 600px)": {
+												"@media only screen and (max-width: 672px)": {
 													width: "100%",
 												},
 											}}
@@ -1683,7 +1738,7 @@ const StockCard = () => {
 													lineHeight: 1.2,
 													position: "relative",
 													zIndex: 0,
-													"@media only screen and (max-width: 600px)": {
+													"@media only screen and (max-width: 672px)": {
 														fontSize: 20,
 													},
 												}}
@@ -1701,7 +1756,7 @@ const StockCard = () => {
 													zIndex: 0,
 													WebkitBackdropFilter: "blur(8px)",
 													margin: "15px",
-													"@media only screen and (max-width: 600px)": {
+													"@media only screen and (max-width: 672px)": {
 														margin: "0px",
 													},
 												}}
@@ -1713,42 +1768,90 @@ const StockCard = () => {
 												width: "90%",
 												backgroundImage:
 													"linear-gradient(to top , #106052, #0f734d)",
-												borderRadius: "15px",
+												borderRadius: "17.5px",
 												display: "flex",
 												flexDirection: "column",
 												alignItems: "center",
 												justifyContent: "center",
-												paddingTop: "10px",
-												paddingBottom: "15px",
-												"@media only screen and (max-width: 600px)": {
+												paddingTop: "20px",
+												paddingBottom: "20px",
+												"@media only screen and (max-width: 672px)": {
 													width: "100%",
 												},
 											}}
 										>
-											<Text b size={20} color="#fff" css={{ lineHeight: 1.5 }}>
+											<Text
+												b
+												size={20}
+												color="#fff"
+												css={{
+													lineHeight: 1.5,
+												}}
+											>
 												Upside Left
 											</Text>
-											<div>
-												<FaRegArrowAltCircleUp size={25} color="#fff" />
+											<div style={{ display: "flex", alignItems: "center" }}>
+												<ArrowCircleUp size={25} color="#fff" />
 												<Text
 													b
-													size={40}
+													size={48}
 													color="#fff"
 													css={{
 														lineHeight: 1,
-														marginLeft: 10,
-														"@media only screen and (max-width: 600px)": {
-															fontSize: 33,
+														marginLeft: "3px",
+														marginRight: "3px",
+														"@media only screen and (max-width: 672px)": {
+															fontSize: 30,
 														},
 													}}
 												>
-													{/* {`${getRandomNumber(10, Math.round(stock.upside_left))}%`} */}
-													{/* {`${Math.floor(Math.random() * (100 - 10 + 1)) + 10}%`} */}
-													{/* {`${getRandomNumber(10, 100)}%`} */}
-													{`${number}%`}
+													{`${number}`}
 												</Text>
+												<span style={{ fontSize: 25, color: "#FFF" }}>%</span>
 											</div>
 										</Box>
+										{/*<Box*/}
+										{/*	sx={{*/}
+										{/*		zIndex: 1,*/}
+										{/*		width: "90%",*/}
+										{/*		backgroundImage:*/}
+										{/*			"linear-gradient(to top , #106052, #0f734d)",*/}
+										{/*		borderRadius: "15px",*/}
+										{/*		display: "flex",*/}
+										{/*		flexDirection: "column",*/}
+										{/*		alignItems: "center",*/}
+										{/*		justifyContent: "center",*/}
+										{/*		paddingTop: "10px",*/}
+										{/*		paddingBottom: "15px",*/}
+										{/*		"@media only screen and (max-width: 672px)": {*/}
+										{/*			width: "100%",*/}
+										{/*		},*/}
+										{/*	}}*/}
+										{/*>*/}
+										{/*	<Text b size={20} color="#fff" css={{ lineHeight: 1.5 }}>*/}
+										{/*		Upside Left*/}
+										{/*	</Text>*/}
+										{/*	<div>*/}
+										{/*		<FaRegArrowAltCircleUp size={25} color="#fff" />*/}
+										{/*		<Text*/}
+										{/*			b*/}
+										{/*			size={40}*/}
+										{/*			color="#fff"*/}
+										{/*			css={{*/}
+										{/*				lineHeight: 1,*/}
+										{/*				marginLeft: 10,*/}
+										{/*				"@media only screen and (max-width: 672px)": {*/}
+										{/*					fontSize: 33,*/}
+										{/*				},*/}
+										{/*			}}*/}
+										{/*		>*/}
+										{/*			/!* {`${getRandomNumber(10, Math.round(stock.upside_left))}%`} *!/*/}
+										{/*			/!* {`${Math.floor(Math.random() * (100 - 10 + 1)) + 10}%`} *!/*/}
+										{/*			/!* {`${getRandomNumber(10, 100)}%`} *!/*/}
+										{/*			{`${number}%`}*/}
+										{/*		</Text>*/}
+										{/*	</div>*/}
+										{/*</Box>*/}
 										<Box
 											sx={{
 												// zIndex: 1,
@@ -1763,7 +1866,7 @@ const StockCard = () => {
 												backgroundImage:
 													"linear-gradient(to top , #FF9D28, #ffa736)",
 												borderRadius: "10000px",
-												"@media only screen and (max-width: 600px)": {
+												"@media only screen and (max-width: 672px)": {
 													width: "100%",
 												},
 											}}
@@ -1799,7 +1902,7 @@ const StockCard = () => {
 															b
 															css={{
 																lineHeight: 1.1,
-																"@media only screen and (max-width: 600px)": {
+																"@media only screen and (max-width: 672px)": {
 																	fontSize: 13,
 																},
 															}}
@@ -1812,7 +1915,7 @@ const StockCard = () => {
 															size={15}
 															css={{
 																lineHeight: 1.1,
-																"@media only screen and (max-width: 600px)": {
+																"@media only screen and (max-width: 672px)": {
 																	fontSize: 13,
 																},
 															}}
@@ -1825,7 +1928,7 @@ const StockCard = () => {
 														css={{
 															flex: 1,
 															textAlign: "right",
-															"@media only screen and (max-width: 600px)": {
+															"@media only screen and (max-width: 672px)": {
 																fontSize: 20,
 															},
 														}}
@@ -1856,7 +1959,7 @@ const StockCard = () => {
 															b
 															css={{
 																lineHeight: 1.1,
-																"@media only screen and (max-width: 600px)": {
+																"@media only screen and (max-width: 672px)": {
 																	fontSize: 13,
 																},
 															}}
@@ -1869,7 +1972,7 @@ const StockCard = () => {
 															size={15}
 															css={{
 																lineHeight: 1.1,
-																"@media only screen and (max-width: 600px)": {
+																"@media only screen and (max-width: 672px)": {
 																	fontSize: 13,
 																},
 															}}
@@ -1882,7 +1985,7 @@ const StockCard = () => {
 														css={{
 															flex: 1,
 															textAlign: "right",
-															"@media only screen and (max-width: 600px)": {
+															"@media only screen and (max-width: 672px)": {
 																fontSize: 20,
 															},
 														}}

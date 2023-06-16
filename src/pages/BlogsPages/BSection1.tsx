@@ -4,6 +4,7 @@ import React from "react";
 
 const Section1 = () => {
 	return (
+		<main style={{backgroundColor: "#fff"}}>
 		<section
 			style={{
 				zIndex: 0,
@@ -11,9 +12,9 @@ const Section1 = () => {
 				display: "flex",
 				justifyContent: "center",
 				alignItems: "center",
-				maxWidth: "2000px",
-				paddingTop: "50px",
-				paddingBottom: "50px",
+				maxWidth: "80rem",
+				paddingTop: "10vh",
+				paddingBottom: "25px",
 				margin: "0 auto",
 			}}
 		>
@@ -22,8 +23,10 @@ const Section1 = () => {
 					display: "flex",
 					flexWrap: "wrap-reverse",
 					flexDirection: "row",
-					width: "75%",
+					width: "100%",
 					justifyContent: "center",
+					paddingLeft: "15px",
+					paddingRight: "15px",
 					"@media only screen and (max-width: 764px)": {
 						width: "100%",
 						marginTop: "-30px",
@@ -32,7 +35,7 @@ const Section1 = () => {
 			>
 				<Box
 					sx={{
-						width: "30%",
+						width: "35%",
 						"@media only screen and (max-width: 764px)": {
 							width: "100%",
 						},
@@ -41,71 +44,67 @@ const Section1 = () => {
 					<Box
 						sx={{
 							display: "flex",
-							height: "458px",
-							maxHeight: "480px",
+							height: "500px",
+							// maxHeight: "480px",
 							justifyContent: "center",
 							alignItems: "center",
 							flexDirection: "column",
-							backgroundColor: "#000000",
-							padding: "30px",
+							backgroundColor: "#142d51",
+							padding: "50px",
 						}}
 					>
 						<Text
 							b
-							size={40}
+							size={35}
 							color="#fff"
 							css={{
-								lineHeight: 1.2,
+								lineHeight: 1.1,
 								marginBottom: "20px",
 								"@media only screen and (max-width: 764px)": {
 									fontSize: 38
 								},
 							}}
 						>
-							What is Equity Research?
+							Will the Travel & Tourism industry take-off in the coming years?
 						</Text>
-						<Box
-							sx={{
-								width: "100%",
-								display: "flex",
-								flexDirection: "row",
-								justifyContent: "space-between",
-								alignItems: "center",
-							}}
-						>
-							<Text b size={14} color="#fff">
-								Team KamayaKya
-							</Text>
-							<Text b size={14} color="#fff">
-								09-Jan-2023
-							</Text>
-						</Box>
-						<Text
-							b
-							size={18}
-							color="#AEAEAE"
-							css={{
-								lineHeight: 1.5,
-								marginTop: "20px",
-								// maxHeight: '300px',
-								overflowY: 'hidden',
-								"@media only screen and (max-width: 764px)": {
-									lineHeight: 1,
-									fontSize: 18
-								},
-							}}
-						>
-							The field of equity research bestows a tinge of glamour whenever
-							anybody talks about it. Through this primer, let us demystify this
-							field and enter the world that is the epicentre of the stock
-							market analysis.
-						</Text>
+						{/*<Text*/}
+						{/*	b*/}
+						{/*	size={15}*/}
+						{/*	color="#fff"*/}
+						{/*	css={{*/}
+						{/*		lineHeight: 1.1,*/}
+						{/*		marginBottom: "20px",*/}
+						{/*		"@media only screen and (max-width: 764px)": {*/}
+						{/*			fontSize: 38*/}
+						{/*		},*/}
+						{/*	}}*/}
+						{/*>*/}
+						{/*	The Indian tourism industry has been growing at an impressive pace in recent years, and this growth is only set to accelerate...*/}
+						{/*</Text>*/}
+						{/*<Box*/}
+						{/*	sx={{*/}
+						{/*		width: "100%",*/}
+						{/*		display: "flex",*/}
+						{/*		flexDirection: "row",*/}
+						{/*		justifyContent: "space-between",*/}
+						{/*		alignItems: "center",*/}
+						{/*	}}*/}
+						{/*>*/}
+						{/*	<Text b size={14} color="#fff">*/}
+						{/*		Team KamayaKya*/}
+						{/*	</Text>*/}
+						{/*	<Text b size={14} color="#fff">*/}
+						{/*		09-Jan-2023*/}
+						{/*	</Text>*/}
+						{/*</Box>*/}
 						<Button
 							css={{
-								borderRadius: "0px",
+								borderRadius: "10000px",
 								alignSelf: "flex-start",
-								marginTop: "20px",
-								backgroundColor: "#242424",
+								marginTop: "10px",
+								backgroundColor: "#FF9E24",
+								height: "40px",
+								width: "30%",
 							}}
 						>
 							<Text b size={15} color="#FFF">
@@ -116,7 +115,7 @@ const Section1 = () => {
 				</Box>
 				<Box
 					sx={{
-						width: "70%",
+						width: "65%",
 						height: "100%",
 						// marginTop: "5px",
 						"@media only screen and (max-width: 764px)": {
@@ -129,18 +128,20 @@ const Section1 = () => {
 				>
 					<img
 						width={"100%"}
-						height={"458px"}
+						height={"500px"}
 						style={{
 							objectFit: "cover",
+							objectPosition: "center",
 							// height: '455px',
-							maxHeight: "480px",
+							// maxHeight: "500px",
 						}}
-						src="./kmk-blog1.webp"
+						src="http://kk-cms-dev.mitplindia.com/uploads/pngtree_business_blue_airplane_travel_advertising_background_picture_image_1008129_8f2d8a28ae.jpg"
 						alt="Blog Image"
 					/>
 				</Box>
 			</Box>
 		</section>
+		</main>
 	);
 };
 

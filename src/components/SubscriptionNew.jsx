@@ -72,7 +72,7 @@ const SubscriptionNew = () => {
 							"@media only screen and (max-width: 672px)": {
 								textAlign: "left",
 								fontSize: 55,
-								lineHeight: 1.2,
+								lineHeight: 1.1,
 								maxWidth: "100%",
 								width: "100%",
 							},
@@ -88,7 +88,7 @@ const SubscriptionNew = () => {
 							"@media only screen and (max-width: 672px)": {
 								marginTop: "10px",
 								textAlign: "left",
-								fontSize: 15,
+								fontSize: 17.5,
 								lineHeight: 1.1,
 							},
 						}}
@@ -166,7 +166,7 @@ const SubscriptionNew = () => {
 								}}
 							/>
 							<Text b size={18} css={{ lineHeight: 1.2, opacity: 0.9 }}>
-								Only 3 stocks picks
+								3 system-generated stock picks accessible lifetime (NSE + BSE)
 							</Text>
 						</Box>
 						<Box
@@ -182,7 +182,7 @@ const SubscriptionNew = () => {
 								paddingRight: "30px",
 							}}
 						>
-							<CheckCircleIcon
+							<CloseIcon
 								sx={{
 									marginRight: "10px",
 									fontSize: 20,
@@ -192,13 +192,14 @@ const SubscriptionNew = () => {
 								}}
 							/>
 							<Text b size={18} css={{ lineHeight: 1.2, opacity: 0.9 }}>
-								Only "Sell" Track Records
+								No SME stock picks
 							</Text>
 						</Box>
 						<Box
 							sx={{
 								width: "100%",
 								alignSelf: "start",
+								// marginTop: "20px",
 								marginBottom: "10px",
 								display: "flex",
 								flexDirection: "row",
@@ -207,7 +208,7 @@ const SubscriptionNew = () => {
 								paddingRight: "30px",
 							}}
 						>
-							<CheckCircleIcon
+							<CloseIcon
 								sx={{
 									marginRight: "10px",
 									fontSize: 20,
@@ -217,34 +218,59 @@ const SubscriptionNew = () => {
 								}}
 							/>
 							<Text b size={18} css={{ lineHeight: 1.2, opacity: 0.9 }}>
-								Only NSE + BSE
+								No WhatsApp & Email updates
 							</Text>
 						</Box>
-						<Box
-							sx={{
-								width: "100%",
-								alignSelf: "start",
-								marginBottom: "10px",
-								display: "flex",
-								flexDirection: "row",
-								alignItems: "center",
-								paddingLeft: "30px",
-								paddingRight: "30px",
-							}}
-						>
-							<CheckCircleIcon
-								sx={{
-									marginRight: "10px",
-									fontSize: 20,
-									alignSelf: "start",
-									marginTop: "5px",
-									opacity: 0.9,
-								}}
-							/>
-							<Text b size={18} css={{ lineHeight: 1.2, opacity: 0.9 }}>
-								No Notification Updates
-							</Text>
-						</Box>
+						{/*<Box*/}
+						{/*	sx={{*/}
+						{/*		width: "100%",*/}
+						{/*		alignSelf: "start",*/}
+						{/*		marginBottom: "10px",*/}
+						{/*		display: "flex",*/}
+						{/*		flexDirection: "row",*/}
+						{/*		alignItems: "center",*/}
+						{/*		paddingLeft: "30px",*/}
+						{/*		paddingRight: "30px",*/}
+						{/*	}}*/}
+						{/*>*/}
+						{/*	<CheckCircleIcon*/}
+						{/*		sx={{*/}
+						{/*			marginRight: "10px",*/}
+						{/*			fontSize: 20,*/}
+						{/*			alignSelf: "start",*/}
+						{/*			marginTop: "5px",*/}
+						{/*			opacity: 0.9,*/}
+						{/*		}}*/}
+						{/*	/>*/}
+						{/*	<Text b size={18} css={{ lineHeight: 1.2, opacity: 0.9 }}>*/}
+						{/*		Only NSE + BSE*/}
+						{/*	</Text>*/}
+						{/*</Box>*/}
+						{/*<Box*/}
+						{/*	sx={{*/}
+						{/*		width: "100%",*/}
+						{/*		alignSelf: "start",*/}
+						{/*		marginBottom: "10px",*/}
+						{/*		display: "flex",*/}
+						{/*		flexDirection: "row",*/}
+						{/*		alignItems: "center",*/}
+						{/*		paddingLeft: "30px",*/}
+						{/*		paddingRight: "30px",*/}
+						{/*	}}*/}
+						{/*>*/}
+						{/*	<CheckCircleIcon*/}
+						{/*		sx={{*/}
+						{/*			marginRight: "10px",*/}
+						{/*			fontSize: 20,*/}
+						{/*			alignSelf: "start",*/}
+						{/*			marginTop: "5px",*/}
+						{/*			opacity: 0.9,*/}
+						{/*		}}*/}
+						{/*	/>*/}
+						{/*	<Text b size={18} css={{ lineHeight: 1.2, opacity: 0.9 }}>*/}
+						{/*		No Notification Updates*/}
+						{/*	</Text>*/}
+						{/*</Box>*/}
 						<Divider
 							css={{
 								background: "#000000",
@@ -397,7 +423,7 @@ const SubscriptionNew = () => {
 								size={20}
 								css={{ lineHeight: 1.2, opacity: 0.9 }}
 							>
-								Unlimited Stock Picks Unlimited Stock Picks
+								2-4 individual stock picks every month
 							</Text>
 						</Box>
 						<Box
@@ -430,7 +456,7 @@ const SubscriptionNew = () => {
 								size={20}
 								css={{ lineHeight: 1.2, opacity: 0.9 }}
 							>
-								Unlimited Stock Picks Unlimited Stock Picks
+								NSE + BSE + SME stock picks
 							</Text>
 						</Box>
 						<Box
@@ -463,106 +489,139 @@ const SubscriptionNew = () => {
 								size={20}
 								css={{ lineHeight: 1.2, opacity: 0.9 }}
 							>
-								Unlimited Stock Picks Unlimited Stock Picks
+								WhatsApp & Email updates
 							</Text>
 						</Box>
-						<Box
-							sx={{
-								width: "100%",
-								alignSelf: "start",
-								// marginTop: "20px",
-								marginBottom: "10px",
-								// marginLeft: "5%",
-								display: "flex",
-								flexDirection: "row",
-								alignItems: "center",
-								paddingLeft: "30px",
-								paddingRight: "30px",
-							}}
-						>
-							<CheckCircleIcon
-								sx={{
-									marginRight: "10px",
-									color: "#fff",
-									fontSize: 20,
-									alignSelf: "start",
-									marginTop: "5px",
-									opacity: 0.9,
-								}}
-							/>
-							<Text
-								b
-								color="#fff"
-								size={20}
-								css={{ lineHeight: 1.2, opacity: 0.9 }}
-							>
-								Unlimited Stock Picks Unlimited Stock Picks
-							</Text>
-						</Box>
-						<Box
-							sx={{
-								width: "100%",
-								alignSelf: "start",
-								// marginTop: "20px",
-								marginBottom: "10px",
-								// marginLeft: "5%",
-								display: "flex",
-								flexDirection: "row",
-								alignItems: "center",
-								paddingLeft: "30px",
-								paddingRight: "30px",
-							}}
-						>
-							<CheckCircleIcon
-								sx={{
-									marginRight: "10px",
-									color: "#fff",
-									fontSize: 20,
-									alignSelf: "start",
-									marginTop: "5px",
-									opacity: 0.9,
-								}}
-							/>
-							<Text
-								b
-								color="#fff"
-								size={20}
-								css={{ lineHeight: 1.2, opacity: 0.9 }}
-							>
-								Unlimited Stock Picks Unlimited Stock Picks
-							</Text>
-						</Box>
-						<Box
-							sx={{
-								width: "100%",
-								alignSelf: "start",
-								marginBottom: "10px",
-								display: "flex",
-								flexDirection: "row",
-								alignItems: "center",
-								paddingLeft: "30px",
-								paddingRight: "30px",
-							}}
-						>
-							<CheckCircleIcon
-								sx={{
-									marginRight: "10px",
-									color: "#fff",
-									fontSize: 20,
-									alignSelf: "start",
-									marginTop: "5px",
-									opacity: 0.9,
-								}}
-							/>
-							<Text
-								b
-								color="#fff"
-								size={20}
-								css={{ lineHeight: 1.2, opacity: 0.9 }}
-							>
-								Unlimited Stock Picks Unlimited Stock Picks
-							</Text>
-						</Box>
+						{/*<Box*/}
+						{/*	sx={{*/}
+						{/*		width: "100%",*/}
+						{/*		alignSelf: "start",*/}
+						{/*		// marginTop: "20px",*/}
+						{/*		marginBottom: "10px",*/}
+						{/*		// marginLeft: "5%",*/}
+						{/*		display: "flex",*/}
+						{/*		flexDirection: "row",*/}
+						{/*		alignItems: "center",*/}
+						{/*		paddingLeft: "30px",*/}
+						{/*		paddingRight: "30px",*/}
+						{/*	}}*/}
+						{/*>*/}
+						{/*	<CheckCircleIcon*/}
+						{/*		sx={{*/}
+						{/*			marginRight: "10px",*/}
+						{/*			color: "#fff",*/}
+						{/*			fontSize: 20,*/}
+						{/*			alignSelf: "start",*/}
+						{/*			marginTop: "5px",*/}
+						{/*			opacity: 0.9,*/}
+						{/*		}}*/}
+						{/*	/>*/}
+						{/*	<Text*/}
+						{/*		b*/}
+						{/*		color="#fff"*/}
+						{/*		size={20}*/}
+						{/*		css={{ lineHeight: 1.2, opacity: 0.9 }}*/}
+						{/*	>*/}
+						{/*		Unlimited Stock Picks Unlimited Stock Picks*/}
+						{/*	</Text>*/}
+						{/*</Box>*/}
+						{/*<Box*/}
+						{/*	sx={{*/}
+						{/*		width: "100%",*/}
+						{/*		alignSelf: "start",*/}
+						{/*		// marginTop: "20px",*/}
+						{/*		marginBottom: "10px",*/}
+						{/*		// marginLeft: "5%",*/}
+						{/*		display: "flex",*/}
+						{/*		flexDirection: "row",*/}
+						{/*		alignItems: "center",*/}
+						{/*		paddingLeft: "30px",*/}
+						{/*		paddingRight: "30px",*/}
+						{/*	}}*/}
+						{/*>*/}
+						{/*	<CheckCircleIcon*/}
+						{/*		sx={{*/}
+						{/*			marginRight: "10px",*/}
+						{/*			color: "#fff",*/}
+						{/*			fontSize: 20,*/}
+						{/*			alignSelf: "start",*/}
+						{/*			marginTop: "5px",*/}
+						{/*			opacity: 0.9,*/}
+						{/*		}}*/}
+						{/*	/>*/}
+						{/*	<Text*/}
+						{/*		b*/}
+						{/*		color="#fff"*/}
+						{/*		size={20}*/}
+						{/*		css={{ lineHeight: 1.2, opacity: 0.9 }}*/}
+						{/*	>*/}
+						{/*		Unlimited Stock Picks Unlimited Stock Picks*/}
+						{/*	</Text>*/}
+						{/*</Box>*/}
+						{/*<Box*/}
+						{/*	sx={{*/}
+						{/*		width: "100%",*/}
+						{/*		alignSelf: "start",*/}
+						{/*		// marginTop: "20px",*/}
+						{/*		marginBottom: "10px",*/}
+						{/*		// marginLeft: "5%",*/}
+						{/*		display: "flex",*/}
+						{/*		flexDirection: "row",*/}
+						{/*		alignItems: "center",*/}
+						{/*		paddingLeft: "30px",*/}
+						{/*		paddingRight: "30px",*/}
+						{/*	}}*/}
+						{/*>*/}
+						{/*	<CheckCircleIcon*/}
+						{/*		sx={{*/}
+						{/*			marginRight: "10px",*/}
+						{/*			color: "#fff",*/}
+						{/*			fontSize: 20,*/}
+						{/*			alignSelf: "start",*/}
+						{/*			marginTop: "5px",*/}
+						{/*			opacity: 0.9,*/}
+						{/*		}}*/}
+						{/*	/>*/}
+						{/*	<Text*/}
+						{/*		b*/}
+						{/*		color="#fff"*/}
+						{/*		size={20}*/}
+						{/*		css={{ lineHeight: 1.2, opacity: 0.9 }}*/}
+						{/*	>*/}
+						{/*		Unlimited Stock Picks Unlimited Stock Picks*/}
+						{/*	</Text>*/}
+						{/*</Box>*/}
+						{/*<Box*/}
+						{/*	sx={{*/}
+						{/*		width: "100%",*/}
+						{/*		alignSelf: "start",*/}
+						{/*		marginBottom: "10px",*/}
+						{/*		display: "flex",*/}
+						{/*		flexDirection: "row",*/}
+						{/*		alignItems: "center",*/}
+						{/*		paddingLeft: "30px",*/}
+						{/*		paddingRight: "30px",*/}
+						{/*	}}*/}
+						{/*>*/}
+						{/*	<CheckCircleIcon*/}
+						{/*		sx={{*/}
+						{/*			marginRight: "10px",*/}
+						{/*			color: "#fff",*/}
+						{/*			fontSize: 20,*/}
+						{/*			alignSelf: "start",*/}
+						{/*			marginTop: "5px",*/}
+						{/*			opacity: 0.9,*/}
+						{/*		}}*/}
+						{/*	/>*/}
+						{/*	<Text*/}
+						{/*		b*/}
+						{/*		color="#fff"*/}
+						{/*		size={20}*/}
+						{/*		css={{ lineHeight: 1.2, opacity: 0.9 }}*/}
+						{/*	>*/}
+						{/*		Unlimited Stock Picks Unlimited Stock Picks*/}
+						{/*	</Text>*/}
+						{/*</Box>*/}
 						<Divider
 							css={{
 								background: "#fff",
@@ -611,7 +670,7 @@ const SubscriptionNew = () => {
 							color="#FFF"
 							css={{ mt: "0px", opacity: 0.75, lineHeight: 1 }}
 						>
-							Inclusive of GST
+							inclusive of taxes
 						</Text>
 					</Card>
 					<Card
@@ -671,7 +730,7 @@ const SubscriptionNew = () => {
 								}}
 							/>
 							<Text b size={18} css={{ lineHeight: 1.2, opacity: 0.9 }}>
-								Unlimited Stock Picks Unlimited Stock Picks
+								Basket of stocks (only NSE)
 							</Text>
 						</Box>
 						<Box
@@ -696,7 +755,7 @@ const SubscriptionNew = () => {
 								}}
 							/>
 							<Text b size={18} css={{ lineHeight: 1.2, opacity: 0.9 }}>
-								Unlimited Stock Picks Unlimited Stock Picks
+								Execution via broker connect
 							</Text>
 						</Box>
 						<Box
@@ -721,7 +780,7 @@ const SubscriptionNew = () => {
 								}}
 							/>
 							<Text b size={18} css={{ lineHeight: 1.2, opacity: 0.9 }}>
-								Unlimited Stock Picks Unlimited Stock Picks
+								WhatsApp & Email updates
 							</Text>
 						</Box>
 						<Divider
