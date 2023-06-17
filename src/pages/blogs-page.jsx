@@ -4,7 +4,7 @@ import BSection2 from './BlogsPages/BSection2';
 import NavBar from "../components/Navbar";
 import NavBar2 from "../components/Navbar2";
 import FaqsNew from './screens/FaqsNew';
-import FAQs from './screens/FAQs';
+import Footer from './screens/Footer';
 import AuthContext from "../components/AuthContext";
 
 const BlogsPage = () => {
@@ -16,7 +16,7 @@ const BlogsPage = () => {
 			{/*<BSection1 />*/}
 			<BSection2 />
 			<FaqsNew />
-			<FAQs />
+			<Footer />
 		</div>
 	);
 };

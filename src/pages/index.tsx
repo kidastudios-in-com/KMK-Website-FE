@@ -7,7 +7,7 @@ import WhyUs from "./screens/WhyUs";
 // import Solutions from "./screens/Solutions";
 import SmallcaseCard from "./screens/smallcaseCard";
 // import Blogs2 from "./screens/blogs2";
-import FAQs from "./screens/FAQs";
+import Footer from "./screens/Footer";
 // import Process from "./screens/Process";
 import FaqsNew from "./screens/FaqsNew";
 // import Process2 from "./screens/Process2";
@@ -42,7 +42,7 @@ const Home: NextPage = () => {
 			<Testimonials />
 			{/* <Solutions /> */}
 			<FaqsNew />
-			<FAQs />
+			<Footer />
 			{/* <Footer /> */}
 			{/* </AuthProvider> */}
 		</>
