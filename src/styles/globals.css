@@ -2,20 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 @font-face {
-  font-family: 'SF Pro Rounded Bold';
-  src: url('../../public/fonts/SF-Pro-Rounded-Bold.otf') format('opentype');
+  font-family: "SF Pro Rounded Bold";
+  src: url("../../public/fonts/SF-Pro-Rounded-Bold.otf") format("opentype");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
 
-
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -98,25 +97,27 @@ body {
 }
 
 * {
-  font-family: 'SF Pro Rounded Bold', sans-serif;
+  font-family: "SF Pro Rounded Bold", sans-serif;
 }
 
-table, th, td {
+table,
+th,
+td {
   border: 1.5px solid #dfe5eb;
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 80px;
   padding-right: 80px;
 }
 
-  @media screen and (max-width: 600px) {
-    .kmk-smallcase-logo {
-    height: '25px';
-    
+@media screen and (max-width: 600px) {
+  .kmk-smallcase-logo {
+    height: 25px;
   }
 }
 
@@ -229,24 +230,24 @@ input::-webkit-inner-spin-button {
   margin-bottom: 20px;
 }
 
-.stripe-form{
+.stripe-form {
   border: 1px solid black;
   padding: 10px;
 }
 
-.form-row{
+.form-row {
   padding: 5px;
 }
 
-.form-input{
+.form-input {
   padding: 5px;
 }
 
-.image{
+.image {
   width: 150px;
 }
 
-.btn-checkout{
+.btn-checkout {
   padding: 10px;
   font-size: large;
   background-color: palevioletred;
@@ -254,7 +255,7 @@ input::-webkit-inner-spin-button {
   border-radius: 5px;
 }
 
-.btn-month{
+.btn-month {
   padding: 10px;
   margin: 10px;
   background-color: lightgreen;
@@ -263,7 +264,7 @@ input::-webkit-inner-spin-button {
   border-radius: 5px;
 }
 
-.btn-year{
+.btn-year {
   padding: 10px;
   margin: 10px;
   background-color: lightskyblue;
@@ -272,7 +273,7 @@ input::-webkit-inner-spin-button {
   border-radius: 5px;
 }
 
-.starter-div{
+.starter-div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -281,7 +282,7 @@ input::-webkit-inner-spin-button {
   border: 1px solid black;
 }
 
-.premium-div{
+.premium-div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -290,24 +291,24 @@ input::-webkit-inner-spin-button {
   border: 1px solid black;
 }
 
-.subscription{
+.subscription {
   display: flex;
   flex-direction: row;
   margin: 10px;
 }
 
-.month-img{
+.month-img {
   width: 50%;
 }
-.year-img{
+.year-img {
   width: 50%;
 }
 
-.success-form{
+.success-form {
   padding: 5px;
 }
 
-.bill-btn{
+.bill-btn {
   padding: 10px;
   margin: 10px;
   background-color: lightsalmon;
@@ -346,7 +347,7 @@ body::-webkit-scrollbar-thumb {
 
 /* set button(top and bottom of the scrollbar) */
 body::-webkit-scrollbar-button {
-  display:none;
+  display: none;
 }
 
 .custom-collapse .nextui-collapse-title {
@@ -372,4 +373,299 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+header {
+  background-color: #FcFcFc;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*max-width: 80rem;*/
+}
+
+header > div {
+  background-color: #FcFcFc;
+  width: 100vw;
+  max-width: 80rem;
+  padding: 15px 35px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.padding-top-header {
+  padding-top: 0px;
+}
+
+header > div > div {
+  background-color: #FcFcFc;
+  width: auto;
+  /*max-width: 80rem;*/
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.kamayakyaLogoBottomNavbar {
+  height: 50px;
+}
+
+.bottomNavbarPageLinks {
+  height: auto;
+  width: auto;
+  padding-right: 15px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.bottomNavbarPageLinks-text {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.bottomNavbar-dividerSection {
+  background-color: #FcFcFc;
+  width: 100vw;
+  /*max-width: 80rem;*/
+  padding: 0px;
+  padding-bottom: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottomNavbar-divider {
+  height: 1.5px;
+  width: 75%;
+  background-color: gray;
+  opacity: 0.125;
+  /*color: #FF9E24;*/
+  border-radius: 10000px;
+}
+
+.padding-top-divider {
+  padding-top: 25px;
+  width: 50%;
+}
+
+.registrationLogosIndividualCard {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+
+.registrationLogosIndividualCard-row-logo {
+  height: 40px;
+  width: auto;
+}
+
+.registrationLogosIndividualCard-column-header {
+  font-size: 12.5px;
+}
+
+.registrationLogosIndividualCard-column-number {
+  font-size: 17.5px;
+  font-weight: bold;
+  margin-top: -10px;
+}
+
+.registrationLogos {
+  background-color: white;
+  width: 100vw;
+  /*max-width: 80rem;*/
+  padding-bottom: 50px;
+  padding-top: 25px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.registrationLogos-positioning {
+  background-color: #fcfcfc;
+  width: 20vw;
+  /*max-width: 80rem;*/
+  padding-bottom: 0px;
+  padding-top: 0px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.copyright-box {
+  width: 75vw;
+  background-color: #fcfcfc;
+  /*max-width: 80rem;*/
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.copyright {
+  width: 100%;
+  font-size: 11px;
+  text-align: center;
+  /*font-weight: bold;*/
+  padding-bottom: 15px;
+}
+
+.warning {
+  padding-bottom: 0px;
+  padding-top: 0px;
+  font-size: 13px;
+}
+
+@media only screen and (max-width: 768px) {
+  header > div {
+    background-color: #fcfcfc;
+    width: 100vw;
+    max-width: 80rem;
+    padding: 15px 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: start;
+  }
+
+  header > div > div {
+    background-color: #fcfcfc;
+    width: 100%;
+    /*max-width: 80rem;*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+  }
+
+  .kamayakyaLogoBottomNavbar {
+    margin-top: 15px;
+    height: 30px;
+  }
+
+  .bottomNavbarPageLinks {
+    height: auto;
+    width: auto;
+    padding-right: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  .bottomNavbarPageLinks-text {
+    font-size: 11.5px;
+    font-weight: bold;
+  }
+
+  .socialDesign {
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+
+  .bottomNavbar-dividerSection {
+    background-color: #fcfcfc;
+    width: 100vw;
+    /*max-width: 80rem;*/
+    padding: 0px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+  }
+
+  .bottomNavbar-divider {
+    height: 1px;
+    width: 100%;
+    background-color: gray;
+    opacity: 0.125;
+    /*color: #FF9E24;*/
+    border-radius: 10000px;
+  }
+
+  .padding-top-divider {
+    padding-top: 5px;
+    width: 100%;
+  }
+
+  .registrationLogos-div {
+    padding-top: 0px;
+  }
+
+  .registrationLogosIndividualCard {
+    padding-top: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    min-width: 50vw;
+  }
+
+  .registrationLogosIndividualCard-column {
+    padding-left: 5px;
+  }
+
+  .registrationLogosIndividualCard-row-logo {
+    height: 30px;
+  }
+
+  .registrationLogosIndividualCard-column-header {
+    font-size: 10px;
+    padding-bottom: 2px;
+  }
+
+  .registrationLogosIndividualCard-column-number {
+    font-size: 14px;
+  }
+
+  .copyright-box {
+    width: 100%;
+    background-color: #FcFcFc;
+    /*max-width: 80rem;*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .copyright {
+    width: 100%;
+    font-size: 9px;
+    text-align: left;
+    font-weight: bold;
+    padding-bottom: 15px;
+  }
+
+  .warning {
+    padding-bottom: 0px;
+    padding-top: 0px;
+    font-size: 10px;
+  }
+}
+
+.custom-collapse .nextui-collapse-title {
+  color: black !important;
+  font-weight: normal;
 }

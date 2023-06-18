@@ -38,29 +38,27 @@ const HomePage = () => {
 	];
 
 	return (
-		<main
-			id="home"
-			style={{
-				backgroundColor: "#fff",
-				display: "flex",
-				flexDirection: "column",
-				justifyContent: "center",
-				alignItems: "center",
+
+		<main id="home" style={{
+			backgroundColor: "#fff",
+			display: "flex",
+			flexDirection: "column",
+			justifyContent: "center",
+			alignItems: "center",
 				// paddingBottom: 60,
-			}}
-		>
-			{/*<section*/}
-			{/*	id="home"*/}
-			{/*	style={{*/}
-			{/*		display: "flex",*/}
-			{/*		justifyContent: "center",*/}
-			{/*		alignItems: "center",*/}
-			{/*		height: "100%",*/}
-			{/*		paddingTop: "10px",*/}
-			{/*		backgroundColor: "#fff",*/}
-			{/*		paddingBottom: 60,*/}
-			{/*	}}*/}
-			{/*>*/}
+		}}>
+		{/*<section*/}
+		{/*	id="home"*/}
+		{/*	style={{*/}
+		{/*		display: "flex",*/}
+		{/*		justifyContent: "center",*/}
+		{/*		alignItems: "center",*/}
+		{/*		height: "100%",*/}
+		{/*		paddingTop: "10px",*/}
+		{/*		backgroundColor: "#fff",*/}
+		{/*		paddingBottom: 60,*/}
+		{/*	}}*/}
+		{/*>*/}
 			<Box
 				sx={{
 					// paddingTop: "30px",
@@ -74,8 +72,7 @@ const HomePage = () => {
 					"@media only screen and (min-width: 672px)": {
 						paddingTop: "10vh",
 						paddingBottom: "10vh",
-					},
-					"@media only screen and (max-width: 672px)": {
+					},"@media only screen and (max-width: 672px)": {
 						// maxHeight: "100vh",
 						marginTop: "0px",
 						justifyContent: "flex-start",
@@ -128,23 +125,15 @@ const HomePage = () => {
 					width="790px"
 					open={showCert}
 					onClose={handleCertClose}
-					css={{ background: "transparent", boxShadow: "none" }}
+					css={{ background: 'transparent', boxShadow: 'none' }}
 				>
 					<img
 						src="Kamayakya-SEBI-License.jpg"
 						alt="SEBI Certificate"
-						style={{ height: "90vh", objectFit: "contain" }}
+						style={{height: '90vh', objectFit: "contain" }}
 					/>
 					<Modal.Footer>
-						<Button
-							auto
-							onClick={handleCertClose}
-							css={{
-								borderRadius: "20px",
-								background: "#ffa12e",
-								fontSize: 18,
-							}}
-						>
+						<Button auto onClick={handleCertClose} css={{ borderRadius: '20px', background: '#ffa12e', fontSize: 18 }}>
 							Close
 						</Button>
 					</Modal.Footer>
@@ -168,8 +157,7 @@ const HomePage = () => {
 						},
 					}}
 				>
-					Maximize the growth of your funds by investing in{" "}
-					<span style={{ color: "#074E47" }}>high-potential ideas</span>
+					Maximize the growth of your funds by investing in <span style={{color: "#074E47", }}>high-potential ideas</span>
 				</Text>
 				<Text
 					b
@@ -288,7 +276,7 @@ const HomePage = () => {
 							Close
 						</Button>
 					</Modal>
-					<span style={{ width: "10px" }}></span>
+					<span style={{width: "10px"}}></span>
 					<Button
 						auto
 						size={"xl"}
@@ -332,7 +320,7 @@ const HomePage = () => {
 						</Text>
 					</Button>
 					<Modal
-						width="400px"
+						width="1200px"
 						open={showLoginModal}
 						onClose={handleCloseLoginModal}
 					>
@@ -390,7 +378,7 @@ const HomePage = () => {
 								pointer
 								src={url}
 								stacked
-								style={{ zIndex: 0 }}
+								style={{ zIndex: 0}}
 							/>
 						))}
 					</Avatar.Group>
@@ -405,7 +393,7 @@ const HomePage = () => {
 					</Box>
 				</Box>
 			</Box>
-			{/*</section>*/}
+		{/*</section>*/}
 		</main>
 	);
 };

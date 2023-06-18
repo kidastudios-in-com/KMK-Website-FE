@@ -38,7 +38,7 @@ const Testimonials = () => {
 		<main
 			style={{
 				backgroundColor: "#fff",
-				paddingTop: "10vh",
+				paddingTop: '10vh',
 				paddingBottom: "10vh",
 				display: "flex",
 				flexWrap: "wrap",

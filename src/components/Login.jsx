@@ -25,7 +25,7 @@ const Login = () => {
 
 	return (
 		<div>
-			<Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
+			<Box sx={{ display: "flex", flexDirection: "column", width: "100%"}}>
 				<Box
 					sx={{
 						display: "flex",

@@ -699,6 +699,136 @@ const StockCard = () => {
 										WhatsApp & Email updates
 									</Text>
 								</Box>
+								{/*<Box*/}
+								{/*	sx={{*/}
+								{/*		width: "100%",*/}
+								{/*		alignSelf: "start",*/}
+								{/*		// marginTop: "20px",*/}
+								{/*		marginBottom: "10px",*/}
+								{/*		// marginLeft: "5%",*/}
+								{/*		display: "flex",*/}
+								{/*		flexDirection: "row",*/}
+								{/*		alignItems: "center",*/}
+								{/*		paddingLeft: "30px",*/}
+								{/*		paddingRight: "30px",*/}
+								{/*	}}*/}
+								{/*>*/}
+								{/*	<CheckCircleIcon*/}
+								{/*		sx={{*/}
+								{/*			marginRight: "10px",*/}
+								{/*			color: "#fff",*/}
+								{/*			fontSize: 20,*/}
+								{/*			alignSelf: "start",*/}
+								{/*			marginTop: "5px",*/}
+								{/*			opacity: 0.9,*/}
+								{/*		}}*/}
+								{/*	/>*/}
+								{/*	<Text*/}
+								{/*		b*/}
+								{/*		color="#fff"*/}
+								{/*		size={20}*/}
+								{/*		css={{ lineHeight: 1.2, opacity: 0.9 }}*/}
+								{/*	>*/}
+								{/*		Unlimited Stock Picks Unlimited Stock Picks*/}
+								{/*	</Text>*/}
+								{/*</Box>*/}
+								{/*<Box*/}
+								{/*	sx={{*/}
+								{/*		width: "100%",*/}
+								{/*		alignSelf: "start",*/}
+								{/*		// marginTop: "20px",*/}
+								{/*		marginBottom: "10px",*/}
+								{/*		// marginLeft: "5%",*/}
+								{/*		display: "flex",*/}
+								{/*		flexDirection: "row",*/}
+								{/*		alignItems: "center",*/}
+								{/*		paddingLeft: "30px",*/}
+								{/*		paddingRight: "30px",*/}
+								{/*	}}*/}
+								{/*>*/}
+								{/*	<CheckCircleIcon*/}
+								{/*		sx={{*/}
+								{/*			marginRight: "10px",*/}
+								{/*			color: "#fff",*/}
+								{/*			fontSize: 20,*/}
+								{/*			alignSelf: "start",*/}
+								{/*			marginTop: "5px",*/}
+								{/*			opacity: 0.9,*/}
+								{/*		}}*/}
+								{/*	/>*/}
+								{/*	<Text*/}
+								{/*		b*/}
+								{/*		color="#fff"*/}
+								{/*		size={20}*/}
+								{/*		css={{ lineHeight: 1.2, opacity: 0.9 }}*/}
+								{/*	>*/}
+								{/*		Unlimited Stock Picks Unlimited Stock Picks*/}
+								{/*	</Text>*/}
+								{/*</Box>*/}
+								{/*<Box*/}
+								{/*	sx={{*/}
+								{/*		width: "100%",*/}
+								{/*		alignSelf: "start",*/}
+								{/*		// marginTop: "20px",*/}
+								{/*		marginBottom: "10px",*/}
+								{/*		// marginLeft: "5%",*/}
+								{/*		display: "flex",*/}
+								{/*		flexDirection: "row",*/}
+								{/*		alignItems: "center",*/}
+								{/*		paddingLeft: "30px",*/}
+								{/*		paddingRight: "30px",*/}
+								{/*	}}*/}
+								{/*>*/}
+								{/*	<CheckCircleIcon*/}
+								{/*		sx={{*/}
+								{/*			marginRight: "10px",*/}
+								{/*			color: "#fff",*/}
+								{/*			fontSize: 20,*/}
+								{/*			alignSelf: "start",*/}
+								{/*			marginTop: "5px",*/}
+								{/*			opacity: 0.9,*/}
+								{/*		}}*/}
+								{/*	/>*/}
+								{/*	<Text*/}
+								{/*		b*/}
+								{/*		color="#fff"*/}
+								{/*		size={20}*/}
+								{/*		css={{ lineHeight: 1.2, opacity: 0.9 }}*/}
+								{/*	>*/}
+								{/*		Unlimited Stock Picks Unlimited Stock Picks*/}
+								{/*	</Text>*/}
+								{/*</Box>*/}
+								{/*<Box*/}
+								{/*	sx={{*/}
+								{/*		width: "100%",*/}
+								{/*		alignSelf: "start",*/}
+								{/*		marginBottom: "10px",*/}
+								{/*		display: "flex",*/}
+								{/*		flexDirection: "row",*/}
+								{/*		alignItems: "center",*/}
+								{/*		paddingLeft: "30px",*/}
+								{/*		paddingRight: "30px",*/}
+								{/*	}}*/}
+								{/*>*/}
+								{/*	<CheckCircleIcon*/}
+								{/*		sx={{*/}
+								{/*			marginRight: "10px",*/}
+								{/*			color: "#fff",*/}
+								{/*			fontSize: 20,*/}
+								{/*			alignSelf: "start",*/}
+								{/*			marginTop: "5px",*/}
+								{/*			opacity: 0.9,*/}
+								{/*		}}*/}
+								{/*	/>*/}
+								{/*	<Text*/}
+								{/*		b*/}
+								{/*		color="#fff"*/}
+								{/*		size={20}*/}
+								{/*		css={{ lineHeight: 1.2, opacity: 0.9 }}*/}
+								{/*	>*/}
+								{/*		Unlimited Stock Picks Unlimited Stock Picks*/}
+								{/*	</Text>*/}
+								{/*</Box>*/}
 								<Divider
 									css={{
 										background: "#fff",
@@ -710,18 +840,16 @@ const StockCard = () => {
 									}}
 								/>
 								<Button
-									// variant="contained"
-									css={{
+									variant="contained"
+									sx={{
 										width: "75%",
-										backgroundImage:
-													"linear-gradient(to top , #FF9D28, #ffa736)",
+										background: "linear-gradient(to top , #fb7716,#fe9807)",
 										paddingTop: "5px",
 										paddingBottom: "5px",
 										borderRadius: "10000px",
 										boxShadow: "none",
 										"&:hover": {
-											backgroundImage:
-													"linear-gradient(to top , #FF9D28, #ffa736)",
+											background: "linear-gradient(to top , #fb7716,#fe9807)",
 										},
 									}}
 									// onClick={handleLoginOrSub}

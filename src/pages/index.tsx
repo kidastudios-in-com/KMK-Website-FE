@@ -4,10 +4,10 @@ import NavBar from "@/components/Navbar";
 import HomePage from "./screens/HomePage";
 // import AboutUs from "./screens/AboutUs";
 import WhyUs from "./screens/WhyUs";
-import Solutions from "./screens/Solutions";
+// import Solutions from "./screens/Solutions";
 import SmallcaseCard from "./screens/smallcaseCard";
-import Blogs2 from "./screens/blogs2";
-import FAQs from "./screens/FAQs";
+// import Blogs2 from "./screens/blogs2";
+import Footer from "./screens/Footer";
 // import Process from "./screens/Process";
 import FaqsNew from "./screens/FaqsNew";
 // import Process2 from "./screens/Process2";
@@ -39,10 +39,10 @@ const Home: NextPage = () => {
 			{/* <Process2/> */}
 			<WhyUs />
 			{/* <Blogs2 /> */}
-			{/* <Testimonials /> */}
-			<Solutions />
+			<Testimonials />
+			{/* <Solutions /> */}
 			<FaqsNew />
-			<FAQs />
+			<Footer />
 			{/* <Footer /> */}
 			{/* </AuthProvider> */}
 		</>

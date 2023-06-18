@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Login from "./Login";
 import CloseIcon from "@mui/icons-material/Close";
-import { CloseSquare } from "iconsax-react";
 
 export default function App() {
 	const [activeLink, setActiveLink] = useState("home");
@@ -46,219 +45,283 @@ export default function App() {
 		router.push("/blogs-page");
 	};
 
-	const [isOpen, setIsOpen] = useState(false);
-
-	const handleToggleClick = () => {
-		setIsOpen(!isOpen);
-	  };
-
-	const handleToggleClose = () => {
-		setIsOpen(false);
+	const handleLinkClick = (link: string) => {
+		setActiveLink(link);
+		const element = document.getElementById(link);
+		if (element) {
+			element.scrollIntoView({
+				behavior: "smooth",
+			});
+		}
 	};
 
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+	const toggleMenu = () => {
+	  setIsMenuOpen((prevIsMenuOpen) => !prevIsMenuOpen);
+	};
+  
+	// Add or remove "no-scroll" class to the body based on the menu state
+	// useEffect(() => {
+	// 	if (isMenuOpen) {
+	// 	  document.body.className.add("modal-open");
+	// 	} else {
+	// 	  document.body.classList.remove("modal-open");
+	// 	}
+	//   }, [isMenuOpen]);
+
+	const isScrolledIntoView = (element: HTMLElement) => {
+		if (!element) return false;
+		const rect = element.getBoundingClientRect();
+		const elemTop = rect.top;
+		const elemBottom = rect.bottom;
+		const isVisible = elemTop < window.innerHeight && elemBottom >= 0;
+		return isVisible;
+	};
+
+	useEffect(() => {
+		const handleScroll = () => {
+			const homeSection = document.getElementById("home");
+			const aboutSection = document.getElementById("aboutUs");
+			const whySection = document.getElementById("whyUs");
+			const solutionsSection = document.getElementById("solutions");
+			const blogsSection = document.getElementById("blogs");
+			const faqsSection = document.getElementById("FAQs");
+
+			if (homeSection && isScrolledIntoView(homeSection)) {
+				setActiveLink("home");
+			} else if (aboutSection && isScrolledIntoView(aboutSection)) {
+				setActiveLink("aboutUs");
+			} else if (whySection && isScrolledIntoView(whySection)) {
+				setActiveLink("whyUs");
+			} else if (solutionsSection && isScrolledIntoView(solutionsSection)) {
+				setActiveLink("solutions");
+			} else if (blogsSection && isScrolledIntoView(blogsSection)) {
+				setActiveLink("blogs");
+			} else if (faqsSection && isScrolledIntoView(faqsSection)) {
+				setActiveLink("FAQs");
+			}
+		};
+
+		window.addEventListener("scroll", handleScroll);
+
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, []);
+
 	return (
-		
-		<Navbar
-			variant="static"
-			maxWidth={"fluid"}
-			disableShadow={true}
-			height={100}
-			css={{
-				marginTop: 0,
-				zIndex: 1,
-				$$navbarBackgroundColor: "transparent",
-				$$navbarBlurBackgroundColor: "none",
-				".nextui-navbar-container": {
-					backgroundColor: "#fff",
-					backdropFilter: "none",
-					boxShadow: "none",
-					boxSizing: "content-box",
-				},
-				".nextui-c-hhqfap-kAwfsS-disableShadow-false": {
-					boxShadow: "none",
-				},
-				".nextui-c-dGYPDG": { height: "0%" },
-				"@media only screen and (max-width: 672px)": {
-					// w: "195px",
-					height: "80px",
-					// left: 15,
-				},
-			}}
-		>
-			<Navbar.Brand
+		// <div
+		// 	style={{
+		// 		zIndex: 99,
+		// 		// display: "flex",
+		// 		// justifyContent: "center",
+		// 		// alignItems: "center",
+		// 		// maxWidth: "10000px",
+		// 	}}
+		// >
+		<>
+			<Navbar
+				variant="static"
+				maxWidth={"fluid"}
+				disableShadow={true}
+				height={100}
 				css={{
-					zIndex: 99,
-					// width: "250px",
-					height: "80px",
-					"@media only screen and (max-width: 600px)": {
+					marginTop: 0,
+					zIndex: 1,
+					$$navbarBackgroundColor: "transparent",
+					$$navbarBlurBackgroundColor: "none",
+					".nextui-navbar-container": {
+						backgroundColor: "#fff",
+						backdropFilter: "none",
+						boxShadow: "none",
+						boxSizing: "content-box",
+					},
+					".nextui-c-hhqfap-kAwfsS-disableShadow-false": {
+						boxShadow: "none",
+					},
+					".nextui-c-dGYPDG": { height: "0%" },
+					"@media only screen and (max-width: 672px)": {
 						// w: "195px",
-						h: "80px",
-						w: "auto",
+						height: "80px",
+						// left: 15,
 					},
 				}}
 			>
-				<img
-					onClick={handleHome}
-					src="./kmk-logo (1).png"
-					alt="logo"
-					style={{
-						width: "auto",
-						height: "70%",
+				<Navbar.Brand
+					css={{
+						zIndex: 99,
+						// width: "250px",
+						height: "80px",
+						"@media only screen and (max-width: 672px)": {
+							// w: "195px",
+							height: "80px",
+							width: "auto",
+							// left: 15,
+						},
+						// position: "fixed",
 					}}
-				/>
-			</Navbar.Brand>
-			<Navbar.Toggle
-				aria-label="toggle navigation"
-				showIn="md"
-				// className="modal-open"
-				css={{
-					position: "fixed",
-					right: "20px",
-				}}
-				aria-pressed={isOpen}
-				onClick={handleToggleClick}
-			>
-				<RxHamburgerMenu size={24} />
-			</Navbar.Toggle>
-			<div
-				style={{
-					display: "flex",
-					justifyContent: "center",
-					width: "100%",
-					marginLeft: "-16%",
-				}}
-			>
-				<Navbar.Content
-					activeColor="warning"
-					hideIn="md"
-					variant="underline-rounded"
 				>
-					<Navbar.Link
-						// isActive={activeLink === "home"}
-						isActive={
-							typeof window !== "undefined" && window.location.pathname === "/"
-						}
-						onClick={() => handleHome()}
+					<img
+						onClick={handleHome}
+						src="./kmk-logo (1).png"
+						alt="logo"
+						style={{
+							width:"auto",
+							height:"55%"
+						}}
+					/>
+				</Navbar.Brand>
+				<Navbar.Toggle
+					aria-label="toggle navigation"
+					showIn="md"
+					// className="modal-open"
+					css={{
+						// zIndex: 9999,
+						height: '100vh',
+						position: "fixed",
+						right: "20px",
+						// boxSizing: 'unset',
+					}}
+					// onClick={toggleMenu}
+					
+				>
+					<RxHamburgerMenu size={24} />
+				</Navbar.Toggle> 
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "center",
+						width: "100%",
+						marginLeft: "-16%",
+					}}
+				>
+					<Navbar.Content
+						activeColor="warning"
+						hideIn="md"
+						variant="underline-rounded"
+						// css={{
+						// 	"@media only screen and (max-width: 1000px)": {
+						// 		display: "none",
+						// 	},
+						// }}
 					>
-						<Text b size={20} css={{ lineHeight: 5 }}>
-							Home
-						</Text>
-					</Navbar.Link>
-					<Navbar.Link
-						// isActive={activeLink === "aboutUs"}
-						isActive={
-							typeof window !== "undefined" &&
-							window.location.pathname === "/about-company"
-						}
-						onClick={handleAboutUs}
-					>
-						<Text b size={20} css={{ lineHeight: 5 }}>
-							About Us
-						</Text>
-					</Navbar.Link>
-					<Navbar.Link
-						// isActive={activeLink === "blogs"}
-						isActive={
-							typeof window !== "undefined" &&
-							window.location.pathname === "/blogs-page"
-						}
-						onClick={handleBlog}
-					>
-						<Text b size={20} css={{ lineHeight: 5 }}>
-							Blogs
-						</Text>
-					</Navbar.Link>
-					<Navbar.Link
-						// isActive={activeLink === "blogs"}
-						isActive={
-							typeof window !== "undefined" &&
-							window.location.pathname === "/track-record"
-						}
-						onClick={trackRecord}
-					>
-						<Text b size={20} css={{ lineHeight: 5 }}>
-							Track Record
-						</Text>
-					</Navbar.Link>
-				</Navbar.Content>
-			</div>
-			<Navbar.Content
-				hideIn={"md"}
-				css={{
-					"@xs": {
-						w: "12%",
-						jc: "flex-end",
-					},
-					position: "fixed",
-					right: 20,
-				}}
-			>
-				{router.pathname !== "/login" && (
+						<Navbar.Link
+							// isActive={activeLink === "home"}
+							isActive={
+								typeof window !== "undefined" &&
+								window.location.pathname === "/"
+							}
+							onClick={() => handleHome()}
+						>
+							<Text b size={20} css={{ lineHeight: 5 }}>
+								Home
+							</Text>
+						</Navbar.Link>
+						<Navbar.Link
+							// isActive={activeLink === "aboutUs"}
+							isActive={
+								typeof window !== "undefined" &&
+								window.location.pathname === "/about-company"
+							}
+							onClick={handleAboutUs}
+						>
+							<Text b size={20} css={{ lineHeight: 5 }}>
+								About Us
+							</Text>
+						</Navbar.Link>
+						<Navbar.Link
+							// isActive={activeLink === "blogs"}
+							isActive={
+								typeof window !== "undefined" &&
+								window.location.pathname === "/blogs-page"
+							}
+							onClick={handleBlog}
+						>
+							<Text b size={20} css={{ lineHeight: 5 }}>
+								Blogs
+							</Text>
+						</Navbar.Link>
+						<Navbar.Link
+							// isActive={activeLink === "blogs"}
+							isActive={
+								typeof window !== "undefined" &&
+								window.location.pathname === "/track-record"
+							}
+							onClick={trackRecord}
+						>
+							<Text b size={20} css={{ lineHeight: 5 }}>
+								Track Record
+							</Text>
+						</Navbar.Link>
+					</Navbar.Content>
+				</div>
+				<Navbar.Content
+					hideIn={"md"}
+					css={{
+						"@xs": {
+							w: "12%",
+							jc: "flex-end",
+						},
+						position: "fixed",
+						right: 20,
+					}}
+				>
+					{router.pathname !== "/login" && (
+						<Navbar.Item>
+							<Button
+								size={"md"}
+								auto
+								color={"warning"}
+								// onPress={handleLoginClick}
+								onPress={handleLogin}
+								css={{ backgroundColor: "#ff9f24" }}
+							>
+								Login
+							</Button>
+						</Navbar.Item>
+					)}
+					<Modal width="1200px" open={showModal} onClose={handleCloseModal}>
+						<Box
+							sx={{
+								display: "flex",
+								flexDirection: "row",
+								width: "100%",
+								justifyContent: "space-between",
+								alignItems: "center",
+							}}
+						>
+							<img src="kmk-k.png" style={{ maxWidth: "260px" }} />
+							<IconButton
+								sx={{
+									width: "40px",
+									"&:hover": { background: "#fff" },
+									// alignSelf: "end",
+									right: "20px",
+								}}
+								onClick={() => handleCloseModal()}
+							>
+								<CloseIcon sx={{ color: "#e81123" }} />
+							</IconButton>
+						</Box>
+
+						<Modal.Body>
+							<Login />
+						</Modal.Body>
+					</Modal>
 					<Navbar.Item>
 						<Button
-							size={"md"}
 							auto
-							color={"warning"}
-							// onPress={handleLoginClick}
-							onPress={handleLogin}
-							css={{ backgroundColor: "#ff9f24" }}
+							size={"md"}
+							color={"success"}
+							onPress={ourStockPicks}
+							css={{ backgroundColor: "#0a5b53" }}
 						>
-							Login
+							Our Stock Picks
 						</Button>
 					</Navbar.Item>
-				)}
-				<Modal width="30%" open={showModal} onClose={handleCloseModal}>
-					<Box
-						sx={{
-							display: "flex",
-							flexDirection: "row",
-							width: "100%",
-							justifyContent: "space-between",
-							alignItems: "center",
-						}}
-					>
-						<img src="kmk-k.png" style={{ maxWidth: "260px" }} />
-						<IconButton
-							sx={{
-								width: "40px",
-								"&:hover": { background: "#fff" },
-								// alignSelf: "end",
-								right: "20px",
-							}}
-							onClick={() => handleCloseModal()}
-						>
-							<CloseIcon sx={{ color: "#e81123" }} />
-						</IconButton>
-					</Box>
-
-					<Modal.Body>
-						<Login />
-					</Modal.Body>
-				</Modal>
-				<Navbar.Item>
-					<Button
-						auto
-						size={"md"}
-						color={"success"}
-						onPress={ourStockPicks}
-						css={{ backgroundColor: "#0a5b53" }}
-					>
-						Our Stock Picks
-					</Button>
-				</Navbar.Item>
-			</Navbar.Content>
-				<Navbar.Collapse
-					className={isOpen ? "my-navbar-collapse" : ""}
-					css={{
-						position: "fixed",
-					}}
-				>
-					<Navbar.CollapseItem
-						onClick={handleToggleClose}
-						css={{ justifyContent: "end" }}
-					>
-						<CloseSquare />
-					</Navbar.CollapseItem>
+				</Navbar.Content>
+				<Navbar.Collapse css={{ position: "fixed" }}>
 					<Navbar.CollapseItem onClick={handleHome}>Home</Navbar.CollapseItem>
 					<Navbar.CollapseItem onClick={handleAboutUs}>
 						About Us
@@ -270,15 +333,12 @@ export default function App() {
 					<Navbar.CollapseItem onClick={trackRecord}>
 						Track Record
 					</Navbar.CollapseItem>
-					<Navbar.CollapseItem onClick={handleLogin}>
+					<Navbar.CollapseItem onClick={handleLoginClick}>
 						Login
 					</Navbar.CollapseItem>
 				</Navbar.Collapse>
-			{/* ) : (
-				''
-			)} */}
-		</Navbar>
-		// {/* </div> */}
-		// </>
+			</Navbar>
+		{/* </div> */}
+		</>
 	);
 }

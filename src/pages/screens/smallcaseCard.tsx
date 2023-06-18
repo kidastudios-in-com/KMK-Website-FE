@@ -23,7 +23,7 @@ const SmallcaseCard = () => {
 				sx={{
 					paddingTop: '0px',
 					"@media only screen and (max-width: 672px)": {
-						// paddingTop: "50px",
+						paddingTop: "50px",
 						// backgroundImage: 'url(RightSide.svg)',
 						// zIndex: 
 					},
@@ -45,8 +45,8 @@ const SmallcaseCard = () => {
 								alignItems: "start",
 								width: "94vw",
 								height: "270px",
-								// marginTop: -2,
-								// marginBottom: '30px',
+								marginTop: -2,
+								marginBottom: 6,
 								borderRadius: "20px",
 								background: "linear-gradient(to top , #1f33e0, #00d4ff), url(RightSide.svg)",
 							},
