@@ -1,5 +1,13 @@
 import { Navbar, Link, Text, Button, Modal } from "@nextui-org/react";
-import { IconButton, Box } from "@mui/material";
+import {
+	IconButton,
+	Box,
+	List,
+	ListItemText,
+	ListItemButton,
+	useMediaQuery,
+	SwipeableDrawer,
+} from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -8,6 +16,8 @@ import CloseIcon from "@mui/icons-material/Close";
 
 export default function App() {
 	const [activeLink, setActiveLink] = useState("home");
+
+	const isMobile = useMediaQuery("(max-width:1280px)");
 
 	const router = useRouter();
 
@@ -45,81 +55,13 @@ export default function App() {
 		router.push("/blogs-page");
 	};
 
-	const handleLinkClick = (link: string) => {
-		setActiveLink(link);
-		const element = document.getElementById(link);
-		if (element) {
-			element.scrollIntoView({
-				behavior: "smooth",
-			});
-		}
+	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+	const toggleDrawer = () => {
+		setIsDrawerOpen(!isDrawerOpen);
 	};
-
-	const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-	const toggleMenu = () => {
-	  setIsMenuOpen((prevIsMenuOpen) => !prevIsMenuOpen);
-	};
-  
-	// Add or remove "no-scroll" class to the body based on the menu state
-	// useEffect(() => {
-	// 	if (isMenuOpen) {
-	// 	  document.body.className.add("modal-open");
-	// 	} else {
-	// 	  document.body.classList.remove("modal-open");
-	// 	}
-	//   }, [isMenuOpen]);
-
-	const isScrolledIntoView = (element: HTMLElement) => {
-		if (!element) return false;
-		const rect = element.getBoundingClientRect();
-		const elemTop = rect.top;
-		const elemBottom = rect.bottom;
-		const isVisible = elemTop < window.innerHeight && elemBottom >= 0;
-		return isVisible;
-	};
-
-	useEffect(() => {
-		const handleScroll = () => {
-			const homeSection = document.getElementById("home");
-			const aboutSection = document.getElementById("aboutUs");
-			const whySection = document.getElementById("whyUs");
-			const solutionsSection = document.getElementById("solutions");
-			const blogsSection = document.getElementById("blogs");
-			const faqsSection = document.getElementById("FAQs");
-
-			if (homeSection && isScrolledIntoView(homeSection)) {
-				setActiveLink("home");
-			} else if (aboutSection && isScrolledIntoView(aboutSection)) {
-				setActiveLink("aboutUs");
-			} else if (whySection && isScrolledIntoView(whySection)) {
-				setActiveLink("whyUs");
-			} else if (solutionsSection && isScrolledIntoView(solutionsSection)) {
-				setActiveLink("solutions");
-			} else if (blogsSection && isScrolledIntoView(blogsSection)) {
-				setActiveLink("blogs");
-			} else if (faqsSection && isScrolledIntoView(faqsSection)) {
-				setActiveLink("FAQs");
-			}
-		};
-
-		window.addEventListener("scroll", handleScroll);
-
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, []);
 
 	return (
-		// <div
-		// 	style={{
-		// 		zIndex: 99,
-		// 		// display: "flex",
-		// 		// justifyContent: "center",
-		// 		// alignItems: "center",
-		// 		// maxWidth: "10000px",
-		// 	}}
-		// >
 		<>
 			<Navbar
 				variant="static"
@@ -167,27 +109,113 @@ export default function App() {
 						src="./kmk-logo (1).png"
 						alt="logo"
 						style={{
-							width:"auto",
-							height:"55%"
+							width: "auto",
+							height: "55%",
 						}}
 					/>
 				</Navbar.Brand>
-				<Navbar.Toggle
+				{/* <Navbar.Toggle
 					aria-label="toggle navigation"
 					showIn="md"
 					// className="modal-open"
 					css={{
 						// zIndex: 9999,
-						height: '100vh',
+						height: "100vh",
 						position: "fixed",
 						right: "20px",
 						// boxSizing: 'unset',
 					}}
 					// onClick={toggleMenu}
-					
 				>
 					<RxHamburgerMenu size={24} />
-				</Navbar.Toggle> 
+				</Navbar.Toggle> */}
+				{isMobile && (
+					<IconButton
+						aria-label="toggle navigation"
+						onClick={toggleDrawer}
+						sx={{
+							position: "fixed",
+							top: "20px",
+							right: "20px",
+							zIndex: 9999,
+						}}
+					>
+						<RxHamburgerMenu size={24} />
+					</IconButton>
+				)}
+				<SwipeableDrawer
+					anchor="right"
+					open={isDrawerOpen}
+					onOpen={() => setIsDrawerOpen(true)}
+					onClose={toggleDrawer}
+					sx={{
+						width: "100vw",
+						maxWidth: "100%",
+						"& .MuiDrawer-paper": {
+							width: "100vw",
+							maxWidth: "100%",
+						},
+					}}
+				>
+					<List>
+						<ListItemButton
+							onClick={() => {
+								toggleDrawer();
+							}}
+							sx={{ justifyContent: 'end'}}
+						>
+							<CloseIcon />
+						</ListItemButton>
+						<ListItemButton
+							onClick={() => {
+								handleHome();
+								toggleDrawer();
+							}}
+						>
+							<ListItemText primary="Home" />
+						</ListItemButton>
+						<ListItemButton
+							onClick={() => {
+								handleAboutUs();
+								toggleDrawer();
+							}}
+						>
+							<ListItemText primary="About Us" />
+						</ListItemButton>
+						<ListItemButton
+							onClick={() => {
+								handleBlog();
+								toggleDrawer();
+							}}
+						>
+							<ListItemText primary="Blogs" />
+						</ListItemButton>
+						<ListItemButton
+							onClick={() => {
+								trackRecord();
+								toggleDrawer();
+							}}
+						>
+							<ListItemText primary="Track Record" />
+						</ListItemButton>
+						<ListItemButton
+							onClick={() => {
+								ourStockPicks();
+								toggleDrawer();
+							}}
+						>
+							<ListItemText primary="Our Stock Picks" />
+						</ListItemButton>
+						<ListItemButton
+							onClick={() => {
+								handleLogin();
+								toggleDrawer();
+							}}
+						>
+							<ListItemText primary="Login" />
+						</ListItemButton>
+					</List>
+				</SwipeableDrawer>
 				<div
 					style={{
 						display: "flex",
@@ -321,7 +349,7 @@ export default function App() {
 						</Button>
 					</Navbar.Item>
 				</Navbar.Content>
-				<Navbar.Collapse css={{ position: "fixed" }}>
+				{/* <Navbar.Collapse css={{ position: "fixed" }}>
 					<Navbar.CollapseItem onClick={handleHome}>Home</Navbar.CollapseItem>
 					<Navbar.CollapseItem onClick={handleAboutUs}>
 						About Us
@@ -336,9 +364,9 @@ export default function App() {
 					<Navbar.CollapseItem onClick={handleLoginClick}>
 						Login
 					</Navbar.CollapseItem>
-				</Navbar.Collapse>
+				</Navbar.Collapse> */}
 			</Navbar>
-		{/* </div> */}
+			{/* </div> */}
 		</>
 	);
 }

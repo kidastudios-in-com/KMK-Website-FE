@@ -13,7 +13,7 @@ import ReactECharts from "echarts-for-react";
 import ReactCardFlip from "react-card-flip";
 import { ArrowCircleRight, ArrowCircleUp, DocumentText } from "iconsax-react";
 import FaqsNew from "@/pages/screens/FaqsNew";
-import FAQs from "@/pages/screens/FAQs";
+// import FAQs from "@/pages/screens/FAQs";
 
 const WhyUs = () => {
 	const { setVisible, bindings } = useModal();
@@ -538,15 +538,15 @@ const WhyUs = () => {
 												</Text>
 												<Progress
 													value={35}
-													status={"default"}
-													color={'warning'}
-													css={{ width: "80%", opacity: 1, border: 0 }}
+													// status={"default"}
+													// color={'warning'}
+													css={{ width: "70%", opacity: 1, height: '20px', color: '#fff' }}
 												/>
 												<Box sx={{
 													display: "flex",
 													flexDirection: "row",
 													justifyContent: 'space-between',
-													width: "80%",
+													width: "70%",
 												}}>
 												<Text b size={12} color="#fff" css={{ marginTop: '5px', opacity: 0.5 }}>
 													0
@@ -655,7 +655,7 @@ const WhyUs = () => {
 			</div>
 			{/* </div> */}
 			<FaqsNew />
-			<FAQs />
+			{/* <FAQs /> */}
 		</section>
 	);
 };
