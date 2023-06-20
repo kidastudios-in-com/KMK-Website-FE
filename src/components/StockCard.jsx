@@ -19,6 +19,11 @@ import {
 	IconButton,
 	TextField,
 	InputBase,
+	SwipeableDrawer,
+	List,
+	ListItemButton,
+	ListItemText,
+	ListItem,
 } from "@mui/material";
 import SpeedIcon from "@mui/icons-material/Speed";
 import { AiOutlineFieldTime } from "react-icons/ai";
@@ -59,6 +64,12 @@ const StockCard = () => {
 		setSelectedReportUrl(documentUrl);
 		console.log(selectedReportUrl);
 		setShowModal(true);
+	};
+
+	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+	const toggleDrawer = () => {
+		setIsDrawerOpen(!isDrawerOpen);
 	};
 
 	const [showCert, setShowCert] = useState(false);
@@ -404,7 +415,186 @@ const StockCard = () => {
 						}}
 					/>
 				</Box>
-				<Dropdown>
+				<Button
+					onPress={toggleDrawer}
+					css={{
+						border: "2px solid #ffa12e",
+						borderRadius: "1000px",
+						fontSize: 18,
+						padding: "20px 20px",
+						background: "#fff",
+						color: "#000000",
+					}}
+				>
+					Filters
+				</Button>
+				<SwipeableDrawer
+					anchor="right"
+					open={isDrawerOpen}
+					onOpen={() => setIsDrawerOpen(true)}
+					onClose={toggleDrawer}
+					sx={{
+						width: "20vw",
+						maxWidth: "20%",
+						"& .MuiDrawer-paper": {
+							width: "20vw",
+							maxWidth: "20%",
+						},
+					}}
+				>
+					<List>
+						<ListItemButton
+							onClick={() => {
+								toggleDrawer();
+							}}
+							sx={{
+								justifyContent: "end",
+								"&:hover": {
+									backgroundColor: "#fff",
+								},
+							}}
+						>
+							<CloseIcon />
+						</ListItemButton>
+						<ListItem sx={{ justifyContent: "center" }}>
+							<Dropdown>
+								<Dropdown.Button
+									flat
+									css={{
+										// height: "70px",
+										// marginLeft: "20px",
+										width: "250px",
+										backgroundColor: "#fff",
+										borderRadius: "10000px",
+										border: "2px solid #ffa12e",
+										color: "#202020",
+										fontSize: 16,
+										"@media only screen and (max-width: 672px)": {
+											width: "auto",
+											"& span": {
+												display: "none",
+											},
+										},
+									}}
+								>
+									<FaIndustry size={20} style={{ marginRight: "0px" }} />
+									<span
+										style={{
+											marginLeft: "10px",
+											"@media only screen and (maxWidth: 600px)": {
+												marginLeft: "0px",
+											},
+										}}
+									>
+										Industries
+									</span>
+								</Dropdown.Button>
+								<Dropdown.Menu
+									selectionMode="multiple"
+									selectedKeys={selectedIndustries}
+									onSelectionChange={(keys) => setSelectedIndustries(keys)}
+								>
+									{industries.map((industry) => (
+										<Dropdown.Item
+											key={industry}
+											onClick={() => handleIndustrySelection(industry)}
+										>
+											{industry}
+										</Dropdown.Item>
+									))}
+								</Dropdown.Menu>
+							</Dropdown>
+						</ListItem>
+						<ListItem sx={{ justifyContent: "center" }}>
+							<Dropdown>
+								<Dropdown.Button
+									flat
+									css={{
+										width: "250px",
+										backgroundColor: "#fff",
+										borderRadius: "10000px",
+										border: "2px solid #ffa12e",
+										color: "#202020",
+										fontSize: 16,
+										"@media only screen and (max-width: 672px)": {
+											width: "auto",
+											"& span": {
+												display: "none",
+											},
+										},
+									}}
+								>
+									<AiOutlineFieldTime
+										size={22}
+										style={{ marginRight: "0px" }}
+									/>
+									<span
+										style={{
+											marginLeft: "10px",
+											"@media only screen and (max-width: 672px)": {
+												marginLeft: "0px",
+											},
+										}}
+									>
+										Time Left
+									</span>
+								</Dropdown.Button>
+								<Dropdown.Menu
+									aria-label="TimeActions"
+									selectionMode="single"
+									selectedKeys={timeSort}
+									onSelectionChange={(key) => setTimeSort(key)}
+								>
+									<Dropdown.Item key="ascending">Ascending</Dropdown.Item>
+									<Dropdown.Item key="descending">Descending</Dropdown.Item>
+								</Dropdown.Menu>
+							</Dropdown>
+						</ListItem>
+						<ListItem sx={{ justifyContent: "center" }}>
+							<Dropdown>
+								<Dropdown.Button
+									flat
+									css={{
+										width: "250px",
+										backgroundColor: "#fff",
+										borderRadius: "10000px",
+										border: "2px solid #ffa12e",
+										color: "#202020",
+										fontSize: 16,
+										"@media only screen and (max-width: 672px)": {
+											width: "auto",
+											"& span": {
+												display: "none",
+											},
+										},
+									}}
+								>
+									<Filter size={20} />
+									<span
+										style={{
+											marginLeft: "10px",
+											"@media only screen and (max-width: 672px)": {
+												marginLeft: "0px",
+											},
+										}}
+									>
+										Upside Left
+									</span>
+								</Dropdown.Button>
+								<Dropdown.Menu
+									aria-label="UpsideActions"
+									selectionMode="single"
+									selectedKeys={upsideSort}
+									onSelectionChange={setUpsideSort}
+								>
+									<Dropdown.Item key="ascending">Ascending</Dropdown.Item>
+									<Dropdown.Item key="descending">Descending</Dropdown.Item>
+								</Dropdown.Menu>
+							</Dropdown>
+						</ListItem>
+					</List>
+				</SwipeableDrawer>
+				{/* <Dropdown>
 					<Dropdown.Button
 						flat
 						css={{
@@ -531,7 +721,7 @@ const StockCard = () => {
 						<Dropdown.Item key="ascending">Ascending</Dropdown.Item>
 						<Dropdown.Item key="descending">Descending</Dropdown.Item>
 					</Dropdown.Menu>
-				</Dropdown>
+				</Dropdown> */}
 			</Box>
 			<Box
 				sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}

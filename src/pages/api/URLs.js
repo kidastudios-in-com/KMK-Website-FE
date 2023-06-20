@@ -24,6 +24,9 @@ export const ADMIN_URL = 'http://kmk-kida.kidastudio.in/kmkadmin';
 export const GET_ALL_URL = `${ADMIN_URL}/getStockPicksForUser`;
 // export const GET_ALL_URL = `${ADMIN_URL}/getAllStocks/`;
 
+//Blogs URL
+export const GET_BLOGS = `${ADMIN_URL}/blog/`;
+
 //Users URLs
 export const REG_USER_EMAIL = `${BASE_URL}/customEmailToken/`;
 export const REG_USER_MOBILE = `${BASE_URL}/customMobileToken/`;

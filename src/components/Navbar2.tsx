@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Avatar, Button, Dropdown, Navbar, Text } from "@nextui-org/react";
 import { useRouter } from "next/router";
+import {
+	IconButton,
+	Box,
+	List,
+	ListItemText,
+	ListItemButton,
+	useMediaQuery,
+	SwipeableDrawer,
+} from "@mui/material";
 import { RxHamburgerMenu } from "react-icons/rx";
+import CloseIcon from "@mui/icons-material/Close";
 
 const NavBar2 = () => {
-	const router = useRouter();
+	const isMobile = useMediaQuery("(max-width:1280px)");
+	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-	const handleAboutUs = () => {
-		router.push("/about-company");
+	const toggleDrawer = () => {
+		setIsDrawerOpen(!isDrawerOpen);
 	};
+
+	const router = useRouter();
 
 	const handleStockPicks = () => {
 		router.push("/stock-picks");
@@ -17,6 +30,29 @@ const NavBar2 = () => {
 	const handleTrack = () => {
 		router.push("/track-record");
 	};
+
+	const handleSettings = () => {
+		router.push("/user-profile");
+	};
+
+	const handleLogoutClick = () => {
+		localStorage.removeItem("access");
+		localStorage.removeItem("refresh");
+		router.push("/");
+	};
+
+	const ourStockPicks = () => {
+		router.push("/stock-picks");
+	  };
+
+	const trackRecord = () => {
+		router.push("/track-record");
+	};
+
+	const handleAboutUs = () => {
+		router.push("/about-company");
+	};
+
 	const handleHome = () => {
 		router.push("/");
 	};
@@ -25,72 +61,69 @@ const NavBar2 = () => {
 		router.push("/blogs-page");
 	};
 
-	const handleSettings = () => {
-		router.push("/user-profile");
-	}
-
-	const handleLogoutClick = () => {
-		localStorage.removeItem("access");
-		localStorage.removeItem("refresh");
-		router.push("/");
-	};
-
 	const handleMenuAction = (actionKey: React.Key) => {
 		switch (actionKey) {
-		  case "handleHome":
-			handleHome();
-			break;
-		  case "handleAboutUs":
-			handleAboutUs();
-			break;
-		  case "handleBlog":
-			handleBlog();
-			break;
-		  case "handleTrack":
-			handleTrack();
-			break;
-		  case "handleStockPicks":
-			handleStockPicks();
-			break;
-		  case "settings":
-			handleSettings();
-			break;
-		  case "handleLogoutClick":
-			handleLogoutClick();
-			break;
-		  default:
-			break;
+			case "handleHome":
+				handleHome();
+				break;
+			case "handleAboutUs":
+				handleAboutUs();
+				break;
+			case "handleBlog":
+				handleBlog();
+				break;
+			case "handleTrack":
+				handleTrack();
+				break;
+			case "handleStockPicks":
+				handleStockPicks();
+				break;
+			case "settings":
+				handleSettings();
+				break;
+			case "handleLogoutClick":
+				handleLogoutClick();
+				break;
+			default:
+				break;
 		}
-	  };
+	};
 
 	return (
 		// <Container>
 		<Navbar
-			variant={"static"}
-			maxWidth={"fluid"}
-			disableShadow={true}
-			height={100}
-			css={{
-				backgroundColor: "#fff",
-				marginTop: 0,
-				zIndex: 1,
-				$$navbarBackgroundColor: "#fff",
-				$$navbarBlurBackgroundColor: "none",
-				".nextui-navbar-container": {
-					backgroundColor: "#fff",
-					backdropFilter: "none",
-					boxShadow: "none",
-					boxSizing: "content-box",
-				},
-				".nextui-c-hhqfap-kAwfsS-disableShadow-false": {
-					boxShadow: "none",
-				},
-				".nextui-c-dGYPDG": { height: "0%" },
-			}}
-		>
+				variant="static"
+				maxWidth={"fluid"}
+				disableShadow={true}
+				height={100}
+				css={{
+					marginTop: 0,
+					zIndex: 1,
+					$$navbarBackgroundColor: "transparent",
+					$$navbarBlurBackgroundColor: "none",
+					".nextui-navbar-container": {
+						backgroundColor: "#fff",
+						backdropFilter: "none",
+						boxShadow: "none",
+						boxSizing: "content-box",
+					},
+					".nextui-c-hhqfap-kAwfsS-disableShadow-false": {
+						boxShadow: "none",
+					},
+					// ".nextui-c-dGYPDG": { height: "0%" },
+					// ".nextui-c-hhqfap-idKuEpT-css .nextui-c-dGYPDG": {
+					// 	 height: "100%",
+					// },
+					"@media only screen and (max-width: 672px)": {
+						// w: "195px",
+						height: "80px",
+						// left: 15,
+					},
+				}}
+			>
 			<Navbar.Brand
 				css={{
-					w: "350px",
+					// w: "350px",
 					zIndex: 99,
 					"@media only screen and (max-width: 600px)": {
 						// w: "195px",
@@ -120,7 +153,7 @@ const NavBar2 = () => {
 			{/* <Navbar.Toggle showIn="md" css={{ position: "fixed", right: "20px" }}>
 				<RxHamburgerMenu size={26} />
 			</Navbar.Toggle> */}
-			<div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+			{/* <div style={{ display: "flex", justifyContent: "center", width: "100%" }}> */}
 				<Navbar.Content
 					activeColor="warning"
 					hideIn="xs"
@@ -162,9 +195,9 @@ const NavBar2 = () => {
 						</Text>
 					</Navbar.Link>
 				</Navbar.Content>
-			</div>
+			{/* </div> */}
 			<Navbar.Content>
-				<Navbar.Item hideIn="xs">
+				<Navbar.Item hideIn="md">
 					{typeof window !== "undefined" &&
 					window.location.pathname !== "/stock-picks" ? (
 						<Button
@@ -212,21 +245,11 @@ const NavBar2 = () => {
 						color="success"
 						onAction={(actionKey) => handleMenuAction(actionKey)}
 					>
-						<Dropdown.Item key="handleHome">
-							Home
-						</Dropdown.Item>
-						<Dropdown.Item key="handleAboutUs">
-							About Us
-						</Dropdown.Item>
-						<Dropdown.Item key="handleBlog">
-							Blogs
-						</Dropdown.Item>
-						<Dropdown.Item key="handleTrack">
-							Track Record
-						</Dropdown.Item>
-						<Dropdown.Item key="handleStockPicks">
-							Stock Picks
-						</Dropdown.Item>
+						<Dropdown.Item key="handleHome">Home</Dropdown.Item>
+						<Dropdown.Item key="handleAboutUs">About Us</Dropdown.Item>
+						<Dropdown.Item key="handleBlog">Blogs</Dropdown.Item>
+						<Dropdown.Item key="handleTrack">Track Record</Dropdown.Item>
+						<Dropdown.Item key="handleStockPicks">Stock Picks</Dropdown.Item>
 						<Dropdown.Item key="settings" withDivider>
 							Settings
 						</Dropdown.Item>
@@ -237,7 +260,7 @@ const NavBar2 = () => {
 				</Dropdown>
 			</Navbar.Content>
 
-			<Navbar.Collapse>
+			{/* <Navbar.Collapse>
 				<Navbar.CollapseItem onClick={handleTrack}>
 					Track Record
 				</Navbar.CollapseItem>
@@ -252,7 +275,95 @@ const NavBar2 = () => {
 				<Navbar.CollapseItem onClick={handleLogoutClick}>
 					Subscribe
 				</Navbar.CollapseItem>
-			</Navbar.Collapse>
+			</Navbar.Collapse> */}
+
+			{isMobile && (
+				<IconButton
+					aria-label="toggle navigation"
+					onClick={toggleDrawer}
+					sx={{
+						position: "fixed",
+						top: "20px",
+						right: "20px",
+						zIndex: 9999,
+					}}
+				>
+					<RxHamburgerMenu size={24} />
+				</IconButton>
+			)}
+			<SwipeableDrawer
+					anchor="right"
+					open={isDrawerOpen}
+					onOpen={() => setIsDrawerOpen(true)}
+					onClose={toggleDrawer}
+					sx={{
+						width: "100vw",
+						maxWidth: "100%",
+						"& .MuiDrawer-paper": {
+							width: "100vw",
+							maxWidth: "100%",
+						},
+					}}
+				>
+					<List>
+						<ListItemButton
+							onClick={() => {
+								toggleDrawer();
+							}}
+							sx={{ justifyContent: 'end'}}
+						>
+							<CloseIcon />
+						</ListItemButton>
+						<ListItemButton
+							onClick={() => {
+								handleHome();
+								toggleDrawer();
+							}}
+						>
+							<ListItemText primary="Home" />
+						</ListItemButton>
+						<ListItemButton
+							onClick={() => {
+								handleAboutUs();
+								toggleDrawer();
+							}}
+						>
+							<ListItemText primary="About Us" />
+						</ListItemButton>
+						<ListItemButton
+							onClick={() => {
+								handleBlog();
+								toggleDrawer();
+							}}
+						>
+							<ListItemText primary="Blogs" />
+						</ListItemButton>
+						<ListItemButton
+							onClick={() => {
+								trackRecord();
+								toggleDrawer();
+							}}
+						>
+							<ListItemText primary="Track Record" />
+						</ListItemButton>
+						<ListItemButton
+							onClick={() => {
+								ourStockPicks();
+								toggleDrawer();
+							}}
+						>
+							<ListItemText primary="Our Stock Picks" />
+						</ListItemButton>
+						<ListItemButton
+							onClick={() => {
+								handleLogoutClick();
+								toggleDrawer();
+							}}
+						>
+							<ListItemText primary="Login" />
+						</ListItemButton>
+					</List>
+				</SwipeableDrawer>
 		</Navbar>
 		// </Container>
 	);

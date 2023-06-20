@@ -153,7 +153,7 @@ const UserDetails = () => {
 							</>
 						)}
 					</div>
-					<div
+					{/* <div
 						style={{
 							border: "1px solid black",
 							borderRadius: "14px",
@@ -164,7 +164,7 @@ const UserDetails = () => {
 						<Text b size={20}>
 							ID: {user?.id ? user.id : "N/A"}
 						</Text>
-					</div>
+					</div> */}
 					<div
 						style={{
 							border: "1px solid black",
@@ -176,6 +176,18 @@ const UserDetails = () => {
 						<Text b size={20}>
 							Subscription:
 							{user.active_subscription ? user.active_subscription : "N/A"}
+						</Text>
+					</div>
+					<div
+						style={{
+							border: "1px solid black",
+							borderRadius: "14px",
+							padding: "8px",
+							marginTop: "10px",
+						}}
+					>
+						<Text b size={20}>
+							Referral Code: Vinay120
 						</Text>
 					</div>
 					{user.end_date ? (

@@ -83,6 +83,9 @@ export default function App() {
 						boxShadow: "none",
 					},
 					".nextui-c-dGYPDG": { height: "0%" },
+					// ".nextui-c-hhqfap-idKuEpT-css .nextui-c-dGYPDG": {
+					// 	 height: "100%",
+					// },
 					"@media only screen and (max-width: 672px)": {
 						// w: "195px",
 						height: "80px",
@@ -91,29 +94,33 @@ export default function App() {
 				}}
 			>
 				<Navbar.Brand
-					css={{
-						zIndex: 99,
-						// width: "250px",
-						height: "80px",
-						"@media only screen and (max-width: 672px)": {
-							// w: "195px",
-							height: "80px",
-							width: "auto",
-							// left: 15,
-						},
-						// position: "fixed",
-					}}
-				>
-					<img
-						onClick={handleHome}
-						src="./kmk-logo (1).png"
-						alt="logo"
-						style={{
-							width: "auto",
-							height: "55%",
-						}}
-					/>
-				</Navbar.Brand>
+				css={{
+					// w: "350px",
+					zIndex: 99,
+					"@media only screen and (max-width: 600px)": {
+						// w: "195px",
+						// h: '55px',
+						h: "60px",
+						w: "122%",
+						left: 15,
+					},
+					// position: "fixed",
+				}}
+			>
+				<img
+					onClick={() => handleHome()}
+					// src={
+					// 	activeLink === "whyUs"
+					// 		? "./kamayakya-logo-white.png"
+					// 		: "./kmk-logo.png"
+					// }
+					src="./kmk-logo (1).png"
+					alt="logo"
+					width="220px"
+					height="60px"
+					// height="100%"
+				/>
+			</Navbar.Brand>
 				{/* <Navbar.Toggle
 					aria-label="toggle navigation"
 					showIn="md"

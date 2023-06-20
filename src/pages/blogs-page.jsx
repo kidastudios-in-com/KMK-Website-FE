@@ -6,6 +6,7 @@ import NavBar2 from "../components/Navbar2";
 import FaqsNew from './screens/FaqsNew';
 import Footer from './screens/Footer';
 import AuthContext from "../components/AuthContext";
+import BlogSection2 from "./BlogsPages/BlogSection2";
 
 const BlogsPage = () => {
 	const { isLoggedIn } = useContext(AuthContext);
@@ -14,7 +15,8 @@ const BlogsPage = () => {
 		<div>
 			{isLoggedIn ? <NavBar2 /> : <NavBar />}
 			{/*<BSection1 />*/}
-			<BSection2 />
+			{/* <BSection2 /> */}
+			<BlogSection2 />
 			<FaqsNew />
 			<Footer />
 		</div>
