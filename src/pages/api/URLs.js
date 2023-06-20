@@ -2,6 +2,10 @@
 export const BASE_URL = 'http://kmk-kida.kidastudio.in/master';
 // export const BASE_URL = 'http://192.168.0.151:8000/master';
 
+//Admin Base
+export const ADMIN_URL = 'http://kmk-kida.kidastudio.in/kmkadmin';
+// export const ADMIN_URL = 'http://192.168.0.151:8000/kmkadmin';
+
 //Auth URLs
 export const LOGIN_URL = `${BASE_URL}/loginAdmin/`;
 export const REGISTER_URL = `${BASE_URL}/register_admin/`;
@@ -9,6 +13,7 @@ export const VERIFY_TOKEN_URL = `${BASE_URL}/verifyToken`;
 export const REGEN_TOKEN_URL = `${BASE_URL}/regenerateRefreshToken/`;
 
 //Payment
+export const GET_PRODUCT = `${ADMIN_URL}/subscription/`;
 export const PAYMENT_URL = `${BASE_URL}/create-checkout-session/`;
 
 //Profile URLs
@@ -16,9 +21,7 @@ export const ADMIN_PROFILE_URL = `${BASE_URL}/userprofile/`;
 export const GET_USER = `${BASE_URL}/userprofile/`
 export const EDIT_USER = `${BASE_URL}/userprofile/`
 
-//Admin Base
-export const ADMIN_URL = 'http://kmk-kida.kidastudio.in/kmkadmin';
-// export const ADMIN_URL = 'http://192.168.0.151:8000/kmkadmin';
+
 
 //Admin Stock URL
 export const GET_ALL_URL = `${ADMIN_URL}/getStockPicksForUser`;

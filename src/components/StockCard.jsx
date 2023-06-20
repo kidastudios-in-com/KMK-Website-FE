@@ -418,9 +418,11 @@ const StockCard = () => {
 				<Button
 					onPress={toggleDrawer}
 					css={{
+						height: "70px",
+						width: "250px",
 						border: "2px solid #ffa12e",
 						borderRadius: "1000px",
-						fontSize: 18,
+						fontSize: 20,
 						padding: "20px 20px",
 						background: "#fff",
 						color: "#000000",
@@ -434,11 +436,23 @@ const StockCard = () => {
 					onOpen={() => setIsDrawerOpen(true)}
 					onClose={toggleDrawer}
 					sx={{
-						width: "20vw",
-						maxWidth: "20%",
+						width: {
+							xs: "100vw",
+							sm: "20vw", 
+						},
+						maxWidth: {
+							xs: "100%",
+							sm: "20%", 
+						},
 						"& .MuiDrawer-paper": {
-							width: "20vw",
-							maxWidth: "20%",
+							width: {
+								xs: "100vw", 
+								sm: "20vw", 
+							},
+							maxWidth: {
+								xs: "100%",
+								sm: "20%", 
+							},
 						},
 					}}
 				>
@@ -470,9 +484,9 @@ const StockCard = () => {
 										color: "#202020",
 										fontSize: 16,
 										"@media only screen and (max-width: 672px)": {
-											width: "auto",
+											width: "80%",
 											"& span": {
-												display: "none",
+												// display: "none",
 											},
 										},
 									}}
@@ -517,9 +531,9 @@ const StockCard = () => {
 										color: "#202020",
 										fontSize: 16,
 										"@media only screen and (max-width: 672px)": {
-											width: "auto",
+											width: "80%",
 											"& span": {
-												display: "none",
+												// display: "none",
 											},
 										},
 									}}
@@ -562,9 +576,9 @@ const StockCard = () => {
 										color: "#202020",
 										fontSize: 16,
 										"@media only screen and (max-width: 672px)": {
-											width: "auto",
+											width: "80%",
 											"& span": {
-												display: "none",
+												// display: "none",
 											},
 										},
 									}}

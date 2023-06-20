@@ -196,7 +196,7 @@ const NavBar2 = () => {
 					</Navbar.Link>
 				</Navbar.Content>
 			{/* </div> */}
-			<Navbar.Content>
+			<Navbar.Content hideIn={'sm'}>
 				<Navbar.Item hideIn="md">
 					{typeof window !== "undefined" &&
 					window.location.pathname !== "/stock-picks" ? (
