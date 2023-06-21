@@ -1597,7 +1597,7 @@ const StockCard = () => {
 											>
 												English
 											</Text>
-											{stock.reports.map((report, reportIndex) => (
+											{stock.stock_reports.map((report, reportIndex) => (
 												<div key={report.report_name} style={{}}>
 													<IconButton
 														key={report.report_name}

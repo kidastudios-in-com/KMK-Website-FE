@@ -30,6 +30,10 @@ export const GET_ALL_URL = `${ADMIN_URL}/getStockPicksForUser`;
 //Blogs URL
 export const GET_BLOGS = `${ADMIN_URL}/blog/`;
 
+//Track Records
+export const TRACK_RECORD_FOR_ALL = `${ADMIN_URL}/getTrackRecordForAll`;
+export const TRACK_RECORD_FOR_USER = `${ADMIN_URL}/getTrackRecordForUser`;
+
 //Users URLs
 export const REG_USER_EMAIL = `${BASE_URL}/customEmailToken/`;
 export const REG_USER_MOBILE = `${BASE_URL}/customMobileToken/`;

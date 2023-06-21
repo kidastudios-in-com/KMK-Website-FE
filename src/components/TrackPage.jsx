@@ -7,17 +7,60 @@ import {
 	Divider,
 	Progress,
 } from "@nextui-org/react";
-import React, { useState } from "react";
+import Marquee from "react-fast-marquee";
+import React, { useState, useContext, useEffect } from "react";
 import { Box, Grid, IconButton, LinearProgress } from "@mui/material";
 import ReactECharts from "echarts-for-react";
 import ReactCardFlip from "react-card-flip";
 import { ArrowCircleRight, ArrowCircleUp, DocumentText } from "iconsax-react";
 import FaqsNew from "@/pages/screens/FaqsNew";
-// import FAQs from "@/pages/screens/FAQs";
+import AuthContext from "@/components/AuthContext";
+import { TRACK_RECORD_FOR_ALL, TRACK_RECORD_FOR_USER } from "@/pages/api/URLs";
+import Footer from "@/pages/screens/Footer";
 
 const WhyUs = () => {
-	const { setVisible, bindings } = useModal();
+	// const { setVisible, bindings } = useModal();
 	const [flipStates, setFlipStates] = useState(Array(8).fill(false));
+	const [record, setRecord] = useState([]);
+	const { isLoggedIn } = useContext(AuthContext);
+
+	const handleTrackRecord = async () => {
+		try {
+			const refreshToken = localStorage.getItem("refresh");
+
+			const url = isLoggedIn ? TRACK_RECORD_FOR_USER : TRACK_RECORD_FOR_ALL;
+
+			const headers = {
+				"Content-Type": "application/json",
+			};
+
+			if (isLoggedIn) {
+				headers.Authorization = `token ${refreshToken}`;
+			}
+
+			const response = await fetch(url, {
+				method: "GET",
+				headers,
+			});
+
+			if (response.ok) {
+				const data = await response.json();
+				setRecord(data);
+				// console.log(data);
+			} else {
+				// Handle API call error
+				// console.error("API call failed");
+			}
+		} catch (error) {
+			// Handle any other error
+			console.error(error);
+			// console.log("no call");
+		}
+	};
+
+	useEffect(() => {
+		handleTrackRecord();
+	}, [isLoggedIn]);
 
 	const handleClick = (index) => {
 		const newFlipStates = flipStates.map((state, i) =>
@@ -149,7 +192,7 @@ const WhyUs = () => {
 		<section
 			style={{
 				display: "flex",
-				flexDirection: 'column',
+				flexDirection: "column",
 				justifyContent: "center",
 				alignItems: "center",
 				height: "100%",
@@ -178,7 +221,6 @@ const WhyUs = () => {
 						flexDirection: "column",
 						backgroundImage: "linear-gradient(to top , #0d2c7b, #6067b5)",
 						alignItems: "center",
-						// backgroundImage: "linear-gradient(to top , #106052, #0f734d)",
 						borderRadius: "12.5px",
 						"@media only screen and (max-width: 672px)": {
 							paddingLeft: "20px",
@@ -248,7 +290,7 @@ const WhyUs = () => {
 					Track Record
 				</Text>
 
-				<Grid
+				{/* <Grid
 					xs={"auto"}
 					sm={"auto"}
 					md={"auto"}
@@ -263,399 +305,533 @@ const WhyUs = () => {
 							gap: "5px",
 						},
 					}}
-				>
-					<Grid item container gap={"20px"} justifyContent={"center"}>
-						{[...Array(10)].map((_, index) => (
-							<ReactCardFlip
-								key={index}
-								isFlipped={flipStates[index]}
-								flipDirection="horizontal"
+				> */}
+				<Grid item container gap={"20px"} justifyContent={"center"}>
+					{record.map((item, index) => (
+						<ReactCardFlip
+							key={index}
+							isFlipped={flipStates[index]}
+							flipDirection="horizontal"
+						>
+							<Card
+								isHoverable
+								css={{
+									width: "450px",
+									height: "330px",
+									// padding: "40px",
+									paddingTop: "30px",
+									paddingBottom: "30px",
+									backgroundImage:
+										"linear-gradient(to top , #0F734D, #0F734D, #105B54)",
+									borderRadius: "30px",
+									borderBottomRightRadius: "5px",
+									display: "flex",
+									flexDirection: "column",
+									alignItems: "center",
+									"@media only screen and (max-width: 764px)": {
+										width: "95vw",
+										height: "350px",
+										paddingTop: "30px",
+										paddingBottom: "30px",
+									},
+								}}
 							>
-								<Card
-									isHoverable
-									css={{
-										width: "420px",
-										height: "auto",
-										padding: "20px",
-										paddingTop: "15px",
-										paddingBottom: "15px",
-										backgroundImage:
-											"linear-gradient(to top , #0F734D, #0F734D, #105B54)",
-										borderRadius: "30px",
-										borderBottomRightRadius: "5px",
+								<Box
+									sx={{
+										padding: "5px",
+										paddingTop: "0px",
+										paddingLeft: "15px",
 										display: "flex",
 										flexDirection: "column",
-										alignItems: "center",
-										"@media only screen and (max-width: 764px)": {},
+										// alignItems: "center",
+										// background: 'rgba(255, 255, 255, 0.15) url("LineChartGreen.png")',
+										backgroundSize: "cover",
+										height: "auto",
+										width: "410px",
+										"@media only screen and (max-width: 764px)": {
+											width: "100%",
+											paddingLeft: "20px",
+											paddingRight: "20px",
+										},
 									}}
 								>
-									<Box
-										sx={{
-											padding: "5px",
-											paddingTop: "0px",
-											paddingLeft: "15px",
+									<div
+										style={{
+											width: "100%",
 											display: "flex",
-											flexDirection: "column",
-											// alignItems: "center",
-											// background: 'rgba(255, 255, 255, 0.15) url("LineChartGreen.png")',
-											backgroundSize: "cover",
-											height: "auto",
-											width: "410px",
+											justifyContent: "space-between",
+											alignItems: "center",
+											flexDirection: "row",
+											// paddingTop: "5%",
+											paddingBottom: "5px",
 										}}
 									>
-										<div
-											style={{
-												width: "95%",
-												display: "flex",
-												justifyContent: "space-between",
-												alignItems: "center",
-												flexDirection: "row",
-												// paddingTop: "5%",
-												paddingBottom: "5px",
-											}}
-										>
-											<div style={{ display: "flex", flexDirection: "column" }}>
-												<Text
-													b
-													size={16}
-													color="#fff"
-													css={{ lineHeight: 1, opacity: 0.7 }}
-												>
-													STATUS: ACTIVE
-												</Text>
-												<Text
-													b
-													size={22}
-													color="#fff"
-													css={{ lineHeight: 1.5 }}
-												>
-													Gufic BioSciences Ltd. (GBL)
-												</Text>
-												<Text
-													b
-													size={18}
-													color="#fff"
-													css={{ lineHeight: 1, opacity: 0.7 }}
-												>
-													Target One Hit | Target Two Active
-												</Text>
-											</div>
-											<img
-												src="HoldBubbleYellow.png"
-												style={{
-													width: "55px",
-													height: "55px",
-													alignSelf: "start",
-												}}
-											/>
-										</div>
-										<Divider
-											css={{
-												height: "4px",
-												width: "70%",
-												background: "#fff",
-												borderRadius: "20px",
-												opacity: 0.5,
-												alignSelf: "start",
-												marginTop: "2%",
-											}}
-										/>
-										<div
-											style={{
-												width: "95%",
-												display: "flex",
-												flexDirection: "row",
-												marginTop: "15px",
-												gap: "20px",
-											}}
-										>
-											<Box sx={{ display: "flex", flexDirection: "column" }}>
-												<Text
-													b
-													size={16}
-													color="#fff"
-													css={{ opacity: 1, lineHeight: 1 }}
-												>
-													ENTRY PRICE
-												</Text>
-												<Text
-													b
-													size={22}
-													color="#fff"
-													css={{
-														display: "flex",
-														flexDirection: "row",
-														alignItems: "center",
-													}}
-												>
-													<span style={{ fontSize: 18, opacity: 0.75 }}>₹</span>
-													2067.00
-												</Text>
-												<Text
-													b
-													size={16}
-													color="#fff"
-													css={{
-														opacity: 0.7,
-														lineHeight: 1,
-													}}
-												>
-													03 Nov 2022
-												</Text>
-											</Box>
-											<Box sx={{ display: "flex", flexDirection: "column" }}>
-												<Text
-													b
-													size={16}
-													color="#fff"
-													css={{ opacity: 1, lineHeight: 1 }}
-												>
-													CMP
-												</Text>
-												<Text
-													b
-													size={22}
-													color="#fff"
-													css={{
-														display: "flex",
-														flexDirection: "row",
-														alignItems: "center",
-													}}
-												>
-													<span style={{ fontSize: 18, opacity: 0.75 }}>₹</span>
-													4015.25
-												</Text>
-												<Text
-													b
-													size={16}
-													color="#fff"
-													css={{
-														opacity: 0.7,
-														lineHeight: 1,
-													}}
-												>
-													26 May 2023
-												</Text>
-											</Box>
-											<Box
-												sx={{
-													display: "flex",
-													flexDirection: "column",
-													alignSelf: "center",
-													marginLeft: "28%",
+										<div style={{ display: "flex", flexDirection: "column" }}>
+											<Text
+												b
+												size={15}
+												color="#fff"
+												css={{
+													lineHeight: 1,
+													opacity: 0.7,
+													"@media only screen and (max-width: 764px)": {
+														fontSize: "14px",
+													},
 												}}
 											>
-												<Button
-													auto
-													onPress={() => handleClick(index)}
-													css={{
-														borderRadius: "10000px",
-														background: "transparent",
-														fontSize: 18,
-														color: "#fff",
-														padding: "0px",
-													}}
-												>
-													<ArrowCircleRight size={30} />
-												</Button>
-											</Box>
+												STATUS: {item.status}
+											</Text>
+											<Text
+												b
+												size={22}
+												color="#fff"
+												css={{
+													lineHeight: 1.5,
+													"@media only screen and (max-width: 764px)": {
+														paddingTop: "5px",
+														fontSize: "22px",
+														lineHeight: 1.1,
+													},
+												}}
+											>
+												{item.stock_name.length > 28 ? (
+													<Marquee delay={2}>
+														{item.stock_name}
+													</Marquee>
+												) : (
+													<>{item.stock_name}</>
+												)}
+											</Text>
+											<Text
+												b
+												size={16.5}
+												color="#fff"
+												css={{
+													lineHeight: 1,
+													opacity: 0.7,
+													"@media only screen and (max-width: 764px)": {
+														paddingTop: "5px",
+														fontSize: "15px",
+														lineHeight: 1.1,
+													},
+												}}
+											>
+												{item.stock_targets}
+											</Text>
 										</div>
-										<Divider
-											css={{
-												height: "4px",
-												width: "40%",
-												background: "#fff",
-												borderRadius: "20px",
-												opacity: 0.5,
+										<img
+											src={
+												item.action === "HOLD"
+													? "HoldBubbleYellow.png"
+													: item.action === "SELL"
+													? "SellBubbleRed.png"
+													: item.action === "BUY"
+													? "BuyBubbleBlue.png"
+													: "HoldBubbleYellow.png"
+											}
+											style={{
+												width: "55px",
+												height: "55px",
 												alignSelf: "start",
-												marginTop: "3%",
 											}}
 										/>
+									</div>
+									<Divider
+										css={{
+											height: "3px",
+											width: "70%",
+											background: "#fff",
+											borderRadius: "20px",
+											opacity: 0.5,
+											alignSelf: "start",
+											marginTop: "10px",
+										}}
+									/>
+									<div
+										style={{
+											width: "95%",
+											display: "flex",
+											flexDirection: "row",
+											marginTop: "15px",
+											gap: "20px",
+										}}
+									>
+										<Box sx={{ display: "flex", flexDirection: "column" }}>
+											<Text
+												b
+												size={16}
+												color="#fff"
+												css={{
+													opacity: 1,
+													lineHeight: 1,
+													"@media only screen and (max-width: 764px)": {
+														paddingTop: "0px",
+														fontSize: "14.5px",
+													},
+												}}
+											>
+												ENTRY PRICE
+											</Text>
+											<Text
+												b
+												size={22}
+												color="#fff"
+												css={{
+													display: "flex",
+													flexDirection: "row",
+													alignItems: "center",
+													"@media only screen and (max-width: 764px)": {
+														paddingTop: "0px",
+														fontSize: "20px",
+													},
+												}}
+											>
+												<span style={{ fontSize: 16, opacity: 0.75 }}>₹</span>
+												{item.entry_price}
+											</Text>
+											<Text
+												b
+												size={16}
+												color="#fff"
+												css={{
+													opacity: 0.7,
+													lineHeight: 1,
+													"@media only screen and (max-width: 764px)": {
+														paddingTop: "0px",
+														fontSize: "14.5px",
+													},
+												}}
+											>
+												{item.start_date ? item.start_date : "03 Nov 2022"}
+											</Text>
+										</Box>
+										<Box sx={{ display: "flex", flexDirection: "column" }}>
+											<Text
+												b
+												size={16}
+												color="#fff"
+												css={{
+													opacity: 1,
+													lineHeight: 1,
+													"@media only screen and (max-width: 764px)": {
+														paddingTop: "0px",
+														fontSize: "14.5px",
+													},
+												}}
+											>
+												CMP
+											</Text>
+											<Text
+												b
+												size={22}
+												color="#fff"
+												css={{
+													display: "flex",
+													flexDirection: "row",
+													alignItems: "center",
+													"@media only screen and (max-width: 764px)": {
+														paddingTop: "0px",
+														fontSize: "20px",
+													},
+												}}
+											>
+												<span style={{ fontSize: 16, opacity: 0.75 }}>₹</span>
+												{item.live_price}
+											</Text>
+											<Text
+												b
+												size={16}
+												color="#fff"
+												css={{
+													opacity: 0.7,
+													lineHeight: 1,
+													"@media only screen and (max-width: 764px)": {
+														paddingTop: "0px",
+														fontSize: "14.5px",
+													},
+												}}
+											>
+												{`${new Date().getDate()} ${new Date().toLocaleString(
+													"default",
+													{
+														month: "short",
+													}
+												)} ${new Date().getFullYear()}`}
+											</Text>
+										</Box>
 										<Box
 											sx={{
 												display: "flex",
-												flexDirection: "row",
-												alignItems: "center",
-												marginTop: "2.5%",
-												// justifyContent: 'space-evenly'
+												flexDirection: "column",
+												alignSelf: "center",
+												marginLeft: "28%",
 											}}
 										>
-											<Box
-												sx={{
-													display: "flex",
-													flexDirection: "column",
-													alignSelf: "flex-start",
+											<Button
+												auto
+												onPress={() => handleClick(index)}
+												css={{
+													borderRadius: "10000px",
+													background: "transparent",
+													fontSize: 18,
+													color: "#fff",
+													padding: "0px",
 												}}
 											>
-												<Text
-													b
-													size={16}
-													color="#fff"
-													css={{ opacity: 1, lineHeight: 1 }}
-												>
-													RETURNS
-												</Text>
-												<Text b size={22} color="#fff">
-													94%
-												</Text>
-												<Text
-													b
-													size={16}
-													color="#fff"
-													css={{
-														opacity: 0.7,
-														lineHeight: 1,
-													}}
-												>
-													13 Jun 2023
-												</Text>
-											</Box>
-											{/* <LinearProgress
+												<ArrowCircleRight size={30} />
+											</Button>
+										</Box>
+									</div>
+									<Divider
+										css={{
+											height: "3px",
+											width: "40%",
+											background: "#fff",
+											borderRadius: "20px",
+											opacity: 0.5,
+											alignSelf: "start",
+											marginTop: "15px",
+										}}
+									/>
+									<Box
+										sx={{
+											display: "flex",
+											flexDirection: "row",
+											alignItems: "center",
+											marginTop: "15px",
+										}}
+									>
+										<Box
+											sx={{
+												display: "flex",
+												flexDirection: "column",
+												alignSelf: "flex-start",
+											}}
+										>
+											<Text
+												b
+												size={16}
+												color="#fff"
+												css={{
+													opacity: 1,
+													lineHeight: 1,
+													"@media only screen and (max-width: 764px)": {
+														paddingTop: "0px",
+														fontSize: "14.5px",
+													},
+												}}
+											>
+												RETURNS
+											</Text>
+											<Text
+												b
+												size={22}
+												color="#fff"
+												css={{
+													display: "flex",
+													flexDirection: "row",
+													alignItems: "center",
+													"@media only screen and (max-width: 764px)": {
+														paddingTop: "0px",
+														fontSize: "20px",
+													},
+												}}
+											>
+												{item.gain_loss}%
+											</Text>
+											<Text
+												b
+												size={16}
+												color="#fff"
+												css={{
+													opacity: 0.7,
+													lineHeight: 1,
+													"@media only screen and (max-width: 764px)": {
+														paddingTop: "0px",
+														fontSize: "14.5px",
+													},
+												}}
+											>
+												{`${new Date().getDate()} ${new Date().toLocaleString(
+													"default",
+													{
+														month: "short",
+													}
+												)} ${new Date().getFullYear()}`}
+											</Text>
+										</Box>
+										{/* <LinearProgress
 													variant="determinate"
 													value={35}
 													
 													sx={{ width: "60%", height: '15px', borderRadius: '20px', backgroundColor: 'rgba(255, 255, 255, 0.5)',color: '#fff' }}
 												/> */}
+										<Box
+											sx={{
+												display: "flex",
+												flexDirection: "column",
+												width: "70%",
+												marginLeft: "20px",
+											}}
+										>
+											<Text
+												b
+												size={16}
+												color="#fff"
+												css={{
+													opacity: 1,
+													lineHeight: 1,
+													marginBottom: "8px",
+													"@media only screen and (max-width: 764px)": {
+														paddingTop: "0px",
+														fontSize: "14.5px",
+													},
+												}}
+											>
+												Time Left: {item.time_left} days
+											</Text>
+											<Progress
+												value={35}
+												css={{
+													width: "80%",
+													opacity: 1,
+													height: "22.5px",
+													color: "#fff",
+													backgroundColor: "rgba(255, 255, 255, 0.3)",
+													".nextui-c-dwnaVv": { background: '#fff' }
+												}}
+											/>
 											<Box
 												sx={{
 													display: "flex",
-													flexDirection: "column",
-													width: "70%",
-													marginLeft: "5%",
+													flexDirection: "row",
+													justifyContent: "space-between",
+													width: "80%",
 												}}
 											>
 												<Text
 													b
-													size={16}
+													size={12}
 													color="#fff"
-													css={{
-														opacity: 1,
-														lineHeight: 1,
-														marginBottom: "8px",
-													}}
+													css={{ marginTop: "5px", opacity: 1 }}
 												>
-													Time Left: 142 days
-												</Text>
-												<Progress
-													value={35}
-													// status={"default"}
-													// color={'warning'}
-													css={{ width: "70%", opacity: 1, height: '20px', color: '#fff' }}
-												/>
-												<Box sx={{
-													display: "flex",
-													flexDirection: "row",
-													justifyContent: 'space-between',
-													width: "70%",
-												}}>
-												<Text b size={12} color="#fff" css={{ marginTop: '5px', opacity: 0.5 }}>
 													0
 												</Text>
-												<Text b size={12} color="#fff" css={{ marginTop: '5px', opacity: 0.5 }}>
-													365
+												<Text
+													b
+													size={12}
+													color="#fff"
+													css={{ marginTop: "5px", opacity: 1 }}
+												>
+													{item.end_date ? item.end_date : "365"}
 												</Text>
-												</Box>
 											</Box>
 										</Box>
 									</Box>
-								</Card>
-								<Card
-									key={index}
-									isHoverable
-									css={{
-										width: "420px",
-										height: "290px",
-										padding: "20px",
-										paddingTop: "15px",
-										paddingBottom: "15px",
-										backgroundImage:
-											"linear-gradient(to top , #0F734D, #0F734D, #105B54)",
-										borderRadius: "30px",
-										display: "flex",
-										flexDirection: "column",
-										alignItems: "center",
-										"@media only screen and (max-width: 764px)": {},
+								</Box>
+							</Card>
+							<Card
+								key={index}
+								isHoverable
+								css={{
+									width: "450px",
+									height: "330px",
+									// padding: "40px",
+									paddingTop: "30px",
+									paddingBottom: "30px",
+									backgroundImage:
+										"linear-gradient(to top , #0F734D, #0F734D, #105B54)",
+									borderRadius: "30px",
+									borderBottomLeftRadius: "5px",
+									display: "flex",
+									flexDirection: "column",
+									alignItems: "center",
+									"@media only screen and (max-width: 764px)": {
+										width: "95vw",
+										height: "350px",
+										paddingTop: "30px",
+										paddingBottom: "30px",
+									},
+								}}
+							>
+								<Text b size={20} color="#fff">
+									Stock Reports
+								</Text>
+								<IconButton
+									// key={report.report_name}
+									onClick={handlePDF}
+									sx={{
+										// "&:hover": { background: "#fff" },
+										borderRadius: "0px",
+										paddingLeft: "0px",
 									}}
 								>
-									<Text b size={20} color="#fff">
-										Stock Reports
-									</Text>
-									<IconButton
-										// key={report.report_name}
-										onClick={handlePDF}
-										sx={{
-											// "&:hover": { background: "#fff" },
-											borderRadius: "0px",
-											paddingLeft: "0px",
+									<DocumentText size={25} color="#fff" />
+									<Text
+										b
+										size={20}
+										color="#fff"
+										css={{
+											marginLeft: "5px",
+											alignSelf: "start",
+											lineHeight: 1.5,
 										}}
 									>
-										<DocumentText size={25} color="#fff" />
-										<Text
-											b
-											size={20}
-											color="#fff"
-											css={{
-												marginLeft: "5px",
-												alignSelf: "start",
-												lineHeight: 1.5,
-											}}
-										>
-											English
-										</Text>
-									</IconButton>
-									<Modal
-										width="790px"
-										open={showPDF}
-										onClose={handlePDFClose}
-										css={{ background: "transparent", boxShadow: "none" }}
-									>
-										<iframe
-											src="SampleReport.pdf#toolbar=0"
-											style={{
-												height: "80vh",
-												borderColor: "transparent",
-												borderRadius: "0px",
-												borderWidth: "0px",
-												background: "#fff",
-											}}
-										></iframe>
-										<Button
-											auto
-											onClick={handlePDFClose}
-											css={{
-												alignSelf: "end",
-												mt: "5%",
-												width: "150px",
-												borderRadius: "20px",
-												background: "#ffa12e",
-												fontSize: 18,
-											}}
-										>
-											Close
-										</Button>
-									</Modal>
+										English
+									</Text>
+								</IconButton>
+								<Modal
+									width="790px"
+									open={showPDF}
+									onClose={handlePDFClose}
+									css={{ background: "transparent", boxShadow: "none" }}
+								>
+									<iframe
+										src="SampleReport.pdf#toolbar=0"
+										style={{
+											height: "80vh",
+											borderColor: "transparent",
+											borderRadius: "0px",
+											borderWidth: "0px",
+											background: "#fff",
+										}}
+									></iframe>
 									<Button
 										auto
-										onPress={() => handleClick(index)}
+										onClick={handlePDFClose}
 										css={{
-											top: "105px",
-											background: "#ffa12e",
-											borderRadius: "20px",
-											fontSize: 18,
+											alignSelf: "end",
+											mt: "5%",
 											width: "150px",
+											borderRadius: "20px",
+											background: "#ffa12e",
+											fontSize: 18,
 										}}
 									>
-										Return
+										Close
 									</Button>
-								</Card>
-							</ReactCardFlip>
-						))}
-					</Grid>
+								</Modal>
+								<Button
+									auto
+									onPress={() => handleClick(index)}
+									css={{
+										top: "105px",
+										background: "#ffa12e",
+										borderRadius: "20px",
+										fontSize: 18,
+										width: "150px",
+									}}
+								>
+									Return
+								</Button>
+							</Card>
+						</ReactCardFlip>
+					))}
 				</Grid>
+				{/* </Grid> */}
 			</div>
-			{/* </div> */}
 			<FaqsNew />
-			{/* <FAQs /> */}
+			<Footer />
 		</section>
 	);
 };
