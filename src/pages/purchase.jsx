@@ -4,9 +4,9 @@ import { Button, Text } from "@nextui-org/react";
 import { GET_PRODUCT, PAYMENT_URL } from "./api/URLs";
 import { Box } from "@mui/material";
 
-const stripePromise = loadStripe(
-	"pk_test_51N3dAPSFPooNZtZaCwGwRUC1IHpC4HqARVbxMBia13Fqan4H6SoLZUhLz21xqqMhtDU5Kiurtzia2uznSEbGSADk00LRBh1V2p"
-);
+// const stripePromise = loadStripe(
+// 	"pk_test_51N3dAPSFPooNZtZaCwGwRUC1IHpC4HqARVbxMBia13Fqan4H6SoLZUhLz21xqqMhtDU5Kiurtzia2uznSEbGSADk00LRBh1V2p"
+// );
 
 export default function PreviewPage() {
 	const [productID, setProductID] = useState("");
@@ -34,18 +34,21 @@ export default function PreviewPage() {
 	const handlePayButtonClick = async () => {
 		try {
 			console.log("api call");
+			console.log(productID);
+			const refreshToken = localStorage.getItem("refresh");
 			const response = await fetch(PAYMENT_URL, {
 				method: "POST",
-        body: JSON.stringify({ productID }),
+				headers: {
+					Authorization: `token ${refreshToken}`,
+				},
+				body: JSON.stringify({ productID }),
 				// Add any necessary headers or body to the request
 			});
 
 			if (response.ok) {
-				const session = await response.json();
-				const stripe = await stripePromise;
-				const { error } = await stripe.redirectToCheckout({
-					sessionId: session.id,
-				});
+				const data = await response.json();
+				console,log(response);
+				console.log(data)
 
 				if (error) {
 					// Handle any error during redirection
@@ -66,10 +69,10 @@ export default function PreviewPage() {
 		<section
 			style={{
 				display: "flex",
-        flexDirection: 'column',
+				flexDirection: "column",
 				justifyContent: "center",
 				alignItems: "center",
-				maxWidth: "2000px",
+				paddingTop: '50px'
 			}}
 		>
 			<form
@@ -80,7 +83,7 @@ export default function PreviewPage() {
 					alignItems: "center",
 				}}
 			>
-				<Text b size={20}>
+				<Text b size={20} css={{ marginBottom: '20px' }}>
 					Subscribe to KamayaKya
 				</Text>
 				<button type="submit" role="link">
@@ -102,11 +105,9 @@ export default function PreviewPage() {
 						}
 					`}
 				</style>
-				<Button onPress={handleGetProduct}>Get Product ID</Button>
+				<Button onPress={handleGetProduct} css={{ marginTop: '10px' }}>Get Product ID</Button>
 			</form>
-      <Box>
-        Stipe ID: {productID}
-      </Box>
+			<Box>Stipe ID: {productID}</Box>
 		</section>
 	);
 }

@@ -17,7 +17,7 @@ const BlogSection2 = () => {
 					method: "GET",
 					headers: {
 						"Content-Type": "application/json",
-						Authorization: `token ${refresh}`,
+						// Authorization: `token ${refresh}`,
 					},
 				});
 				const data = await response.json();

@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { GET_BLOGS } from "./api/URLs";
+import { GET_SPECIFIC_BLOG } from "./api/URLs";
 import { Box } from "@mui/material";
 import AuthContext from "../components/AuthContext";
 import { useContext } from "react";
@@ -22,9 +22,9 @@ const BlogPage = () => {
 			if (slug) {
 				try {
 					const refresh = localStorage.getItem("refresh");
-					const response = await axios.get(`${GET_BLOGS}${slug}`, {
+					const response = await axios.get(`${GET_SPECIFIC_BLOG}${slug}`, {
 						headers: {
-							Authorization: `Token ${refresh}`,
+							// Authorization: `Token ${refresh}`,
 						},
 					});
 					setBlog(response.data);

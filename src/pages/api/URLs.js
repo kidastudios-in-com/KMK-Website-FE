@@ -1,9 +1,9 @@
 //AUTH BASE
-export const BASE_URL = 'http://kmk-kida.kidastudio.in/master';
+export const BASE_URL = 'https://kmk-kida.kidastudio.in/master';
 // export const BASE_URL = 'http://192.168.0.151:8000/master';
 
 //Admin Base
-export const ADMIN_URL = 'http://kmk-kida.kidastudio.in/kmkadmin';
+export const ADMIN_URL = 'https://kmk-kida.kidastudio.in/kmkadmin';
 // export const ADMIN_URL = 'http://192.168.0.151:8000/kmkadmin';
 
 //Auth URLs
@@ -28,7 +28,8 @@ export const GET_ALL_URL = `${ADMIN_URL}/getStockPicksForUser`;
 // export const GET_ALL_URL = `${ADMIN_URL}/getAllStocks/`;
 
 //Blogs URL
-export const GET_BLOGS = `${ADMIN_URL}/blog/`;
+export const GET_BLOGS = `${ADMIN_URL}/all_blogs/`;
+export const GET_SPECIFIC_BLOG = `${ADMIN_URL}/blog/`;
 
 //Track Records
 export const TRACK_RECORD_FOR_ALL = `${ADMIN_URL}/getTrackRecordForAll`;
