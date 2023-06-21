@@ -132,7 +132,7 @@ const LoginCard = () => {
 				// padding: "50px",
 				paddingBottom: "5px",
 				alignItems: "center",
-				"@media only screen and (max-width: 600px)": {
+				"@media only screen and (max-width: 764px)": {
 					padding: "5px",
 				},
 			}}
@@ -159,7 +159,7 @@ const LoginCard = () => {
 								textAlign: "center",
 								display: "flex",
 								flexDirection: "column",
-								"@media only screen and (max-width: 600px)": {
+								"@media only screen and (max-width: 764px)": {
 									// fontSize: 28,
 									width: "100%",
 								},
@@ -171,7 +171,7 @@ const LoginCard = () => {
 								color="#ffa12e"
 								css={{
 									lineHeight: 1.2,
-									"@media only screen and (max-width: 600px)": {
+									"@media only screen and (max-width: 764px)": {
 										fontSize: 28,
 										width: "100%",
 									},
@@ -187,7 +187,7 @@ const LoginCard = () => {
 									lineHeight: 1.2,
 									marginTop: "10px",
 									marginBottom: "20px",
-									"@media only screen and (max-width: 600px)": {
+									"@media only screen and (max-width: 764px)": {
 										fontSize: 14,
 										width: "100%",
 									},
@@ -206,7 +206,7 @@ const LoginCard = () => {
 								// width: "450px",
 								height: "250px",
 								backgroundColor: "#fff",
-								"@media only screen and (max-width: 600px)": {
+								"@media only screen and (max-width: 764px)": {
 									width: "100%",
 								},
 							}}

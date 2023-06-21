@@ -27,7 +27,14 @@ const SubscriptionNew = () => {
 	};
 
 	return (
-		<main style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', background: '#fff' }}>
+		<main
+			style={{
+				display: "flex",
+				justifyContent: "center",
+				alignItems: "center",
+				background: "#fff",
+			}}
+		>
 			<section
 				style={{
 					display: "flex",
@@ -38,38 +45,37 @@ const SubscriptionNew = () => {
 					alignItems: "center",
 					paddingLeft: "15px",
 					paddingRight: "15px",
-					// "@media only screen and (min-width: 672px)": {
-						paddingTop: "10vh",
-						paddingBottom: "10vh",
-					// },
-					"@media only screen and (max-width: 672px)": {
+					paddingTop: "10vh",
+					paddingBottom: "10vh",
+					"@media only screen and (max-width: 768px)": {
 						// paddingTop: "10000px",
 						width: "100vw",
 					},
 				}}
 			>
 				<Box
-					 style={{
-						 width: "100%",
-						 maxWidth: "80rem",
-						 display: "flex",
-						 flexDirection: "column",
-						 justifyContent: "center",
-						 alignItems: "center",
-						 marginBottom: "80px",
-						 padding: "0 15px",
-						 "@media only screen and (max-width: 672px)": {
-							 paddingTop: "0vh",
-							 width: "100vw",
-							 paddingLeft: "15px",
-							 paddingRight: "15px",
-						 },
-					 }}>
+					style={{
+						width: "100%",
+						maxWidth: "80rem",
+						display: "flex",
+						flexDirection: "column",
+						justifyContent: "center",
+						alignItems: "center",
+						marginBottom: "80px",
+						padding: "0 15px",
+						"@media only screen and (max-width: 768px)": {
+							paddingTop: "0vh",
+							width: "100vw",
+							paddingLeft: "15px",
+							paddingRight: "15px",
+						},
+					}}
+				>
 					<Text
 						b
 						size={70}
 						css={{
-							"@media only screen and (max-width: 672px)": {
+							"@media only screen and (max-width: 768px)": {
 								textAlign: "left",
 								fontSize: 55,
 								lineHeight: 1.1,
@@ -85,7 +91,7 @@ const SubscriptionNew = () => {
 						size={25}
 						css={{
 							textAlign: "center",
-							"@media only screen and (max-width: 672px)": {
+							"@media only screen and (max-width: 768px)": {
 								marginTop: "10px",
 								textAlign: "left",
 								fontSize: 17.5,
@@ -93,7 +99,9 @@ const SubscriptionNew = () => {
 							},
 						}}
 					>
-						Our methodology does not include doing technical analysis of stocks, rather we do research that is deep, thorough and entirely fundamentals based
+						Our methodology does not include doing technical analysis of stocks,
+						rather we do research that is deep, thorough and entirely
+						fundamentals based
 					</Text>
 				</Box>
 				<Box
@@ -103,7 +111,7 @@ const SubscriptionNew = () => {
 						flexWrap: "wrap",
 						gap: "40px",
 						alignItems: "center",
-						"@media only screen and (max-width: 672px)": {
+						"@media only screen and (max-width: 768px)": {
 							justifyContent: "center",
 							gap: "20px",
 						},
@@ -125,7 +133,7 @@ const SubscriptionNew = () => {
 							paddingBottom: "50px",
 							paddingLeft: "15px",
 							paddingRight: "15px",
-							"@media only screen and (max-width: 672px)": {
+							"@media only screen and (max-width: 768px)": {
 								order: 3,
 								width: "100%",
 							},
@@ -221,56 +229,6 @@ const SubscriptionNew = () => {
 								No WhatsApp & Email updates
 							</Text>
 						</Box>
-						{/*<Box*/}
-						{/*	sx={{*/}
-						{/*		width: "100%",*/}
-						{/*		alignSelf: "start",*/}
-						{/*		marginBottom: "10px",*/}
-						{/*		display: "flex",*/}
-						{/*		flexDirection: "row",*/}
-						{/*		alignItems: "center",*/}
-						{/*		paddingLeft: "30px",*/}
-						{/*		paddingRight: "30px",*/}
-						{/*	}}*/}
-						{/*>*/}
-						{/*	<CheckCircleIcon*/}
-						{/*		sx={{*/}
-						{/*			marginRight: "10px",*/}
-						{/*			fontSize: 20,*/}
-						{/*			alignSelf: "start",*/}
-						{/*			marginTop: "5px",*/}
-						{/*			opacity: 0.9,*/}
-						{/*		}}*/}
-						{/*	/>*/}
-						{/*	<Text b size={18} css={{ lineHeight: 1.2, opacity: 0.9 }}>*/}
-						{/*		Only NSE + BSE*/}
-						{/*	</Text>*/}
-						{/*</Box>*/}
-						{/*<Box*/}
-						{/*	sx={{*/}
-						{/*		width: "100%",*/}
-						{/*		alignSelf: "start",*/}
-						{/*		marginBottom: "10px",*/}
-						{/*		display: "flex",*/}
-						{/*		flexDirection: "row",*/}
-						{/*		alignItems: "center",*/}
-						{/*		paddingLeft: "30px",*/}
-						{/*		paddingRight: "30px",*/}
-						{/*	}}*/}
-						{/*>*/}
-						{/*	<CheckCircleIcon*/}
-						{/*		sx={{*/}
-						{/*			marginRight: "10px",*/}
-						{/*			fontSize: 20,*/}
-						{/*			alignSelf: "start",*/}
-						{/*			marginTop: "5px",*/}
-						{/*			opacity: 0.9,*/}
-						{/*		}}*/}
-						{/*	/>*/}
-						{/*	<Text b size={18} css={{ lineHeight: 1.2, opacity: 0.9 }}>*/}
-						{/*		No Notification Updates*/}
-						{/*	</Text>*/}
-						{/*</Box>*/}
 						<Divider
 							css={{
 								background: "#000000",
@@ -281,7 +239,7 @@ const SubscriptionNew = () => {
 							}}
 						/>
 						<Button
-							onClick={handleLogin}
+							onClick={handleLoginOrSub}
 							variant="contained"
 							sx={{
 								width: "75%",
@@ -302,7 +260,7 @@ const SubscriptionNew = () => {
 							</Text>
 						</Button>
 						<Modal
-							width="1200px"
+							// width="1200px"
 							open={showLoginModal}
 							onClose={handleCloseLoginModal}
 						>
@@ -361,23 +319,6 @@ const SubscriptionNew = () => {
 							},
 						}}
 					>
-						{/* <div
-						style={{
-							display: 'flex',
-							width: "350px",
-							height: "50px",
-							background: "#00d784",
-							textAlign: "center",
-							paddingTop: "3px",
-							paddingBottom: "3px",
-							alignItems: 'center',
-							justifyContent: 'center',
-						}}
-					>
-						<Text b color="#fff" size={14} css={{ alignItems: 'center' }}>
-							SPECIAL OFFER
-						</Text>
-					</div> */}
 						<img
 							src="kamayakya-logo-white.png"
 							style={{ marginTop: "5px", width: "75%" }}
@@ -492,136 +433,7 @@ const SubscriptionNew = () => {
 								WhatsApp & Email updates
 							</Text>
 						</Box>
-						{/*<Box*/}
-						{/*	sx={{*/}
-						{/*		width: "100%",*/}
-						{/*		alignSelf: "start",*/}
-						{/*		// marginTop: "20px",*/}
-						{/*		marginBottom: "10px",*/}
-						{/*		// marginLeft: "5%",*/}
-						{/*		display: "flex",*/}
-						{/*		flexDirection: "row",*/}
-						{/*		alignItems: "center",*/}
-						{/*		paddingLeft: "30px",*/}
-						{/*		paddingRight: "30px",*/}
-						{/*	}}*/}
-						{/*>*/}
-						{/*	<CheckCircleIcon*/}
-						{/*		sx={{*/}
-						{/*			marginRight: "10px",*/}
-						{/*			color: "#fff",*/}
-						{/*			fontSize: 20,*/}
-						{/*			alignSelf: "start",*/}
-						{/*			marginTop: "5px",*/}
-						{/*			opacity: 0.9,*/}
-						{/*		}}*/}
-						{/*	/>*/}
-						{/*	<Text*/}
-						{/*		b*/}
-						{/*		color="#fff"*/}
-						{/*		size={20}*/}
-						{/*		css={{ lineHeight: 1.2, opacity: 0.9 }}*/}
-						{/*	>*/}
-						{/*		Unlimited Stock Picks Unlimited Stock Picks*/}
-						{/*	</Text>*/}
-						{/*</Box>*/}
-						{/*<Box*/}
-						{/*	sx={{*/}
-						{/*		width: "100%",*/}
-						{/*		alignSelf: "start",*/}
-						{/*		// marginTop: "20px",*/}
-						{/*		marginBottom: "10px",*/}
-						{/*		// marginLeft: "5%",*/}
-						{/*		display: "flex",*/}
-						{/*		flexDirection: "row",*/}
-						{/*		alignItems: "center",*/}
-						{/*		paddingLeft: "30px",*/}
-						{/*		paddingRight: "30px",*/}
-						{/*	}}*/}
-						{/*>*/}
-						{/*	<CheckCircleIcon*/}
-						{/*		sx={{*/}
-						{/*			marginRight: "10px",*/}
-						{/*			color: "#fff",*/}
-						{/*			fontSize: 20,*/}
-						{/*			alignSelf: "start",*/}
-						{/*			marginTop: "5px",*/}
-						{/*			opacity: 0.9,*/}
-						{/*		}}*/}
-						{/*	/>*/}
-						{/*	<Text*/}
-						{/*		b*/}
-						{/*		color="#fff"*/}
-						{/*		size={20}*/}
-						{/*		css={{ lineHeight: 1.2, opacity: 0.9 }}*/}
-						{/*	>*/}
-						{/*		Unlimited Stock Picks Unlimited Stock Picks*/}
-						{/*	</Text>*/}
-						{/*</Box>*/}
-						{/*<Box*/}
-						{/*	sx={{*/}
-						{/*		width: "100%",*/}
-						{/*		alignSelf: "start",*/}
-						{/*		// marginTop: "20px",*/}
-						{/*		marginBottom: "10px",*/}
-						{/*		// marginLeft: "5%",*/}
-						{/*		display: "flex",*/}
-						{/*		flexDirection: "row",*/}
-						{/*		alignItems: "center",*/}
-						{/*		paddingLeft: "30px",*/}
-						{/*		paddingRight: "30px",*/}
-						{/*	}}*/}
-						{/*>*/}
-						{/*	<CheckCircleIcon*/}
-						{/*		sx={{*/}
-						{/*			marginRight: "10px",*/}
-						{/*			color: "#fff",*/}
-						{/*			fontSize: 20,*/}
-						{/*			alignSelf: "start",*/}
-						{/*			marginTop: "5px",*/}
-						{/*			opacity: 0.9,*/}
-						{/*		}}*/}
-						{/*	/>*/}
-						{/*	<Text*/}
-						{/*		b*/}
-						{/*		color="#fff"*/}
-						{/*		size={20}*/}
-						{/*		css={{ lineHeight: 1.2, opacity: 0.9 }}*/}
-						{/*	>*/}
-						{/*		Unlimited Stock Picks Unlimited Stock Picks*/}
-						{/*	</Text>*/}
-						{/*</Box>*/}
-						{/*<Box*/}
-						{/*	sx={{*/}
-						{/*		width: "100%",*/}
-						{/*		alignSelf: "start",*/}
-						{/*		marginBottom: "10px",*/}
-						{/*		display: "flex",*/}
-						{/*		flexDirection: "row",*/}
-						{/*		alignItems: "center",*/}
-						{/*		paddingLeft: "30px",*/}
-						{/*		paddingRight: "30px",*/}
-						{/*	}}*/}
-						{/*>*/}
-						{/*	<CheckCircleIcon*/}
-						{/*		sx={{*/}
-						{/*			marginRight: "10px",*/}
-						{/*			color: "#fff",*/}
-						{/*			fontSize: 20,*/}
-						{/*			alignSelf: "start",*/}
-						{/*			marginTop: "5px",*/}
-						{/*			opacity: 0.9,*/}
-						{/*		}}*/}
-						{/*	/>*/}
-						{/*	<Text*/}
-						{/*		b*/}
-						{/*		color="#fff"*/}
-						{/*		size={20}*/}
-						{/*		css={{ lineHeight: 1.2, opacity: 0.9 }}*/}
-						{/*	>*/}
-						{/*		Unlimited Stock Picks Unlimited Stock Picks*/}
-						{/*	</Text>*/}
-						{/*</Box>*/}
+						
 						<Divider
 							css={{
 								background: "#fff",

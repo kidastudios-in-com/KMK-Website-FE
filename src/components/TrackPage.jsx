@@ -222,7 +222,7 @@ const WhyUs = () => {
 						backgroundImage: "linear-gradient(to top , #0d2c7b, #6067b5)",
 						alignItems: "center",
 						borderRadius: "12.5px",
-						"@media only screen and (max-width: 672px)": {
+						"@media only screen and (max-width: 764px)": {
 							paddingLeft: "20px",
 							paddingRight: "20px",
 							marginTop: "10px",
@@ -237,7 +237,7 @@ const WhyUs = () => {
 						color="#FFF"
 						css={{
 							fontWeight: "bolder",
-							"@media only screen and (max-width: 672px)": {
+							"@media only screen and (max-width: 764px)": {
 								fontSize: 19,
 								width: "100%",
 								textAlign: "center",
@@ -280,7 +280,7 @@ const WhyUs = () => {
 						alignSelf: "center",
 						paddingTop: "20px",
 						paddingBottom: "20px",
-						"@media only screen and (max-width: 600px)": {
+						"@media only screen and (max-width: 764px)": {
 							textAlign: "center",
 							fontSize: 36,
 							lineHeight: 1.2,

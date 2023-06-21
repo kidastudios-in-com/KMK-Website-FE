@@ -1,35 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Button, Text } from "@nextui-org/react";
 import { GET_PRODUCT, PAYMENT_URL } from "./api/URLs";
 import { Box } from "@mui/material";
+import { Elements } from '@stripe/react-stripe-js';
 
-// const stripePromise = loadStripe(
-// 	"pk_test_51N3dAPSFPooNZtZaCwGwRUC1IHpC4HqARVbxMBia13Fqan4H6SoLZUhLz21xqqMhtDU5Kiurtzia2uznSEbGSADk00LRBh1V2p"
-// );
+const stripePromise = loadStripe(
+	"pk_test_51NIAaOSI2jzUvqLXPBiVnCIeshgiVn9SeFY3oGrRnYKSLyezrspBuPItJWxuAboUWCGYZ7dCpT66crOe26Fe2L8Y00LoX7UM4Z"
+);
 
 export default function PreviewPage() {
 	const [productID, setProductID] = useState("");
 
-	const handleGetProduct = async () => {
-		try {
-			const refreshToken = localStorage.getItem("refresh");
-			const response = await fetch(GET_PRODUCT, {
-				headers: {
-					Authorization: `token ${refreshToken}`,
-				},
-			});
-			const data = await response.json();
-			console.log(data);
-			const kamayaKyaProduct = data.find(
-				(product) => product.name === "KamayaKya"
-			);
-			const kamayaKyaProductID = kamayaKyaProduct?.stripe_product_id || "";
-			setProductID(kamayaKyaProductID);
-		} catch (error) {
-			console.error(error);
-		}
-	};
+	useEffect(() => {
+		const handleGetProduct = async () => {
+			try {
+				const refreshToken = localStorage.getItem("refresh");
+				const response = await fetch(GET_PRODUCT, {
+					headers: {
+						Authorization: `token ${refreshToken}`,
+					},
+				});
+				const data = await response.json();
+				console.log(data);
+				const kamayaKyaProduct = data.find(
+					(product) => product.name === "KamayaKya"
+				);
+				const kamayaKyaProductID = kamayaKyaProduct?.stripe_product_id || "";
+				setProductID(kamayaKyaProductID);
+			} catch (error) {
+				console.error(error);
+			}
+		};
+		handleGetProduct();
+	}, []);
 
 	const handlePayButtonClick = async () => {
 		try {
@@ -39,16 +43,17 @@ export default function PreviewPage() {
 			const response = await fetch(PAYMENT_URL, {
 				method: "POST",
 				headers: {
+					// "Content-Type": "application/json",
 					Authorization: `token ${refreshToken}`,
 				},
-				body: JSON.stringify({ productID }),
+				body: JSON.stringify({ product_id : productID }),
 				// Add any necessary headers or body to the request
 			});
 
 			if (response.ok) {
 				const data = await response.json();
-				console,log(response);
-				console.log(data)
+				console, log(response);
+				console.log(data);
 
 				if (error) {
 					// Handle any error during redirection
@@ -65,6 +70,11 @@ export default function PreviewPage() {
 		}
 	};
 
+	// const options = {
+	// 	// passing the client secret obtained from the server
+	// 	clientSecret: '{{CLIENT_SECRET}}',
+	//   };
+
 	return (
 		<section
 			style={{
@@ -72,9 +82,10 @@ export default function PreviewPage() {
 				flexDirection: "column",
 				justifyContent: "center",
 				alignItems: "center",
-				paddingTop: '50px'
+				paddingTop: "50px",
 			}}
 		>
+			{/* <Elements stripe={stripePromise} > */}
 			<form
 				onSubmit={handlePayButtonClick}
 				style={{
@@ -83,11 +94,11 @@ export default function PreviewPage() {
 					alignItems: "center",
 				}}
 			>
-				<Text b size={20} css={{ marginBottom: '20px' }}>
+				<Text b size={20} css={{ marginBottom: "20px" }}>
 					Subscribe to KamayaKya
 				</Text>
-				<button type="submit" role="link">
-					Pay 999
+				<button type="submit">
+					Subscribe
 				</button>
 				<style jsx>
 					{`
@@ -105,8 +116,11 @@ export default function PreviewPage() {
 						}
 					`}
 				</style>
-				<Button onPress={handleGetProduct} css={{ marginTop: '10px' }}>Get Product ID</Button>
+				{/* <Button onPress={handleGetProduct} css={{ marginTop: "10px" }}>
+					Get Product ID
+				</Button> */}
 			</form>
+			{/* </Elements> */}
 			<Box>Stipe ID: {productID}</Box>
 		</section>
 	);

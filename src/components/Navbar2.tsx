@@ -110,57 +110,33 @@ const NavBar2 = () => {
 					".nextui-c-hhqfap-kAwfsS-disableShadow-false": {
 						boxShadow: "none",
 					},
-					// ".nextui-c-dGYPDG": { height: "0%" },
-					// ".nextui-c-hhqfap-idKuEpT-css .nextui-c-dGYPDG": {
-					// 	 height: "100%",
-					// },
 					"@media only screen and (max-width: 672px)": {
-						// w: "195px",
 						height: "80px",
-						// left: 15,
 					},
 				}}
 			>
 			<Navbar.Brand
 				css={{
-					// w: "350px",
 					zIndex: 99,
 					"@media only screen and (max-width: 600px)": {
-						// w: "195px",
-						// h: '55px',
-						h: "60px",
-						w: "122%",
+						h: "50px",
 						left: 15,
 					},
-					// position: "fixed",
 				}}
 			>
 				<img
 					onClick={() => handleHome()}
-					// src={
-					// 	activeLink === "whyUs"
-					// 		? "./kamayakya-logo-white.png"
-					// 		: "./kmk-logo.png"
-					// }
 					src="./kmk-logo (1).png"
 					alt="logo"
-					width="220px"
-					height="60px"
-					// height="100%"
+					className="logoNavbar"
 				/>
 			</Navbar.Brand>
-			{/* <Navbar.Toggle showIn={'xs'} /> */}
-			{/* <Navbar.Toggle showIn="md" css={{ position: "fixed", right: "20px" }}>
-				<RxHamburgerMenu size={26} />
-			</Navbar.Toggle> */}
-			{/* <div style={{ display: "flex", justifyContent: "center", width: "100%" }}> */}
 				<Navbar.Content
 					activeColor="warning"
 					hideIn="xs"
 					variant="underline-rounded"
 				>
 					<Navbar.Link
-						// isActive={activeLink === "home"}
 						isActive={
 							typeof window !== "undefined" && window.location.pathname === "/"
 						}
@@ -171,7 +147,6 @@ const NavBar2 = () => {
 						</Text>
 					</Navbar.Link>
 					<Navbar.Link
-						// isActive={activeLink === "aboutUs"}
 						isActive={
 							typeof window !== "undefined" &&
 							window.location.pathname === "/about-company"
@@ -183,7 +158,6 @@ const NavBar2 = () => {
 						</Text>
 					</Navbar.Link>
 					<Navbar.Link
-						// isActive={activeLink === "blogs"}
 						isActive={
 							typeof window !== "undefined" &&
 							window.location.pathname === "/blogs-page"
@@ -360,7 +334,7 @@ const NavBar2 = () => {
 								toggleDrawer();
 							}}
 						>
-							<ListItemText primary="Login" />
+							<ListItemText primary="Logout" />
 						</ListItemButton>
 					</List>
 				</SwipeableDrawer>

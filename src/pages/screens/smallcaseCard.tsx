@@ -1,7 +1,5 @@
 import { Box, IconButton } from "@mui/material";
-import zIndex from "@mui/material/styles/zIndex";
 import { Text } from "@nextui-org/react";
-import Link from "next/link";
 import React from "react";
 
 const SmallcaseCard = () => {

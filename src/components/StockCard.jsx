@@ -270,7 +270,6 @@ const StockCard = () => {
 					flexDirection: "column",
 					backgroundImage: "linear-gradient(to top , #0d2c7b, #6067b5)",
 					alignItems: "center",
-					// backgroundImage: "linear-gradient(to top , #106052, #0f734d)",
 					borderRadius: "12.5px",
 					"@media only screen and (max-width: 672px)": {
 						paddingLeft: "20px",
@@ -287,7 +286,7 @@ const StockCard = () => {
 					color="#FFF"
 					css={{
 						fontWeight: "bolder",
-						"@media only screen and (max-width: 672px)": {
+						"@media only screen and (max-width: 768px)": {
 							fontSize: 19,
 							width: "100%",
 							textAlign: "center",
@@ -352,391 +351,249 @@ const StockCard = () => {
 				</Text>
 			</Box>
 			{isLoading && <Loading style={{ marginBottom: "10px" }} />}
-
-			{/* {isAlertVisible && (
-				<Alert
-					sx={{ width: "60%", alignSelf: "center", marginBottom: "10px" }}
-					severity="error"
-					onClose={() => setIsAlertVisible(false)}
-				>
-					{error}
-				</Alert>
-			)} */}
-			<Box
-				sx={{
-					display: "flex",
-					flexWrap: "wrap",
-					flexDirection: "row",
-					gap: "20px",
-					marginBottom: "4%",
-					justifyContent: "center",
-					alignItems: "center",
-				}}
-			>
+			{isLoggedIn ? (
 				<Box
 					sx={{
-						border: "2px solid #ffa12e",
-						borderRadius: "10000px",
-						padding: "0px 20px",
-						paddingTop: "5px",
 						display: "flex",
+						flexWrap: "wrap",
+						flexDirection: "row",
+						gap: "0px",
+						marginBottom: "4%",
+						justifyContent: "center",
 						alignItems: "center",
 					}}
 				>
-					<IconButton>
-						<SearchNormal size={25} color="#125a54" />
-					</IconButton>
-					<InputBase
-						placeholder="Ion Exchange (OR) IONEXCHANG"
-						variant="standard"
-						size="small"
-						value={searchQuery}
-						onChange={(e) => setSearchQuery(e.target.value)}
-						// InputProps={{
-						// 	startAdornment: (
-						// 		<IconButton>
-						// 			<SearchNormal size={20} />
-						// 		</IconButton>
-						// 	),
-						// }}
+					{/* Search Bar */}
+					<Box
 						sx={{
+							border: "2px solid #ffa12e",
+							borderRadius: "10000px",
+							padding: "0px 15px",
+							paddingTop: "2px",
 							display: "flex",
 							alignItems: "center",
-							fontSize: 20,
-							lineHeight: 1,
-							textAlign: "center",
-							width: "540px",
-							// border: "1px solid #ffa12e",
-							// borderRadius: "10000px",
-							padding: "15px 10px",
-							"@media only screen and (max-width: 672px)": {
-								width: "50%",
+						}}
+					>
+						<IconButton>
+							<SearchNormal size={30} color="#125a54" />
+						</IconButton>
+						<InputBase
+							placeholder="Ion Exchange (OR) IONEXCHANG"
+							variant="standard"
+							size="small"
+							value={searchQuery}
+							onChange={(e) => setSearchQuery(e.target.value)}
+							sx={{
+								display: "flex",
+								alignItems: "center",
+								fontSize: 20,
+								lineHeight: 1,
+								textAlign: "center",
+								width: "440px",
+								padding: "10px 10px",
+								"@media only screen and (max-width: 768px)": {
+									width: "50%",
+								},
+							}}
+						/>
+					</Box>
+
+					<IconButton
+						onClick={toggleDrawer}
+						css={{
+							width: "30px !important",
+							maxWidth: "30px !important",
+							"@media only screen and (max-width: 768px)": {
+								width: "30px",
+								maxWidth: "30px",
 							},
 						}}
-					/>
-				</Box>
-				<Button
-					onPress={toggleDrawer}
-					css={{
-						height: "70px",
-						width: "250px",
-						border: "2px solid #ffa12e",
-						borderRadius: "1000px",
-						fontSize: 20,
-						padding: "20px 20px",
-						background: "#fff",
-						color: "#000000",
-					}}
-				>
-					Filters
-				</Button>
-				<SwipeableDrawer
-					anchor="right"
-					open={isDrawerOpen}
-					onOpen={() => setIsDrawerOpen(true)}
-					onClose={toggleDrawer}
-					sx={{
-						width: {
-							xs: "100vw",
-							sm: "20vw", 
-						},
-						maxWidth: {
-							xs: "100%",
-							sm: "20%", 
-						},
-						"& .MuiDrawer-paper": {
+					>
+						<Filter size={30} color="#125a54" />
+					</IconButton>
+					{/* Side Drawer Filtering & Sorting */}
+					<SwipeableDrawer
+						anchor="right"
+						open={isDrawerOpen}
+						onOpen={() => setIsDrawerOpen(true)}
+						onClose={toggleDrawer}
+						sx={{
 							width: {
-								xs: "100vw", 
+								xs: "100vw",
 								sm: "20vw", 
 							},
 							maxWidth: {
 								xs: "100%",
 								sm: "20%", 
 							},
-						},
-					}}
-				>
-					<List>
-						<ListItemButton
-							onClick={() => {
-								toggleDrawer();
-							}}
-							sx={{
-								justifyContent: "end",
-								"&:hover": {
-									backgroundColor: "#fff",
+							"& .MuiDrawer-paper": {
+								width: {
+									xs: "100vw", 
+									sm: "20vw", 
 								},
-							}}
-						>
-							<CloseIcon />
-						</ListItemButton>
-						<ListItem sx={{ justifyContent: "center" }}>
-							<Dropdown>
-								<Dropdown.Button
-									flat
-									css={{
-										// height: "70px",
-										// marginLeft: "20px",
-										width: "250px",
-										backgroundColor: "#fff",
-										borderRadius: "10000px",
-										border: "2px solid #ffa12e",
-										color: "#202020",
-										fontSize: 16,
-										"@media only screen and (max-width: 672px)": {
-											width: "80%",
-											"& span": {
-												// display: "none",
-											},
-										},
-									}}
-								>
-									<FaIndustry size={20} style={{ marginRight: "0px" }} />
-									<span
-										style={{
-											marginLeft: "10px",
-											"@media only screen and (maxWidth: 600px)": {
-												marginLeft: "0px",
-											},
-										}}
-									>
-										Industries
-									</span>
-								</Dropdown.Button>
-								<Dropdown.Menu
-									selectionMode="multiple"
-									selectedKeys={selectedIndustries}
-									onSelectionChange={(keys) => setSelectedIndustries(keys)}
-								>
-									{industries.map((industry) => (
-										<Dropdown.Item
-											key={industry}
-											onClick={() => handleIndustrySelection(industry)}
-										>
-											{industry}
-										</Dropdown.Item>
-									))}
-								</Dropdown.Menu>
-							</Dropdown>
-						</ListItem>
-						<ListItem sx={{ justifyContent: "center" }}>
-							<Dropdown>
-								<Dropdown.Button
-									flat
-									css={{
-										width: "250px",
-										backgroundColor: "#fff",
-										borderRadius: "10000px",
-										border: "2px solid #ffa12e",
-										color: "#202020",
-										fontSize: 16,
-										"@media only screen and (max-width: 672px)": {
-											width: "80%",
-											"& span": {
-												// display: "none",
-											},
-										},
-									}}
-								>
-									<AiOutlineFieldTime
-										size={22}
-										style={{ marginRight: "0px" }}
-									/>
-									<span
-										style={{
-											marginLeft: "10px",
-											"@media only screen and (max-width: 672px)": {
-												marginLeft: "0px",
-											},
-										}}
-									>
-										Time Left
-									</span>
-								</Dropdown.Button>
-								<Dropdown.Menu
-									aria-label="TimeActions"
-									selectionMode="single"
-									selectedKeys={timeSort}
-									onSelectionChange={(key) => setTimeSort(key)}
-								>
-									<Dropdown.Item key="ascending">Ascending</Dropdown.Item>
-									<Dropdown.Item key="descending">Descending</Dropdown.Item>
-								</Dropdown.Menu>
-							</Dropdown>
-						</ListItem>
-						<ListItem sx={{ justifyContent: "center" }}>
-							<Dropdown>
-								<Dropdown.Button
-									flat
-									css={{
-										width: "250px",
-										backgroundColor: "#fff",
-										borderRadius: "10000px",
-										border: "2px solid #ffa12e",
-										color: "#202020",
-										fontSize: 16,
-										"@media only screen and (max-width: 672px)": {
-											width: "80%",
-											"& span": {
-												// display: "none",
-											},
-										},
-									}}
-								>
-									<Filter size={20} />
-									<span
-										style={{
-											marginLeft: "10px",
-											"@media only screen and (max-width: 672px)": {
-												marginLeft: "0px",
-											},
-										}}
-									>
-										Upside Left
-									</span>
-								</Dropdown.Button>
-								<Dropdown.Menu
-									aria-label="UpsideActions"
-									selectionMode="single"
-									selectedKeys={upsideSort}
-									onSelectionChange={setUpsideSort}
-								>
-									<Dropdown.Item key="ascending">Ascending</Dropdown.Item>
-									<Dropdown.Item key="descending">Descending</Dropdown.Item>
-								</Dropdown.Menu>
-							</Dropdown>
-						</ListItem>
-					</List>
-				</SwipeableDrawer>
-				{/* <Dropdown>
-					<Dropdown.Button
-						flat
-						css={{
-							height: "70px",
-							width: "250px",
-							backgroundColor: "#fff",
-							borderRadius: "10000px",
-							border: "2px solid #ffa12e",
-							color: "#202020",
-							fontSize: 16,
-							"@media only screen and (max-width: 672px)": {
-								width: "auto",
-								"& span": {
-									display: "none",
+								maxWidth: {
+									xs: "100%",
+									sm: "20%", 
 								},
 							},
 						}}
 					>
-						<FaIndustry size={20} style={{ marginRight: "0px" }} />
-						<span
-							style={{
-								marginLeft: "10px",
-								"@media only screen and (maxWidth: 600px)": {
-									marginLeft: "0px",
-								},
-							}}
-						>
-							Industries
-						</span>
-					</Dropdown.Button>
-					<Dropdown.Menu
-						selectionMode="multiple"
-						selectedKeys={selectedIndustries}
-						onSelectionChange={(keys) => setSelectedIndustries(keys)}
-					>
-						{industries.map((industry) => (
-							<Dropdown.Item
-								key={industry}
-								onClick={() => handleIndustrySelection(industry)}
+						<List>
+							<ListItemButton
+								onClick={() => {
+									toggleDrawer();
+								}}
+								sx={{
+									justifyContent: "end",
+									"&:hover": {
+										backgroundColor: "#fff",
+									},
+								}}
 							>
-								{industry}
-							</Dropdown.Item>
-						))}
-					</Dropdown.Menu>
-				</Dropdown>
-				<Dropdown>
-					<Dropdown.Button
-						flat
-						css={{
-							height: "70px",
-							width: "250px",
-							backgroundColor: "#fff",
-							borderRadius: "10000px",
-							border: "2px solid #ffa12e",
-							color: "#202020",
-							fontSize: 16,
-							"@media only screen and (max-width: 672px)": {
-								width: "auto",
-								"& span": {
-									display: "none",
-								},
-							},
-						}}
-					>
-						<AiOutlineFieldTime size={22} style={{ marginRight: "0px" }} />
-						<span
-							style={{
-								marginLeft: "10px",
-								"@media only screen and (max-width: 672px)": {
-									marginLeft: "0px",
-								},
-							}}
-						>
-							Time Left
-						</span>
-					</Dropdown.Button>
-					<Dropdown.Menu
-						aria-label="TimeActions"
-						selectionMode="single"
-						selectedKeys={timeSort}
-						onSelectionChange={(key) => setTimeSort(key)}
-					>
-						<Dropdown.Item key="ascending">Ascending</Dropdown.Item>
-						<Dropdown.Item key="descending">Descending</Dropdown.Item>
-					</Dropdown.Menu>
-				</Dropdown>
-				<Dropdown>
-					<Dropdown.Button
-						flat
-						css={{
-							height: "70px",
-							width: "250px",
-							backgroundColor: "#fff",
-							borderRadius: "10000px",
-							border: "2px solid #ffa12e",
-							color: "#202020",
-							fontSize: 16,
-							"@media only screen and (max-width: 672px)": {
-								width: "auto",
-								"& span": {
-									display: "none",
-								},
-							},
-						}}
-					>
-						<Filter size={20} />
-						<span
-							style={{
-								marginLeft: "10px",
-								"@media only screen and (max-width: 672px)": {
-									marginLeft: "0px",
-								},
-							}}
-						>
-							Upside Left
-						</span>
-					</Dropdown.Button>
-					<Dropdown.Menu
-						aria-label="UpsideActions"
-						selectionMode="single"
-						selectedKeys={upsideSort}
-						onSelectionChange={setUpsideSort}
-					>
-						<Dropdown.Item key="ascending">Ascending</Dropdown.Item>
-						<Dropdown.Item key="descending">Descending</Dropdown.Item>
-					</Dropdown.Menu>
-				</Dropdown> */}
-			</Box>
+								<CloseIcon />
+							</ListItemButton>
+							<ListItem sx={{ justifyContent: "center" }}>
+								<Dropdown>
+									<Dropdown.Button
+										flat
+										css={{
+											// height: "70px",
+											// marginLeft: "20px",
+											width: "250px",
+											backgroundColor: "#fff",
+											borderRadius: "10000px",
+											border: "2px solid #ffa12e",
+											color: "#202020",
+											fontSize: 16,
+											"@media only screen and (max-width: 768px)": {
+												width: "70%",
+												"& span": {
+													// display: "none",
+												},
+											},
+										}}
+									>
+										<FaIndustry size={20} style={{ marginRight: "0px" }} />
+										<span
+											style={{
+												marginLeft: "10px",
+												"@media only screen and (maxWidth: 600px)": {
+													marginLeft: "0px",
+												},
+											}}
+										>
+											Industries
+										</span>
+									</Dropdown.Button>
+									<Dropdown.Menu
+										selectionMode="multiple"
+										selectedKeys={selectedIndustries}
+										onSelectionChange={(keys) => setSelectedIndustries(keys)}
+									>
+										{industries.map((industry) => (
+											<Dropdown.Item
+												key={industry}
+												onClick={() => handleIndustrySelection(industry)}
+											>
+												{industry}
+											</Dropdown.Item>
+										))}
+									</Dropdown.Menu>
+								</Dropdown>
+							</ListItem>
+							<ListItem sx={{ justifyContent: "center" }}>
+								<Dropdown>
+									<Dropdown.Button
+										flat
+										css={{
+											width: "250px",
+											backgroundColor: "#fff",
+											borderRadius: "10000px",
+											border: "2px solid #ffa12e",
+											color: "#202020",
+											fontSize: 16,
+											"@media only screen and (max-width: 768px)": {
+												width: "70%",
+												"& span": {
+													// display: "none",
+												},
+											},
+										}}
+									>
+										<AiOutlineFieldTime
+											size={22}
+											style={{ marginRight: "0px" }}
+										/>
+										<span
+											style={{
+												marginLeft: "10px",
+												"@media only screen and (max-width: 768px)": {
+													marginLeft: "0px",
+												},
+											}}
+										>
+											Time Left
+										</span>
+									</Dropdown.Button>
+									<Dropdown.Menu
+										aria-label="TimeActions"
+										selectionMode="single"
+										selectedKeys={timeSort}
+										onSelectionChange={(key) => setTimeSort(key)}
+									>
+										<Dropdown.Item key="ascending">Earliest First</Dropdown.Item>
+										<Dropdown.Item key="descending">Latest First</Dropdown.Item>
+									</Dropdown.Menu>
+								</Dropdown>
+							</ListItem>
+							<ListItem sx={{ justifyContent: "center" }}>
+								<Dropdown>
+									<Dropdown.Button
+										flat
+										css={{
+											width: "250px",
+											backgroundColor: "#fff",
+											borderRadius: "10000px",
+											border: "2px solid #ffa12e",
+											color: "#202020",
+											fontSize: 16,
+											"@media only screen and (max-width: 768px)": {
+												width: "70%",
+												"& span": {
+													// display: "none",
+												},
+											},
+										}}
+									>
+										<Filter size={20} />
+										<span
+											style={{
+												marginLeft: "10px",
+												"@media only screen and (max-width: 768px)": {
+													marginLeft: "0px",
+												},
+											}}
+										>
+											Upside Left
+										</span>
+									</Dropdown.Button>
+									<Dropdown.Menu
+										aria-label="UpsideActions"
+										selectionMode="single"
+										selectedKeys={upsideSort}
+										onSelectionChange={setUpsideSort}
+									>
+										<Dropdown.Item key="ascending">Lowest to Highest</Dropdown.Item>
+										<Dropdown.Item key="descending">Highest To Lowest</Dropdown.Item>
+									</Dropdown.Menu>
+								</Dropdown>
+							</ListItem>
+						</List>
+					</SwipeableDrawer>
+				</Box>
+			) : (
+				<></>
+			)}
 			<Box
 				sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
 			>
@@ -772,9 +629,10 @@ const StockCard = () => {
 									paddingRight: "15px",
 									backgroundImage:
 										"linear-gradient(to top , #105B54, #0F734D, #0F734D)",
-									"@media only screen and (max-width: 672px)": {
+									"@media only screen and (max-width: 768px)": {
 										order: 1,
-										width: "48.5vw",
+										width: "95vw",
+										maxWidth: "320px",
 									},
 								}}
 							>
@@ -799,7 +657,6 @@ const StockCard = () => {
 										alignSelf: "start",
 										marginTop: "20px",
 										marginBottom: "10px",
-										// marginLeft: "5%",
 										display: "flex",
 										flexDirection: "row",
 										alignItems: "center",
@@ -830,9 +687,7 @@ const StockCard = () => {
 									sx={{
 										width: "100%",
 										alignSelf: "start",
-										// marginTop: "20px",
 										marginBottom: "10px",
-										// marginLeft: "5%",
 										display: "flex",
 										flexDirection: "row",
 										alignItems: "center",
@@ -917,7 +772,7 @@ const StockCard = () => {
 												"linear-gradient(to top , #FF9D28, #ffa736)",
 										},
 									}}
-									// onClick={handleLoginOrSub}
+									onPress={handleFirstCard}
 								>
 									<Text b color="#FFF" size={18}>
 										Subscribe Now
@@ -947,6 +802,38 @@ const StockCard = () => {
 									inclusive of taxes
 								</Text>
 							</Card>
+							<Modal
+								// width="1200px"
+								open={showLoginModal}
+								onClose={handleCloseLoginModal}
+							>
+								<Box
+									sx={{
+										display: "flex",
+										flexDirection: "row",
+										width: "100%",
+										justifyContent: "space-between",
+										alignItems: "center",
+									}}
+								>
+									<img src="kmk-k.png" style={{ maxWidth: "260px" }} />
+									<IconButton
+										sx={{
+											width: "40px",
+											"&:hover": { background: "#fff" },
+											// alignSelf: "end",
+											right: "20px",
+										}}
+										onClick={() => handleCloseLoginModal()}
+									>
+										<CloseIcon sx={{ color: "#e81123" }} />
+									</IconButton>
+								</Box>
+
+								<Modal.Body>
+									<Login />
+								</Modal.Body>
+							</Modal>
 						</Grid>
 					)}
 					{filteredStocks.map((stock, index) => (
@@ -957,8 +844,6 @@ const StockCard = () => {
 							sm={"auto"}
 							md={"auto"}
 							lg={"auto"}
-							// alignItems={'start'}
-							// style={{ alignItems: "center" }}
 						>
 							<ReactCardFlip
 								isFlipped={flipStates[index]}
@@ -980,10 +865,11 @@ const StockCard = () => {
 										marginBottom: "0px",
 										boxShadow: "none",
 										filter: "none",
-										"@media only screen and (max-width: 672px)": {
-											width: "48.5vw",
+										"@media only screen and (max-width: 768px)": {
+											width: "95vw",
+											maxWidth: "320px",
 											height: "570px",
-											borderRadius: "25px",
+											borderRadius: "35px",
 										},
 									}}
 								>
@@ -999,7 +885,7 @@ const StockCard = () => {
 											display: "flex",
 											flexDirection: "column",
 											alignItems: "center",
-											"@media only screen and (max-width: 672px)": {
+											"@media only screen and (max-width: 768px)": {
 												marginLeft: "5px",
 												marginRight: "5px",
 											},
@@ -1045,13 +931,15 @@ const StockCard = () => {
 													maxWidth: "100%",
 													textAlign: "center",
 													lineHeight: 1.2,
-													"@media only screen and (max-width: 672px)": {
+													"@media only screen and (max-width: 768px)": {
 														fontSize: 18,
 													},
 												}}
 											>
 												{stock.stock_name.length > 20 ? (
-													<Marquee>{stock.stock_name}</Marquee>
+													<Marquee style={{ marginRight: "20px" }}>
+														{stock.stock_name}
+													</Marquee>
 												) : (
 													<>{stock.stock_name}</>
 												)}
@@ -1069,7 +957,7 @@ const StockCard = () => {
 												justifyContent: "center",
 												paddingTop: "20px",
 												paddingBottom: "20px",
-												"@media only screen and (max-width: 672px)": {
+												"@media only screen and (max-width: 768px)": {
 													width: "100%",
 													paddingTop: "15px",
 													paddingBottom: "15px",
@@ -1082,7 +970,7 @@ const StockCard = () => {
 												color="#fff"
 												css={{
 													lineHeight: 1.5,
-													"@media only screen and (max-width: 672px)": {
+													"@media only screen and (max-width: 768px)": {
 														fontSize: 17,
 													},
 												}}
@@ -1099,7 +987,7 @@ const StockCard = () => {
 														lineHeight: 1,
 														marginLeft: "3px",
 														marginRight: "3px",
-														"@media only screen and (max-width: 672px)": {
+														"@media only screen and (max-width: 768px)": {
 															fontSize: 40,
 														},
 													}}
@@ -1111,7 +999,7 @@ const StockCard = () => {
 													style={{
 														fontSize: 25,
 														color: "#FFF",
-														"@media only screen and (max-width: 672px)": {
+														"@media only screen and (max-width: 768px)": {
 															fontSize: 10,
 														},
 													}}
@@ -1119,65 +1007,12 @@ const StockCard = () => {
 													%
 												</span>
 											</div>
-											{/*	<Box*/}
-											{/*		sx={{*/}
-											{/*			display: "flex",*/}
-											{/*			flexDirection: "column",*/}
-											{/*			alignItems: "center",*/}
-											{/*			fontSize: 35,*/}
-											{/*			color: "#fff",*/}
-											{/*			marginTop: "5px",*/}
-											{/*		}}*/}
-											{/*	>*/}
-											{/*		<Text b size={20} color="#fff" css={{ lineHeight: 1 }}>*/}
-											{/*			Target Price*/}
-											{/*		</Text>*/}
-											{/*		<div*/}
-											{/*			style={{*/}
-											{/*				display: "flex",*/}
-											{/*				flexDirection: "row",*/}
-											{/*				alignItems: "center",*/}
-											{/*				lineHeight: 1.2,*/}
-											{/*				marginTop: "5px",*/}
-											{/*			}}*/}
-											{/*		>*/}
-											{/*			<span style={{ fontSize: 20, opacity: 0.75 }}>₹</span>*/}
-											{/*			{`${stock.target_price}`}*/}
-											{/*		</div>*/}
-											{/*	</Box>*/}
 										</Box>
-										{/* <Box
-										sx={{
-											width: "90%",
-											display: "flex",
-											alignItems: "center",
-											justifyContent: "center",
-											pt: 1,
-											pb: 1,
-											marginTop: 2,
-											mb: "20px",
-											backgroundImage:
-												"linear-gradient(to top , #FF9D28, #ffa736)",
-											borderRadius: "10000px",
-											"@media only screen and (max-width: 672px)": {
-												width: "100%",
-											},
-										}}
-									>
-										<SpeedIcon color="#fff" style={{ fontSize: 20 }} />
-										<Text
-											b
-											style={{ marginLeft: 5, color: "Black", lineHeight: 1 }}
-											size={14}
-										>
-											{`${stock.risk} Risk` || <Loading /> || "N/A"}
-										</Text>
-									</Box> */}
 										<Box
 											sx={{
 												mt: "20px",
 												width: "90%",
-												"@media only screen and (max-width: 672px)": {
+												"@media only screen and (max-width: 768px)": {
 													width: "100%",
 												},
 											}}
@@ -1196,7 +1031,7 @@ const StockCard = () => {
 														b
 														css={{
 															lineHeight: 1.1,
-															"@media only screen and (max-width: 672px)": {
+															"@media only screen and (max-width: 768px)": {
 																fontSize: 13,
 															},
 														}}
@@ -1209,7 +1044,7 @@ const StockCard = () => {
 														size={15}
 														css={{
 															lineHeight: 1.1,
-															"@media only screen and (max-width: 672px)": {
+															"@media only screen and (max-width: 768px)": {
 																fontSize: 13,
 															},
 														}}
@@ -1222,7 +1057,7 @@ const StockCard = () => {
 													css={{
 														flex: 1,
 														textAlign: "right",
-														"@media only screen and (max-width: 672px)": {
+														"@media only screen and (max-width: 768px)": {
 															fontSize: 20,
 														},
 													}}
@@ -1260,7 +1095,7 @@ const StockCard = () => {
 															b
 															css={{
 																lineHeight: 1.1,
-																"@media only screen and (max-width: 672px)": {
+																"@media only screen and (max-width: 768px)": {
 																	fontSize: 13,
 																},
 															}}
@@ -1273,7 +1108,7 @@ const StockCard = () => {
 															size={15}
 															css={{
 																lineHeight: 1.1,
-																"@media only screen and (max-width: 672px)": {
+																"@media only screen and (max-width: 768px)": {
 																	fontSize: 13,
 																},
 															}}
@@ -1286,14 +1121,13 @@ const StockCard = () => {
 														css={{
 															flex: 1,
 															textAlign: "right",
-															"@media only screen and (max-width: 672px)": {
+															"@media only screen and (max-width: 768px)": {
 																fontSize: 20,
 															},
 														}}
 														size={22}
 													>
 														{`${stock.live_price}` || <Loading /> || "N/A"}
-														{/* {`100000.00`} */}
 													</Text>
 												</div>
 												<Divider
@@ -1318,7 +1152,7 @@ const StockCard = () => {
 															b
 															css={{
 																lineHeight: 1.1,
-																"@media only screen and (max-width: 672px)": {
+																"@media only screen and (max-width: 768px)": {
 																	fontSize: 13,
 																},
 															}}
@@ -1331,7 +1165,7 @@ const StockCard = () => {
 															size={15}
 															css={{
 																lineHeight: 1.1,
-																"@media only screen and (max-width: 672px)": {
+																"@media only screen and (max-width: 768px)": {
 																	fontSize: 13,
 																},
 															}}
@@ -1344,7 +1178,7 @@ const StockCard = () => {
 														css={{
 															flex: 1,
 															textAlign: "right",
-															"@media only screen and (max-width: 672px)": {
+															"@media only screen and (max-width: 768px)": {
 																fontSize: 20,
 															},
 														}}
@@ -1376,7 +1210,7 @@ const StockCard = () => {
 															b
 															css={{
 																lineHeight: 1.1,
-																"@media only screen and (max-width: 672px)": {
+																"@media only screen and (max-width: 768px)": {
 																	fontSize: 13,
 																},
 															}}
@@ -1389,7 +1223,7 @@ const StockCard = () => {
 															size={15}
 															css={{
 																lineHeight: 1.1,
-																"@media only screen and (max-width: 672px)": {
+																"@media only screen and (max-width: 768px)": {
 																	fontSize: 13,
 																},
 															}}
@@ -1402,7 +1236,7 @@ const StockCard = () => {
 														css={{
 															flex: 1,
 															textAlign: "right",
-															"@media only screen and (max-width: 672px)": {
+															"@media only screen and (max-width: 768px)": {
 																fontSize: 20,
 															},
 														}}
@@ -1419,7 +1253,7 @@ const StockCard = () => {
 											bottom: "5px",
 											width: "85%",
 											marginBottom: "25px",
-											"@media only screen and (max-width: 672px)": {
+											"@media only screen and (max-width: 768px)": {
 												width: "90%",
 												justifyContent: "center",
 											},
@@ -1430,7 +1264,6 @@ const StockCard = () => {
 											onPress={() => handleClick(index)}
 											css={{
 												alignSelf: "center",
-												// bottom: "25px",
 												width: "100%",
 												borderRadius: "10000px",
 												backgroundImage:
@@ -1460,10 +1293,11 @@ const StockCard = () => {
 										border: "2px solid",
 										borderColor: "#ffa12e",
 										marginBottom: "20px",
-										"@media only screen and (max-width: 672px)": {
-											width: "185px",
+										"@media only screen and (max-width: 768px)": {
+											width: "95vw",
+											maxWidth: "320px",
 											height: "570px",
-											borderRadius: "25px",
+											borderRadius: "35px",
 										},
 									}}
 								>
@@ -1489,7 +1323,7 @@ const StockCard = () => {
 												backgroundColor: "#fff",
 												marginBottom: "15px",
 												width: "90%",
-												"@media only screen and (max-width: 672px)": {
+												"@media only screen and (max-width: 768px)": {
 													width: "100%",
 												},
 											}}
@@ -1541,7 +1375,7 @@ const StockCard = () => {
 												justifyContent: "center",
 												paddingTop: "20px",
 												paddingBottom: "20px",
-												"@media only screen and (max-width: 672px)": {
+												"@media only screen and (max-width: 768px)": {
 													width: "100%",
 												},
 											}}
@@ -1590,7 +1424,7 @@ const StockCard = () => {
 												size={20}
 												color="#125a54"
 												css={{
-													"@media only screen and (max-width: 672px)": {
+													"@media only screen and (max-width: 768px)": {
 														fontSize: 18,
 													},
 												}}
@@ -1657,7 +1491,7 @@ const StockCard = () => {
 												borderRadius: "10000px",
 												backgroundImage:
 													"linear-gradient(to top , #FF9D28, #ffa736)",
-												"@media only screen and (max-width: 672px)": {
+												"@media only screen and (max-width: 768px)": {
 													top: "125px",
 													lineHeight: 1,
 													height: "30px",
@@ -1686,7 +1520,7 @@ const StockCard = () => {
 													sx={{
 														height: "700px",
 														width: "100%",
-														"@media only screen and (max-width: 672px)": {
+														"@media only screen and (max-width: 768px)": {
 															// width: '500px',
 															// height: '80%',
 														},
@@ -1750,10 +1584,11 @@ const StockCard = () => {
 										marginBottom: "20px",
 										boxShadow: "none",
 										filter: "none",
-										"@media only screen and (max-width: 672px)": {
-											width: "170px",
+										"@media only screen and (max-width: 768px)": {
+											width: "95vw",
+											maxWidth: "320px",
 											height: "570px",
-											borderRadius: "25px",
+											borderRadius: "35px",
 										},
 									}}
 								>
@@ -1779,7 +1614,7 @@ const StockCard = () => {
 												backgroundColor: "#fff",
 												marginBottom: "15px",
 												width: "90%",
-												"@media only screen and (max-width: 672px)": {
+												"@media only screen and (max-width: 768px)": {
 													width: "100%",
 												},
 											}}
@@ -1815,7 +1650,7 @@ const StockCard = () => {
 													lineHeight: 1.2,
 													position: "relative",
 													zIndex: 0,
-													"@media only screen and (max-width: 672px)": {
+													"@media only screen and (max-width: 768px)": {
 														fontSize: 20,
 													},
 												}}
@@ -1833,7 +1668,7 @@ const StockCard = () => {
 													zIndex: 0,
 													WebkitBackdropFilter: "blur(8px)",
 													margin: "15px",
-													"@media only screen and (max-width: 672px)": {
+													"@media only screen and (max-width: 768px)": {
 														margin: "0px",
 													},
 												}}
@@ -1852,7 +1687,7 @@ const StockCard = () => {
 												justifyContent: "center",
 												paddingTop: "20px",
 												paddingBottom: "20px",
-												"@media only screen and (max-width: 672px)": {
+												"@media only screen and (max-width: 768px)": {
 													width: "100%",
 												},
 											}}
@@ -1877,7 +1712,7 @@ const StockCard = () => {
 														lineHeight: 1,
 														marginLeft: "3px",
 														marginRight: "3px",
-														"@media only screen and (max-width: 672px)": {
+														"@media only screen and (max-width: 768px)": {
 															fontSize: 30,
 														},
 													}}
@@ -1887,48 +1722,6 @@ const StockCard = () => {
 												<span style={{ fontSize: 25, color: "#FFF" }}>%</span>
 											</div>
 										</Box>
-										{/*<Box*/}
-										{/*	sx={{*/}
-										{/*		zIndex: 1,*/}
-										{/*		width: "90%",*/}
-										{/*		backgroundImage:*/}
-										{/*			"linear-gradient(to top , #106052, #0f734d)",*/}
-										{/*		borderRadius: "15px",*/}
-										{/*		display: "flex",*/}
-										{/*		flexDirection: "column",*/}
-										{/*		alignItems: "center",*/}
-										{/*		justifyContent: "center",*/}
-										{/*		paddingTop: "10px",*/}
-										{/*		paddingBottom: "15px",*/}
-										{/*		"@media only screen and (max-width: 672px)": {*/}
-										{/*			width: "100%",*/}
-										{/*		},*/}
-										{/*	}}*/}
-										{/*>*/}
-										{/*	<Text b size={20} color="#fff" css={{ lineHeight: 1.5 }}>*/}
-										{/*		Upside Left*/}
-										{/*	</Text>*/}
-										{/*	<div>*/}
-										{/*		<FaRegArrowAltCircleUp size={25} color="#fff" />*/}
-										{/*		<Text*/}
-										{/*			b*/}
-										{/*			size={40}*/}
-										{/*			color="#fff"*/}
-										{/*			css={{*/}
-										{/*				lineHeight: 1,*/}
-										{/*				marginLeft: 10,*/}
-										{/*				"@media only screen and (max-width: 672px)": {*/}
-										{/*					fontSize: 33,*/}
-										{/*				},*/}
-										{/*			}}*/}
-										{/*		>*/}
-										{/*			/!* {`${getRandomNumber(10, Math.round(stock.upside_left))}%`} *!/*/}
-										{/*			/!* {`${Math.floor(Math.random() * (100 - 10 + 1)) + 10}%`} *!/*/}
-										{/*			/!* {`${getRandomNumber(10, 100)}%`} *!/*/}
-										{/*			{`${number}%`}*/}
-										{/*		</Text>*/}
-										{/*	</div>*/}
-										{/*</Box>*/}
 										<Box
 											sx={{
 												// zIndex: 1,
@@ -1943,7 +1736,7 @@ const StockCard = () => {
 												backgroundImage:
 													"linear-gradient(to top , #FF9D28, #ffa736)",
 												borderRadius: "10000px",
-												"@media only screen and (max-width: 672px)": {
+												"@media only screen and (max-width: 768px)": {
 													width: "100%",
 												},
 											}}
@@ -1979,7 +1772,7 @@ const StockCard = () => {
 															b
 															css={{
 																lineHeight: 1.1,
-																"@media only screen and (max-width: 672px)": {
+																"@media only screen and (max-width: 768px)": {
 																	fontSize: 13,
 																},
 															}}
@@ -1992,7 +1785,7 @@ const StockCard = () => {
 															size={15}
 															css={{
 																lineHeight: 1.1,
-																"@media only screen and (max-width: 672px)": {
+																"@media only screen and (max-width: 768px)": {
 																	fontSize: 13,
 																},
 															}}
@@ -2005,7 +1798,7 @@ const StockCard = () => {
 														css={{
 															flex: 1,
 															textAlign: "right",
-															"@media only screen and (max-width: 672px)": {
+															"@media only screen and (max-width: 768px)": {
 																fontSize: 20,
 															},
 														}}
@@ -2036,7 +1829,7 @@ const StockCard = () => {
 															b
 															css={{
 																lineHeight: 1.1,
-																"@media only screen and (max-width: 672px)": {
+																"@media only screen and (max-width: 768px)": {
 																	fontSize: 13,
 																},
 															}}
@@ -2049,7 +1842,7 @@ const StockCard = () => {
 															size={15}
 															css={{
 																lineHeight: 1.1,
-																"@media only screen and (max-width: 672px)": {
+																"@media only screen and (max-width: 768px)": {
 																	fontSize: 13,
 																},
 															}}
@@ -2062,7 +1855,7 @@ const StockCard = () => {
 														css={{
 															flex: 1,
 															textAlign: "right",
-															"@media only screen and (max-width: 672px)": {
+															"@media only screen and (max-width: 768px)": {
 																fontSize: 20,
 															},
 														}}
@@ -2091,7 +1884,7 @@ const StockCard = () => {
 													>
 														<Button
 															on
-															onPress={() => handleSubscribe()}
+															onPress={handleFirstCard}
 															css={{ backgroundColor: "transparent" }}
 														>
 															<Text b size={20}>

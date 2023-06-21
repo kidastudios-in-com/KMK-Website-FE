@@ -86,7 +86,7 @@ export default function App() {
 					// ".nextui-c-hhqfap-idKuEpT-css .nextui-c-dGYPDG": {
 					// 	 height: "100%",
 					// },
-					"@media only screen and (max-width: 672px)": {
+					"@media only screen and (max-width: 764px)": {
 						// w: "195px",
 						height: "80px",
 						// left: 15,
@@ -94,33 +94,34 @@ export default function App() {
 				}}
 			>
 				<Navbar.Brand
-				css={{
-					// w: "350px",
-					zIndex: 99,
-					"@media only screen and (max-width: 600px)": {
-						// w: "195px",
-						// h: '55px',
-						h: "60px",
-						w: "122%",
-						left: 15,
-					},
-					// position: "fixed",
-				}}
-			>
-				<img
-					onClick={() => handleHome()}
-					// src={
-					// 	activeLink === "whyUs"
-					// 		? "./kamayakya-logo-white.png"
-					// 		: "./kmk-logo.png"
-					// }
-					src="./kmk-logo (1).png"
-					alt="logo"
-					width="220px"
-					height="60px"
-					// height="100%"
-				/>
-			</Navbar.Brand>
+					css={{
+						// w: "350px",
+						zIndex: 99,
+						"@media only screen and (max-width: 764px)": {
+							// w: "195px",
+							// h: '55px',
+							h: "50px",
+							// w: "122%",
+							left: 15,
+						},
+						// position: "fixed",
+					}}
+				>
+					<img
+						onClick={() => handleHome()}
+						// src={
+						// 	activeLink === "whyUs"
+						// 		? "./kamayakya-logo-white.png"
+						// 		: "./kmk-logo.png"
+						// }
+						src="./kmk-logo (1).png"
+						alt="logo"
+						// width="220px"
+						// height="60px"
+						// height="100%"
+						className="logoNavbar"
+					/>
+				</Navbar.Brand>
 				{/* <Navbar.Toggle
 					aria-label="toggle navigation"
 					showIn="md"
@@ -169,7 +170,7 @@ export default function App() {
 							onClick={() => {
 								toggleDrawer();
 							}}
-							sx={{ justifyContent: 'end'}}
+							sx={{ justifyContent: "end" }}
 						>
 							<CloseIcon />
 						</ListItemButton>
@@ -316,7 +317,17 @@ export default function App() {
 							</Button>
 						</Navbar.Item>
 					)}
-					<Modal width="1200px" open={showModal} onClose={handleCloseModal}>
+					<Modal
+						// width="30vw"
+						open={showModal}
+						onClose={handleCloseModal}
+						css={{
+							marginLeft: "2.5vw",
+							"@media only screen and (max-width: 764px)": {
+								width: "95vw",
+							},
+						}}
+					>
 						<Box
 							sx={{
 								display: "flex",
