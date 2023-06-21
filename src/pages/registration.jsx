@@ -1,4 +1,4 @@
-import { SpinTheWheel } from "@/components/SpinTheWheel";
+// import { SpinTheWheel } from "@/components/SpinTheWheel";
 import { Button, Card, Input, Modal, Text, Loading } from "@nextui-org/react";
 import { Alert } from "@mui/material";
 import React, { useState, useEffect } from "react";

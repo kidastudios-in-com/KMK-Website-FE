@@ -292,7 +292,7 @@ const HomePage = () => {
 							>
 								<Dropdown.Item key="SampleReport.pdf">Half Page Report</Dropdown.Item>
 								<Dropdown.Item key="FullPageReport.pdf">Full Page Report</Dropdown.Item>
-								<Dropdown.Item key="Test1.pdf">Detailed Report</Dropdown.Item>
+								<Dropdown.Item key="DetailedReport.pdf">Detailed Report</Dropdown.Item>
 							</Dropdown.Menu>
 						</Dropdown>
 						<iframe
@@ -365,7 +365,7 @@ const HomePage = () => {
 						</Text>
 					</Button>
 					<Modal
-						width="1200px"
+						// width="1200px"
 						open={showLoginModal}
 						onClose={handleCloseLoginModal}
 					>
