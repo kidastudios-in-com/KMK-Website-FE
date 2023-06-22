@@ -227,6 +227,9 @@ const NavBar2 = () => {
 						<Dropdown.Item key="settings" withDivider>
 							Settings
 						</Dropdown.Item>
+						{/* <Dropdown.Item key="purchase" withDivider color="warning">
+							Subscribe
+						</Dropdown.Item> */}
 						<Dropdown.Item key="handleLogoutClick" withDivider color="error">
 							Log Out
 						</Dropdown.Item>

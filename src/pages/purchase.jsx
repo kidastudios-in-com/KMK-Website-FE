@@ -3,7 +3,10 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Button, Text } from "@nextui-org/react";
 import { GET_PRODUCT, PAYMENT_URL } from "./api/URLs";
 import { Box } from "@mui/material";
-import { Elements } from '@stripe/react-stripe-js';
+import { Elements } from "@stripe/react-stripe-js";
+import NavBar2 from "@/components/Navbar2";
+import FaqsNew from '../pages/screens/FaqsNew';
+import Footer from '../pages/screens/Footer';
 
 const stripePromise = loadStripe(
 	"pk_test_51NIAaOSI2jzUvqLXPBiVnCIeshgiVn9SeFY3oGrRnYKSLyezrspBuPItJWxuAboUWCGYZ7dCpT66crOe26Fe2L8Y00LoX7UM4Z"
@@ -34,39 +37,34 @@ export default function PreviewPage() {
 		};
 		handleGetProduct();
 	}, []);
+	const refreshToken = localStorage.getItem("refresh");
 
-	const handlePayButtonClick = async () => {
+	const handleCheckoutSubmit = async (event) => {
+		event.preventDefault();
 		try {
-			console.log("api call");
-			console.log(productID);
-			const refreshToken = localStorage.getItem("refresh");
 			const response = await fetch(PAYMENT_URL, {
 				method: "POST",
 				headers: {
-					// "Content-Type": "application/json",
-					Authorization: `token ${refreshToken}`,
+					// "Content-Type": "application/x-www-form-urlencoded",
+					"Content-Type": "application/json",
+					Authorization: `token ${refreshToken}`, // Set the Authorization header with the refresh token
 				},
-				body: JSON.stringify({ product_id : productID }),
-				// Add any necessary headers or body to the request
+				body: JSON.stringify({ product_id: productID }),
 			});
-
+			// Process the response
 			if (response.ok) {
+				console.log(response);
 				const data = await response.json();
-				console, log(response);
 				console.log(data);
-
-				if (error) {
-					// Handle any error during redirection
-					console.error(error);
-				}
+				console.log(data.session_url);
+				window.location.href = data.session_url;
 			} else {
-				// Handle API call error
-				console.error("API call failed");
+				// Handle error response
+				console.log(response);
 			}
 		} catch (error) {
-			// Handle any other error
-			console.error(error);
-			console.log("no call");
+			// Handle network or other errors
+			console.log(error);
 		}
 	};
 
@@ -82,11 +80,13 @@ export default function PreviewPage() {
 				flexDirection: "column",
 				justifyContent: "center",
 				alignItems: "center",
-				paddingTop: "50px",
+				background: "#fff",
 			}}
 		>
-			{/* <Elements stripe={stripePromise} > */}
-			<form
+			<NavBar2 />
+			<Box></Box>
+			<Elements stripe={stripePromise}>
+				{/* <form
 				onSubmit={handlePayButtonClick}
 				style={{
 					display: "flex",
@@ -116,12 +116,39 @@ export default function PreviewPage() {
 						}
 					`}
 				</style>
-				{/* <Button onPress={handleGetProduct} css={{ marginTop: "10px" }}>
+				<Button onPress={handleGetProduct} css={{ marginTop: "10px" }}>
 					Get Product ID
-				</Button> */}
-			</form>
-			{/* </Elements> */}
-			<Box>Stipe ID: {productID}</Box>
+				</Button>
+			</form> */}
+
+				<img
+					src="kmk-logo (1).png"
+					// className="image"
+					height={"60px"}
+					style={{ marginBottom: "20px", marginTop: '20px' }}
+				></img>
+				<Text b size={20}>
+					Start Your Subscription with KamayaKya!
+				</Text>
+				<form onSubmit={handleCheckoutSubmit}>
+					<Button
+						type="submit"
+						css={{
+							fontSize: 18,
+							marginTop: "15px",
+							marginBottom: "20px",
+							borderRadius: '20px',
+							backgroundImage:
+								"linear-gradient(to top , #105B54, #0F734D, #0F734D)",
+						}}
+					>
+						Subscribe
+					</Button>
+				</form>
+			</Elements>
+			{/* <Box>Stipe ID: {productID}</Box> */}
+			<FaqsNew />
+			<Footer />
 		</section>
 	);
 }
