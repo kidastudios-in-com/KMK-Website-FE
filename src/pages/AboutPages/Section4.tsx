@@ -5,7 +5,14 @@ import React from "react";
 
 const Section4 = () => {
 	return (
-		<Box sx={{ display: "flex", justifyContent: "center", paddingBottom: '50px' }}>
+		<Box
+			sx={{
+				display: "flex",
+				justifyContent: "center",
+				paddingBottom: "50px",
+				background: "#fff",
+			}}
+		>
 			<Box
 				sx={{
 					display: "flex",
@@ -47,8 +54,8 @@ const Section4 = () => {
 						b
 						size={30}
 						css={{
-                            width: '95%',
-                            textAlign: 'center',
+							width: "95%",
+							textAlign: "center",
 							marginTop: "30px",
 							marginBottom: "30px",
 							"@media only screen and (max-width: 672px)": {
@@ -63,8 +70,8 @@ const Section4 = () => {
 						b
 						size={22}
 						css={{
-							width: '95%',
-                            textAlign: 'center',
+							width: "95%",
+							textAlign: "center",
 							lineHeight: 1.2,
 							"@media only screen and (max-width: 672px)": {
 								lineHeight: 1.2,
@@ -204,7 +211,7 @@ const Section4 = () => {
 						b
 						size={22}
 						css={{
-							width: '90%',
+							width: "90%",
 							textAlign: "center",
 							lineHeight: 1.2,
 							opacity: 0.75,
@@ -281,8 +288,8 @@ const Section4 = () => {
 						b
 						size={30}
 						css={{
-                            width: '95%',
-                            textAlign: 'center',
+							width: "95%",
+							textAlign: "center",
 							marginTop: "30px",
 							marginBottom: "30px",
 							"@media only screen and (max-width: 672px)": {
