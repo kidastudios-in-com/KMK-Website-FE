@@ -22,15 +22,16 @@ const FaqsNew = () => {
   return (
     <main
       style={{
+        backgroundColor: "#195B54",
         display: "flex",
         flexWrap: "wrap",
-        backgroundColor: "#195B54",
-        paddingTop: "125px",
-        paddingBottom: "75px",
+        paddingTop: "105px",
+        paddingBottom: "45px",
         width: "100%",
         height: "100%",
         justifyContent: "center",
         alignContent: "center",
+        borderRadius: "0px",
       }}
     >
       <div
@@ -54,8 +55,8 @@ const FaqsNew = () => {
             justifyContent: "space-between",
             maxWidth: "80rem",
             // gap: "10%",
-            paddingLeft: "35px",
-            paddingRight: "35px",
+            paddingLeft: "25px",
+            paddingRight: "25px",
             alignItems: "start",
           }}
         >
@@ -66,9 +67,9 @@ const FaqsNew = () => {
               flexDirection: "column",
               flexWrap: "wrap",
               "@media only screen and (max-width: 764px)": {
-                justifyContent: "center",
+                justifyContent: "left",
                 width: "auto",
-                textAlign: "center",
+                textAlign: "left",
               },
             }}
           >
@@ -120,12 +121,12 @@ const FaqsNew = () => {
                 width: "350px",
                 "@media only screen and (max-width: 764px)": {
                   width: "60%",
-                  alignSelf: "center",
+                  alignSelf: "flex-start",
                 },
               }}
             >
               <a href="mailto:contact@kamayakya.com" target="_blank">
-                <Text b size={22} color="#fff">
+                <Text b size={20} color="#000">
                   E-mail Us
                 </Text>
               </a>
@@ -156,16 +157,19 @@ const FaqsNew = () => {
               width: "60%",
               display: "flex",
               flexDirection: "column",
-              alignItems: "start",
+              alignItems: "flex-start",
               flexWrap: "wrap",
               "@media only screen and (max-width: 764px)": {
                 width: "auto",
-                mb: 5,
+                mb: 0,
               },
             }}
           >
-            <Grid.Container gap={2} css={{ marginTop: -30 }}>
-              <Grid>
+            <Grid.Container
+              gap={0}
+              css={{ marginTop: 0, marginBottom: "30px" }}
+            >
+              <Grid style={{ padding: "0px 0px" }}>
                 <Collapse.Group>
                   <Collapse
                     title="Why do we focus on SMEs, Micro-Caps and Small-Caps?"

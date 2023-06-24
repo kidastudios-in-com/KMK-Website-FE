@@ -21,11 +21,14 @@ const Solutions = () => {
     pauseOnHover: true,
     pauseOnDotsHover: true,
     variableWidth: true,
+    arrows: false,
     responsive: [
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 1,
+          centerMode: true,
+          variableWidth: false,
         },
       },
     ],
@@ -49,19 +52,20 @@ const Solutions = () => {
   return (
     <section
       id="solutions"
-      style={{
-        backgroundColor: "#fff",
-        padding: "60px 30px",
-        width: "100vw",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        paddingTop: "10vh",
-        paddingBottom: "10vh",
-      }}
+      // style={{
+      //   backgroundColor: "#fff",
+      //   padding: "60px 30px",
+      //   width: "100vw",
+      //   display: "flex",
+      //   flexDirection: "column",
+      //   alignItems: "center",
+      //   justifyContent: "center",
+      //   paddingTop: "10vh",
+      //   paddingBottom: "10vh",
+      // }}
       className="solutions"
     >
-      <div>
+      <div style={{ maxWidth: "80rem" }}>
         <div className="testimonialHeader">
           <Text
             b
@@ -70,10 +74,13 @@ const Solutions = () => {
               color: "#25262c",
               width: "100%",
               lineHeight: "1.1",
+              textWrap: "normal",
+              textAlign: "left",
               "@media only screen and (max-width: 764px)": {
-                fontSize: "50px",
-                width: "80vw",
+                fontSize: "45px",
+                width: "90vw",
                 paddingLeft: "30px",
+                textAlign: "left",
               },
             }}
           >

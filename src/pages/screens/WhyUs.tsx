@@ -411,9 +411,8 @@ const WhyUs = () => {
             }}
           >
             {[...Array(3)].map((_, index) => (
-             
               <Card
-              key={index}
+                key={index}
                 isHoverable
                 css={{
                   width: "450px",
@@ -495,6 +494,7 @@ const WhyUs = () => {
                         color="#fff"
                         css={{
                           lineHeight: 1.5,
+                          maxLines: 1,
                           "@media only screen and (max-width: 764px)": {
                             // width: "100%",
                             // paddingLeft: "20px",
@@ -502,10 +502,11 @@ const WhyUs = () => {
                             paddingTop: "5px",
                             fontSize: "22px",
                             lineHeight: 1.1,
+                            maxLines: 1,
                           },
                         }}
                       >
-                        Gufic BioSciences Ltd. (GBL)
+                        Gufic BioSciences Ltd.
                       </Text>
                       <Text
                         b
@@ -530,8 +531,8 @@ const WhyUs = () => {
                     <img
                       src="HoldBubbleYellow.png"
                       style={{
-                        width: "55px",
-                        height: "55px",
+                        width: "60px",
+                        height: "60px",
                         alignSelf: "start",
                       }}
                     />
@@ -607,7 +608,7 @@ const WhyUs = () => {
                             // paddingLeft: "20px",
                             // paddingRight: "20px",
                             paddingTop: "0px",
-                            fontSize: "14.5px",
+                            fontSize: "13.5px",
                           },
                         }}
                       >
@@ -670,7 +671,7 @@ const WhyUs = () => {
                             // paddingLeft: "20px",
                             // paddingRight: "20px",
                             paddingTop: "0px",
-                            fontSize: "14.5px",
+                            fontSize: "13.5px",
                           },
                         }}
                       >
@@ -696,7 +697,7 @@ const WhyUs = () => {
                           padding: "0px",
                         }}
                       >
-                        <ArrowCircleRight size={30} />
+                        <ArrowCircleRight size={25} />
                       </Button>
                     </Box>
                   </div>
@@ -776,7 +777,7 @@ const WhyUs = () => {
                             // paddingLeft: "20px",
                             // paddingRight: "20px",
                             paddingTop: "0px",
-                            fontSize: "14.5px",
+                            fontSize: "13.5px",
                           },
                         }}
                       >

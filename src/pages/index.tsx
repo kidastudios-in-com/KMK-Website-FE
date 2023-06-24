@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 import React, { useState, useEffect, useContext } from "react";
 import NavBar from "@/components/Navbar";
-import HomePage from "./screens/HomePage";
 // import AboutUs from "./screens/AboutUs";
 import WhyUs from "./screens/WhyUs";
 import Solutions from "./screens/Solutions";
@@ -16,6 +15,7 @@ import SubscriptionNew from "../components/SubscriptionNew";
 // import Script from "next/script";
 import NavBar2 from "@/components/Navbar2";
 import AuthProvider from "@/components/AuthContext";
+import HomePage from "@/pages/screens/HomePage";
 
 const Home: NextPage = () => {
 	const { isLoggedIn } = useContext(AuthProvider);
