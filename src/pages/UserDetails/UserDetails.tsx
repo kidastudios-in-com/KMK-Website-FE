@@ -6,10 +6,24 @@ import AuthContext from "@/components/AuthContext";
 
 const UserDetails = () => {
 	const [user, setUser] = useState<any>(null);
-	const [editing, setEditing] = useState(false);
+	const [editing, setEditing] = useState(!user?.name);
 	const [newName, setNewName] = useState("");
 	const [saved, setSaved] = useState(false);
 	const { isLoggedIn } = useContext(AuthContext);
+	const [referralCodeSaved, setReferralCodeSaved] = useState(false);
+	const [changesSaved, setChangesSaved] = useState(false);
+	const [ newReferralCode, setNewReferralCode ] = useState("");
+
+	const handleEditReferralCode = () => {
+		if (!user?.referralCode) {
+		  setEditing(true);
+		  setNewReferralCode(user?.referralCode || "");
+		}
+	  };
+	  
+	  const handleCancelReferralCode = () => {
+		setEditing(false);
+	  };
 
 	useEffect(() => {
 		if (isLoggedIn) {
@@ -33,8 +47,10 @@ const UserDetails = () => {
 	}, [isLoggedIn]);
 
 	const handleEditProfile = () => {
-		setEditing(true);
-		setNewName(user?.name || "");
+		if (!user?.name) {
+			setEditing(true);
+			setNewName(user?.name || "");
+		}
 	};
 
 	const handCancel = () => {
@@ -56,10 +72,32 @@ const UserDetails = () => {
 			setUser(data);
 			setSaved(true);
 			setEditing(false);
+			setChangesSaved(true); // Set changesSaved to true
 		} catch (error) {
 			console.error("Error updating user details:", error);
 		}
 	};
+
+	const handleSaveReferralCode = async () => {
+		try {
+		  const refreshToken = localStorage.getItem("refresh");
+		  const response = await fetch(EDIT_USER, {
+			method: "PUT",
+			headers: {
+			  Authorization: `Token ${refreshToken}`,
+			  "Content-Type": "application/json",
+			},
+			body: JSON.stringify({ referralCode: newReferralCode }),
+		  });
+		  const data = await response.json();
+		  setUser(data);
+		  setSaved(true);
+		  setEditing(false);
+		  setReferralCodeSaved(true); // Set referralCodeSaved to true
+		} catch (error) {
+		  console.error("Error updating referral code:", error);
+		}
+	  };
 
 	if (!user) {
 		return (
@@ -72,11 +110,11 @@ const UserDetails = () => {
 						alignSelf: "center",
 						width: "400px",
 						background: "#fff",
-						textAlign: 'center',
+						textAlign: "center",
 						fontSize: 28,
-						border: '1px solid #125a54',
-						borderRadius: '5px',
-						color: '#ffa12e'
+						border: "1px solid #125a54",
+						borderRadius: "5px",
+						color: "#ffa12e",
 					}}
 				>
 					Please Log-In To Access Your Account Details
@@ -115,7 +153,7 @@ const UserDetails = () => {
 							padding: "8px",
 						}}
 					>
-						{editing ? (
+						{editing && !user?.name ? (
 							<>
 								<Text b size={20}>
 									Name:
@@ -129,7 +167,15 @@ const UserDetails = () => {
 								<Button
 									color="success"
 									auto
-									onClick={handleSaveProfile}
+									onClick={() => {
+										if (
+											window.confirm(
+												"Are you sure? Once saved, it cannot be edited again."
+											)
+										) {
+											handleSaveProfile();
+										}
+									}}
 									css={{ marginRight: "5px" }}
 								>
 									Save
@@ -143,13 +189,20 @@ const UserDetails = () => {
 								<Text b size={20} css={{ marginRight: "20px" }}>
 									Name: {user?.name ? user.name : "N/A"}
 								</Text>
-								<Button
-									onClick={handleEditProfile}
-									auto
-									css={{ background: "#ef4958", fontSize: 18 }}
-								>
-									<RiEdit2Fill />
-								</Button>
+								{!user?.name && (
+									<Button
+										onClick={handleEditProfile}
+										auto
+										css={{ background: "#ef4958", fontSize: 18 }}
+									>
+										<RiEdit2Fill />
+									</Button>
+								)}
+								{changesSaved && (
+									<Text css={{ color: "green", marginLeft: "10px" }}>
+										Changes saved! Editing is disabled.
+									</Text>
+								)}
 							</>
 						)}
 					</div>
@@ -186,10 +239,61 @@ const UserDetails = () => {
 							marginTop: "10px",
 						}}
 					>
-						<Text b size={20}>
-							Referral Code: Vinay120
-						</Text>
+						{editing && !user?.referralCode ? (
+							<>
+								<Text b size={20}>
+									Referral Code:
+								</Text>
+								<Input
+									underlined
+									value={newReferralCode}
+									onChange={(e) => setNewReferralCode(e.target.value)}
+									css={{ marginRight: "10px" }}
+								/>
+								<Button
+									color="success"
+									auto
+									onClick={() => {
+										if (
+											window.confirm(
+												"Are you sure? Once saved, it cannot be edited again."
+											)
+										) {
+											handleSaveReferralCode();
+										}
+									}}
+									css={{ marginRight: "5px" }}
+								>
+									Save
+								</Button>
+								<Button color="error" auto onClick={handleCancelReferralCode}>
+									Cancel
+								</Button>
+							</>
+						) : (
+							<>
+								<Text b size={20} css={{ marginRight: "20px" }}>
+									Referral Code:{" "}
+									{user?.referralCode ? user.referralCode : "N/A"}
+								</Text>
+								{!user?.referralCode && (
+									<Button
+										onClick={handleEditReferralCode}
+										auto
+										css={{ background: "#ef4958", fontSize: 18 }}
+									>
+										<RiEdit2Fill />
+									</Button>
+								)}
+								{referralCodeSaved && (
+									<Text css={{ color: "green", marginLeft: "10px" }}>
+										Referral code saved! Editing is disabled.
+									</Text>
+								)}
+							</>
+						)}
 					</div>
+
 					{user.end_date ? (
 						<>
 							<Text b size={20}>

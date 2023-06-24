@@ -133,7 +133,7 @@ const NavBar2 = () => {
 			</Navbar.Brand>
 				<Navbar.Content
 					activeColor="warning"
-					hideIn="xs"
+					hideIn="md"
 					variant="underline-rounded"
 				>
 					<Navbar.Link
@@ -330,6 +330,14 @@ const NavBar2 = () => {
 							}}
 						>
 							<ListItemText primary="Our Stock Picks" />
+						</ListItemButton>
+						<ListItemButton
+							onClick={() => {
+								handleSettings();
+								toggleDrawer();
+							}}
+						>
+							<ListItemText primary="Profile" />
 						</ListItemButton>
 						<ListItemButton
 							onClick={() => {
