@@ -143,25 +143,47 @@ import {
 			  },
 			}}
 		  >
-			<img
-			  src="Kamayakya-SEBI-License.jpg"
-			  alt="SEBI Certificate"
-			  style={{ height: "90vh", objectFit: "cover" }}
-			/>
-			<Modal.Footer justify="center">
+			<iframe
+            src="Kamayakya-SEBI-License.pdf#view=FitH&toolbar=0"
+            alt="SEBI Certificate"
+            style={{
+              width: "100%",
+              height: "90vh",
+              borderColor: "transparent",
+              borderRadius: "15px",
+              borderWidth: "0px",
+              zoom: "1",
+            }}
+            className="iframePdfMobile"
+          />
+			{/* <Modal.Footer justify="center"> */}
 			  <Button
 				auto
 				onClick={handleCertClose}
 				css={{
-				  borderRadius: "20px",
-				  background: "#116751",
-				  fontSize: 18,
-				  alignSelf: "center",
-				}}
+					// alignSelf: "end",
+					width: "100%",
+					backgroundColor: "#ffa12e",
+					color: "#fff",
+					fontSize: 19,
+					marginTop: "20px",
+					borderRadius: "10px",
+					height: "50px",
+					"@media only screen and (max-width: 768px)": {
+					  width: "100%",
+					  fontSize: 15,
+					  height: "50px",
+					  marginTop: "0px",
+					  borderRadius: "0px 0px 10px",
+					  "& span": {
+						// display: "none",
+					  },
+					},
+				  }}
 			  >
 				Close
 			  </Button>
-			</Modal.Footer>
+			{/* </Modal.Footer> */}
 		  </Modal>
 		  <Text
 			b
@@ -327,7 +349,7 @@ import {
 					Half Page Report
 				  </Dropdown.Item>
 				  <Dropdown.Item
-					key="Ion Exchange Half Page Report - English.pdf"
+					key="IonExchangeHalfPageReport-English.pdf"
 					css={{ width: "100vw" }}
 				  >
 					Ion Exchange Half Page Report - English

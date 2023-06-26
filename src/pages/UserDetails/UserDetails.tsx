@@ -304,6 +304,7 @@ const UserDetails = () => {
 						""
 					)}
 				</div>
+				{/*Time Left In Days, Subscription History, GST Number, Email ID, Phone Number */}
 				<Button css={{ background: "#fda629", marginTop: "20px" }}>
 					Get Invoice
 				</Button>

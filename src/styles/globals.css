@@ -926,3 +926,8 @@ header > div > div {
 .nextui-c-dwnaVv {
   background: white !important;
 }
+
+.nextui-c-csEDlc-ivNdeP-css {
+  --nextui--backdropOpacity: 0.2;
+  backdrop-filter: blur(3px);
+}

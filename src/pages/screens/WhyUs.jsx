@@ -325,7 +325,11 @@ const WhyUs = () => {
 												}}
 											>
 												{item.stock_name.length > 28 ? (
-													<Marquee delay={2}>{item.stock_name}</Marquee>
+													<Marquee delay={5} speed={30}>
+														<span style={{ paddingRight: "40px" }}>
+															{item.stock_name}
+														</span>
+													</Marquee>
 												) : (
 													<>{item.stock_name}</>
 												)}
@@ -344,7 +348,9 @@ const WhyUs = () => {
 													},
 												}}
 											>
-												{item.stock_targets && item.stock_targets.length === 0 ? "Targets" : item.stock_targets}
+												{item.stock_targets && item.stock_targets.length === 0
+													? "Targets"
+													: item.stock_targets}
 												{/* {console.log(item.stock_targets)} */}
 											</Text>
 										</div>

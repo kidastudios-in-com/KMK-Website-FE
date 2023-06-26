@@ -84,7 +84,7 @@ export default function PreviewPage() {
 			}}
 		>
 			<NavBar2 />
-			<Box></Box>
+			
 			<Elements stripe={stripePromise}>
 				{/* <form
 				onSubmit={handlePayButtonClick}
@@ -130,6 +130,12 @@ export default function PreviewPage() {
 				<Text b size={20}>
 					Start Your Subscription with KamayaKya!
 				</Text>
+				{/* <Box>
+					User Name: if username ? show edit option for biling Name
+					GST Number get from user 
+					Referral Code non editable 
+
+				</Box> */}
 				<form onSubmit={handleCheckoutSubmit}>
 					<Button
 						type="submit"

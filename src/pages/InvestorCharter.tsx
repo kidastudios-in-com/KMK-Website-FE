@@ -21,12 +21,11 @@ const InvestorCharter = () => {
 					justifyContent: "center",
 					alignItems: "center",
 					width: "100vw",
-					maxWidth: "80rem",
 					paddingLeft: "15px",
 					paddingRight: "15px",
 					background: "#fff",
 					"@media only screen and (min-width: 672px)": {
-						paddingTop: "10vh",
+						paddingTop: "2.5vh",
 						paddingBottom: "10vh",
 					},
 					"@media only screen and (max-width: 672px)": {
@@ -41,12 +40,12 @@ const InvestorCharter = () => {
 			>
 				<Text
 					b
-					size={70}
+					size={60}
 					css={{
 						marginTop: "0px",
 						width: "100%",
 						maxWidth: "80rem" /* 1280px */,
-						textAlign: "left",
+						textAlign: "center",
 						lineHeight: 1.2,
 						paddingLeft: "15px",
 						paddingRight: "15px",
@@ -61,10 +60,9 @@ const InvestorCharter = () => {
 					Investor Charter in respect of Research Analyst (RA)
 				</Text>
 				<Text
-					b
 					size={20}
 					css={{
-						marginTop: "20px",
+						marginTop: "2.5vh",
 						width: "100%",
 						maxWidth: "80rem" /* 1280px */,
 						textAlign: "left",

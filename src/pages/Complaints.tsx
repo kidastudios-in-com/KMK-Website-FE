@@ -22,12 +22,11 @@ const Complaints = () => {
 					justifyContent: "center",
 					alignItems: "center",
 					width: "100vw",
-					maxWidth: "80rem",
 					paddingLeft: "15px",
 					paddingRight: "15px",
 					background: "#fff",
 					"@media only screen and (min-width: 672px)": {
-						paddingTop: "10vh",
+						paddingTop: "2.5vh",
 						paddingBottom: "10vh",
 					},
 					"@media only screen and (max-width: 672px)": {
@@ -42,12 +41,12 @@ const Complaints = () => {
 			>
 				<Text
 					b
-					size={70}
+					size={60}
 					css={{
 						marginTop: "0px",
 						width: "100%",
 						maxWidth: "80rem" /* 1280px */,
-						textAlign: "left",
+						textAlign: "center",
 						lineHeight: 1.2,
 						paddingLeft: "15px",
 						paddingRight: "15px",
@@ -61,7 +60,25 @@ const Complaints = () => {
 				>
 					Complaints
 				</Text>
-				<Text b css={{ alignSelf: "start", marginLeft: "20px" }}>
+				<Text
+					size={20}
+					css={{
+						marginTop: "2.5vh",
+						width: "100%",
+						maxWidth: "80rem" /* 1280px */,
+						textAlign: "left",
+						lineHeight: 1.2,
+						paddingLeft: "15px",
+						paddingRight: "15px",
+						"@media only screen and (max-width: 764px)": {
+							fontSize: 15,
+							marginTop: "35px",
+							marginBottom: "35px",
+							maxWidth: "100%",
+							textAlign: "left",
+						},
+					}}
+				>
 					As Of 06 Jun 2023 : 0
 				</Text>
 			</Box>

@@ -275,24 +275,47 @@ const WhyUs = () => {
 						},
 					}}
 				>
-					<img
-						src="Kamayakya-SEBI-License.jpg"
+					<iframe
+						src="Kamayakya-SEBI-License.pdf#view=FitH&toolbar=0"
 						alt="SEBI Certificate"
-						style={{ height: "90vh", objectFit: "contain" }}
+						style={{
+							width: "100%",
+							height: "90vh",
+							borderColor: "transparent",
+							borderRadius: "15px",
+							borderWidth: "0px",
+							zoom: "1",
+						}}
+						className="iframePdfMobile"
 					/>
-					<Modal.Footer>
-						<Button
-							auto
-							onClick={handleCertClose}
-							css={{
-								borderRadius: "20px",
-								background: "#ffa12e",
-								fontSize: 18,
-							}}
-						>
-							Close
-						</Button>
-					</Modal.Footer>
+					{/* <Modal.Footer> */}
+					<Button
+						auto
+						onClick={handleCertClose}
+						css={{
+							// alignSelf: "end",
+							width: "100%",
+							backgroundColor: "#ffa12e",
+							color: "#fff",
+							fontSize: 19,
+							marginTop: "20px",
+							borderRadius: "10px",
+							height: "50px",
+							"@media only screen and (max-width: 768px)": {
+								width: "100%",
+								fontSize: 15,
+								height: "50px",
+								marginTop: "0px",
+								borderRadius: "0px 0px 10px",
+								"& span": {
+									// display: "none",
+								},
+							},
+						}}
+					>
+						Close
+					</Button>
+					{/* </Modal.Footer> */}
 				</Modal>
 				<Text
 					b
@@ -376,7 +399,7 @@ const WhyUs = () => {
 								isHoverable
 								css={{
 									width: "450px",
-									height: "330px",
+									// height: "330px",
 									// padding: "40px",
 									paddingTop: "30px",
 									paddingBottom: "30px",
@@ -454,7 +477,11 @@ const WhyUs = () => {
 												}}
 											>
 												{item.stock_name.length > 28 ? (
-													<Marquee delay={2}>{item.stock_name}</Marquee>
+													<Marquee delay={5} speed={30}>
+														<span style={{ paddingRight: "40px" }}>
+															{item.stock_name}
+														</span>
+													</Marquee>
 												) : (
 													<>{item.stock_name}</>
 												)}
@@ -473,7 +500,9 @@ const WhyUs = () => {
 													},
 												}}
 											>
-												{item.stock_targets && item.stock_targets.length === 0 ? "Targets" : item.stock_targets}
+												{item.stock_targets && item.stock_targets.length === 0
+													? "Targets"
+													: item.stock_targets}
 											</Text>
 										</div>
 										<img
@@ -779,6 +808,39 @@ const WhyUs = () => {
 											</Box>
 										</Box>
 									</Box>
+									<Box
+										sx={{
+											display: "flex",
+											flexDirection: "row",
+											gap: "5%",
+											mt: "15px",
+										}}
+									>
+										<Button
+											auto
+											css={{
+												borderRadius: '1000px',
+												width: '47.5%',
+												fontSize: 18,
+												backgroundImage:
+													"linear-gradient(to top , #FF9D28, #ffa736)",
+											}}
+										>
+											Previous Targets
+										</Button>
+										<Button
+											auto
+											css={{
+												borderRadius: '1000px',
+												width: '47.5%',
+												fontSize: 18,
+												backgroundImage:
+													"linear-gradient(to top , #FF9D28, #ffa736)",
+											}}
+										>
+											Reports
+										</Button>
+									</Box>
 								</Box>
 							</Card>
 							<Card
@@ -838,25 +900,39 @@ const WhyUs = () => {
 									css={{ background: "transparent", boxShadow: "none" }}
 								>
 									<iframe
-										src="SampleReport.pdf#toolbar=0"
+										src="SampleReport.pdf#view=FitH&toolbar=0"
 										style={{
-											height: "80vh",
+											width: "100%",
+											height: "90vh",
 											borderColor: "transparent",
-											borderRadius: "0px",
+											borderRadius: "15px",
 											borderWidth: "0px",
-											background: "#fff",
+											zoom: "1",
 										}}
+										className="iframePdfMobile"
 									></iframe>
 									<Button
 										auto
 										onClick={handlePDFClose}
 										css={{
-											alignSelf: "end",
-											mt: "5%",
-											width: "150px",
-											borderRadius: "20px",
-											background: "#ffa12e",
-											fontSize: 18,
+											// alignSelf: "end",
+											width: "100%",
+											backgroundColor: "#ffa12e",
+											color: "#fff",
+											fontSize: 19,
+											marginTop: "20px",
+											borderRadius: "10px",
+											height: "50px",
+											"@media only screen and (max-width: 768px)": {
+												width: "100%",
+												fontSize: 15,
+												height: "50px",
+												marginTop: "0px",
+												borderRadius: "0px 0px 10px",
+												"& span": {
+													// display: "none",
+												},
+											},
 										}}
 									>
 										Close
