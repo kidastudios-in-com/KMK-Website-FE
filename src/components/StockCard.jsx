@@ -348,6 +348,7 @@ const StockCard = () => {
 					</Text>
 				</Box>
 				<Modal
+					blur
 					width="790px"
 					open={showCert}
 					onClose={handleCertClose}
@@ -803,239 +804,7 @@ const StockCard = () => {
 						},
 					}}
 				>
-					{stocks.length <= 3 && (
-						<Grid>
-							<Card
-								isHoverable
-								css={{
-									height: "575px",
-									width: "285px",
-									display: "flex",
-									flexDirection: "column",
-									alignItems: "center",
-									borderRadius: "35px",
-									background: "#fff",
-									filter: "none",
-									justifyContent: "center",
-									paddingTop: "50px",
-									paddingBottom: "50px",
-									paddingLeft: "15px",
-									paddingRight: "15px",
-									backgroundImage:
-										"linear-gradient(to top , #105B54, #0F734D, #0F734D)",
-									"@media only screen and (max-width: 768px)": {
-										order: 1,
-										width: "95vw",
-										maxWidth: "620px",
-									},
-								}}
-							>
-								<img
-									src="kamayakya-logo-white.png"
-									style={{ marginTop: "5px", width: "75%" }}
-								/>
-
-								<Divider
-									css={{
-										background: "#fff",
-										opacity: "0.5",
-										width: "30px",
-										height: "3px",
-										marginTop: "20px",
-									}}
-								/>
-
-								<Box
-									sx={{
-										width: "100%",
-										alignSelf: "start",
-										marginTop: "20px",
-										marginBottom: "10px",
-										display: "flex",
-										flexDirection: "row",
-										alignItems: "center",
-										paddingLeft: "30px",
-										paddingRight: "30px",
-									}}
-								>
-									<CheckCircleIcon
-										sx={{
-											marginRight: "10px",
-											color: "#fff",
-											fontSize: 20,
-											alignSelf: "start",
-											marginTop: "5px",
-											opacity: 0.9,
-										}}
-									/>
-									<Text
-										b
-										color="#fff"
-										size={20}
-										css={{ lineHeight: 1.2, opacity: 0.9 }}
-									>
-										2-4 individual stock picks every month
-									</Text>
-								</Box>
-								<Box
-									sx={{
-										width: "100%",
-										alignSelf: "start",
-										marginBottom: "10px",
-										display: "flex",
-										flexDirection: "row",
-										alignItems: "center",
-										paddingLeft: "30px",
-										paddingRight: "30px",
-									}}
-								>
-									<CheckCircleIcon
-										sx={{
-											marginRight: "10px",
-											color: "#fff",
-											fontSize: 20,
-											alignSelf: "start",
-											marginTop: "5px",
-											opacity: 0.9,
-										}}
-									/>
-									<Text
-										b
-										color="#fff"
-										size={20}
-										css={{ lineHeight: 1.2, opacity: 0.9 }}
-									>
-										NSE + BSE + SME stock picks
-									</Text>
-								</Box>
-								<Box
-									sx={{
-										width: "100%",
-										alignSelf: "start",
-										// marginTop: "20px",
-										marginBottom: "10px",
-										// marginLeft: "5%",
-										display: "flex",
-										flexDirection: "row",
-										alignItems: "center",
-										paddingLeft: "30px",
-										paddingRight: "30px",
-									}}
-								>
-									<CheckCircleIcon
-										sx={{
-											marginRight: "10px",
-											color: "#fff",
-											fontSize: 20,
-											alignSelf: "start",
-											marginTop: "5px",
-											opacity: 0.9,
-										}}
-									/>
-									<Text
-										b
-										color="#fff"
-										size={20}
-										css={{ lineHeight: 1.2, opacity: 0.9 }}
-									>
-										WhatsApp & Email updates
-									</Text>
-								</Box>
-								<Divider
-									css={{
-										background: "#fff",
-										opacity: "0.5",
-										width: "30px",
-										height: "3px",
-										marginTop: "20px",
-										marginBottom: "20px",
-									}}
-								/>
-								<Button
-									// variant="contained"
-									css={{
-										width: "75%",
-										backgroundImage:
-											"linear-gradient(to top , #FF9D28, #ffa736)",
-										paddingTop: "5px",
-										paddingBottom: "5px",
-										borderRadius: "10000px",
-										boxShadow: "none",
-										"&:hover": {
-											backgroundImage:
-												"linear-gradient(to top , #FF9D28, #ffa736)",
-										},
-									}}
-									onPress={handleFirstCard}
-								>
-									<Text b color="#FFF" size={18}>
-										Subscribe Now
-									</Text>
-								</Button>
-
-								<Text
-									b
-									size={20}
-									color="#fff"
-									css={{
-										textAlign: "center",
-										marginTop: "10px",
-										"@media only screen and (max-width: 768px)": {
-											fontSize: "20px",
-										},
-									}}
-								>
-									for ₹
-									<span
-										style={{ color: "#fff", fontSize: 30, lineHeight: 1.2 }}
-									>
-										11,800/year
-									</span>
-								</Text>
-
-								<Text
-									b
-									size={18}
-									color="#FFF"
-									css={{ mt: "0px", opacity: 0.75, lineHeight: 1 }}
-								>
-									inclusive of taxes
-								</Text>
-							</Card>
-							<Modal
-								// width="1200px"
-								open={showLoginModal}
-								onClose={handleCloseLoginModal}
-							>
-								<Box
-									sx={{
-										display: "flex",
-										flexDirection: "row",
-										width: "100%",
-										justifyContent: "space-between",
-										alignItems: "center",
-									}}
-								>
-									<img src="kmk-k.png" style={{ maxWidth: "260px" }} />
-									<IconButton
-										sx={{
-											width: "40px",
-											"&:hover": { background: "#fff" },
-											// alignSelf: "end",
-											right: "20px",
-										}}
-										onClick={() => handleCloseLoginModal()}
-									>
-										<CloseIcon sx={{ color: "#e81123" }} />
-									</IconButton>
-								</Box>
-
-								<Modal.Body>
-									<Login />
-								</Modal.Body>
-							</Modal>
-						</Grid>
-					)}
+					
 					{filteredStocks.map((stock, index) => (
 						<Grid
 							key={stock.id}
@@ -1723,6 +1492,7 @@ const StockCard = () => {
 											Stock Details
 										</Button>
 										<Modal
+											blur
 											// width="100%"
 											// height="75vh"
 											open={showModal}
@@ -1845,6 +1615,240 @@ const StockCard = () => {
 							</ReactCardFlip>
 						</Grid>
 					))}
+					{stocks.length <= 3 && (
+						<Grid>
+							<Card
+								isHoverable
+								css={{
+									height: "575px",
+									width: "285px",
+									display: "flex",
+									flexDirection: "column",
+									alignItems: "center",
+									borderRadius: "35px",
+									background: "#fff",
+									filter: "none",
+									justifyContent: "center",
+									paddingTop: "50px",
+									paddingBottom: "50px",
+									paddingLeft: "15px",
+									paddingRight: "15px",
+									backgroundImage:
+										"linear-gradient(to top , #105B54, #0F734D, #0F734D)",
+									"@media only screen and (max-width: 768px)": {
+										// order: 4,
+										width: "95vw",
+										maxWidth: "620px",
+									},
+								}}
+							>
+								<img
+									src="kamayakya-logo-white.png"
+									style={{ marginTop: "5px", width: "75%" }}
+								/>
+
+								<Divider
+									css={{
+										background: "#fff",
+										opacity: "0.5",
+										width: "30px",
+										height: "3px",
+										marginTop: "20px",
+									}}
+								/>
+
+								<Box
+									sx={{
+										width: "100%",
+										alignSelf: "start",
+										marginTop: "20px",
+										marginBottom: "10px",
+										display: "flex",
+										flexDirection: "row",
+										alignItems: "center",
+										paddingLeft: "30px",
+										paddingRight: "30px",
+									}}
+								>
+									<CheckCircleIcon
+										sx={{
+											marginRight: "10px",
+											color: "#fff",
+											fontSize: 20,
+											alignSelf: "start",
+											marginTop: "5px",
+											opacity: 0.9,
+										}}
+									/>
+									<Text
+										b
+										color="#fff"
+										size={20}
+										css={{ lineHeight: 1.2, opacity: 0.9 }}
+									>
+										2-4 individual stock picks every month
+									</Text>
+								</Box>
+								<Box
+									sx={{
+										width: "100%",
+										alignSelf: "start",
+										marginBottom: "10px",
+										display: "flex",
+										flexDirection: "row",
+										alignItems: "center",
+										paddingLeft: "30px",
+										paddingRight: "30px",
+									}}
+								>
+									<CheckCircleIcon
+										sx={{
+											marginRight: "10px",
+											color: "#fff",
+											fontSize: 20,
+											alignSelf: "start",
+											marginTop: "5px",
+											opacity: 0.9,
+										}}
+									/>
+									<Text
+										b
+										color="#fff"
+										size={20}
+										css={{ lineHeight: 1.2, opacity: 0.9 }}
+									>
+										NSE + BSE + SME stock picks
+									</Text>
+								</Box>
+								<Box
+									sx={{
+										width: "100%",
+										alignSelf: "start",
+										// marginTop: "20px",
+										marginBottom: "10px",
+										// marginLeft: "5%",
+										display: "flex",
+										flexDirection: "row",
+										alignItems: "center",
+										paddingLeft: "30px",
+										paddingRight: "30px",
+									}}
+								>
+									<CheckCircleIcon
+										sx={{
+											marginRight: "10px",
+											color: "#fff",
+											fontSize: 20,
+											alignSelf: "start",
+											marginTop: "5px",
+											opacity: 0.9,
+										}}
+									/>
+									<Text
+										b
+										color="#fff"
+										size={20}
+										css={{ lineHeight: 1.2, opacity: 0.9 }}
+									>
+										WhatsApp & Email updates
+									</Text>
+								</Box>
+								<Divider
+									css={{
+										background: "#fff",
+										opacity: "0.5",
+										width: "30px",
+										height: "3px",
+										marginTop: "20px",
+										marginBottom: "20px",
+									}}
+								/>
+								<Button
+									// variant="contained"
+									css={{
+										width: "75%",
+										backgroundImage:
+											"linear-gradient(to top , #FF9D28, #ffa736)",
+										paddingTop: "5px",
+										paddingBottom: "5px",
+										borderRadius: "10000px",
+										boxShadow: "none",
+										"&:hover": {
+											backgroundImage:
+												"linear-gradient(to top , #FF9D28, #ffa736)",
+										},
+									}}
+									onPress={handleFirstCard}
+								>
+									<Text b color="#FFF" size={18}>
+										Subscribe Now
+									</Text>
+								</Button>
+
+								<Text
+									b
+									size={20}
+									color="#fff"
+									css={{
+										textAlign: "center",
+										marginTop: "10px",
+										"@media only screen and (max-width: 768px)": {
+											fontSize: "20px",
+										},
+									}}
+								>
+									for ₹
+									<span
+										style={{ color: "#fff", fontSize: 30, lineHeight: 1.2 }}
+									>
+										11,800/year
+									</span>
+								</Text>
+
+								<Text
+									b
+									size={18}
+									color="#FFF"
+									css={{ mt: "0px", opacity: 0.75, lineHeight: 1 }}
+								>
+									inclusive of taxes
+								</Text>
+							</Card>
+							<Modal
+								blur
+								// width="1200px"
+								open={showLoginModal}
+								onClose={handleCloseLoginModal}
+							>
+								<Box
+									sx={{
+										display: "flex",
+										flexDirection: "row",
+										width: "100%",
+										justifyContent: "space-between",
+										alignItems: "center",
+									}}
+								>
+									<img src="kmk-k.png" style={{ maxWidth: "260px" }} />
+									<IconButton
+										sx={{
+											width: "40px",
+											"&:hover": { background: "#fff" },
+											// alignSelf: "end",
+											right: "20px",
+										}}
+										onClick={() => handleCloseLoginModal()}
+									>
+										<CloseIcon sx={{ color: "#e81123" }} />
+									</IconButton>
+								</Box>
+
+								<Modal.Body>
+									<Login />
+								</Modal.Body>
+							</Modal>
+						</Grid>
+					)}
 					{/* {stocks.length <= 3 && stocks.map((stock) => ( */}
 					{/* {stocks.length <= 3 &&
 					Array.from({ length: 4 }).map((_, index) => ( */}

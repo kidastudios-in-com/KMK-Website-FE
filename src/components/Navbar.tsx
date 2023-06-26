@@ -7,12 +7,20 @@ import {
 	ListItemButton,
 	useMediaQuery,
 	SwipeableDrawer,
+	ListItemIcon,
 } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Login from "./Login";
 import CloseIcon from "@mui/icons-material/Close";
+import { Book, Home2 } from "iconsax-react";
+import { AiFillHome } from "react-icons/ai";
+import { BiLogIn } from "react-icons/bi";
+import { BsGraphUpArrow } from "react-icons/bs";
+import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
+import MoneyRoundedIcon from "@mui/icons-material/MoneyRounded";
+import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 
 export default function App() {
 	const [activeLink, setActiveLink] = useState("home");
@@ -180,6 +188,9 @@ export default function App() {
 								toggleDrawer();
 							}}
 						>
+							<ListItemIcon sx={{ paddingLeft: "4px" }}>
+								<Home2 size={30} />
+							</ListItemIcon>
 							<Text b className="drawerElementText">
 								Home
 							</Text>
@@ -190,6 +201,9 @@ export default function App() {
 								toggleDrawer();
 							}}
 						>
+							<ListItemIcon sx={{ paddingLeft: "4px" }}>
+								<GroupsOutlinedIcon sx={{ fontSize: 30 }} />
+							</ListItemIcon>
 							<Text b className="drawerElementText">
 								About us
 							</Text>
@@ -200,6 +214,9 @@ export default function App() {
 								toggleDrawer();
 							}}
 						>
+							<ListItemIcon sx={{ paddingLeft: "4px" }}>
+								<Book size={30} />
+							</ListItemIcon>
 							<Text b className="drawerElementText">
 								Blogs
 							</Text>
@@ -210,6 +227,9 @@ export default function App() {
 								toggleDrawer();
 							}}
 						>
+							<ListItemIcon sx={{ paddingLeft: "4px" }}>
+								<TrendingUpRoundedIcon sx={{ fontSize: 30 }} />
+							</ListItemIcon>
 							<Text b className="drawerElementText">
 								Track record
 							</Text>
@@ -220,6 +240,9 @@ export default function App() {
 								toggleDrawer();
 							}}
 						>
+							<ListItemIcon sx={{ paddingLeft: "4px" }}>
+								<MoneyRoundedIcon sx={{ fontSize: 30 }} />
+							</ListItemIcon>
 							<Text b className="drawerElementText">
 								Stock to buy
 							</Text>
@@ -230,6 +253,9 @@ export default function App() {
 								toggleDrawer();
 							}}
 						>
+							<ListItemIcon>
+								<BiLogIn size={30} />
+							</ListItemIcon>
 							<Text b className="drawerElementText">
 								Login
 							</Text>
@@ -323,7 +349,7 @@ export default function App() {
 								color={"warning"}
 								// onPress={handleLoginClick}
 								onPress={handleLogin}
-								css={{ backgroundColor: "#ff9f24", borderRadius: "10000px", }}
+								css={{ backgroundColor: "#ff9f24", borderRadius: "10000px" }}
 							>
 								<span style={{ fontSize: 20 }}>Login</span>
 							</Button>

@@ -894,6 +894,7 @@ const WhyUs = () => {
 									</Text>
 								</IconButton>
 								<Modal
+									blur
 									width="790px"
 									open={showPDF}
 									onClose={handlePDFClose}

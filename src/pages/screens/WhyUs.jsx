@@ -240,7 +240,7 @@ const WhyUs = () => {
 								isHoverable
 								css={{
 									width: "450px",
-									height: "330px",
+									// height: "330px",
 									// padding: "40px",
 									paddingTop: "30px",
 									paddingBottom: "30px",
@@ -527,6 +527,7 @@ const WhyUs = () => {
 												display: "flex",
 												flexDirection: "column",
 												alignSelf: "flex-start",
+												width: '120px',
 											}}
 										>
 											<Text
@@ -537,9 +538,6 @@ const WhyUs = () => {
 													opacity: 1,
 													lineHeight: 1,
 													"@media only screen and (max-width: 764px)": {
-														// width: "100%",
-														// paddingLeft: "20px",
-														// paddingRight: "20px",
 														paddingTop: "0px",
 														fontSize: "14.5px",
 													},
@@ -556,9 +554,6 @@ const WhyUs = () => {
 													flexDirection: "row",
 													alignItems: "center",
 													"@media only screen and (max-width: 764px)": {
-														// width: "100%",
-														// paddingLeft: "20px",
-														// paddingRight: "20px",
 														paddingTop: "0px",
 														fontSize: "26.5px",
 													},
@@ -658,6 +653,39 @@ const WhyUs = () => {
 												</Text>
 											</Box>
 										</Box>
+									</Box>
+									<Box
+										sx={{
+											display: "flex",
+											flexDirection: "row",
+											gap: "5%",
+											mt: "15px",
+										}}
+									>
+										<Button
+											auto
+											css={{
+												borderRadius: '1000px',
+												width: '47.5%',
+												fontSize: 18,
+												backgroundImage:
+													"linear-gradient(to top , #FF9D28, #ffa736)",
+											}}
+										>
+											Previous Targets
+										</Button>
+										<Button
+											auto
+											css={{
+												borderRadius: '1000px',
+												width: '47.5%',
+												fontSize: 18,
+												backgroundImage:
+													"linear-gradient(to top , #FF9D28, #ffa736)",
+											}}
+										>
+											Reports
+										</Button>
 									</Box>
 								</Box>
 							</Card>
