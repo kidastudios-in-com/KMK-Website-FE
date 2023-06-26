@@ -21,7 +21,7 @@ const SmallcaseCard = () => {
         sx={{
           paddingTop: "0px",
           "@media only screen and (max-width: 764px)": {
-            paddingTop: "30px",
+            paddingTop: "20px",
             // backgroundImage: 'url(RightSide.svg)',
             // zIndex:
           },
@@ -39,13 +39,13 @@ const SmallcaseCard = () => {
               backgroundImage: "linear-gradient(to top , #1f33e0, #00d4ff)",
 
               "@media only screen and (max-width: 764px)": {
-                padding: "20px",
-                alignItems: "start",
-                width: "94vw",
-                height: "270px",
+                padding: "40px 20px",
+                alignItems: "center",
+                width: "100vw",
+                // height: "300px",
                 marginTop: -2,
                 marginBottom: 0,
-                borderRadius: "20px",
+                borderRadius: "0px",
                 background:
                   "linear-gradient(to top , #1f33e0, #00d4ff), url(RightSide.svg)",
               },
@@ -85,9 +85,9 @@ const SmallcaseCard = () => {
                   alt="logo"
                   // className="kmk-smallcase-logo"
                   style={{
-                    marginTop: "10%",
+                    marginTop: "15%",
                     marginBottom: "5%",
-                    width: "40%",
+                    width: "35%",
                   }}
                 />
               </Box>
@@ -101,9 +101,11 @@ const SmallcaseCard = () => {
                   lineHeight: 1.4,
                   "@media only screen and (max-width: 764px)": {
                     marginLeft: 0,
+                    marginTop: "5%",
                     paddingLeft: 0,
                     width: "100%",
-                    fontSize: 24,
+                    fontSize: 30,
+                    lineHeight: 1.3,
                   },
                 }}
               >
@@ -120,8 +122,8 @@ const SmallcaseCard = () => {
                   "@media only screen and (max-width: 764px)": {
                     marginLeft: 0,
                     paddingLeft: 0,
-                    width: "auto",
-                    fontSize: 15,
+                    width: "80%",
+                    fontSize: 20,
                   },
                 }}
               >
@@ -157,9 +159,10 @@ const SmallcaseCard = () => {
                     },
                     "@media only screen and (max-width: 764px)": {
                       width: "100%",
-                      fontSize: 14,
+                      fontSize: 16,
                       paddingLeft: "15px",
                       paddingRight: "15px",
+                      marginTop: "5%",
                       marginBottom: "5%",
                     },
                   }}

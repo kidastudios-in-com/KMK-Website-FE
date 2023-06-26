@@ -18,6 +18,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/Navbar.tsx", "src/components/Navbar2.jsx", "src/components/SubscriptionNew.jsx", "src/pages/screens/HomePage.jsx", "src/pages/BlogsPages/BSection2.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/Navbar.tsx", "src/components/Navbar2.jsx", "src/components/SubscriptionNew.jsx", "src/pages/screens/HomePage.jsx", "src/pages/BlogsPages/BSection2.jsx", "src/pages/screens/WhyUs.jsx", "src/pages/screens/WhyUs.jsx"],
   "exclude": ["node_modules"]
 }

@@ -33,11 +33,11 @@ const Home: NextPage = () => {
 			{/* <AuthProvider> */}
 			<HomePage />
 			<SmallcaseCard />
-			<SubscriptionNew />
 			{/* <AboutUs /> */}
 			{/* <Process /> */}
 			{/* <Process2/> */}
 			<WhyUs />
+			<SubscriptionNew />
 			{/* <Blogs2 /> */}
 			{/* <Testimonials /> */}
 			<Solutions />

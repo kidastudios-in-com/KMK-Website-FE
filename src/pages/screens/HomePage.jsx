@@ -129,6 +129,7 @@ import {
 		  </Box>
 		  <Modal
 			width="790px"
+			blur
 			open={showCert}
 			onClose={handleCertClose}
 			css={{
@@ -145,16 +146,17 @@ import {
 			<img
 			  src="Kamayakya-SEBI-License.jpg"
 			  alt="SEBI Certificate"
-			  style={{ height: "90vh", objectFit: "contain" }}
+			  style={{ height: "90vh", objectFit: "cover" }}
 			/>
-			<Modal.Footer>
+			<Modal.Footer justify="center">
 			  <Button
 				auto
 				onClick={handleCertClose}
 				css={{
 				  borderRadius: "20px",
-				  background: "#ffa12e",
+				  background: "#116751",
 				  fontSize: 18,
+				  alignSelf: "center",
 				}}
 			  >
 				Close
@@ -269,6 +271,7 @@ import {
 			  </Text>
 			</Button>
 			<Modal
+			  blur
 			  aria-labelledby="modal-title"
 			  aria-describedby="modal-description"
 			  {...bindings}
@@ -298,7 +301,11 @@ import {
 					borderRadius: "10px",
 					height: "50px",
 					"@media only screen and (max-width: 768px)": {
-					  width: "70%",
+					  width: "100%",
+					  fontSize: 15,
+					  height: "50px",
+					  marginBottom: "0px",
+					  borderRadius: "10px 0 0",
 					  "& span": {
 						// display: "none",
 					  },
@@ -341,6 +348,7 @@ import {
 				  borderWidth: "0px",
 				  zoom: "1",
 				}}
+				className="iframePdfMobile"
 			  />
 			  <Button
 				flat
@@ -354,12 +362,22 @@ import {
 				  marginTop: "20px",
 				  borderRadius: "10px",
 				  height: "50px",
+				  "@media only screen and (max-width: 768px)": {
+					width: "100%",
+					fontSize: 15,
+					height: "50px",
+					marginTop: "0px",
+					borderRadius: "0px 0px 10px",
+					"& span": {
+					  // display: "none",
+					},
+				  },
 				}}
 			  >
 				Close
 			  </Button>
 			</Modal>
-			<span style={{ width: "10px" }}></span>
+			{/* <span style={{ width: "10px" }}></span> */}
 			<Button
 			  auto
 			  size={"xl"}
@@ -400,11 +418,12 @@ import {
 				  },
 				}}
 			  >
-				Get Access
+				Get free access
 			  </Text>
 			</Button>
 			<Modal
 			  // width="1200px"
+			  blur
 			  open={showLoginModal}
 			  onClose={handleCloseLoginModal}
 			>

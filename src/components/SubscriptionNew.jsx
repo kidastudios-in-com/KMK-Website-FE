@@ -138,7 +138,7 @@ const SubscriptionNew = () => {
               paddingLeft: "15px",
               paddingRight: "15px",
               "@media only screen and (max-width: 768px)": {
-                order: 3,
+                order: 0,
                 width: "100%",
               },
             }}
@@ -178,7 +178,7 @@ const SubscriptionNew = () => {
                 }}
               />
               <Text b size={18} css={{ lineHeight: 1.2, opacity: 0.9 }}>
-                3 system-generated stock picks accessible lifetime (NSE + BSE)
+                3 - system-generated stock picks accessible lifetime (NSE + BSE)
               </Text>
             </Box>
             <Box
@@ -260,7 +260,7 @@ const SubscriptionNew = () => {
               }}
             >
               <Text b size={18} color="#fff">
-                Free Access
+                Login
               </Text>
             </Button>
             <Modal

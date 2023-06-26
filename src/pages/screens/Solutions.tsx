@@ -76,6 +76,7 @@ const Solutions = () => {
               lineHeight: "1.1",
               textWrap: "normal",
               textAlign: "left",
+
               "@media only screen and (max-width: 764px)": {
                 fontSize: "45px",
                 width: "90vw",
@@ -87,7 +88,7 @@ const Solutions = () => {
             See what other investors are saying
           </Text>
         </div>
-        <div>
+        <div style={{ justifyContent: "space-between" }}>
           <IconButton
             onClick={handlePrev}
             sx={{
