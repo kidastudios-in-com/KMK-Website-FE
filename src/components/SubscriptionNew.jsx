@@ -245,6 +245,7 @@ const SubscriptionNew = () => {
             <Button
               onClick={handleLoginOrSub}
               variant="contained"
+              // disabled={isLoggedIn ? true : false}
               sx={{
                 width: "75%",
                 backgroundImage:
@@ -257,6 +258,7 @@ const SubscriptionNew = () => {
                   backgroundImage:
                     "linear-gradient(to top , #105B54, #0F734D, #0F734D)",
                 },
+                opacity: isLoggedIn ? 0 : 1,
               }}
             >
               <Text b size={18} color="#fff">
@@ -264,7 +266,7 @@ const SubscriptionNew = () => {
               </Text>
             </Button>
             <Modal
-              // width="1200px"
+              width="450px"
               open={showLoginModal}
               onClose={handleCloseLoginModal}
             >

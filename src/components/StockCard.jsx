@@ -95,7 +95,7 @@ const StockCard = () => {
 	};
 
 	const handleAskPassword = (e) => {
-		e.verifyPassword("kamayakya");
+		e.verifyPassword("$420%69#kamayakya#69%420$");
 	};
 
 	const handleClick = (index) => {
@@ -141,6 +141,7 @@ const StockCard = () => {
 
 	const timeSortValue = (event) => {
 		setTimeSort(event.target.value);
+		setUpsideSort("");
 	};
 	// React.useMemo(
 	// 	() => Array.from(timeSort)[0]?.replaceAll("_", " ") || "",
@@ -149,6 +150,7 @@ const StockCard = () => {
 
 	const upsideSortValue = (event) => {
 		setUpsideSort(event.target.value);
+		setTimeSort("");
 	};
 
 	// React.useMemo(
@@ -207,7 +209,7 @@ const StockCard = () => {
 
 				return 0;
 			});
-		console.log(filteredAndSortedStocks);
+		// console.log(filteredAndSortedStocks);
 		setFilteredStocks(filteredAndSortedStocks);
 	}, [stocks, timeSort, upsideSort, searchQuery, selectedIndustries]);
 
@@ -804,7 +806,6 @@ const StockCard = () => {
 						},
 					}}
 				>
-					
 					{filteredStocks.map((stock, index) => (
 						<Grid
 							key={stock.id}
@@ -876,6 +877,7 @@ const StockCard = () => {
 											<Box
 												sx={{
 													width: "100%",
+													height: "30px",
 													paddingTop: "7.5px",
 													paddingBottom: "7.5px",
 													paddingLeft: "5px",
@@ -888,8 +890,20 @@ const StockCard = () => {
 													lineHeight: 1,
 												}}
 											>
-												<Text b size={14} color="Black" css={{ lineHeight: 1 }}>
-													{stock.stock_industry || <Loading /> || "N/A"}
+												<Text b size={14} color="Black" css={{ lineHeight: 1.2 }}>
+													{stock.stock_industry.length > 23 ? (
+														<Marquee
+															delay={2}
+															speed={30}
+															style={{ marginRight: "20px" }}
+														>
+															<span style={{ paddingRight: "20px" }}>
+																{stock.stock_industry}
+															</span>
+														</Marquee>
+													) : (
+														<>{stock.stock_industry}</> || <Loading /> || "N/A"
+													)}
 												</Text>
 											</Box>
 											<Text

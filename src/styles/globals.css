@@ -680,7 +680,7 @@ header > div > div {
 }
 
 .pfpTeam-mobile {
-  border-radius: 5px;
+  border-radius: 25px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -688,6 +688,14 @@ header > div > div {
     width: 95vw !important;
     max-width: 95vw !important;
     align-items: center;
+  }
+
+  .aboutSectionGifAndText {
+    width: 100% !important;
+  }
+
+  .mobileAboutText {
+    padding: 0 !important;
   }
 
   .nextui-c-dWWWSv {
@@ -699,10 +707,9 @@ header > div > div {
   }
 
   .drawerElementText {
-    font-size: 28px !important;
-    /* font-weight: bold !important; */
+    font-size: 35px !important;
+    font-weight: bold !important;
     line-height: 1.3;
-    align-items: center;
   }
 
   .navbar-trackRecordCard {
@@ -915,7 +922,7 @@ header > div > div {
 
   .pfpTeam-mobile {
     width: 100% !important;
-    height: 350px !important;
+    height: 400px !important;
   }
 }
 
@@ -928,7 +935,6 @@ header > div > div {
   background: white !important;
 }
 
-.nextui-c-csEDlc-ivNdeP-css {
-  --nextui--backdropOpacity: 0.2;
-  backdrop-filter: blur(3px);
+.linkColor {
+  color: #125A55;
 }

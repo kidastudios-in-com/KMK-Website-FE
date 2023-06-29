@@ -9,7 +9,7 @@ import FaqsNew from '../pages/screens/FaqsNew';
 import Footer from '../pages/screens/Footer';
 
 const stripePromise = loadStripe(
-	"pk_test_51NIAaOSI2jzUvqLXPBiVnCIeshgiVn9SeFY3oGrRnYKSLyezrspBuPItJWxuAboUWCGYZ7dCpT66crOe26Fe2L8Y00LoX7UM4Z"
+	"pk_test_51N3dAPSFPooNZtZaCwGwRUC1IHpC4HqARVbxMBia13Fqan4H6SoLZUhLz21xqqMhtDU5Kiurtzia2uznSEbGSADk00LRBh1V2p"
 );
 
 export default function PreviewPage() {

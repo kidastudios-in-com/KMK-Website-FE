@@ -271,6 +271,7 @@ import {
 				  paddingLeft: 15,
 				  paddingRight: 15,
 				  marginLeft: 0,
+				  marginRight: '10px',
 				  marginBottom: 0,
 				  marginTop: "25px",
 				  height: "55px",
@@ -444,7 +445,7 @@ import {
 			  </Text>
 			</Button>
 			<Modal
-			  // width="1200px"
+			  width="450px"
 			  blur
 			  open={showLoginModal}
 			  onClose={handleCloseLoginModal}

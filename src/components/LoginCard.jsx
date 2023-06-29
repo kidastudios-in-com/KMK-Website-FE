@@ -161,7 +161,7 @@ const LoginCard = () => {
             flexDirection: "row",
             justifyContent: "center",
             width: "100%",
-            height: "300px",
+            height: "330px",
           }}
         >
           <div
@@ -240,7 +240,7 @@ const LoginCard = () => {
               )}
               <PhoneInput
                 containerStyle={{
-                  marginBottom: "30px",
+                  marginBottom: "10px",
                   alignSelf: "center",
                   width: "300px",
                 }}
@@ -259,6 +259,19 @@ const LoginCard = () => {
                 }}
                 containerClass="countryPhone"
               />
+              <Text
+                b
+                size={13}
+                css={{
+                  marginTop: "0px",
+                  marginBottom: "30px",
+                  maxWidth: "200px",
+                  textAlign: "center",
+                }}
+              >
+                By logging in you agree to all our{" "}
+                <a className="linkColor">terms & conditions</a>
+              </Text>
               <Button
                 auto
                 onPress={handleRegister}
@@ -282,6 +295,7 @@ const LoginCard = () => {
       </Box>
 
       <Modal
+      width="450px"
         open={showOtpModal}
         onClose={() => setShowOtpModal(false)}
         style={{

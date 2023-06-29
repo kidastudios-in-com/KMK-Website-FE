@@ -7,8 +7,10 @@ const Section1 = () => {
     <section
       style={{
         width: "100vw",
-        background: "#edf6f8",
-        padding: "140px 15px",
+        // background: "#edf6f8",
+        background: "#fff",
+        padding: "90px 15px",
+        paddingBottom: "140px",
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "center",
@@ -34,58 +36,65 @@ const Section1 = () => {
             justifyContent: "center",
           }}
         >
-          <Divider
-            sx={{
-              width: "120px",
-              backgroundColor: "#ff9f24",
-              height: "5px",
-              borderRadius: "200px",
-            }}
-          />
           <Text
             b
-            size={55}
+            size={60}
             css={{
               textAlign: "center",
-              lineHeight: 1,
-              mt: "15px",
-              mb: "5px",
               "@media only screen and (max-width: 764px)": {
                 textAlign: "left",
-                fontSize: 42,
+                fontSize: 45,
                 lineHeight: 1,
-                marginTop: "5px",
-                marginBottom: "5px",
+                paddingBottom: "0px",
+                alignSelf: "flex-start",
+                marginTop: "-30px",
               },
             }}
           >
-            Our Story
+            Research methodology
           </Text>
         </div>
-        <div style={{ width: "100%", paddingTop: "20px" }}>
+        <div style={{ width: "100%", paddingTop: "25px", textAlign: "center" }}>
           <Text
-            b
-            size={24}
+            size={25}
             css={{
               textAlign: "center",
-              lineHeight: 1.15,
+              lineHeight: 1.5,
               "@media only screen and (max-width: 764px)": {
                 textAlign: "left",
-                fontSize: 18,
-                lineHeight: 1,
+                fontSize: 23,
+                lineHeight: 1.2,
               },
             }}
           >
-            KamayaKya focuses on the Small-Cap segment, which can yield huge
-            returns if invested in the right companies. They provide data-driven
-            research to recommend top-notch stocks in the SME, Micro-cap, and
-            Small-Cap segment. They carefully select these stocks after
-            analyzing factors such as cash flow, growth, management quality, and
-            more. They do not use technical analysis but instead focus on
-            fundamental triggers such as capacity expansion and favorable
-            policies. KamayaKya provides concise and detailed reports in
-            multiple languages, allowing you to do a background check before
-            investing.
+            {/*We emphasize deep and thorough examination of each company,*/}
+            {/*encompassing vital aspects such as capacity expansion, debt*/}
+            {/*reduction, changes in management, industry tailwinds, favorable*/}
+            {/*government policies, structural stories, and turnaround plays. These*/}
+            {/*fundamental triggers serve as guideposts, enabling us to pinpoint*/}
+            {/*companies poised for growth and success. Unlike traditional*/}
+            {/*technical analysis approaches, we steer clear of relying solely on*/}
+            {/*charts and graphs. Instead, our investment philosophy is rooted in a*/}
+            {/*robust foundation of fundamental research. We believe that a*/}
+            {/*thorough understanding of a company's financial health, growth*/}
+            {/*potential, and market positioning is the key to making informed*/}
+            {/*investment decisions.*/}
+            We carefully select stocks after studying factors such as{" "}
+            <b>
+              cash flow, top-line and bottom-line growth, promoter holding,
+              management quality, valuations and more.
+            </b>{" "}
+            Some of the fundamental triggers we focus on are{" "}
+            <b>
+              capacity expansion, debt reduction, change in management, industry
+              tailwinds, favorable government policies, structural stories,
+              turnaround plays and more.
+            </b>{" "}
+            These <b>hidden gems</b> (emerging companies that have enormous
+            potential but overlooked by the market participants) are backed by
+            solid data and research, including{" "}
+            <b>management interactions and channel checks</b>, minus the market
+            noise to minimize risks for you.
           </Text>
         </div>
       </div>

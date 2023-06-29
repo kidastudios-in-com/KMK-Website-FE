@@ -356,7 +356,7 @@ export default function App() {
 						</Navbar.Item>
 					)}
 					<Modal
-						// width="25vw"
+						width="450px"
 						blur
 						open={showModal}
 						onClose={handleCloseModal}

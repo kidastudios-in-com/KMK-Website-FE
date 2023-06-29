@@ -3,9 +3,9 @@ import {
 	Button,
 	Card,
 	Modal,
-	useModal,
 	Divider,
 	Progress,
+	Dropdown,
 } from "@nextui-org/react";
 import Marquee from "react-fast-marquee";
 import React, { useState, useContext, useEffect } from "react";
@@ -17,6 +17,9 @@ import FaqsNew from "@/pages/screens/FaqsNew";
 import AuthContext from "@/components/AuthContext";
 import { TRACK_RECORD_FOR_ALL, TRACK_RECORD_FOR_USER } from "@/pages/api/URLs";
 import Footer from "@/pages/screens/Footer";
+import { Viewer, Worker } from "@react-pdf-viewer/core";
+import { DocumentAskPasswordEvent } from "@react-pdf-viewer/core";
+import "@react-pdf-viewer/core/lib/styles/index.css";
 
 const WhyUs = () => {
 	// const { setVisible, bindings } = useModal();
@@ -46,7 +49,6 @@ const WhyUs = () => {
 			if (response.ok) {
 				const data = await response.json();
 				setRecord(data);
-				// console.log(data);
 			} else {
 				// Handle API call error
 				console.error("Error Getting Track Records | Track Reacord Page");
@@ -86,6 +88,57 @@ const WhyUs = () => {
 
 	const handleCertClose = () => {
 		setShowCert(false);
+	};
+
+	const [showTargets, setShowTargets] = useState(false);
+	const [showReports, setShowReports] = useState(false);
+	const [selectedCardIndex, setSelectedCardIndex] = useState([]);
+	const [selectedReportUrl, setSelectedReportUrl] = useState("");
+
+	const handleCloseTargets = () => {
+		setShowTargets(false);
+	};
+	const handleOpenTargets = (index) => {
+		setSelectedCardIndex(index);
+		setShowTargets(true);
+	};
+
+	const [selectedPDF, setSelectedPDF] = useState(new Set([""]));
+
+	const PdfValue = React.useMemo(
+		() => Array.from(selectedPDF)[0],
+		[selectedPDF]
+	);
+
+	const handleCloseReports = () => {
+		setShowReports(false);
+		setSelectedPDF("");
+	};
+	const handleOpenReports = (index) => {
+		setSelectedCardIndex(index);
+		setShowReports(true);
+
+		if (record[index].stock_reports && record[index].stock_reports.length > 0) {
+			const firstReportUrl = record[index].stock_reports[0].document;
+			setSelectedReportUrl(firstReportUrl);
+			// setSelectedPDF(firstReportUrl);
+			// console.log(selectedPDF);
+			// console.log(selectedReportUrl);
+		}
+	};
+
+	// const PdfURL =
+	// 	selectedPDF === "" || selectedPDF === undefined
+	// 		? selectedReportUrl
+	// 		: PdfValue;
+
+	const PdfURL =
+		selectedPDF === "" || selectedPDF === undefined
+			? selectedReportUrl
+			: PdfValue;
+
+	const handleAskPassword = (e) => {
+		e.verifyPassword("$420%69#kamayakya#69%420$");
 	};
 
 	const outerData = [
@@ -396,6 +449,7 @@ const WhyUs = () => {
 							flipDirection="horizontal"
 						>
 							<Card
+								key={item.id}
 								isHoverable
 								css={{
 									width: "450px",
@@ -412,7 +466,7 @@ const WhyUs = () => {
 									alignItems: "center",
 									"@media only screen and (max-width: 764px)": {
 										width: "95vw",
-										height: "350px",
+										// height: "350px",
 										paddingTop: "30px",
 										paddingBottom: "30px",
 									},
@@ -461,7 +515,7 @@ const WhyUs = () => {
 													},
 												}}
 											>
-												STATUS: {item.status}
+												STATUS: {item.status.toUpperCase()}
 											</Text>
 											<Text
 												b
@@ -500,9 +554,7 @@ const WhyUs = () => {
 													},
 												}}
 											>
-												{item.stock_targets && item.stock_targets.length === 0
-													? "Targets"
-													: item.stock_targets}
+												TARGET {item.tag1.toUpperCase()} | {item.tag2 ? item.tag2.toUpperCase() : ""}
 											</Text>
 										</div>
 										<img
@@ -588,7 +640,12 @@ const WhyUs = () => {
 													},
 												}}
 											>
-												{item.start_date ? item.start_date : "03 Nov 2022"}
+												{item.start_date ? `${new Date(item.start_date).getDate()} ${new Date(item.start_date).toLocaleString(
+													"default",
+													{
+														month: "short",
+													}
+												)} ${new Date(item.start_date).getFullYear()}` : "03 Nov 2022"}
 											</Text>
 										</Box>
 										<Box sx={{ display: "flex", flexDirection: "column" }}>
@@ -645,7 +702,7 @@ const WhyUs = () => {
 												)} ${new Date().getFullYear()}`}
 											</Text>
 										</Box>
-										<Box
+										{/* <Box
 											sx={{
 												display: "flex",
 												flexDirection: "column",
@@ -666,7 +723,7 @@ const WhyUs = () => {
 											>
 												<ArrowCircleRight size={30} />
 											</Button>
-										</Box>
+										</Box> */}
 									</div>
 									<Divider
 										css={{
@@ -730,6 +787,7 @@ const WhyUs = () => {
 												size={16}
 												color="#fff"
 												css={{
+													width: "120px",
 													opacity: 0.7,
 													lineHeight: 1,
 													"@media only screen and (max-width: 764px)": {
@@ -771,7 +829,15 @@ const WhyUs = () => {
 												Time Left: {item.time_left} days
 											</Text>
 											<Progress
-												value={35}
+												value={Math.floor(
+													(new Date() - new Date(item.start_date)) /
+														(1000 * 60 * 60 * 24)
+												)}
+												max={Math.ceil(
+													(new Date(item.end_date) -
+														new Date(item.start_date)) /
+														(1000 * 60 * 60 * 24)
+												)}
 												css={{
 													width: "80%",
 													opacity: 1,
@@ -781,6 +847,30 @@ const WhyUs = () => {
 													".nextui-c-dwnaVv": { background: "#fff" },
 												}}
 											/>
+											{/* {console.log(
+												"Curr",
+												new Date()
+													.toLocaleDateString("en-GB", {
+														year: "numeric",
+														month: "2-digit",
+														day: "2-digit",
+													})
+													.split("/")
+													.reverse()
+													.join("-"),
+												"Start Date",
+												item.start_date,
+												"End Date",
+												item.end_date,
+											)} */}
+											{/* {console.log(
+												"Progress",
+												Math.floor(
+													(new Date() - new Date(item.start_date)) /
+													  (1000 * 60 * 60 * 24)
+												  )
+											)} */}
+											{/* {console.log(item.start_date)} */}
 											<Box
 												sx={{
 													display: "flex",
@@ -803,7 +893,29 @@ const WhyUs = () => {
 													color="#fff"
 													css={{ marginTop: "5px", opacity: 1 }}
 												>
-													{item.end_date ? item.end_date : "365"}
+													{item.end_date ? (
+														<Text
+															b
+															size={12}
+															color="#fff"
+															css={{ marginTop: "5px", opacity: 1 }}
+														>
+															{`${Math.ceil(
+																(new Date(item.end_date) -
+																	new Date(item.start_date)) /
+																	(1000 * 60 * 60 * 24)
+															)}`}
+														</Text>
+													) : (
+														<Text
+															b
+															size={12}
+															color="#fff"
+															css={{ marginTop: "5px", opacity: 1 }}
+														>
+															365 days
+														</Text>
+													)}
 												</Text>
 											</Box>
 										</Box>
@@ -818,9 +930,10 @@ const WhyUs = () => {
 									>
 										<Button
 											auto
+											onPress={() => handleOpenTargets(index)}
 											css={{
-												borderRadius: '1000px',
-												width: '47.5%',
+												borderRadius: "1000px",
+												width: "47.5%",
 												fontSize: 18,
 												backgroundImage:
 													"linear-gradient(to top , #FF9D28, #ffa736)",
@@ -830,9 +943,10 @@ const WhyUs = () => {
 										</Button>
 										<Button
 											auto
+											onPress={() => handleOpenReports(index)}
 											css={{
-												borderRadius: '1000px',
-												width: '47.5%',
+												borderRadius: "1000px",
+												width: "47.5%",
 												fontSize: 18,
 												backgroundImage:
 													"linear-gradient(to top , #FF9D28, #ffa736)",
@@ -842,6 +956,232 @@ const WhyUs = () => {
 										</Button>
 									</Box>
 								</Box>
+
+								{/* Targets Modal */}
+
+								<Modal
+									blur
+									open={showTargets}
+									onClose={handleCloseTargets}
+									css={{
+										// width: "800px",
+										background: "transparent",
+										boxShadow: "none",
+										"@media only screen and (max-width: 764px)": {
+											width: "100vw",
+											height: "95vh",
+											paddingLeft: "15px",
+											paddingRight: "15px",
+										},
+									}}
+								>
+									{record[selectedCardIndex] && (
+										<Card
+											key={selectedCardIndex}
+											css={{
+												width: "350px",
+												height: "230px",
+												paddingTop: "30px",
+												paddingBottom: "30px",
+												backgroundImage:
+													"linear-gradient(to top , #0F734D, #0F734D, #105B54)",
+												borderRadius: "30px",
+												borderBottomRightRadius: "5px",
+												display: "flex",
+												flexDirection: "column",
+												alignItems: "center",
+												filter: "none",
+												boxShadow: "none",
+												"@media only screen and (max-width: 764px)": {
+													width: "100%",
+													paddingTop: "30px",
+													paddingBottom: "30px",
+												},
+											}}
+										>
+											<Text b size={22} color="#fff">
+												{record[selectedCardIndex].stock_name}
+											</Text>
+
+											{record[selectedCardIndex].stock_targets.length > 0 ? (
+												record[selectedCardIndex].stock_targets.map(
+													(target) => (
+														<div key={target.id} style={{ textAlign: "start" }}>
+															<Text color="#fff">
+																Hold Price: ₹{target.hold_price}
+															</Text>
+															<Text color="#fff">
+																Target Price: ₹{target.target_price}
+															</Text>
+															<Text color="#fff">
+																Target Date: {target.target_date}
+															</Text>
+															<Text color="#fff">
+																Profit/Loss: {target.gain_loss}%
+															</Text>
+														</div>
+													)
+												)
+											) : (
+												<Text>No targets available</Text>
+											)}
+										</Card>
+									)}
+
+									<Button
+										flat
+										onPress={handleCloseTargets}
+										css={{
+											alignSelf: "end",
+											width: "100%",
+											backgroundColor: "#ffa12e",
+											color: "#fff",
+											fontSize: 19,
+											marginTop: "20px",
+											borderRadius: "10px",
+											height: "50px",
+											"@media only screen and (max-width: 768px)": {
+												width: "100%",
+												fontSize: 15,
+												height: "50px",
+												marginTop: "0px",
+												borderRadius: "0px 0px 10px",
+												"& span": {
+													// display: "none",
+												},
+											},
+										}}
+									>
+										Close
+									</Button>
+								</Modal>
+
+								{/* Reports Modal */}
+
+								<Modal
+									blur
+									open={showReports}
+									onClose={handleCloseReports}
+									css={{
+										// width: "800px",
+										background: "transparent",
+										boxShadow: "none",
+										"@media only screen and (max-width: 764px)": {
+											width: "100vw",
+											height: "95vh",
+											paddingLeft: "15px",
+											paddingRight: "15px",
+										},
+									}}
+								>
+									{record[selectedCardIndex] &&
+									record[selectedCardIndex].stock_reports &&
+									record[selectedCardIndex].stock_reports.length > 0 ? (
+										<>
+											<Dropdown>
+												<Dropdown.Button
+													flat
+													css={{
+														alignSelf: "center",
+														width: "100%",
+														backgroundColor: "#125a54",
+														color: "#fff",
+														fontSize: 19,
+														marginBottom: "20px",
+														borderRadius: "10px",
+														height: "50px",
+														"@media only screen and (max-width: 768px)": {
+															width: "100%",
+															fontSize: 15,
+															height: "50px",
+															marginBottom: "0px",
+															borderRadius: "10px 0 0",
+															"& span": {
+																// display: "none",
+															},
+														},
+													}}
+												>
+													{selectedPDF === "" || selectedPDF === undefined
+														? "Reports"
+														: record[selectedCardIndex].stock_reports.find(
+																(report) =>
+																	report.document === Array.from(selectedPDF)[0]
+														  )?.report_name}
+												</Dropdown.Button>
+												<Dropdown.Menu
+													// defaultSelectedKeys={'SampleReport.pdf'}
+													aria-label="TractReports"
+													selectionMode="single"
+													selectedKeys={selectedPDF}
+													onSelectionChange={(key) => setSelectedPDF(key)}
+													// defaultSelectedKeys={[record[selectedCardIndex].stock_reports[0]?.document]}
+													style={{ width: "100%" }}
+												>
+													{record[selectedCardIndex].stock_reports.map(
+														(report) => (
+															<Dropdown.Item key={report.document}>
+																{report.report_name}
+															</Dropdown.Item>
+														)
+													)}
+												</Dropdown.Menu>
+											</Dropdown>
+											{/* {console.log(PdfURL)}
+											{console.log(selectedReportUrl)} */}
+											<Worker
+												workerUrl={`https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.7.107/pdf.worker.min.js`}
+											>
+												<Box
+													sx={{
+														height: "75vh",
+														"@media only screen and (max-width: 768px)": {
+															// width: '500px',
+															// height: '80%',
+														},
+													}}
+												>
+													<Viewer
+														fileUrl={`${
+															PdfURL ? PdfURL : selectedReportUrl
+														}#view=FitH&toolbar=0`}
+														onDocumentAskPassword={handleAskPassword}
+													/>
+												</Box>
+											</Worker>
+										</>
+									) : (
+										<Text b size={22} color="#fff">
+											No Reports Available
+										</Text>
+									)}
+									<Button
+										flat
+										onPress={handleCloseReports}
+										css={{
+											alignSelf: "end",
+											width: "100%",
+											backgroundColor: "#ffa12e",
+											color: "#fff",
+											fontSize: 19,
+											marginTop: "20px",
+											borderRadius: "10px",
+											height: "50px",
+											"@media only screen and (max-width: 768px)": {
+												width: "100%",
+												fontSize: 15,
+												height: "50px",
+												marginTop: "0px",
+												borderRadius: "0px 0px 10px",
+												"& span": {
+													// display: "none",
+												},
+											},
+										}}
+									>
+										Close
+									</Button>
+								</Modal>
 							</Card>
 							<Card
 								key={index}
@@ -859,6 +1199,8 @@ const WhyUs = () => {
 									display: "flex",
 									flexDirection: "column",
 									alignItems: "center",
+									filter: "none",
+									boxShadow: "none",
 									"@media only screen and (max-width: 764px)": {
 										width: "95vw",
 										height: "350px",

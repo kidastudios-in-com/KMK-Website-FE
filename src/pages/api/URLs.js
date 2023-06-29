@@ -18,9 +18,9 @@ export const GET_PRODUCT = `${ADMIN_URL}/subscription/`;
 export const PAYMENT_URL = `${MASTER_URL}/create-checkout-session/` || 'http://localhost:3000'
 
 //Profile URLs
-export const USER_PROFILE_URL = `${MASTER_URL}/userprofile/`;
-export const GET_USER = `${MASTER_URL}/userprofile/`
-export const EDIT_USER = `${MASTER_URL}/userprofile/`
+export const USER_PROFILE_URL = `${USER_URL}/userprofile/`;
+export const GET_USER = `${USER_URL}/userprofile/`
+export const EDIT_USER = `${USER_URL}/userprofile/`
 
 
 
@@ -44,5 +44,5 @@ export const GET_USERS = `${ADMIN_URL}/getAllUsers/`;
 export const GET_ADMINS = `${ADMIN_URL}/getAllAdmin/`;
 
 //Stripe Key
-export const  REACT_APP_STRIPE_KEY = process.env.REACT_APP_STRIPE_KEY ||  'pk_test_51NIAaOSI2jzUvqLXPBiVnCIeshgiVn9SeFY3oGrRnYKSLyezrspBuPItJWxuAboUWCGYZ7dCpT66crOe26Fe2L8Y00LoX7UM4Z'
+export const  REACT_APP_STRIPE_KEY = process.env.REACT_APP_STRIPE_KEY ||  'pk_test_51N3dAPSFPooNZtZaCwGwRUC1IHpC4HqARVbxMBia13Fqan4H6SoLZUhLz21xqqMhtDU5Kiurtzia2uznSEbGSADk00LRBh1V2p'
 

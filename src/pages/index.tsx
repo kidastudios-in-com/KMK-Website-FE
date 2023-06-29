@@ -30,7 +30,6 @@ const Home: NextPage = () => {
           gtag('config', 'G-PBMR9CBK3J');
         </script> */}
 			{isLoggedIn ? <NavBar2 /> : <NavBar />}
-			{/* <AuthProvider> */}
 			<HomePage />
 			<SmallcaseCard />
 			{/* <AboutUs /> */}
@@ -44,7 +43,6 @@ const Home: NextPage = () => {
 			<FaqsNew />
 			<Footer />
 			{/* <Footer /> */}
-			{/* </AuthProvider> */}
 		</>
 	);
 };
