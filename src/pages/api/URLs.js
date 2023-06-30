@@ -21,6 +21,7 @@ export const PAYMENT_URL = `${MASTER_URL}/create-checkout-session/` || 'http://l
 export const USER_PROFILE_URL = `${USER_URL}/userprofile/`;
 export const GET_USER = `${USER_URL}/userprofile/`
 export const EDIT_USER = `${USER_URL}/userprofile/`
+export const SUBSCRIPTION_HISTORY = `${MASTER_URL}/subscribe_for_stock_picks/`
 
 
 

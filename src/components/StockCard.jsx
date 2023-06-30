@@ -1781,8 +1781,7 @@ const StockCard = () => {
 									// variant="contained"
 									css={{
 										width: "75%",
-										backgroundImage:
-											"linear-gradient(to top , #FF9D28, #ffa736)",
+										background: "linear-gradient(to top , #fb7716,#fe9807)",
 										paddingTop: "5px",
 										paddingBottom: "5px",
 										borderRadius: "10000px",

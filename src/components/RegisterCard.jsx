@@ -259,7 +259,7 @@ const RegisterCard = () => {
                 }}
               >
                 By logging in you agree to all our{" "}
-                <a href="" className="linkColor">
+                <a className="linkColor" href="/TermsAndCond"target="=_blank">
                   terms & conditions
                 </a>
               </Text>

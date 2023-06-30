@@ -27,8 +27,8 @@ const WhyUs = () => {
 	const [showReports, setShowReports] = useState(false);
 	const [selectedCardIndex, setSelectedCardIndex] = useState(null);
 	const [selectedReportUrl, setSelectedReportUrl] = useState("");
-
 	const [selectedPDF, setSelectedPDF] = useState(new Set([""]));
+
 
 	const PdfValue = React.useMemo(
 		() => Array.from(selectedPDF)[0],
@@ -425,9 +425,13 @@ const WhyUs = () => {
 										<img
 											src="kmk-LionFace.png"
 											// height={'80px'}
-											width={'60px'}
-											style={{ position: 'absolute', right: '20px', top: '75px' }}
-											/>
+											width={"60px"}
+											style={{
+												position: "absolute",
+												right: "20px",
+												top: "75px",
+											}}
+										/>
 									</div>
 									<Divider
 										css={{
@@ -760,21 +764,9 @@ const WhyUs = () => {
 									>
 										<Button
 											auto
-											onPress={() => handleOpenTargets(index)}
-											css={{
-												borderRadius: "1000px",
-												width: "47.5%",
-												fontSize: 18,
-												backgroundImage:
-													"linear-gradient(to top , #FF9D28, #ffa736)",
-											}}
-										>
-											Previous Targets
-										</Button>
-										<Button
-											auto
 											onPress={() => handleOpenReports(index)}
 											css={{
+												alignSelf: "flex-end",
 												borderRadius: "1000px",
 												width: "47.5%",
 												fontSize: 18,
@@ -784,6 +776,23 @@ const WhyUs = () => {
 										>
 											Reports
 										</Button>
+										{item.stock_targets.length > 0 ? (
+											<Button
+												auto
+												onPress={() => handleOpenTargets(index)}
+												css={{
+													borderRadius: "1000px",
+													width: "47.5%",
+													fontSize: 18,
+													backgroundImage:
+														"linear-gradient(to top , #FF9D28, #ffa736)",
+												}}
+											>
+												Previous Targets
+											</Button>
+										) : (
+											""
+										)}
 									</Box>
 								</Box>
 
@@ -896,7 +905,7 @@ const WhyUs = () => {
 										// width: "800px",
 										background: "transparent",
 										boxShadow: "none",
-										filter: 'none',
+										filter: "none",
 										"@media only screen and (max-width: 764px)": {
 											width: "100vw",
 											height: "95vh",
@@ -934,12 +943,14 @@ const WhyUs = () => {
 													}}
 												>
 													<Text>
-													{selectedPDF === "" || selectedPDF === undefined
-														? "Reports"
-														: record[selectedCardIndex].stock_reports.find(
-																(report) =>
-																	report.document === Array.from(selectedPDF)[0]
-														  )?.report_name}</Text>
+														{selectedPDF === "" || selectedPDF === undefined
+															? "Reports"
+															: record[selectedCardIndex].stock_reports.find(
+																	(report) =>
+																		report.document ===
+																		Array.from(selectedPDF)[0]
+															  )?.report_name}
+													</Text>
 												</Dropdown.Button>
 												<Dropdown.Menu
 													// defaultSelectedKeys={'SampleReport.pdf'}

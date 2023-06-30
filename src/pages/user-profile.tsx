@@ -11,9 +11,10 @@ const UserProfile = () => {
 	return (
 		<div
 			style={{
-				maxWidth: "2000px",
-				// display: "flex",
-				// justifyContent: "center",
+				// maxWidth: "2000px",
+				display: "flex",
+				flexDirection: 'column',
+				justifyContent: "center",
 				// alignItems: "center",
 			}}
 		>

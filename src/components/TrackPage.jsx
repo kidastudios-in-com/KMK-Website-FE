@@ -453,7 +453,7 @@ const WhyUs = () => {
 								isHoverable
 								css={{
 									width: "450px",
-									// height: "330px",
+									height: "380px",
 									// padding: "40px",
 									paddingTop: "30px",
 									paddingBottom: "30px",
@@ -466,7 +466,7 @@ const WhyUs = () => {
 									alignItems: "center",
 									"@media only screen and (max-width: 764px)": {
 										width: "95vw",
-										// height: "350px",
+										height: "380px",
 										paddingTop: "30px",
 										paddingBottom: "30px",
 									},
@@ -573,6 +573,12 @@ const WhyUs = () => {
 												alignSelf: "start",
 											}}
 										/>
+										<img
+											src="kmk-LionFace.png"
+											// height={'80px'}
+											width={'60px'}
+											style={{ position: 'absolute', right: '20px', top: '75px' }}
+											/>
 									</div>
 									<Divider
 										css={{
@@ -930,6 +936,20 @@ const WhyUs = () => {
 									>
 										<Button
 											auto
+											onPress={() => handleOpenReports(index)}
+											css={{
+												alignSelf: 'flex-end',
+												borderRadius: "1000px",
+												width: "47.5%",
+												fontSize: 18,
+												backgroundImage:
+													"linear-gradient(to top , #FF9D28, #ffa736)",
+											}}
+										>
+											Reports
+										</Button>
+										{item.stock_targets.length > 0 ? <Button
+											auto
 											onPress={() => handleOpenTargets(index)}
 											css={{
 												borderRadius: "1000px",
@@ -940,27 +960,16 @@ const WhyUs = () => {
 											}}
 										>
 											Previous Targets
-										</Button>
-										<Button
-											auto
-											onPress={() => handleOpenReports(index)}
-											css={{
-												borderRadius: "1000px",
-												width: "47.5%",
-												fontSize: 18,
-												backgroundImage:
-													"linear-gradient(to top , #FF9D28, #ffa736)",
-											}}
-										>
-											Reports
-										</Button>
+										</Button> : ""}
+										
 									</Box>
 								</Box>
 
 								{/* Targets Modal */}
 
 								<Modal
-									blur
+									// blur
+									flat
 									open={showTargets}
 									onClose={handleCloseTargets}
 									css={{
@@ -1059,7 +1068,7 @@ const WhyUs = () => {
 								{/* Reports Modal */}
 
 								<Modal
-									blur
+									// blur
 									open={showReports}
 									onClose={handleCloseReports}
 									css={{

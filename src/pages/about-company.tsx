@@ -4,6 +4,9 @@ import Section2 from "./AboutPages/Section2";
 import NavBar from "../components/Navbar";
 import Section3 from "./AboutPages/Section3";
 import Section4 from "./AboutPages/Section4";
+import Section5 from "./AboutPages/Section5";
+import Section6 from "./AboutPages/Section6";
+import Section7 from "./AboutPages/Section7";
 import FaqsNew from "./screens/FaqsNew";
 import Footer from "./screens/Footer";
 import NavBar2 from "@/components/Navbar2";
@@ -17,7 +20,10 @@ const AboutCompany = () => {
       <Section1 />
       <Section3 />
       <Section2 />
-      {/*<Section4 />*/}
+      {/* <Section4 /> */}
+      <Section5 />
+      <Section6 />
+      <Section7 />
       <FaqsNew />
       <Footer />
     </section>

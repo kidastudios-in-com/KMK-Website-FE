@@ -5,8 +5,9 @@ import { GET_PRODUCT, PAYMENT_URL } from "./api/URLs";
 import { Box } from "@mui/material";
 import { Elements } from "@stripe/react-stripe-js";
 import NavBar2 from "@/components/Navbar2";
-import FaqsNew from '../pages/screens/FaqsNew';
-import Footer from '../pages/screens/Footer';
+import FaqsNew from "../pages/screens/FaqsNew";
+import Footer from "../pages/screens/Footer";
+import { Padding } from "@mui/icons-material";
 
 const stripePromise = loadStripe(
 	"pk_test_51N3dAPSFPooNZtZaCwGwRUC1IHpC4HqARVbxMBia13Fqan4H6SoLZUhLz21xqqMhtDU5Kiurtzia2uznSEbGSADk00LRBh1V2p"
@@ -84,52 +85,18 @@ export default function PreviewPage() {
 			}}
 		>
 			<NavBar2 />
-			
-			<Elements stripe={stripePromise}>
-				{/* <form
-				onSubmit={handlePayButtonClick}
-				style={{
-					display: "flex",
-					flexDirection: "column",
-					alignItems: "center",
-				}}
-			>
-				<Text b size={20} css={{ marginBottom: "20px" }}>
-					Subscribe to KamayaKya
-				</Text>
-				<button type="submit">
-					Subscribe
-				</button>
-				<style jsx>
-					{`
-						button {
-							width: 150px;
-							height: 36px;
-							background: #556cd6;
-							border-radius: 4px;
-							color: white;
-							border: 0;
-							font-weight: 600;
-							cursor: pointer;
-							transition: all 0.2s ease;
-							box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
-						}
-					`}
-				</style>
-				<Button onPress={handleGetProduct} css={{ marginTop: "10px" }}>
-					Get Product ID
-				</Button>
-			</form> */}
 
+			<Elements stripe={stripePromise}>
 				<img
 					src="kmk-logo (1).png"
 					// className="image"
 					height={"60px"}
-					style={{ marginBottom: "20px", marginTop: '20px' }}
+					style={{ marginBottom: "20px", marginTop: "20px" }}
 				></img>
 				<Text b size={20}>
 					Start Your Subscription with KamayaKya!
 				</Text>
+
 				{/* <Box>
 					User Name: if username ? show edit option for biling Name
 					GST Number get from user 
@@ -137,22 +104,75 @@ export default function PreviewPage() {
 
 				</Box> */}
 				<form onSubmit={handleCheckoutSubmit}>
-					<Button
-						type="submit"
-						css={{
-							fontSize: 18,
-							marginTop: "15px",
-							marginBottom: "20px",
-							borderRadius: '20px',
-							backgroundImage:
-								"linear-gradient(to top , #105B54, #0F734D, #0F734D)",
+					<Box
+						sx={{
+							display: "flex",
+							flexDirection: "column",
+							width: "380px",
+							height: "250px",
+							backgroundImage: "url(dummy_card.png)",
+							borderRadius: "14px",
+							marginTop: "20px",
 						}}
 					>
-						Subscribe
-					</Button>
+						<Text b size={20} color="#fff" css={{ ml: "20px", mt: "10px" }}>
+							Pay via Debit/Credit Card
+						</Text>
+						<Button
+							auto
+							type="submit"
+							css={{
+								width: "200px",
+								fontSize: 18,
+								marginTop: "150px",
+								marginLeft: "20px",
+								borderRadius: "20px",
+								backgroundImage:
+									"linear-gradient(to top , #105B54, #0F734D, #0F734D)",
+							}}
+						>
+							Subscribe
+						</Button>
+					</Box>
 				</form>
 			</Elements>
-			{/* <Box>Stipe ID: {productID}</Box> */}
+			{/* <Box> */}
+			<Text b size={20} css={{ mt: "20px" }}>
+				Pay via UPI : kamayakya@upi
+			</Text>
+			<img src="dummy_upi.jpeg" />
+			{/* <Box> */}
+			<Text b size={30} color="#125a54" css={{ mt: "20px" }}>
+				Account Transfer:
+			</Text>
+			{/* </Box> */}
+			<Text b size={16} css={{ width: "950px" }}>
+				If you are transferring through Cheque/DD/Direct account then please
+				send an email to info@aurumcapital.in mentioning your name, email id,
+				account number, bank name, transaction number and the amount
+				transferred. We do not accept cash. Please do not deposit CASH. Payment
+				can be through Cheque, DD, or direct account transfer.
+			</Text>
+			{/* </Box> */}
+			<Box
+				sx={{
+					display: "flex",
+					background: "#d3d3d3",
+					border: "2px solid",
+					flexDirection: "column",
+					mt: '20px',
+					mb: '50px',
+					padding: '20px',
+				}}
+			>
+				<Text b>Account Name: AURUM CAPITAL</Text>
+				<Text b>Account Type:Current Account</Text>
+				<Text b> Account Number: 7212058645</Text>
+				<Text b> Bank: Kotak Mahindra Bank</Text>
+				<Text b>IFSC Code: KKBK0001771</Text>
+				<Text b>Branch Code: 1771</Text>
+				<Text b>Branch Location: Pune-Satara Road, Pune</Text>
+			</Box>
 			<FaqsNew />
 			<Footer />
 		</section>
