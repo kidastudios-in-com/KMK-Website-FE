@@ -18,33 +18,33 @@ import AuthProvider from "@/components/AuthContext";
 import HomePage from "@/pages/screens/HomePage";
 
 const Home: NextPage = () => {
-	const { isLoggedIn } = useContext(AuthProvider);
+  const { isLoggedIn } = useContext(AuthProvider);
 
-	return (
-		<>
-			{/* <script id="google-analytics" data-nscript="afterInteractive">
+  return (
+    <>
+      {/* <script id="google-analytics" data-nscript="afterInteractive">
           window.dataLayer = window.dataLayer || [];
           function gtag(){typeof window !== 'undefined' && window.dataLayer.push(arguments);}
           gtag('js', new Date());
 
           gtag('config', 'G-PBMR9CBK3J');
         </script> */}
-			{isLoggedIn ? <NavBar2 /> : <NavBar />}
-			<HomePage />
-			<SmallcaseCard />
-			{/* <AboutUs /> */}
-			{/* <Process /> */}
-			{/* <Process2/> */}
-			<WhyUs />
-			<SubscriptionNew />
-			{/* <Blogs2 /> */}
-			{/* <Testimonials /> */}
-			<Solutions />
-			<FaqsNew />
-			<Footer />
-			{/* <Footer /> */}
-		</>
-	);
+      {isLoggedIn ? <NavBar2 /> : <NavBar />}
+      <HomePage />
+      <SubscriptionNew />
+      <SmallcaseCard />
+      {/* <AboutUs /> */}
+      {/* <Process /> */}
+      {/* <Process2/> */}
+      {/*<WhyUs />*/}
+      {/* <Blogs2 /> */}
+      {/* <Testimonials /> */}
+      <Solutions />
+      <FaqsNew />
+      <Footer />
+      {/* <Footer /> */}
+    </>
+  );
 };
 
 export default Home;

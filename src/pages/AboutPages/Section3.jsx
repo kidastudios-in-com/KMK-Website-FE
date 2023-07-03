@@ -67,7 +67,7 @@ const Section3 = () => {
             width: "50%",
             display: "flex",
             flexDirection: "column",
-            alignSelf: "flex-start",
+            alignSelf: "center",
             paddingLeft: "75px",
             // paddingRight: "75px",
           }}
@@ -81,9 +81,11 @@ const Section3 = () => {
               paddingBottom: "35px",
               paddingTop: "35px",
               "@media only screen and (max-width: 764px)": {
-                textAlign: "center",
+                textAlign: "left",
                 fontSize: 25,
-                lineHeight: 1.3,
+                lineHeight: 1.2,
+                paddingLeft: "10px",
+                paddingRight: "10px",
               },
             }}
           >
@@ -110,9 +112,9 @@ const Section3 = () => {
                 paddingRight: 15,
                 marginLeft: 0,
                 marginBottom: 0,
-                marginTop: "25px",
+                marginTop: "10px",
                 height: "55px",
-                width: "100%",
+                width: "250px",
               },
             }}
           >
@@ -146,6 +148,7 @@ const Section3 = () => {
               "@media only screen and (max-width: 764px)": {
                 width: "95vw !important",
                 maxWidth: "95vw !important",
+                maxHeight: "90vh !important",
               },
             }}
           >
@@ -240,132 +243,6 @@ const Section3 = () => {
               Close
             </Button>
           </Modal>
-          {/*<Box*/}
-          {/*  sx={{*/}
-          {/*    width: "100%",*/}
-          {/*    alignSelf: "flex-end",*/}
-          {/*    display: "flex",*/}
-          {/*    flexDirection: "row",*/}
-          {/*    alignItems: "flex-end",*/}
-          {/*    mt: "30px",*/}
-          {/*    "@media only screen and (max-width: 764px)": {*/}
-          {/*      justifyContent: "center",*/}
-          {/*    },*/}
-          {/*  }}*/}
-          {/*>*/}
-          {/*  <CheckCircleIcon*/}
-          {/*    sx={{*/}
-          {/*      marginRight: "10px",*/}
-          {/*      fontSize: 30,*/}
-          {/*      alignSelf: "start",*/}
-          {/*      marginTop: "5px",*/}
-          {/*      opacity: 0.9,*/}
-          {/*      "@media only screen and (max-width: 764px)": {*/}
-          {/*        textAlign: "center",*/}
-          {/*        fontSize: 24,*/}
-          {/*        lineHeight: 1,*/}
-          {/*      },*/}
-          {/*    }}*/}
-          {/*  />*/}
-          {/*  <Text*/}
-          {/*    b*/}
-          {/*    size={28}*/}
-          {/*    css={{*/}
-          {/*      lineHeight: 1,*/}
-          {/*      "@media only screen and (max-width: 764px)": {*/}
-          {/*        textAlign: "center",*/}
-          {/*        fontSize: 24,*/}
-          {/*        lineHeight: 1,*/}
-          {/*      },*/}
-          {/*    }}*/}
-          {/*  >*/}
-          {/*    Intense Research*/}
-          {/*  </Text>*/}
-          {/*</Box>*/}
-          {/*<Box*/}
-          {/*  sx={{*/}
-          {/*    width: "100%",*/}
-          {/*    alignSelf: "start",*/}
-          {/*    display: "flex",*/}
-          {/*    flexDirection: "row",*/}
-          {/*    alignItems: "center",*/}
-          {/*    mt: "30px",*/}
-          {/*    "@media only screen and (max-width: 764px)": {*/}
-          {/*      justifyContent: "center",*/}
-          {/*    },*/}
-          {/*  }}*/}
-          {/*>*/}
-          {/*  <CheckCircleIcon*/}
-          {/*    sx={{*/}
-          {/*      marginRight: "10px",*/}
-          {/*      fontSize: 30,*/}
-          {/*      alignSelf: "start",*/}
-          {/*      marginTop: "5px",*/}
-          {/*      opacity: 0.9,*/}
-          {/*      "@media only screen and (max-width: 764px)": {*/}
-          {/*        textAlign: "center",*/}
-          {/*        fontSize: 24,*/}
-          {/*        lineHeight: 1,*/}
-          {/*      },*/}
-          {/*    }}*/}
-          {/*  />*/}
-          {/*  <Text*/}
-          {/*    b*/}
-          {/*    size={28}*/}
-          {/*    css={{*/}
-          {/*      lineHeight: 1,*/}
-          {/*      "@media only screen and (max-width: 764px)": {*/}
-          {/*        textAlign: "center",*/}
-          {/*        fontSize: 24,*/}
-          {/*        lineHeight: 1,*/}
-          {/*      },*/}
-          {/*    }}*/}
-          {/*  >*/}
-          {/*    100% transparency*/}
-          {/*  </Text>*/}
-          {/*</Box>*/}
-          {/*<Box*/}
-          {/*  sx={{*/}
-          {/*    width: "100%",*/}
-          {/*    alignSelf: "start",*/}
-          {/*    display: "flex",*/}
-          {/*    flexDirection: "row",*/}
-          {/*    alignItems: "center",*/}
-          {/*    mt: "30px",*/}
-          {/*    "@media only screen and (max-width: 764px)": {*/}
-          {/*      justifyContent: "center",*/}
-          {/*    },*/}
-          {/*  }}*/}
-          {/*>*/}
-          {/*  <CheckCircleIcon*/}
-          {/*    sx={{*/}
-          {/*      marginRight: "10px",*/}
-          {/*      fontSize: 30,*/}
-          {/*      alignSelf: "start",*/}
-          {/*      marginTop: "5px",*/}
-          {/*      opacity: 0.9,*/}
-          {/*      "@media only screen and (max-width: 764px)": {*/}
-          {/*        textAlign: "center",*/}
-          {/*        fontSize: 24,*/}
-          {/*        lineHeight: 1,*/}
-          {/*      },*/}
-          {/*    }}*/}
-          {/*  />*/}
-          {/*  <Text*/}
-          {/*    b*/}
-          {/*    size={28}*/}
-          {/*    css={{*/}
-          {/*      lineHeight: 1,*/}
-          {/*      "@media only screen and (max-width: 764px)": {*/}
-          {/*        textAlign: "center",*/}
-          {/*        fontSize: 24,*/}
-          {/*        lineHeight: 1,*/}
-          {/*      },*/}
-          {/*    }}*/}
-          {/*  >*/}
-          {/*    Understanding investments*/}
-          {/*  </Text>*/}
-          {/*</Box>*/}
         </Box>
       </Box>
     </section>

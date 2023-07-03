@@ -154,7 +154,7 @@ const RegisterCard = () => {
             flexDirection: "row",
             justifyContent: "center",
             width: "100%",
-            height: "330px",
+            height: "400px",
           }}
         >
           <div
@@ -192,20 +192,23 @@ const RegisterCard = () => {
               </Text>
               <Text
                 b
-                size={22}
+                size={20}
                 color="#ffa12e"
                 css={{
-                  lineHeight: 1,
+                  lineHeight: 1.1,
                   marginTop: "5px",
                   marginBottom: "20px",
                   width: "100%",
+                  padding: "0px 10px",
+                  opacity: "0.95",
                   "@media only screen and (max-width: 764px)": {
                     fontSize: 20,
                     width: "100%",
                   },
                 }}
               >
-                No registration required!
+                Ready to conquer the stock market? Skip the hassle of
+                registration and jump right in!
               </Text>
             </Box>
             <Card
@@ -259,7 +262,7 @@ const RegisterCard = () => {
                 }}
               >
                 By logging in you agree to all our{" "}
-                <a className="linkColor" href="/TermsAndCond"target="=_blank">
+                <a className="linkColor" href="/TermsAndCond" target="=_blank">
                   terms & conditions
                 </a>
               </Text>

@@ -79,6 +79,7 @@ const Footer = () => {
             <SocialIcon
               className="socialIcons"
               url="https://www.facebook.com/KamayaKya"
+              target="_blank"
               style={{ height: "30px", width: "30px" }}
             />
           </nav>
@@ -86,6 +87,7 @@ const Footer = () => {
             <SocialIcon
               className="socialIcons"
               url="https://instagram.com/kamayakyaofficial?igshid=YmMyMTA2M2Y="
+              target="_blank"
               style={{ height: "30px", width: "30px" }}
             />
           </nav>
@@ -93,6 +95,7 @@ const Footer = () => {
             <SocialIcon
               className="socialIcons"
               url="https://www.linkedin.com/company/kamayakya/"
+              target="_blank"
               style={{ height: "30px", width: "30px" }}
             />
           </nav>
@@ -100,6 +103,7 @@ const Footer = () => {
             <SocialIcon
               className="socialIcons"
               url="https://twitter.com/KamayaKyaIndia?s=20&t=LGnZi-Xq9J6m993h9E7BCw"
+              target="_blank"
               style={{ height: "30px", width: "30px" }}
             />
           </nav>
@@ -107,6 +111,7 @@ const Footer = () => {
             <SocialIcon
               className="socialIcons"
               url="https://telegram.com/"
+              target="_blank"
               style={{ height: "30px", width: "30px" }}
             />
           </nav>

@@ -54,9 +54,10 @@ const Section1 = () => {
             Research methodology
           </Text>
         </div>
-        <div style={{ width: "100%", paddingTop: "25px", textAlign: "center" }}>
+        <div style={{ width: "100%", paddingTop: "25px" }}>
           <Text
             size={25}
+            b
             css={{
               textAlign: "center",
               lineHeight: 1.5,
