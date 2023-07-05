@@ -16,9 +16,9 @@ const Section7 = () => {
     <section
       style={{
         width: "100vw",
-        backgroundColor: "#fafafa",
-        paddingTop: "100px",
-        paddingBottom: "100px",
+        backgroundColor: "white",
+        paddingTop: "20px",
+        paddingBottom: "20px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -57,7 +57,7 @@ const Section7 = () => {
             muted
             autoPlay
             loop
-            src="https://kamayakya.com/Expert%20Team%20-%20Why%20Us.mp4"
+            src="https://kamayakya.com/360%20Degree%20View%20-%20Value%20Prop.mp4"
             style={{ borderRadius: "30px", width: "100%", height: "100%" }}
           />
         </Box>
@@ -89,10 +89,12 @@ const Section7 = () => {
               },
             }}
           >
-            Investment is a serious decision and you want only the best people
-            behind the wheel taking shots for you. We have curated the top 1%
-            talent in finance, engineering, and economics with 25 years of
-            combined experience to ensure we deliver the best for you.
+            Understand your investments
+            <br />
+            <br />
+            Investing without context is like throwing a dart blindfolded. But
+            with KamayaKya, you’ll get all the information you need to establish
+            context, enabling you to make better investments.
           </Text>
           <Button
             auto

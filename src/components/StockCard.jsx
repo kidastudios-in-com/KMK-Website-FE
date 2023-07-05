@@ -8,7 +8,7 @@ import {
   Modal,
   Dropdown,
 } from "@nextui-org/react";
-import { ArrowCircleUp, DocumentText } from "iconsax-react";
+import { ArrowCircleUp, DocumentText, Lock, Lock1 } from "iconsax-react";
 import axios from "axios";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { GET_ALL_URL } from "../pages/api/URLs";
@@ -285,11 +285,12 @@ const StockCard = () => {
         paddingBottom: 100,
         backgroundColor: "#fff",
         alignItems: "center",
-        // backgroundImage:
-        //   "url(https://www.wrightresearch.in/static/img/home/home_banner.svg?bbdddc9ba9b4)",
-        // objectPosition: "center",
-        // backgroundPositionY: "center",
-        // backgroundSize: "cover",
+        // backgroundImage: "url(coral_texture.svg)",
+        objectPosition: "center",
+        backgroundPositionY: "center",
+        backgroundPositionX: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "none",
       }}
     >
       <Box
@@ -315,21 +316,24 @@ const StockCard = () => {
       >
         <Box
           sx={{
-            paddingLeft: "40px",
-            paddingRight: "40px",
-            paddingTop: "15px",
-            paddingBottom: "15px",
+            // paddingLeft: "40px",
+            // paddingRight: "40px",
+            // paddingTop: "15px",
+            // paddingBottom: "15px",
+            padding: "0",
             // marginTop: "25px",
             display: "flex",
             flexDirection: "column",
-            backgroundImage: "linear-gradient(to top , #0d2c7b, #6067b5)",
+            // backgroundImage: "linear-gradient(to top , #0d2c7b, #6067b5)",
+            // backgroundImage: "linear-gradient(to top , #fff, #fff)",
             alignItems: "center",
             // backgroundImage: "linear-gradient(to top , #106052, #0f734d)",
-            borderRadius: "12.5px",
+            borderRadius: "1200.5px",
             "@media only screen and (max-width: 764px)": {
               paddingLeft: "5px",
               paddingRight: "5px",
-              marginTop: "0px",
+              marginTop: "10px",
+              marginBottom: "10px",
               borderRadius: "10px",
               alignItems: "flex-start",
               backgroundImage: "linear-gradient(to top , #fff, #fff)",
@@ -338,10 +342,11 @@ const StockCard = () => {
         >
           <Text
             b
-            size={28}
+            size={18}
             color="#FFF"
             css={{
               fontWeight: "bolder",
+              color: "#021C61",
               "@media only screen and (max-width: 764px)": {
                 fontSize: 18,
                 width: "100%",
@@ -418,7 +423,7 @@ const StockCard = () => {
           b
           size={70}
           css={{
-            marginTop: "40px",
+            marginTop: "0px",
             marginBottom: "0px",
             // width: "90%",
             maxWidth: "80rem" /* 1280px */,
@@ -447,46 +452,53 @@ const StockCard = () => {
             display: "flex",
             flexWrap: "wrap",
             flexDirection: "row",
-            gap: "0px",
-            marginBottom: "4%",
+            gap: "5px",
+            marginBottom: "40px",
             justifyContent: "center",
             alignItems: "center",
           }}
+          className="stockPicks-searchBar-box"
         >
           {/* Search Bar */}
           <Box
             sx={{
-              border: "2px solid #ffa12e",
+              border: "1px solid #125a54",
               borderRadius: "10000px",
               padding: "0px 15px",
               paddingTop: "2px",
               display: "flex",
               alignItems: "center",
-              "@media only screen and (max-width: 768px)": {
-                padding: "0px 15px",
-              },
+              // "@media only screen and (max-width: 768px)": {
+              //   padding: "0px 15px",
+              //   width: "500px",
+              // },
             }}
+            className="stockPicks-searchBar"
           >
             <IconButton>
-              <SearchNormal size={30} color="#125a54" />
+              <SearchNormal size={25} color="#125a54" />
             </IconButton>
             <InputBase
               placeholder="Ion Exchange (OR) IONEXCHANG"
               variant="standard"
-              size="small"
+              // size="large"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               sx={{
                 display: "flex",
                 alignItems: "center",
-                fontSize: 20,
+                fontSize: 18,
                 lineHeight: 1,
                 textAlign: "center",
-                width: "440px",
+                width: "80vw",
+                maxWidth: "60rem",
                 padding: "10px 10px",
+                backgroundColor: "#fff",
+                borderRadius: "10000px",
                 "@media only screen and (max-width: 768px)": {
-                  width: "90%",
-                  fontSize: 20,
+                  width: "100vw",
+                  fontSize: 15,
+                  backgroundColor: "transparent",
                 },
               }}
             />
@@ -497,13 +509,14 @@ const StockCard = () => {
             css={{
               width: "30px !important",
               maxWidth: "30px !important",
+              backgroundColor: "red",
               "@media only screen and (max-width: 768px)": {
                 width: "30px",
                 maxWidth: "30px",
               },
             }}
           >
-            <Filter size={30} color="#125a54" />
+            <Filter size={25} color="#125a54" />
           </IconButton>
           {/* Side Drawer Filtering & Sorting */}
           <SwipeableDrawer
@@ -514,20 +527,22 @@ const StockCard = () => {
             sx={{
               width: {
                 xs: "100vw",
-                sm: "20vw",
+                sm: "400px",
               },
               maxWidth: {
                 xs: "100%",
-                sm: "20%",
+                sm: "400px",
               },
               "& .MuiDrawer-paper": {
+                borderRadius: { xs: "0px", sm: "25px 0px 0px 25px" },
+                padding: "15px",
                 width: {
                   xs: "100vw",
-                  sm: "20vw",
+                  sm: "400px",
                 },
                 maxWidth: {
                   xs: "100%",
-                  sm: "20%",
+                  sm: "400px",
                 },
               },
             }}
@@ -546,8 +561,8 @@ const StockCard = () => {
               >
                 <CloseIcon />
               </ListItemButton>
-              <Text b size={20} css={{ paddingLeft: "30px" }}>
-                Filter :
+              <Text b size={30} css={{ paddingLeft: "30px" }}>
+                Filter by industries :
               </Text>
               <ListItem>
                 <FormControl
@@ -555,7 +570,6 @@ const StockCard = () => {
                   component="fieldset"
                   variant="standard"
                 >
-                  <FormLabel>By Industries</FormLabel>
                   <FormGroup>
                     {/* <Grid container spacing={2}> */}
                     {industries.map((industry, index) => (
@@ -626,24 +640,24 @@ const StockCard = () => {
 									</Dropdown.Menu>
 								</Dropdown>
 							</ListItem> */}
-              <Text b size={20} css={{ paddingLeft: "30px" }}>
-                Sort :
+              <Text b size={25} css={{ paddingLeft: "30px" }}>
+                Sort by :
               </Text>
               <ListItem>
                 <FormControl sx={{ mt: "5px", ml: "15px" }}>
                   <FormLabel id="demo-controlled-radio-buttons-group">
-                    By Time Left
+                    Time left
                   </FormLabel>
                   <RadioGroup value={timeSort} onChange={timeSortValue}>
                     <FormControlLabel
                       value="ascending"
                       control={<Radio />}
-                      label="Earliest First"
+                      label="ascending -> descending"
                     />
                     <FormControlLabel
                       value="descending"
                       control={<Radio />}
-                      label="Latest First"
+                      label="descending -> ascending"
                     />
                   </RadioGroup>
                 </FormControl>
@@ -704,12 +718,12 @@ const StockCard = () => {
                     <FormControlLabel
                       value="ascending"
                       control={<Radio />}
-                      label="Lowest to Highest"
+                      label="ascending -> descending"
                     />
                     <FormControlLabel
                       value="descending"
                       control={<Radio />}
-                      label="Highest To Lowest"
+                      label="descending -> ascending"
                     />
                   </RadioGroup>
 
@@ -806,10 +820,10 @@ const StockCard = () => {
           justifyContent={"center"}
           gap={"20px"}
           sx={{
-            background: "#fff",
+            // background: "#fff",
             boxShadow: "none",
             "@media only screen and (max-width: 768px)": {
-              gap: "1vw",
+              gap: "20px",
             },
           }}
         >
@@ -837,15 +851,15 @@ const StockCard = () => {
                     alignItems: "center",
                     backgroundColor: "#fff",
                     borderRadius: "40px",
-                    border: "2px solid",
+                    border: "4px solid",
                     borderColor: "#ffa12e",
                     marginBottom: "0px",
                     boxShadow: "none",
                     filter: "none",
                     "@media only screen and (max-width: 768px)": {
-                      width: "95vw",
+                      width: "92.5vw",
                       maxWidth: "620px",
-                      height: "770px",
+                      height: "650px",
                       borderRadius: "35px",
                     },
                   }}
@@ -865,6 +879,8 @@ const StockCard = () => {
                       "@media only screen and (max-width: 768px)": {
                         marginLeft: "5px",
                         marginRight: "5px",
+                        height: "auto",
+                        marginBottom: "30px",
                       },
                     }}
                   >
@@ -920,7 +936,7 @@ const StockCard = () => {
                               </span>
                             </Marquee>
                           ) : (
-                            <>{stock.stock_industry}</> || <Loading /> || "N/A"
+                            <>{stock.stock_industry}</> || <Loading /> || "-"
                           )}
                         </Text>
                       </Box>
@@ -997,7 +1013,7 @@ const StockCard = () => {
                             marginLeft: "3px",
                             marginRight: "3px",
                             "@media only screen and (max-width: 768px)": {
-                              fontSize: 70,
+                              fontSize: 60,
                             },
                           }}
                         >
@@ -1072,7 +1088,7 @@ const StockCard = () => {
                           }}
                           size={22}
                         >
-                          {`${stock.market_cap}` || <Loading /> || "N/A"}
+                          {`${stock.market_cap}` || <Loading /> || "-"}
                         </Text>
                       </div>
                       <Divider
@@ -1136,7 +1152,7 @@ const StockCard = () => {
                             }}
                             size={22}
                           >
-                            {`${stock.live_price}` || <Loading /> || "N/A"}
+                            {`${stock.live_price}` || <Loading /> || "-"}
                           </Text>
                         </div>
                         <Divider
@@ -1193,7 +1209,7 @@ const StockCard = () => {
                             }}
                             size={22}
                           >
-                            {`${stock.target_price}` || <Loading /> || "N/A"}
+                            {`${stock.target_price}` || <Loading /> || "-"}
                           </Text>
                         </div>
                         <Divider
@@ -1251,7 +1267,8 @@ const StockCard = () => {
                             }}
                             size={22}
                           >
-                            {`${stock.time_left}` || <Loading /> || "N/A"}
+                            {`${Math.ceil(stock.time_left)}` || <Loading /> ||
+                              "-"}
                           </Text>
                         </div>
                       </div>
@@ -1264,6 +1281,7 @@ const StockCard = () => {
                       marginBottom: "25px",
                       "@media only screen and (max-width: 768px)": {
                         width: "90%",
+                        height: "50px",
                         justifyContent: "center",
                       },
                     }}
@@ -1280,9 +1298,10 @@ const StockCard = () => {
                           "linear-gradient(to top , #FF9D28, #ffa736)",
                         fontSize: 18,
                         "@media only screen and (max-width: 768px)": {
-                          fontSize: 15,
+                          fontSize: 18,
                           lineHeight: 1,
-                          height: "30px",
+                          height: "40px",
+                          color: "black",
                         },
                       }}
                     >
@@ -1303,7 +1322,7 @@ const StockCard = () => {
                         fontSize: 15,
                         height: "20px",
                         "@media only screen and (max-width: 768px)": {
-                          top: "115px",
+                          top: "10px",
                           lineHeight: 1,
                           height: "20px",
                           fontSize: 15,
@@ -1324,13 +1343,13 @@ const StockCard = () => {
                     alignItems: "center",
                     backgroundColor: "#fff",
                     borderRadius: "40px",
-                    border: "2px solid",
+                    border: "4px solid",
                     borderColor: "#ffa12e",
                     marginBottom: "0px",
                     "@media only screen and (max-width: 768px)": {
-                      width: "95vw",
+                      width: "92.5vw",
                       maxWidth: "620px",
-                      height: "570px",
+                      height: "650px",
                       borderRadius: "35px",
                     },
                   }}
@@ -1378,7 +1397,7 @@ const StockCard = () => {
                         }}
                       >
                         <Text b size={14} color="Black" css={{ lineHeight: 1 }}>
-                          {stock.stock_industry || <Loading /> || "N/A"}
+                          {stock.stock_industry || <Loading /> || "-"}
                         </Text>
                       </Box>
                       <Text
@@ -1394,7 +1413,7 @@ const StockCard = () => {
                           },
                         }}
                       >
-                        {/* {stock.stock_name || <Loading /> || "N/A"} */}
+                        {/* {stock.stock_name || <Loading /> || "-"} */}
                         {stock.stock_name.length > 20 ? (
                           <Marquee
                             speed={30}
@@ -1671,12 +1690,8 @@ const StockCard = () => {
                   paddingRight: "15px",
                   backgroundImage:
                     "linear-gradient(to top , #105B54, #0F734D, #0F734D)",
-                  "@media only screen and (max-width: 768px)": {
-                    // order: 4,
-                    width: "95vw",
-                    maxWidth: "620px",
-                  },
                 }}
+                className="stocksPage-subscribe-mobile"
               >
                 <img
                   src="kamayakya-logo-white.png"
@@ -1909,7 +1924,7 @@ const StockCard = () => {
                     alignItems: "center",
                     backgroundColor: "#fff",
                     borderRadius: "40px",
-                    border: "2px solid",
+                    border: "4px solid",
                     borderColor: "#ffa12e",
                     marginBottom: "20px",
                     boxShadow: "none",
@@ -1917,8 +1932,11 @@ const StockCard = () => {
                     "@media only screen and (max-width: 768px)": {
                       width: "95vw",
                       maxWidth: "620px",
-                      height: "570px",
+                      height: "auto",
                       borderRadius: "35px",
+                      border: "4px solid",
+                      borderColor: "#ffa12e",
+                      paddingBottom: "30px",
                     },
                   }}
                 >
@@ -1985,7 +2003,7 @@ const StockCard = () => {
                           },
                         }}
                       >
-                        {`<Stock Name>`}
+                        {`KamayaKya`}
                       </Text>
                       <Box
                         sx={{
@@ -2043,7 +2061,7 @@ const StockCard = () => {
                             marginLeft: "3px",
                             marginRight: "3px",
                             "@media only screen and (max-width: 768px)": {
-                              fontSize: 30,
+                              fontSize: 55,
                             },
                           }}
                         >
@@ -2052,34 +2070,34 @@ const StockCard = () => {
                         <span style={{ fontSize: 25, color: "#FFF" }}>%</span>
                       </div>
                     </Box>
-                    <Box
-                      sx={{
-                        // zIndex: 1,
-                        width: "90%",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        pt: 1,
-                        pb: 1,
-                        marginTop: 2,
-                        mb: "20px",
-                        backgroundImage:
-                          "linear-gradient(to top , #FF9D28, #ffa736)",
-                        borderRadius: "10000px",
-                        "@media only screen and (max-width: 768px)": {
-                          width: "100%",
-                        },
-                      }}
-                    >
-                      <SpeedIcon color="#fff" style={{ fontSize: 20 }} />
-                      <Text
-                        b
-                        style={{ marginLeft: 5, color: "Black", lineHeight: 1 }}
-                        size={14}
-                      >
-                        {`Medium Risk`}
-                      </Text>
-                    </Box>
+                    {/*<Box*/}
+                    {/*  sx={{*/}
+                    {/*    // zIndex: 1,*/}
+                    {/*    width: "90%",*/}
+                    {/*    display: "flex",*/}
+                    {/*    alignItems: "center",*/}
+                    {/*    justifyContent: "center",*/}
+                    {/*    pt: 1,*/}
+                    {/*    pb: 1,*/}
+                    {/*    marginTop: 2,*/}
+                    {/*    mb: "20px",*/}
+                    {/*    backgroundImage:*/}
+                    {/*      "linear-gradient(to top , #FF9D28, #ffa736)",*/}
+                    {/*    borderRadius: "10000px",*/}
+                    {/*    "@media only screen and (max-width: 768px)": {*/}
+                    {/*      width: "100%",*/}
+                    {/*    },*/}
+                    {/*  }}*/}
+                    {/*>*/}
+                    {/*  <SpeedIcon color="#fff" style={{ fontSize: 20 }} />*/}
+                    {/*  <Text*/}
+                    {/*    b*/}
+                    {/*    style={{ marginLeft: 5, color: "Black", lineHeight: 1 }}*/}
+                    {/*    size={14}*/}
+                    {/*  >*/}
+                    {/*    {`Medium Risk`}*/}
+                    {/*  </Text>*/}
+                    {/*</Box>*/}
                     <Box sx={{ minWidth: "90%", maxWidth: "90%" }}>
                       <div
                         style={{
@@ -2088,112 +2106,114 @@ const StockCard = () => {
                           flexDirection: "column",
                         }}
                       >
-                        <div
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "center",
-                          }}
-                        >
-                          <div
-                            style={{ display: "flex", flexDirection: "column" }}
-                          >
-                            <Text
-                              b
-                              css={{
-                                lineHeight: 1.1,
-                                "@media only screen and (max-width: 768px)": {
-                                  fontSize: 13,
-                                },
-                              }}
-                              size={15}
-                            >
-                              CURRENT
-                            </Text>
-                            <Text
-                              b
-                              size={15}
-                              css={{
-                                lineHeight: 1.1,
-                                "@media only screen and (max-width: 768px)": {
-                                  fontSize: 13,
-                                },
-                              }}
-                            >
-                              PRICE (in ₹)
-                            </Text>
-                          </div>
-                          <Text
-                            b
-                            css={{
-                              flex: 1,
-                              textAlign: "right",
-                              "@media only screen and (max-width: 768px)": {
-                                fontSize: 20,
-                              },
-                            }}
-                            size={22}
-                          >
-                            {`XXXX.XX`}
-                          </Text>
-                        </div>
+                        {/*<div*/}
+                        {/*  style={{*/}
+                        {/*    display: "flex",*/}
+                        {/*    justifyContent: "space-between",*/}
+                        {/*    alignItems: "center",*/}
+                        {/*  }}*/}
+                        {/*>*/}
+                        {/*  <div*/}
+                        {/*    style={{ display: "flex", flexDirection: "column" }}*/}
+                        {/*  >*/}
+                        {/*    <Text*/}
+                        {/*      b*/}
+                        {/*      css={{*/}
+                        {/*        lineHeight: 1.1,*/}
+                        {/*        "@media only screen and (max-width: 768px)": {*/}
+                        {/*          fontSize: 13,*/}
+                        {/*        },*/}
+                        {/*      }}*/}
+                        {/*      size={15}*/}
+                        {/*    >*/}
+                        {/*      CURRENT*/}
+                        {/*    </Text>*/}
+                        {/*    <Text*/}
+                        {/*      b*/}
+                        {/*      size={15}*/}
+                        {/*      css={{*/}
+                        {/*        lineHeight: 1.1,*/}
+                        {/*        "@media only screen and (max-width: 768px)": {*/}
+                        {/*          fontSize: 13,*/}
+                        {/*        },*/}
+                        {/*      }}*/}
+                        {/*    >*/}
+                        {/*      PRICE (in ₹)*/}
+                        {/*    </Text>*/}
+                        {/*  </div>*/}
+                        {/*  <Text*/}
+                        {/*    b*/}
+                        {/*    css={{*/}
+                        {/*      flex: 1,*/}
+                        {/*      textAlign: "right",*/}
+                        {/*      "@media only screen and (max-width: 768px)": {*/}
+                        {/*        fontSize: 20,*/}
+                        {/*      },*/}
+                        {/*    }}*/}
+                        {/*    size={22}*/}
+                        {/*  >*/}
+                        {/*    {`XXXX.XX`}*/}
+                        {/*  </Text>*/}
+                        {/*</div>*/}
                         <Divider
-                          height={1.5}
+                          height={4}
                           style={{
-                            backgroundColor: "#ffa12e",
-                            marginTop: "10px",
+                            backgroundColor: "#ffa736",
+                            marginTop: "30px",
                             marginBottom: "10px",
+                            width: "50px",
+                            alignSelf: "center",
                           }}
                         />
-                        <div
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "center",
-                          }}
-                        >
-                          <div
-                            style={{ display: "flex", flexDirection: "column" }}
-                          >
-                            <Text
-                              b
-                              css={{
-                                lineHeight: 1.1,
-                                "@media only screen and (max-width: 768px)": {
-                                  fontSize: 13,
-                                },
-                              }}
-                              size={15}
-                            >
-                              TIME LEFT
-                            </Text>
-                            <Text
-                              b
-                              size={15}
-                              css={{
-                                lineHeight: 1.1,
-                                "@media only screen and (max-width: 768px)": {
-                                  fontSize: 13,
-                                },
-                              }}
-                            >
-                              (IN DAYS)
-                            </Text>
-                          </div>
-                          <Text
-                            b
-                            css={{
-                              flex: 1,
-                              textAlign: "right",
-                              "@media only screen and (max-width: 768px)": {
-                                fontSize: 20,
-                              },
-                            }}
-                            size={22}
-                          >
-                            {`XXX`}
-                          </Text>
-                        </div>
+                        {/*<div*/}
+                        {/*  style={{*/}
+                        {/*    display: "flex",*/}
+                        {/*    justifyContent: "space-between",*/}
+                        {/*    alignItems: "center",*/}
+                        {/*  }}*/}
+                        {/*>*/}
+                        {/*  <div*/}
+                        {/*    style={{ display: "flex", flexDirection: "column" }}*/}
+                        {/*  >*/}
+                        {/*    <Text*/}
+                        {/*      b*/}
+                        {/*      css={{*/}
+                        {/*        lineHeight: 1.1,*/}
+                        {/*        "@media only screen and (max-width: 768px)": {*/}
+                        {/*          fontSize: 13,*/}
+                        {/*        },*/}
+                        {/*      }}*/}
+                        {/*      size={15}*/}
+                        {/*    >*/}
+                        {/*      TIME LEFT*/}
+                        {/*    </Text>*/}
+                        {/*    <Text*/}
+                        {/*      b*/}
+                        {/*      size={15}*/}
+                        {/*      css={{*/}
+                        {/*        lineHeight: 1.1,*/}
+                        {/*        "@media only screen and (max-width: 768px)": {*/}
+                        {/*          fontSize: 13,*/}
+                        {/*        },*/}
+                        {/*      }}*/}
+                        {/*    >*/}
+                        {/*      (IN DAYS)*/}
+                        {/*    </Text>*/}
+                        {/*  </div>*/}
+                        {/*  <Text*/}
+                        {/*    b*/}
+                        {/*    css={{*/}
+                        {/*      flex: 1,*/}
+                        {/*      textAlign: "right",*/}
+                        {/*      "@media only screen and (max-width: 768px)": {*/}
+                        {/*        fontSize: 20,*/}
+                        {/*      },*/}
+                        {/*    }}*/}
+                        {/*    size={22}*/}
+                        {/*  >*/}
+                        {/*    {`XXX`}*/}
+                        {/*  </Text>*/}
+                        {/*</div>*/}
                         <div
                           style={{
                             zIndex: 1,
@@ -2201,9 +2221,10 @@ const StockCard = () => {
                             alignItems: "center",
                             justifyContent: "center",
                             flexDirection: "column",
+                            marginTop: "0px",
                           }}
                         >
-                          <MdOutlineLock color="#ffa12e" size={50} />
+                          {/*<Lock1 color="#ffa12e" size={50} />*/}
                           <div
                             style={{
                               display: "flex",
@@ -2211,19 +2232,75 @@ const StockCard = () => {
                               flexDirection: "row",
                               marginTop: "20px",
                             }}
+                            className="stocksPage-card-loginSection"
                           >
                             <Button
                               on
                               onPress={handleFirstCard}
-                              css={{ backgroundColor: "transparent" }}
+                              css={{
+                                backgroundColor: "transparent",
+                              }}
                             >
-                              <Text b size={20}>
-                                {isLoggedIn ? "Subscribe" : "Login"}
-                              </Text>
-                              <BiChevronRight size={24} color="#000000" />
+                              {isLoggedIn ? (
+                                <Button
+                                  // variant="contained"
+                                  css={{
+                                    width: "75%",
+                                    background:
+                                      "linear-gradient(to top , #fb7716,#fe9807)",
+                                    paddingTop: "5px",
+                                    paddingBottom: "5px",
+                                    borderRadius: "10000px",
+                                    boxShadow: "none",
+                                    "&:hover": {
+                                      backgroundImage:
+                                        "linear-gradient(to top , #FF9D28, #ffa736)",
+                                    },
+                                  }}
+                                  onPress={handleFirstCard}
+                                >
+                                  <Text b color="#FFF" size={18}>
+                                    Subscribe Now
+                                  </Text>
+                                </Button>
+                              ) : (
+                                <Button
+                                  // variant="contained"
+                                  css={{
+                                    width: "75%",
+                                    background:
+                                      "linear-gradient(to top , #ffa736,#ffa736)",
+                                    paddingTop: "5px",
+                                    paddingBottom: "5px",
+                                    borderRadius: "10000px",
+                                    boxShadow: "none",
+                                    "&:hover": {
+                                      backgroundImage:
+                                        "linear-gradient(to top , #ffa736, #ffa736)",
+                                    },
+                                  }}
+                                  onPress={handleFirstCard}
+                                >
+                                  <Text b color="#FFF" size={18}>
+                                    Login
+                                  </Text>
+                                </Button>
+                              )}
+
+                              {/*<BiChevronRight size={24} color="#000000" />*/}
                             </Button>
                           </div>
                         </div>
+                        <Divider
+                          height={4}
+                          style={{
+                            backgroundColor: "#ffa736",
+                            marginTop: "30px",
+                            marginBottom: "10px",
+                            width: "50px",
+                            alignSelf: "center",
+                          }}
+                        />
                       </div>
                     </Box>
                   </Box>

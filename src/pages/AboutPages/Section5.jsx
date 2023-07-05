@@ -16,9 +16,9 @@ const Section5 = () => {
     <section
       style={{
         width: "100vw",
-        backgroundColor: "#fafafa",
-        paddingTop: "100px",
-        paddingBottom: "100px",
+        backgroundColor: "white",
+        paddingTop: "20px",
+        paddingBottom: "20px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -57,7 +57,7 @@ const Section5 = () => {
             muted
             autoPlay
             loop
-            src="https://kamayakya.com/SEBI%20Registered%20-%20Why%20Us.mp4"
+            src="https://kamayakya.com/KamayaKya%20Receommendations%20-%20Value%20Prop.mp4"
             style={{ borderRadius: "30px", width: "100%", height: "100%" }}
           />
         </Box>
@@ -89,53 +89,52 @@ const Section5 = () => {
               },
             }}
           >
-            How do we pick the best bets?
+            Subscribe to our best picks!
             <br />
             <br />
-            We study their finances, talk to their management and go on the
-            ground to see their operations in real time to produce a
-            comprehensive and unbiased report.
+            We only recommend stocks that we personally are willing to invest
+            in. We research rigorously, so you don't have to.
           </Text>
-          <Button
-            auto
-            // size={"xl"}/
-            onPress={() => setVisible(true)}
-            css={{
-              borderRadius: "10000px",
-              marginTop: 0,
-              backgroundColor: "#ff9f24",
-              zIndex: 0,
-              paddingLeft: 50,
-              paddingRight: 50,
-              height: "60px",
-              width: "90px",
-              "@media only screen and (max-width: 764px)": {
-                borderRadius: "15px",
-                paddingLeft: 15,
-                paddingRight: 15,
-                marginLeft: 0,
-                marginBottom: 0,
-                marginTop: "10px",
-                height: "55px",
-                width: "250px",
-              },
-            }}
-          >
-            <Text
-              b
-              size={20}
-              color="White"
-              css={{
-                "@media only screen and (max-width: 764px)": {
-                  fontSize: 18,
-                  // padding: "1px 5px",
-                  width: "auto",
-                },
-              }}
-            >
-              Read our reports
-            </Text>
-          </Button>
+          {/*<Button*/}
+          {/*  auto*/}
+          {/*  // size={"xl"}/*/}
+          {/*  onPress={() => setVisible(true)}*/}
+          {/*  css={{*/}
+          {/*    borderRadius: "10000px",*/}
+          {/*    marginTop: 0,*/}
+          {/*    backgroundColor: "#ff9f24",*/}
+          {/*    zIndex: 0,*/}
+          {/*    paddingLeft: 50,*/}
+          {/*    paddingRight: 50,*/}
+          {/*    height: "60px",*/}
+          {/*    width: "90px",*/}
+          {/*    "@media only screen and (max-width: 764px)": {*/}
+          {/*      borderRadius: "15px",*/}
+          {/*      paddingLeft: 15,*/}
+          {/*      paddingRight: 15,*/}
+          {/*      marginLeft: 0,*/}
+          {/*      marginBottom: 0,*/}
+          {/*      marginTop: "10px",*/}
+          {/*      height: "55px",*/}
+          {/*      width: "250px",*/}
+          {/*    },*/}
+          {/*  }}*/}
+          {/*>*/}
+          {/*  <Text*/}
+          {/*    b*/}
+          {/*    size={20}*/}
+          {/*    color="White"*/}
+          {/*    css={{*/}
+          {/*      "@media only screen and (max-width: 764px)": {*/}
+          {/*        fontSize: 18,*/}
+          {/*        // padding: "1px 5px",*/}
+          {/*        width: "auto",*/}
+          {/*      },*/}
+          {/*    }}*/}
+          {/*  >*/}
+          {/*    Read our reports*/}
+          {/*  </Text>*/}
+          {/*</Button>*/}
           <Modal
             blur
             aria-labelledby="modal-title"

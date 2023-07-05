@@ -9,12 +9,18 @@ import {
   ListItemButton,
   useMediaQuery,
   SwipeableDrawer,
+  ListItemIcon,
 } from "@mui/material";
 import { RxHamburgerMenu } from "react-icons/rx";
 import CloseIcon from "@mui/icons-material/Close";
+import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
+import { Book, Home2 } from "iconsax-react";
+import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
+import MoneyRoundedIcon from "@mui/icons-material/MoneyRounded";
+import { BiLogIn } from "react-icons/bi";
 
 const NavBar2 = () => {
-  const isMobile = useMediaQuery("(max-width:1280px)");
+  const isMobile = useMediaQuery("(max-width:764px)");
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -110,7 +116,7 @@ const NavBar2 = () => {
         ".nextui-c-hhqfap-kAwfsS-disableShadow-false": {
           boxShadow: "none",
         },
-        "@media only screen and (max-width: 672px)": {
+        "@media only screen and (max-width: 764px)": {
           height: "80px",
         },
       }}
@@ -181,6 +187,21 @@ const NavBar2 = () => {
             Blogs
           </Text>
         </Navbar.Link>
+
+        <Navbar.Link
+          isActive={
+            typeof window !== "undefined" &&
+            window.location.pathname === "/track-record"
+          }
+          onClick={() => {
+            trackRecord();
+            // toggleDrawer();
+          }}
+        >
+          <Text b size={20} css={{ lineHeight: 5 }}>
+            Track record
+          </Text>
+        </Navbar.Link>
       </Navbar.Content>
       {/* </div> */}
       <Navbar.Content hideIn={"sm"}>
@@ -188,21 +209,32 @@ const NavBar2 = () => {
           {typeof window !== "undefined" &&
           window.location.pathname !== "/stock-picks" ? (
             <Button
-              onPress={handleStockPicks}
               auto
-              flat
-              css={{ backgroundColor: "#ff9f24", color: "white" }}
+              size={"lg"}
+              color={"success"}
+              onPress={ourStockPicks}
+              css={{
+                backgroundImage: "linear-gradient(to top , #106052, #0f734d)",
+                borderRadius: "10000px",
+                fontSize: "large",
+              }}
             >
-              Our Stock Picks
+              <span style={{ fontSize: 20 }}>Stocks to buy</span>
             </Button>
           ) : (
             <Button
-              onPress={handleTrack}
               auto
-              flat
-              css={{ backgroundColor: "#ff9f24", color: "white" }}
+              size={"lg"}
+              color={"success"}
+              onPress={handleTrack}
+              css={{
+                backgroundImage: "linear-gradient(to top , #106052, #0f734d)",
+                borderRadius: "10000px",
+                fontSize: "large",
+                opacity: "0",
+              }}
             >
-              Track Record
+              <span style={{ fontSize: 20 }}>Track record</span>
             </Button>
           )}
         </Navbar.Item>
@@ -219,11 +251,16 @@ const NavBar2 = () => {
           <Navbar.Item>
             <Dropdown.Trigger>
               <Avatar
-                //   bordered
+                // bordered
                 as="button"
-                //   color="warning"
+                // color="warning"
                 size="md"
-                src="UserAvatar.jpg"
+                src="UserAvatar-lion.png"
+                style={{
+                  border: "1.5px solid #6A7046",
+                  padding: "2.5px",
+                  backgroundColor: "white",
+                }}
               />
             </Dropdown.Trigger>
           </Navbar.Item>
@@ -233,10 +270,10 @@ const NavBar2 = () => {
             onAction={(actionKey) => handleMenuAction(actionKey)}
           >
             <Dropdown.Item key="handleHome">Home</Dropdown.Item>
-            <Dropdown.Item key="handleAboutUs">About Us</Dropdown.Item>
+            <Dropdown.Item key="handleAboutUs">About us</Dropdown.Item>
             <Dropdown.Item key="handleBlog">Blogs</Dropdown.Item>
-            <Dropdown.Item key="handleTrack">Track Record</Dropdown.Item>
-            <Dropdown.Item key="handleStockPicks">Stock Picks</Dropdown.Item>
+            <Dropdown.Item key="handleTrack">Track record</Dropdown.Item>
+            <Dropdown.Item key="handleStockPicks">Stock to buy</Dropdown.Item>
             <Dropdown.Item key="settings" withDivider>
               Settings
             </Dropdown.Item>
@@ -310,7 +347,12 @@ const NavBar2 = () => {
               toggleDrawer();
             }}
           >
-            <ListItemText primary="Home" />
+            <ListItemIcon sx={{ paddingLeft: "4px" }}>
+              <Home2 size={30} />
+            </ListItemIcon>
+            <Text b className="drawerElementText">
+              Home
+            </Text>
           </ListItemButton>
           <ListItemButton
             onClick={() => {
@@ -318,7 +360,12 @@ const NavBar2 = () => {
               toggleDrawer();
             }}
           >
-            <ListItemText primary="About Us" />
+            <ListItemIcon sx={{ paddingLeft: "4px" }}>
+              <GroupsOutlinedIcon sx={{ fontSize: 30 }} />
+            </ListItemIcon>
+            <Text b className="drawerElementText">
+              About us
+            </Text>
           </ListItemButton>
           <ListItemButton
             onClick={() => {
@@ -326,7 +373,12 @@ const NavBar2 = () => {
               toggleDrawer();
             }}
           >
-            <ListItemText primary="Blogs" />
+            <ListItemIcon sx={{ paddingLeft: "4px" }}>
+              <Book size={30} />
+            </ListItemIcon>
+            <Text b className="drawerElementText">
+              Blogs
+            </Text>
           </ListItemButton>
           <ListItemButton
             onClick={() => {
@@ -334,7 +386,12 @@ const NavBar2 = () => {
               toggleDrawer();
             }}
           >
-            <ListItemText primary="Track Record" />
+            <ListItemIcon sx={{ paddingLeft: "4px" }}>
+              <TrendingUpRoundedIcon sx={{ fontSize: 30 }} />
+            </ListItemIcon>
+            <Text b className="drawerElementText">
+              Track record
+            </Text>
           </ListItemButton>
           <ListItemButton
             onClick={() => {
@@ -342,7 +399,12 @@ const NavBar2 = () => {
               toggleDrawer();
             }}
           >
-            <ListItemText primary="Our Stock Picks" />
+            <ListItemIcon sx={{ paddingLeft: "4px" }}>
+              <MoneyRoundedIcon sx={{ fontSize: 30 }} />
+            </ListItemIcon>
+            <Text b className="drawerElementText">
+              Stock to buy
+            </Text>
           </ListItemButton>
           <ListItemButton
             onClick={() => {
@@ -350,7 +412,12 @@ const NavBar2 = () => {
               toggleDrawer();
             }}
           >
-            <ListItemText primary="Profile" />
+            <ListItemIcon>
+              <BiLogIn size={30} />
+            </ListItemIcon>
+            <Text b className="drawerElementText">
+              Profile
+            </Text>
           </ListItemButton>
           <ListItemButton
             onClick={() => {
@@ -358,7 +425,12 @@ const NavBar2 = () => {
               toggleDrawer();
             }}
           >
-            <ListItemText primary="Logout" />
+            <ListItemIcon>
+              <BiLogIn size={30} />
+            </ListItemIcon>
+            <Text b className="drawerElementText">
+              Logout
+            </Text>
           </ListItemButton>
         </List>
       </SwipeableDrawer>

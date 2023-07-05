@@ -703,7 +703,9 @@ header > div > div {
   }
 
   .logoNavbar {
-    height: 45px;
+    height: 45px !important;
+    /*width: 250px !important;*/
+    max-width: 200% !important;
   }
 
   .drawerElementText {
@@ -931,6 +933,26 @@ header > div > div {
     align-content: center;
     justify-content: center;
     font-size: 21px;
+  }
+  .stockPicks-searchBar{
+    width: 80vw !important;
+    height: 50px;
+    padding: 2.5px !important;
+  }
+  .stockPicks-searchBar-box {
+    margin-bottom: 20px !important;
+  }
+
+  .stocksPage-subscribe-mobile {
+    width: 95vw !important;
+    max-width: 620px;
+    height: auto !important;
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+  }
+
+  .stocksPage-card-loginSection {
+    margin-top: 10px !important;
   }
 }
 

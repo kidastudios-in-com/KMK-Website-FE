@@ -60,11 +60,11 @@ const HomePage = () => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        backgroundImage:
-          "url(https://www.wrightresearch.in/static/img/home/home_banner.svg?bbdddc9ba9b4)",
+        backgroundImage: "url(wave.svg)",
         objectPosition: "center",
-        backgroundPositionY: "center",
-        backgroundSize: "cover",
+        backgroundPositionY: "bottom",
+        backgroundSize: "contain",
+        backgroundRepeat: "repeat-x",
       }}
     >
       <Box
@@ -78,6 +78,7 @@ const HomePage = () => {
           width: "100vw",
           height: "90vh",
           maxWidth: "80rem",
+          maxHeight: "900px",
           "@media only screen and (min-width: 764px)": {
             paddingTop: "0vh",
             paddingBottom: "10vh",
@@ -86,6 +87,7 @@ const HomePage = () => {
             // maxHeight: "100vh",
             marginTop: "0px",
             minHeight: "50vh",
+            height: "auto",
             justifyContent: "flex-start",
             alignItems: "flex-start",
             paddingLeft: "15px",
@@ -106,7 +108,7 @@ const HomePage = () => {
             alignItems: "center",
             // backgroundImage: "linear-gradient(to top , #106052, #0f734d)",
             borderRadius: "1200.5px",
-            marginTop: "0px",
+            marginTop: "25px",
             "@media only screen and (max-width: 764px)": {
               paddingLeft: "5px",
               paddingRight: "5px",
