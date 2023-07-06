@@ -4,7 +4,7 @@ import SliderRef from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Avatar, Card, Text } from "@nextui-org/react";
-import { IconButton } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 // import ReactStars from "react-stars";
 
@@ -14,20 +14,20 @@ const Solutions = () => {
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     centerMode: true,
     pauseOnHover: true,
     pauseOnDotsHover: true,
-    variableWidth: true,
+    variableWidth: false,
     arrows: false,
     responsive: [
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 1,
-          centerMode: true,
+          centerMode: false,
           variableWidth: false,
         },
       },
@@ -65,71 +65,81 @@ const Solutions = () => {
       // }}
       className="solutions"
     >
-      <div style={{ maxWidth: "80rem" }}>
-        <div className="testimonialHeader">
+      <div style={{ maxWidth: "80rem", width: "100vw" }}>
+        {/*<div className="testimonialHeader">*/}
+        {/*  <Text*/}
+        {/*    b*/}
+        {/*    size={70}*/}
+        {/*    css={{*/}
+        {/*      color: "#25262c",*/}
+        {/*      width: "100%",*/}
+        {/*      lineHeight: "1.1",*/}
+        {/*      textWrap: "normal",*/}
+        {/*      textAlign: "center",*/}
+
+        {/*      "@media only screen and (max-width: 764px)": {*/}
+        {/*        fontSize: "45px",*/}
+        {/*        width: "90vw",*/}
+        {/*        paddingLeft: "30px",*/}
+        {/*        textAlign: "left",*/}
+        {/*      },*/}
+        {/*    }}*/}
+        {/*  >*/}
+        {/*    See what other investors are saying*/}
+        {/*  </Text>*/}
+        {/*</div>*/}
+        <Box
+          style={{
+            paddingTop: "20px",
+            width: "100%",
+            maxWidth: "80rem",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            marginBottom: "20px",
+            padding: "0 15px",
+            // "@media only screen and (max-width: 768px)": {
+            //   paddingTop: "0vh",
+            //   width: "100vw",
+            //   paddingLeft: "15px",
+            //   paddingRight: "15px",
+            //   // marginBottom: "10vh !important",
+            // },
+          }}
+          className="subscriptionPlansHeader"
+        >
           <Text
             b
             size={70}
             css={{
-              color: "#25262c",
-              width: "100%",
-              lineHeight: "1.1",
-              textWrap: "normal",
-              textAlign: "left",
-
-              "@media only screen and (max-width: 764px)": {
-                fontSize: "45px",
-                width: "90vw",
-                paddingLeft: "30px",
+              "@media only screen and (max-width: 768px)": {
                 textAlign: "left",
+                fontSize: 45,
+                lineHeight: 1.1,
+                maxWidth: "100%",
+                width: "100%",
               },
             }}
           >
-            See what other investors are saying
+            Our Testimonials
           </Text>
-        </div>
-        <div style={{ justifyContent: "space-between" }}>
-          <IconButton
-            onClick={handlePrev}
-            sx={{
-              backgroundColor: "#185B54",
-              color: "white",
-              marginRight: 2,
-              marginTop: 4,
-              marginBottom: 4,
-              "&:hover": { backgroundColor: "#25262c" },
-              width: "50px",
-              height: "50px",
-              "@media only screen and (max-width: 764px)": {
-                width: "60px",
-                height: "60px",
-                marginLeft: "25px",
+          <Text
+            b
+            size={25}
+            css={{
+              textAlign: "center",
+              "@media only screen and (max-width: 768px)": {
+                marginTop: "10px",
+                textAlign: "left",
+                fontSize: 20,
+                lineHeight: 1.1,
               },
             }}
           >
-            <AiOutlineLeft size={30} />
-          </IconButton>
-          <IconButton
-            onClick={handleNext}
-            sx={{
-              backgroundColor: "#185B54",
-              color: "white",
-              marginRight: 5,
-              marginTop: 4,
-              marginBottom: 4,
-              "&:hover": { backgroundColor: "#25262c" },
-              width: "50px",
-              height: "50px",
-              "@media only screen and (max-width: 764px)": {
-                width: "60px",
-                height: "60px",
-                marginLeft: "0px",
-              },
-            }}
-          >
-            <AiOutlineRight size={30} />
-          </IconButton>
-        </div>
+            See what other investors are saying, they're our best ads!
+          </Text>
+        </Box>
 
         <Slider {...settings} ref={sliderRef} className="testimonialSection">
           {/*<Card*/}
@@ -270,6 +280,55 @@ const Solutions = () => {
             </div>
           </div>
         </Slider>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
+        <IconButton
+          onClick={handlePrev}
+          sx={{
+            backgroundColor: "#185B54",
+            color: "white",
+            marginRight: 2,
+            marginTop: 4,
+            marginBottom: 4,
+            "&:hover": { backgroundColor: "#25262c" },
+            width: "50px",
+            height: "50px",
+            "@media only screen and (max-width: 764px)": {
+              width: "60px",
+              height: "60px",
+              marginLeft: "25px",
+            },
+          }}
+        >
+          <AiOutlineLeft size={30} />
+        </IconButton>
+        <IconButton
+          onClick={handleNext}
+          sx={{
+            backgroundColor: "#185B54",
+            color: "white",
+            marginRight: 0,
+            marginTop: 4,
+            marginBottom: 4,
+            "&:hover": { backgroundColor: "#25262c" },
+            width: "50px",
+            height: "50px",
+            "@media only screen and (max-width: 764px)": {
+              width: "60px",
+              height: "60px",
+              marginLeft: "0px",
+              marginRight: "25px",
+            },
+          }}
+        >
+          <AiOutlineRight size={30} />
+        </IconButton>
       </div>
     </section>
   );

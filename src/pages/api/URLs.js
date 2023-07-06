@@ -1,11 +1,10 @@
 //AUTH BASE
-export const BASE_URL = 'https://api-server.kamayakya.in';
+export const BASE_URL = "https://api-server.kamayakya.in";
 // export const BASE_URL = 'http://192.168.0.151:8000/master';
 
 export const ADMIN_URL = `${BASE_URL}/kmkadmin`;
 export const MASTER_URL = `${BASE_URL}/master`;
 export const USER_URL = `${BASE_URL}/user`;
-
 
 //Auth URLs
 export const LOGIN_URL = `${MASTER_URL}/loginAdmin/`;
@@ -15,15 +14,14 @@ export const REGEN_TOKEN_URL = `${MASTER_URL}/regenerateRefreshToken/`;
 
 //Payment
 export const GET_PRODUCT = `${ADMIN_URL}/subscription/`;
-export const PAYMENT_URL = `${MASTER_URL}/create-checkout-session/` || 'http://localhost:3000'
+export const PAYMENT_URL =
+  `${USER_URL}/create-checkout-session/` || "http://localhost:3000";
 
 //Profile URLs
 export const USER_PROFILE_URL = `${USER_URL}/userprofile/`;
-export const GET_USER = `${USER_URL}/userprofile/`
-export const EDIT_USER = `${USER_URL}/userprofile/`
-export const SUBSCRIPTION_HISTORY = `${MASTER_URL}/subscribe_for_stock_picks/`
-
-
+export const GET_USER = `${USER_URL}/userprofile/`;
+export const EDIT_USER = `${USER_URL}/userprofile/`;
+export const SUBSCRIPTION_HISTORY = `${MASTER_URL}/subscribe_for_stock_picks/`;
 
 //Admin Stock URL
 export const GET_ALL_URL = `${USER_URL}/getStockPicksForUser`;
@@ -45,5 +43,6 @@ export const GET_USERS = `${ADMIN_URL}/getAllUsers/`;
 export const GET_ADMINS = `${ADMIN_URL}/getAllAdmin/`;
 
 //Stripe Key
-export const  REACT_APP_STRIPE_KEY = process.env.REACT_APP_STRIPE_KEY ||  'pk_test_51N3dAPSFPooNZtZaCwGwRUC1IHpC4HqARVbxMBia13Fqan4H6SoLZUhLz21xqqMhtDU5Kiurtzia2uznSEbGSADk00LRBh1V2p'
-
+export const REACT_APP_STRIPE_KEY =
+  process.env.REACT_APP_STRIPE_KEY ||
+  "pk_test_51N3dAPSFPooNZtZaCwGwRUC1IHpC4HqARVbxMBia13Fqan4H6SoLZUhLz21xqqMhtDU5Kiurtzia2uznSEbGSADk00LRBh1V2p";

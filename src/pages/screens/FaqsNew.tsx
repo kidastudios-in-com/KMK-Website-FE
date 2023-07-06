@@ -25,8 +25,8 @@ const FaqsNew = () => {
         backgroundColor: "#195B54",
         display: "flex",
         flexWrap: "wrap",
-        paddingTop: "105px",
-        paddingBottom: "45px",
+        paddingTop: "10vh",
+        paddingBottom: "10vh",
         width: "100%",
         height: "100%",
         justifyContent: "center",
@@ -41,7 +41,7 @@ const FaqsNew = () => {
           // paddingTop: 50,
           paddingBottom: 25,
           maxWidth: "80rem",
-          width: "100%",
+          width: "100vw",
           // backgroundColor: "",
           justifyContent: "center",
           alignItems: "center",
@@ -50,8 +50,8 @@ const FaqsNew = () => {
         <div
           style={{
             display: "flex",
-            flexWrap: "wrap-reverse",
-            flexDirection: "row",
+            flexWrap: "wrap",
+            flexDirection: "column-reverse",
             justifyContent: "space-between",
             maxWidth: "80rem",
             // gap: "10%",
@@ -62,25 +62,30 @@ const FaqsNew = () => {
         >
           <Box
             sx={{
-              maxWidth: "400px",
+              width: "100%",
               display: "flex",
-              flexDirection: "column",
+              flexDirection: "row",
               flexWrap: "wrap",
+              justifyContent: "space-evenly",
+              alignItems: "center",
+              alignContent: "center",
+              alignSelf: "center",
               "@media only screen and (max-width: 764px)": {
-                justifyContent: "left",
+                justifyContent: "center",
                 width: "auto",
-                textAlign: "left",
+                textAlign: "center",
               },
             }}
           >
             <Divider
               css={{
-                width: "120px",
-                backgroundColor: "#ff9f24",
-                height: "5px",
+                width: "100%",
+                backgroundColor: "#fff",
+                height: "10px",
                 borderRadius: "200px",
-                mb: "15px",
-                mt: "10px",
+                mb: "55px",
+                mt: "20px",
+                opacity: "0.05",
               }}
             />
             <Text
@@ -91,34 +96,37 @@ const FaqsNew = () => {
                 lineHeight: 1.2,
                 marginBottom: 10,
                 "@media only screen and (max-width: 764px)": {
-                  fontSize: 40,
+                  fontSize: 35,
+                  marginBottom: 30,
+                  width: "100%",
                 },
               }}
             >
-              Got A Question?
+              Still got a question?
             </Text>
-            <Text
-              size={24}
-              color="#fff"
-              css={{
-                lineHeight: 1.4,
-                marginBottom: 0,
-                "@media only screen and (max-width: 764px)": {
-                  fontSize: 20,
-                },
-              }}
-            >
-              If there are questions you want to ask, we will answer all your
-              questions.
-            </Text>
+            {/*<Text*/}
+            {/*  size={24}*/}
+            {/*  color="#fff"*/}
+            {/*  css={{*/}
+            {/*    lineHeight: 1.4,*/}
+            {/*    marginBottom: 0,*/}
+            {/*    "@media only screen and (max-width: 764px)": {*/}
+            {/*      fontSize: 20,*/}
+            {/*    },*/}
+            {/*  }}*/}
+            {/*>*/}
+            {/*  If there are questions you want to ask, we will answer all your*/}
+            {/*  questions.*/}
+            {/*</Text>*/}
             <Button
               auto
               size={"lg"}
               css={{
                 backgroundImage: "linear-gradient(to top , #FF9D28, #ffa736)",
                 borderRadius: "50px",
-                marginTop: "20px",
+                marginTop: "0px",
                 width: "350px",
+                marginBottom: 10,
                 "@media only screen and (max-width: 764px)": {
                   width: "60%",
                   alignSelf: "flex-start",
@@ -154,30 +162,86 @@ const FaqsNew = () => {
           </Box>
           <Box
             sx={{
-              width: "60%",
+              width: "100%",
               display: "flex",
               flexDirection: "column",
-              alignItems: "flex-start",
+              alignItems: "center",
               flexWrap: "wrap",
+              justifyContent: "center",
               "@media only screen and (max-width: 764px)": {
                 width: "auto",
                 mb: 0,
               },
             }}
           >
+            <Box
+              style={{
+                paddingTop: "20px",
+                width: "100%",
+                maxWidth: "80rem",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                marginBottom: "20px",
+                padding: "0 15px",
+                // "@media only screen and (max-width: 768px)": {
+                //   paddingTop: "0vh",
+                //   width: "100vw",
+                //   paddingLeft: "15px",
+                //   paddingRight: "15px",
+                //   // marginBottom: "10vh !important",
+                // },
+              }}
+              className="subscriptionPlansHeader"
+            >
+              <Text
+                b
+                size={70}
+                color="white"
+                css={{
+                  textAlign: "center",
+                  "@media only screen and (max-width: 768px)": {
+                    textAlign: "left",
+                    fontSize: 45,
+                    lineHeight: 1.1,
+                    maxWidth: "100%",
+                    width: "100%",
+                  },
+                }}
+              >
+                FAQs
+              </Text>
+              <Text
+                b
+                size={25}
+                color="white"
+                css={{
+                  textAlign: "center",
+                  "@media only screen and (max-width: 768px)": {
+                    marginTop: "10px",
+                    textAlign: "left",
+                    fontSize: 20,
+                    lineHeight: 1.1,
+                  },
+                }}
+              >
+                Everything you need to know about the product and billing
+              </Text>
+            </Box>
             <Grid.Container
-              gap={0}
+              gap={2}
               css={{ marginTop: 0, marginBottom: "30px" }}
             >
-              <Grid style={{ padding: "0px 0px" }}>
-                <Collapse.Group>
+              <Grid style={{ padding: "0px 0px", gap: "100px" }}>
+                <Collapse.Group splitted>
                   <Collapse
                     title="Why do we focus on SMEs, Micro-Caps and Small-Caps?"
                     arrowIcon={
                       expandedIndex === 0 ? (
-                        <RxCrossCircled size={24} />
+                        <RxCrossCircled size={34} />
                       ) : (
-                        <AiOutlineDownCircle size={24} />
+                        <AiOutlineDownCircle size={34} />
                       )
                     }
                     expanded={expandedIndex === 0}
@@ -185,10 +249,20 @@ const FaqsNew = () => {
                     className="custom-collapse"
                     css={{
                       "& h3": { letterSpacing: 0.5, fontSize: 20 },
-                      color: "#fff",
+                      color: "#000",
+                      minHeight: "50px",
+                      border: "2px solid #125A55",
                     }}
                   >
-                    <Text size={17.5} color="#fff" css={{ lineHeight: 1.3 }}>
+                    <Text
+                      size={20}
+                      color="#000"
+                      // align="center"
+                      css={{
+                        lineHeight: 1.3,
+                        alignText: "center",
+                      }}
+                    >
                       SME, Micro-Cap and Small-cap companies are the hidden gems
                       that can provide massive returns if invested in at the
                       right time. Companies such as Reliance, Infosys were once
@@ -202,9 +276,9 @@ const FaqsNew = () => {
                     title="How to start with KamayaKya?"
                     arrowIcon={
                       expandedIndex === 1 ? (
-                        <RxCrossCircled size={24} />
+                        <RxCrossCircled size={34} />
                       ) : (
-                        <AiOutlineDownCircle size={24} />
+                        <AiOutlineDownCircle size={34} />
                       )
                     }
                     expanded={expandedIndex === 1}
@@ -214,12 +288,18 @@ const FaqsNew = () => {
                       "& h3": {
                         letterSpacing: 0.5,
                         fontSize: 20,
-                        color: "#fff",
+                        color: "#000",
                       },
-                      color: "#fff",
+                      color: "#000",
+                      minHeight: "50px",
                     }}
                   >
-                    <Text size={17.5} color="#fff" css={{ lineHeight: 1.3 }}>
+                    <Text
+                      size={20}
+                      color="#000"
+                      // align="center"
+                      css={{ lineHeight: 1.3, alignText: "center" }}
+                    >
                       Click on Get Free Subscription button in the header
                       Complete your Registration by providing basic details such
                       as your name, Email ID, Mobile No and creating a safe
@@ -233,9 +313,9 @@ const FaqsNew = () => {
                     title="What is a Stock Pick?"
                     arrowIcon={
                       expandedIndex === 2 ? (
-                        <RxCrossCircled size={24} />
+                        <RxCrossCircled size={34} />
                       ) : (
-                        <AiOutlineDownCircle size={24} />
+                        <AiOutlineDownCircle size={34} />
                       )
                     }
                     expanded={expandedIndex === 2}
@@ -243,10 +323,16 @@ const FaqsNew = () => {
                     className="custom-collapse"
                     css={{
                       "& h3": { letterSpacing: 0.5, fontSize: 20 },
-                      color: "#fff",
+                      color: "#000",
+                      minHeight: "50px",
                     }}
                   >
-                    <Text size={17.5} color="#fff" css={{ lineHeight: 1.3 }}>
+                    <Text
+                      size={20}
+                      color="#000"
+                      // align="center"
+                      css={{ lineHeight: 1.3, alignText: "center" }}
+                    >
                       Stock picks are curated stock recommendations generated by
                       our equity research team. You can buy a stock pick with
                       your respective broker. Once bought, we will give you
@@ -259,9 +345,9 @@ const FaqsNew = () => {
                     title="What would the research report contain?"
                     arrowIcon={
                       expandedIndex === 3 ? (
-                        <RxCrossCircled size={24} />
+                        <RxCrossCircled size={34} />
                       ) : (
-                        <AiOutlineDownCircle size={24} />
+                        <AiOutlineDownCircle size={34} />
                       )
                     }
                     expanded={expandedIndex === 3}
@@ -269,10 +355,16 @@ const FaqsNew = () => {
                     className="custom-collapse"
                     css={{
                       "& h3": { letterSpacing: 0.5, fontSize: 20 },
-                      color: "#fff",
+                      color: "#000",
+                      minHeight: "50px",
                     }}
                   >
-                    <Text size={17.5} color="#fff" css={{ lineHeight: 1.3 }}>
+                    <Text
+                      size={20}
+                      color="#000"
+                      // align="center"
+                      css={{ lineHeight: 1.3, alignText: "center" }}
+                    >
                       We will provide 3 options in research reports which will
                       provide the most important details such as Entry Price,
                       Target Price, Risk Profile, MCap of company, Holding

@@ -590,8 +590,8 @@ header > div > div {
   align-items: flex-start;
   justify-content: center;
   border-radius: 25px;
-  max-width: 300px;
-  width: 300px;
+  /*max-width: 300px;*/
+  width: 100%;
 }
 
 .testimonialCard-review {
@@ -684,6 +684,10 @@ header > div > div {
 }
 
 @media only screen and (max-width: 768px) {
+
+
+
+
   .nextui-c-grJsex-ikUaMfZ-css {
     width: 95vw !important;
     max-width: 95vw !important;
@@ -859,26 +863,27 @@ header > div > div {
 
   .solutions {
     background-color: #fff;
-    padding: 60px 30px;
+    /*padding: 60px 30px !important;*/
     padding-left: 0 !important;
+    padding-right: 0 !important;
     width: 100vw;
     display: flex;
     flex-direction: column !important;
-    align-items: flex-start !important;
-    justify-content: flex-start !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   .testimonialHeader {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     padding-bottom: 0;
   }
 
   .testimonialOuterBox {
-    width: 100vw;
+    width: 100vw !important;
     height: 500px;
     padding: 10px;
     background-color: #fff;
@@ -910,7 +915,7 @@ header > div > div {
   }
 
   .subscriptionPlansHeader {
-    padding-top: 0vh;
+    padding-top: 5vh !important;
     width: 100vw;
     padding-left: 15px;
     padding-right: 15px;
@@ -954,11 +959,20 @@ header > div > div {
   .stocksPage-card-loginSection {
     margin-top: 10px !important;
   }
+
+  .paymentsPage-box {
+    width: 100vw !important;
+  }
+  .paymentsPage-box-account{
+    width: 90vw !important;
+  }
 }
 
 .custom-collapse .nextui-collapse-title {
-  color: white !important;
+  color: black !important;
   font-weight: normal;
+  font-size: 25px;
+  text-align: center;
 }
 
 .nextui-c-dwnaVv {

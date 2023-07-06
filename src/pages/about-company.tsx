@@ -11,6 +11,7 @@ import FaqsNew from "./screens/FaqsNew";
 import Footer from "./screens/Footer";
 import NavBar2 from "@/components/Navbar2";
 import AuthContext from "@/components/AuthContext";
+import HeaderFuture from "@/pages/AboutPages/HeaderFuture";
 
 const AboutCompany = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -21,6 +22,7 @@ const AboutCompany = () => {
       <Section3 />
       <Section2 />
       {/* <Section4 /> */}
+      <HeaderFuture />
       <Section5 />
       <Section6 />
       <Section7 />

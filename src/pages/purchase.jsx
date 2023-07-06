@@ -98,71 +98,176 @@ export default function PreviewPage() {
             sx={{
               display: "flex",
               flexDirection: "column",
-              width: "456px",
-              height: "300px",
-              backgroundImage: "url(dummy_card.png)",
-              borderRadius: "24px",
-              marginTop: "20px",
-              objectFit: "cover",
+              width: "500px",
+              maxWidth: "80rem",
+              // height: "300px",
+              alignContent: "center",
+              padding: "15px",
+              marginTop: "30px",
             }}
+            className="paymentsPage-box"
           >
-            <Text b size={20} color="#fff" css={{ ml: "20px", mt: "10px" }}>
-              Pay via Debit/Credit Card
-            </Text>
+            <img
+              src={"Card UI.png"}
+              style={{ width: "100%", height: "auto" }}
+            />
+            {/*<Text b size={20} color="#fff" css={{ ml: "20px", mt: "10px" }}>*/}
+            {/*  Pay via Debit/Credit Card*/}
+            {/*</Text>*/}
             <Button
               auto
               type="submit"
               css={{
-                width: "200px",
-                fontSize: 18,
-                marginTop: "150px",
-                marginLeft: "20px",
-                borderRadius: "20px",
+                // width: "200px",
+                height: "50px",
+                fontSize: 23,
+                // marginTop: "150px",
+                // marginLeft: "20px",
+                borderRadius: "7000.5px",
+                border: "2.5px solid #440886",
                 backgroundImage:
-                  "linear-gradient(to top , #105B54, #0F734D, #0F734D)",
+                  "linear-gradient(to right , #51168C, #3C4AB3, #32C0C8)",
               }}
             >
-              Subscribe
+              Pay now
             </Button>
           </Box>
         </form>
       </Elements>
-      {/* <Box> */}
-      <Text b size={20} css={{ mt: "20px" }}>
-        Pay via UPI : kamayakya@upi
-      </Text>
-      <img src="dummy_upi.jpeg" />
-      {/* <Box> */}
-      <Text b size={30} color="#125a54" css={{ mt: "20px" }}>
-        Account Transfer:
-      </Text>
-      {/* </Box> */}
-      <Text b size={16} css={{ width: "950px" }}>
-        If you are transferring through Cheque/DD/Direct account then please
-        send an email to info@aurumcapital.in mentioning your name, email id,
-        account number, bank name, transaction number and the amount
-        transferred. We do not accept cash. Please do not deposit CASH. Payment
-        can be through Cheque, DD, or direct account transfer.
-      </Text>
-      {/* </Box> */}
       <Box
-        sx={{
+        style={{
           display: "flex",
-          background: "#d3d3d3",
-          border: "2px solid",
           flexDirection: "column",
-          mt: "20px",
-          mb: "50px",
-          padding: "20px",
+          width: "500px",
+          maxWidth: "80rem",
+          // height: "300px",
+          alignContent: "center",
+          justifyContent: "center",
+          padding: "15px",
         }}
+        className="paymentsPage-box"
       >
-        <Text b>Account Name: AURUM CAPITAL</Text>
-        <Text b>Account Type:Current Account</Text>
-        <Text b> Account Number: 7212058645</Text>
-        <Text b> Bank: Kotak Mahindra Bank</Text>
-        <Text b>IFSC Code: KKBK0001771</Text>
-        <Text b>Branch Code: 1771</Text>
-        <Text b>Branch Location: Pune-Satara Road, Pune</Text>
+        <Text
+          b
+          size={35}
+          color="#000"
+          css={{
+            width: "100%",
+            mt: "30px",
+            alignSelf: "center",
+            "@media only screen and (max-width: 764px)": {
+              mt: "10px",
+            },
+          }}
+        >
+          Account Transfer:
+        </Text>
+        <Text
+          size={21}
+          css={{
+            width: "100%",
+            "@media only screen and (max-width: 764px)": {
+              fontSize: "17px",
+              lineHeight: "1.3",
+            },
+          }}
+        >
+          If you are transferring through <b>Cheque/DD/Direct</b> account then
+          please send an email to{" "}
+          <a href="mailto: contact@kamayakya.com">contact@kamayakya.com</a>{" "}
+          <b>
+            mentioning your name, email id, account number, bank name,
+            transaction number and the amount transferred
+          </b>
+          . We do not accept cash. Please do not deposit CASH. Payment can be
+          through Cheque, DD, or direct account transfer.
+        </Text>
+        {/* <Box> */}
+        <Box
+          sx={{
+            width: "500px",
+            maxWidth: "80rem",
+            display: "flex",
+            background: "#d3d3d3",
+            // border: "2px solid",
+            borderRadius: "20px",
+            flexDirection: "column",
+            mt: "20px",
+            padding: "20px",
+          }}
+          className="paymentsPage-box-account"
+        >
+          <Text
+            size={18}
+            css={{
+              "@media only screen and (max-width: 764px)": {
+                fontSize: "16px",
+                lineHeight: "1.3",
+              },
+            }}
+          >
+            Account Name: <b>AURUM CAPITAL</b>
+          </Text>
+          <Text size={18}>
+            Account Type: <b>Current Account</b>
+          </Text>
+          <Text size={18}>
+            Account Number: <b>7212058645</b>
+          </Text>
+          <Text size={18}>
+            Bank: <b>Kotak Mahindra Bank</b>
+          </Text>
+          <Text size={18}>
+            IFSC Code: <b>KKBK0001771</b>
+          </Text>
+          <Text size={18}>
+            Branch Code: <b>1771</b>
+          </Text>
+          <Text size={18}>
+            Branch Location: <b>Pune-Satara Road, Pune</b>
+          </Text>
+        </Box>
+        <img
+          src="dummy_upi.jpeg"
+          style={{
+            width: "500px",
+            maxWidth: "80rem",
+            height: "auto",
+            marginTop: "30px",
+            marginBottom: "50px",
+          }}
+          className="paymentsPage-box-account"
+        />
+
+        {/* <Box> */}
+        {/* </Box> */}
+        {/*<Text b size={16} css={{ width: "950px" }}>*/}
+        {/*  If you are transferring through Cheque/DD/Direct account then please*/}
+        {/*  send an email to info@aurumcapital.in mentioning your name, email id,*/}
+        {/*  account number, bank name, transaction number and the amount*/}
+        {/*  transferred. We do not accept cash. Please do not deposit CASH. Payment*/}
+        {/*  can be through Cheque, DD, or direct account transfer.*/}
+        {/*</Text>*/}
+        {/* </Box> */}
+        {/*<Box*/}
+        {/*  sx={{*/}
+        {/*    display: "flex",*/}
+        {/*    background: "#d3d3d3",*/}
+        {/*    border: "2px solid",*/}
+        {/*    flexDirection: "column",*/}
+        {/*    mt: "20px",*/}
+        {/*    mb: "50px",*/}
+        {/*    padding: "20px",*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  <Text b>Account Name: AURUM CAPITAL</Text>*/}
+        {/*  <Text b>Account Type:Current Account</Text>*/}
+        {/*  <Text b> Account Number: 7212058645</Text>*/}
+        {/*  <Text b> Bank: Kotak Mahindra Bank</Text>*/}
+        {/*  <Text b>IFSC Code: KKBK0001771</Text>*/}
+        {/*  <Text b>Branch Code: 1771</Text>*/}
+        {/*  <Text b>Branch Location: Pune-Satara Road, Pune</Text>*/}
+        {/*</Box>*/}
       </Box>
       <FaqsNew />
       <Footer />

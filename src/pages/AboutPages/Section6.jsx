@@ -16,9 +16,10 @@ const Section6 = () => {
     <section
       style={{
         width: "100vw",
-        backgroundColor: "#fff",
-        paddingTop: "20px",
-        paddingBottom: "20px",
+        // backgroundColor: "#fff",
+        background: "#fafafa",
+        paddingTop: "30px",
+        paddingBottom: "30px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
