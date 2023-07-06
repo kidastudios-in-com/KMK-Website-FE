@@ -33,6 +33,7 @@ const FaqsNew = () => {
         alignContent: "center",
         borderRadius: "0px",
       }}
+      className="faq-section-mobile"
     >
       <div
         style={{

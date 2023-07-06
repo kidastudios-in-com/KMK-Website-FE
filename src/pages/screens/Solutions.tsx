@@ -65,7 +65,7 @@ const Solutions = () => {
       // }}
       className="solutions"
     >
-      <div style={{ maxWidth: "80rem", width: "100vw" }}>
+      <div style={{ maxWidth: "80rem", width: "100%" }}>
         {/*<div className="testimonialHeader">*/}
         {/*  <Text*/}
         {/*    b*/}
@@ -134,6 +134,7 @@ const Solutions = () => {
                 textAlign: "left",
                 fontSize: 20,
                 lineHeight: 1.1,
+                width: "100%",
               },
             }}
           >

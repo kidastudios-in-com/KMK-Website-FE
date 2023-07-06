@@ -129,6 +129,7 @@ const SubscriptionNew = () => {
                 textAlign: "left",
                 fontSize: 20,
                 lineHeight: 1.1,
+                marginBottom: "20px",
               },
             }}
           >
@@ -162,7 +163,7 @@ const SubscriptionNew = () => {
               borderRadius: "35px",
               background: "#fff",
               filter: "none",
-              border: "2px solid #fda629",
+              border: "4px solid #fda629",
               justifyContent: "center",
               paddingTop: "50px",
               paddingBottom: "50px",
@@ -170,7 +171,7 @@ const SubscriptionNew = () => {
               paddingRight: "15px",
               "@media only screen and (max-width: 768px)": {
                 order: 0,
-                width: "100%",
+                width: "95%",
               },
             }}
           >
@@ -352,7 +353,7 @@ const SubscriptionNew = () => {
                 "linear-gradient(to top , #105B54, #0F734D, #0F734D)",
               "@media only screen and (max-width: 672px)": {
                 order: 1,
-                width: "100%",
+                width: "95%",
               },
             }}
           >
@@ -547,7 +548,7 @@ const SubscriptionNew = () => {
               borderRadius: "35px",
               background: "#fff",
               filter: "none",
-              border: "2px solid #1877f2",
+              border: "4px solid #1877f2",
               justifyContent: "center",
               paddingTop: "50px",
               paddingBottom: "50px",
@@ -555,7 +556,7 @@ const SubscriptionNew = () => {
               paddingRight: "15px",
               "@media only screen and (max-width: 672px)": {
                 order: 2,
-                width: "100%",
+                width: "95%",
               },
             }}
           >
