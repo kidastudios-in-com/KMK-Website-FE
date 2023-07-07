@@ -97,7 +97,7 @@ const Solutions = () => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            marginBottom: "20px",
+            marginBottom: "70px",
             padding: "0 15px",
             // "@media only screen and (max-width: 768px)": {
             //   paddingTop: "0vh",

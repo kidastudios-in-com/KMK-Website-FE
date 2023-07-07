@@ -364,7 +364,8 @@ export default function App() {
               // marginLeft: "2.5vw",
               marginLeft: "0",
               "@media only screen and (max-width: 764px)": {
-                width: "95vw",
+                width: "100vw",
+                alignSelf: "center",
                 // marginLeft: "2.5vw",
               },
             }}

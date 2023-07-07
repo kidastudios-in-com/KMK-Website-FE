@@ -64,6 +64,7 @@ const StockCard = () => {
   const [selectedReportUrl, setSelectedReportUrl] = useState("");
   const pdfjsVersion = packageJson.dependencies["pdfjs-dist"];
   const { isLoggedIn } = useContext(AuthContext);
+  const { isSubscribed } = useContext(AuthContext);
   // console.log(pdfjsVersion);
 
   const staticNumbers = [94, 17, 49, 28];
@@ -92,6 +93,7 @@ const StockCard = () => {
 
   const handleCloseModal = () => {
     setShowModal(false);
+    setSelectedPDF("");
   };
 
   const handleAskPassword = (e) => {
@@ -135,7 +137,7 @@ const StockCard = () => {
   const [selectedPDF, setSelectedPDF] = useState(new Set([selectedReportUrl]));
 
   const PdfValue = React.useMemo(
-    () => Array.from(selectedPDF)[0]?.replaceAll("_", " ") || "",
+    () => Array.from(selectedPDF)[0] || "",
     [selectedPDF]
   );
 
@@ -955,7 +957,7 @@ const StockCard = () => {
                           },
                         }}
                       >
-                        {stock.stock_name.length > 20 ? (
+                        {stock.stock_name.length > 18 ? (
                           <Marquee
                             delay={2}
                             speed={30}
@@ -1529,10 +1531,10 @@ const StockCard = () => {
                       auto
                       onPress={() => handleClick(index)}
                       css={{
-                        // marginTop: "5%",
+                        position: "absolute",
+                        bottom: "20px",
                         fontSize: 18,
-                        top: "145px",
-                        width: "100%",
+                        width: "80%",
                         borderRadius: "10000px",
                         backgroundImage:
                           "linear-gradient(to top , #FF9D28, #ffa736)",
@@ -1586,7 +1588,11 @@ const StockCard = () => {
                             },
                           }}
                         >
-                          {PdfValue}
+                          {PdfValue
+                            ? stock.stock_reports.find(
+                                (report) => report.document === PdfValue
+                              )?.report_name
+                            : "Report Types"}
                           {/* Report Types */}
                         </Dropdown.Button>
 
@@ -1599,7 +1605,7 @@ const StockCard = () => {
                           style={{ width: "100%" }}
                         >
                           {stock.stock_reports.map((report) => (
-                            <Dropdown.Item key={report.report_name}>
+                            <Dropdown.Item key={report.document}>
                               {report.report_name}
                             </Dropdown.Item>
                           ))}
@@ -1630,9 +1636,12 @@ const StockCard = () => {
                             },
                           }}
                         >
+                          {console.log(PdfValue)}
                           <Viewer
                             // src="SampleReport.pdf#toolbar=0"
-                            fileUrl={`${selectedReportUrl}#view=FitH&toolbar=0`}
+                            fileUrl={`${
+                              PdfValue ? PdfValue : selectedReportUrl
+                            }#view=FitH&toolbar=0`}
                             onDocumentAskPassword={handleAskPassword}
                             // defaultScale={SpecialZoomLevel.PageWidth}
                           />
@@ -1670,7 +1679,7 @@ const StockCard = () => {
               </ReactCardFlip>
             </Grid>
           ))}
-          {stocks.length <= 3 && (
+          {isLoggedIn === false && isSubscribed === false && (
             <Grid>
               <Card
                 isHoverable
@@ -1902,7 +1911,8 @@ const StockCard = () => {
           {/* {stocks.length <= 3 && stocks.map((stock) => ( */}
           {/* {stocks.length <= 3 &&
 					Array.from({ length: 4 }).map((_, index) => ( */}
-          {stocks.length <= 3 &&
+          {isLoggedIn === false &&
+            isSubscribed === false &&
             staticNumbers.map((number, index) => (
               <Grid
                 // key={stock.id}
@@ -1932,7 +1942,7 @@ const StockCard = () => {
                     "@media only screen and (max-width: 768px)": {
                       width: "95vw",
                       maxWidth: "620px",
-                      height: "auto",
+                      height: "570px",
                       borderRadius: "35px",
                       border: "4px solid",
                       borderColor: "#ffa12e",
@@ -2061,7 +2071,7 @@ const StockCard = () => {
                             marginLeft: "3px",
                             marginRight: "3px",
                             "@media only screen and (max-width: 768px)": {
-                              fontSize: 55,
+                              fontSize: 30,
                             },
                           }}
                         >
@@ -2071,32 +2081,32 @@ const StockCard = () => {
                       </div>
                     </Box>
                     {/*<Box*/}
-                    {/*  sx={{*/}
-                    {/*    // zIndex: 1,*/}
-                    {/*    width: "90%",*/}
-                    {/*    display: "flex",*/}
-                    {/*    alignItems: "center",*/}
-                    {/*    justifyContent: "center",*/}
-                    {/*    pt: 1,*/}
-                    {/*    pb: 1,*/}
-                    {/*    marginTop: 2,*/}
-                    {/*    mb: "20px",*/}
-                    {/*    backgroundImage:*/}
-                    {/*      "linear-gradient(to top , #FF9D28, #ffa736)",*/}
-                    {/*    borderRadius: "10000px",*/}
-                    {/*    "@media only screen and (max-width: 768px)": {*/}
-                    {/*      width: "100%",*/}
-                    {/*    },*/}
-                    {/*  }}*/}
+                    {/*	sx={{*/}
+                    {/*		// zIndex: 1,*/}
+                    {/*		width: "90%",*/}
+                    {/*		display: "flex",*/}
+                    {/*		alignItems: "center",*/}
+                    {/*		justifyContent: "center",*/}
+                    {/*		pt: 1,*/}
+                    {/*		pb: 1,*/}
+                    {/*		marginTop: 2,*/}
+                    {/*		mb: "20px",*/}
+                    {/*		backgroundImage:*/}
+                    {/*			"linear-gradient(to top , #FF9D28, #ffa736)",*/}
+                    {/*		borderRadius: "10000px",*/}
+                    {/*		"@media only screen and (max-width: 768px)": {*/}
+                    {/*			width: "100%",*/}
+                    {/*		},*/}
+                    {/*	}}*/}
                     {/*>*/}
-                    {/*  <SpeedIcon color="#fff" style={{ fontSize: 20 }} />*/}
-                    {/*  <Text*/}
-                    {/*    b*/}
-                    {/*    style={{ marginLeft: 5, color: "Black", lineHeight: 1 }}*/}
-                    {/*    size={14}*/}
-                    {/*  >*/}
-                    {/*    {`Medium Risk`}*/}
-                    {/*  </Text>*/}
+                    {/*	<SpeedIcon color="#fff" style={{ fontSize: 20 }} />*/}
+                    {/*	<Text*/}
+                    {/*		b*/}
+                    {/*		style={{ marginLeft: 5, color: "Black", lineHeight: 1 }}*/}
+                    {/*		size={14}*/}
+                    {/*	>*/}
+                    {/*		{`Medium Risk`}*/}
+                    {/*	</Text>*/}
                     {/*</Box>*/}
                     <Box sx={{ minWidth: "90%", maxWidth: "90%" }}>
                       <div
@@ -2107,53 +2117,53 @@ const StockCard = () => {
                         }}
                       >
                         {/*<div*/}
-                        {/*  style={{*/}
-                        {/*    display: "flex",*/}
-                        {/*    justifyContent: "space-between",*/}
-                        {/*    alignItems: "center",*/}
-                        {/*  }}*/}
+                        {/*	style={{*/}
+                        {/*		display: "flex",*/}
+                        {/*		justifyContent: "space-between",*/}
+                        {/*		alignItems: "center",*/}
+                        {/*	}}*/}
                         {/*>*/}
-                        {/*  <div*/}
-                        {/*    style={{ display: "flex", flexDirection: "column" }}*/}
-                        {/*  >*/}
-                        {/*    <Text*/}
-                        {/*      b*/}
-                        {/*      css={{*/}
-                        {/*        lineHeight: 1.1,*/}
-                        {/*        "@media only screen and (max-width: 768px)": {*/}
-                        {/*          fontSize: 13,*/}
-                        {/*        },*/}
-                        {/*      }}*/}
-                        {/*      size={15}*/}
-                        {/*    >*/}
-                        {/*      CURRENT*/}
-                        {/*    </Text>*/}
-                        {/*    <Text*/}
-                        {/*      b*/}
-                        {/*      size={15}*/}
-                        {/*      css={{*/}
-                        {/*        lineHeight: 1.1,*/}
-                        {/*        "@media only screen and (max-width: 768px)": {*/}
-                        {/*          fontSize: 13,*/}
-                        {/*        },*/}
-                        {/*      }}*/}
-                        {/*    >*/}
-                        {/*      PRICE (in ₹)*/}
-                        {/*    </Text>*/}
-                        {/*  </div>*/}
-                        {/*  <Text*/}
-                        {/*    b*/}
-                        {/*    css={{*/}
-                        {/*      flex: 1,*/}
-                        {/*      textAlign: "right",*/}
-                        {/*      "@media only screen and (max-width: 768px)": {*/}
-                        {/*        fontSize: 20,*/}
-                        {/*      },*/}
-                        {/*    }}*/}
-                        {/*    size={22}*/}
-                        {/*  >*/}
-                        {/*    {`XXXX.XX`}*/}
-                        {/*  </Text>*/}
+                        {/*	<div*/}
+                        {/*		style={{ display: "flex", flexDirection: "column" }}*/}
+                        {/*	>*/}
+                        {/*		<Text*/}
+                        {/*			b*/}
+                        {/*			css={{*/}
+                        {/*				lineHeight: 1.1,*/}
+                        {/*				"@media only screen and (max-width: 768px)": {*/}
+                        {/*					fontSize: 13,*/}
+                        {/*				},*/}
+                        {/*			}}*/}
+                        {/*			size={15}*/}
+                        {/*		>*/}
+                        {/*			CURRENT*/}
+                        {/*		</Text>*/}
+                        {/*		<Text*/}
+                        {/*			b*/}
+                        {/*			size={15}*/}
+                        {/*			css={{*/}
+                        {/*				lineHeight: 1.1,*/}
+                        {/*				"@media only screen and (max-width: 768px)": {*/}
+                        {/*					fontSize: 13,*/}
+                        {/*				},*/}
+                        {/*			}}*/}
+                        {/*		>*/}
+                        {/*			PRICE (in ₹)*/}
+                        {/*		</Text>*/}
+                        {/*	</div>*/}
+                        {/*	<Text*/}
+                        {/*		b*/}
+                        {/*		css={{*/}
+                        {/*			flex: 1,*/}
+                        {/*			textAlign: "right",*/}
+                        {/*			"@media only screen and (max-width: 768px)": {*/}
+                        {/*				fontSize: 20,*/}
+                        {/*			},*/}
+                        {/*		}}*/}
+                        {/*		size={22}*/}
+                        {/*	>*/}
+                        {/*		{`XXXX.XX`}*/}
+                        {/*	</Text>*/}
                         {/*</div>*/}
                         <Divider
                           height={4}
@@ -2166,53 +2176,53 @@ const StockCard = () => {
                           }}
                         />
                         {/*<div*/}
-                        {/*  style={{*/}
-                        {/*    display: "flex",*/}
-                        {/*    justifyContent: "space-between",*/}
-                        {/*    alignItems: "center",*/}
-                        {/*  }}*/}
+                        {/*	style={{*/}
+                        {/*		display: "flex",*/}
+                        {/*		justifyContent: "space-between",*/}
+                        {/*		alignItems: "center",*/}
+                        {/*	}}*/}
                         {/*>*/}
-                        {/*  <div*/}
-                        {/*    style={{ display: "flex", flexDirection: "column" }}*/}
-                        {/*  >*/}
-                        {/*    <Text*/}
-                        {/*      b*/}
-                        {/*      css={{*/}
-                        {/*        lineHeight: 1.1,*/}
-                        {/*        "@media only screen and (max-width: 768px)": {*/}
-                        {/*          fontSize: 13,*/}
-                        {/*        },*/}
-                        {/*      }}*/}
-                        {/*      size={15}*/}
-                        {/*    >*/}
-                        {/*      TIME LEFT*/}
-                        {/*    </Text>*/}
-                        {/*    <Text*/}
-                        {/*      b*/}
-                        {/*      size={15}*/}
-                        {/*      css={{*/}
-                        {/*        lineHeight: 1.1,*/}
-                        {/*        "@media only screen and (max-width: 768px)": {*/}
-                        {/*          fontSize: 13,*/}
-                        {/*        },*/}
-                        {/*      }}*/}
-                        {/*    >*/}
-                        {/*      (IN DAYS)*/}
-                        {/*    </Text>*/}
-                        {/*  </div>*/}
-                        {/*  <Text*/}
-                        {/*    b*/}
-                        {/*    css={{*/}
-                        {/*      flex: 1,*/}
-                        {/*      textAlign: "right",*/}
-                        {/*      "@media only screen and (max-width: 768px)": {*/}
-                        {/*        fontSize: 20,*/}
-                        {/*      },*/}
-                        {/*    }}*/}
-                        {/*    size={22}*/}
-                        {/*  >*/}
-                        {/*    {`XXX`}*/}
-                        {/*  </Text>*/}
+                        {/*	<div*/}
+                        {/*		style={{ display: "flex", flexDirection: "column" }}*/}
+                        {/*	>*/}
+                        {/*		<Text*/}
+                        {/*			b*/}
+                        {/*			css={{*/}
+                        {/*				lineHeight: 1.1,*/}
+                        {/*				"@media only screen and (max-width: 768px)": {*/}
+                        {/*					fontSize: 13,*/}
+                        {/*				},*/}
+                        {/*			}}*/}
+                        {/*			size={15}*/}
+                        {/*		>*/}
+                        {/*			TIME LEFT*/}
+                        {/*		</Text>*/}
+                        {/*		<Text*/}
+                        {/*			b*/}
+                        {/*			size={15}*/}
+                        {/*			css={{*/}
+                        {/*				lineHeight: 1.1,*/}
+                        {/*				"@media only screen and (max-width: 768px)": {*/}
+                        {/*					fontSize: 13,*/}
+                        {/*				},*/}
+                        {/*			}}*/}
+                        {/*		>*/}
+                        {/*			(IN DAYS)*/}
+                        {/*		</Text>*/}
+                        {/*	</div>*/}
+                        {/*	<Text*/}
+                        {/*		b*/}
+                        {/*		css={{*/}
+                        {/*			flex: 1,*/}
+                        {/*			textAlign: "right",*/}
+                        {/*			"@media only screen and (max-width: 768px)": {*/}
+                        {/*				fontSize: 20,*/}
+                        {/*			},*/}
+                        {/*		}}*/}
+                        {/*		size={22}*/}
+                        {/*	>*/}
+                        {/*		{`XXX`}*/}
+                        {/*	</Text>*/}
                         {/*</div>*/}
                         <div
                           style={{
@@ -2224,7 +2234,7 @@ const StockCard = () => {
                             marginTop: "0px",
                           }}
                         >
-                          {/*<Lock1 color="#ffa12e" size={50} />*/}
+                          {/*<MdOutlineLock color="#ffa12e" size={50} />*/}
                           <div
                             style={{
                               display: "flex",

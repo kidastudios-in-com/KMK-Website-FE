@@ -16,12 +16,15 @@ const SmallcaseCard = () => {
         justifyContent: "center",
         alignItems: "center",
       }}
+      className="smallcaseCard-mobile"
     >
       <Box
         sx={{
           paddingTop: "0px",
           "@media only screen and (max-width: 764px)": {
-            paddingTop: "20px",
+            // paddingTop: "20px",
+            // paddingBottom: "20px",
+            // backgroundColor: "lightgrey",
             // backgroundImage: 'url(RightSide.svg)',
             // zIndex:
           },
@@ -41,11 +44,11 @@ const SmallcaseCard = () => {
               "@media only screen and (max-width: 764px)": {
                 padding: "40px 20px",
                 alignItems: "center",
-                width: "100vw",
+                width: "92vw",
                 // height: "300px",
-                marginTop: -2,
+                marginTop: 0,
                 marginBottom: 0,
-                borderRadius: "0px",
+                borderRadius: "20px",
                 background:
                   "linear-gradient(to top , #1f33e0, #00d4ff), url(RightSide.svg)",
               },

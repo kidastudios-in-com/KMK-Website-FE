@@ -684,10 +684,6 @@ header > div > div {
 }
 
 @media only screen and (max-width: 768px) {
-
-
-
-
   .nextui-c-grJsex-ikUaMfZ-css {
     width: 95vw !important;
     max-width: 95vw !important;
@@ -864,8 +860,9 @@ header > div > div {
   .solutions {
     background-color: #fff;
     /*padding: 60px 30px !important;*/
-    padding-left: 25px !important;
-    padding-right: 25px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    padding-top: 7.5vh !important;
     width: 100vw;
     display: flex;
     flex-direction: column !important;
@@ -910,8 +907,8 @@ header > div > div {
   }
 
   .nextui-c-boZsAS {
-    width: 95% !important;
-    margin-left: 2.5% !important;
+    width: 100% !important;
+    /*margin-left: 2.5% !important;*/
   }
 
   .subscriptionPlansHeader {
@@ -978,6 +975,22 @@ header > div > div {
     font-size: 20px !important;
     text-align: left !important;
   }
+  .subscriptionTypeBox-mobile{
+    width: 100vw !important ;
+  }
+  .waveBackground-mobile {
+    background-image: url("/upwardTrend.png") !important;
+  }
+  .smallcaseCard-mobile {
+    background-color: #f5f5f5 !important;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+  }
+  .subscriptionSection-mobile {
+    width: 100vw;
+    padding-bottom: 10vh !important;
+    padding-top: 7.5vh !important;
+  }
 }
 
 .custom-collapse .nextui-collapse-title {
@@ -993,4 +1006,9 @@ header > div > div {
 
 .linkColor {
   color: #125A55;
+}
+.nextui-c-csEDlc-ivNdeP-css {
+  --nextui--backdropOpacity: 0.15 !important; /* Set the backdrop opacity to 0 */
+  background-color: transparent !important; /* Set the background color to transparent */
+  /*backdrop-filter: blur(6px);*/
 }

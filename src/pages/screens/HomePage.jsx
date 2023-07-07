@@ -3,6 +3,7 @@ import {
   Button,
   Avatar,
   Modal,
+  Card,
   useModal,
   Dropdown,
 } from "@nextui-org/react";
@@ -18,7 +19,11 @@ const HomePage = () => {
   const { setVisible, bindings } = useModal();
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showCert, setShowCert] = useState(false);
+  const [showIframe, setShowIframe] = useState(false);
 
+  const handleCloseIframe = () => {
+    setShowIframe(false);
+  };
   const handleCert = () => {
     setShowCert(true);
   };
@@ -44,8 +49,26 @@ const HomePage = () => {
     "https://i.pravatar.cc/150?u=a04258114e29026702d",
   ];
 
-  const [selectedPDF, setSelectedPDF] = useState(new Set(["SampleReport.pdf"]));
+  const handleHalfPageReportClick = () => {
+    setShowIframe(true);
+    setSelectedPDF("SampleReport.pdf");
+    setVisible(false);
+  };
 
+  const handleDetailedReportClick = () => {
+    setShowIframe(true);
+    setSelectedPDF("DetailedReport.pdf");
+    setVisible(false);
+  };
+
+  const handleIonExchangeReportClick = () => {
+    setShowIframe(true);
+    setSelectedPDF("IonExchangeHalfPageReport-English.pdf");
+    setVisible(false);
+  };
+
+  // const [selectedPDF, setSelectedPDF] = useState(new Set(["SampleReport.pdf"]));
+  const [selectedPDF, setSelectedPDF] = useState("");
   const PdfValue = React.useMemo(
     () => Array.from(selectedPDF)[0]?.replaceAll("_", " ") || "",
     [selectedPDF]
@@ -66,6 +89,7 @@ const HomePage = () => {
         backgroundSize: "contain",
         backgroundRepeat: "repeat-x",
       }}
+      className={"waveBackground-mobile"}
     >
       <Box
         sx={{
@@ -86,7 +110,7 @@ const HomePage = () => {
           "@media only screen and (max-width: 764px)": {
             // maxHeight: "100vh",
             marginTop: "0px",
-            minHeight: "50vh",
+            minHeight: "80vh",
             height: "auto",
             justifyContent: "flex-start",
             alignItems: "flex-start",
@@ -243,6 +267,7 @@ const HomePage = () => {
               marginTop: "10px",
               textAlign: "left",
               color: "#125a54",
+              display: "none",
             },
           }}
         >
@@ -309,6 +334,68 @@ const HomePage = () => {
           </Button>
           <Modal
             blur
+            aria-labelledby="modal-pdf"
+            aria-describedby="pdf-description"
+            open={showIframe}
+            onClose={handleCloseIframe}
+            css={{
+              width: "65vw",
+              maxWidth: "65vw",
+              alignSelf: "flex-end",
+              background: "transparent",
+              boxShadow: "none",
+              borderRadius: "15px",
+              alignItems: "center",
+              "@media only screen and (max-width: 764px)": {
+                width: "95vw !important",
+                maxWidth: "95vw !important",
+              },
+            }}
+          >
+            {selectedPDF && (
+              <iframe
+                src={`${selectedPDF}#view=FitH&toolbar=0`}
+                // src={`Test1.pdf#toolbar=0`}
+                style={{
+                  width: "100%",
+                  height: "75vh",
+                  borderColor: "transparent",
+                  borderRadius: "15px",
+                  borderWidth: "0px",
+                  zoom: "1",
+                }}
+                className="iframePdfMobile"
+              />
+            )}
+            <Button
+              flat
+              onPress={handleCloseIframe}
+              css={{
+                alignSelf: "center",
+                width: "100%",
+                backgroundColor: "#ffa12e",
+                color: "#fff",
+                fontSize: 19,
+                marginTop: "20px",
+                borderRadius: "10px",
+                height: "50px",
+                "@media only screen and (max-width: 768px)": {
+                  width: "100%",
+                  fontSize: 15,
+                  height: "50px",
+                  marginTop: "0px",
+                  borderRadius: "0px 0px 10px",
+                  "& span": {
+                    // display: "none",
+                  },
+                },
+              }}
+            >
+              Close
+            </Button>
+          </Modal>
+          <Modal
+            blur
             aria-labelledby="modal-title"
             aria-describedby="modal-description"
             {...bindings}
@@ -319,80 +406,103 @@ const HomePage = () => {
               background: "transparent",
               boxShadow: "none",
               borderRadius: "15px",
+              alignItems: "center",
               "@media only screen and (max-width: 764px)": {
                 width: "95vw !important",
                 maxWidth: "95vw !important",
               },
             }}
           >
-            <Dropdown>
-              <Dropdown.Button
-                flat
-                css={{
-                  alignSelf: "center",
-                  width: "100%",
-                  backgroundColor: "#125a54",
-                  color: "#fff",
-                  fontSize: 19,
-                  marginBottom: "20px",
-                  borderRadius: "10px",
-                  height: "50px",
-                  "@media only screen and (max-width: 768px)": {
-                    width: "100%",
-                    fontSize: 15,
-                    height: "50px",
-                    marginBottom: "0px",
-                    borderRadius: "10px 0 0",
-                    "& span": {
-                      // display: "none",
-                    },
-                  },
-                }}
-              >
-                {PdfValue}
-                {/*Report Types*/}
-              </Dropdown.Button>
-              <Dropdown.Menu
-                // defaultSelectedKeys={'SampleReport.pdf'}
-                aria-label="TimeActions"
-                selectionMode="single"
-                selectedKeys={selectedPDF}
-                onSelectionChange={(key) => setSelectedPDF(key)}
-                style={{ width: "100%" }}
-              >
-                <Dropdown.Item key="SampleReport.pdf">
-                  Half Page Report
-                </Dropdown.Item>
-                <Dropdown.Item
-                  key="IonExchangeHalfPageReport-English.pdf"
-                  css={{ width: "100vw" }}
-                >
-                  Ion Exchange Half Page Report - English
-                </Dropdown.Item>
-                <Dropdown.Item key="DetailedReport.pdf">
-                  Detailed Report
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            <iframe
-              src={`${PdfValue}#view=FitH&toolbar=0`}
-              // src={`Test1.pdf#toolbar=0`}
-              style={{
-                width: "100%",
-                height: "75vh",
-                borderColor: "transparent",
-                borderRadius: "15px",
-                borderWidth: "0px",
-                zoom: "1",
+            <Card
+              css={{
+                height: "350px",
+                width: "300px",
+                display: "flex",
+                flexDirection: "column",
               }}
-              className="iframePdfMobile"
-            />
+            >
+              <Button
+                css={{ background: "#fff" }}
+                onPress={handleHalfPageReportClick}
+              >
+                <Text b size={20}>
+                  Half Page Report
+                </Text>
+              </Button>
+              <Button
+                css={{ background: "#fff" }}
+                onPress={handleDetailedReportClick}
+              >
+                <Text b size={20}>
+                  Detailed Report
+                </Text>
+              </Button>
+              <Button
+                css={{ background: "#fff" }}
+                onPress={handleIonExchangeReportClick}
+              >
+                <Text b size={20}>
+                  Ion Exchange Half Page Report - English
+                </Text>
+              </Button>
+            </Card>
+
+            {/*<Dropdown>*/}
+            {/*  <Dropdown.Button*/}
+            {/*    flat*/}
+            {/*    css={{*/}
+            {/*      alignSelf: "center",*/}
+            {/*      width: "100%",*/}
+            {/*      backgroundColor: "#125a54",*/}
+            {/*      color: "#fff",*/}
+            {/*      fontSize: 19,*/}
+            {/*      marginBottom: "20px",*/}
+            {/*      borderRadius: "10px",*/}
+            {/*      height: "50px",*/}
+            {/*      "@media only screen and (max-width: 768px)": {*/}
+            {/*        width: "100%",*/}
+            {/*        fontSize: 15,*/}
+            {/*        height: "50px",*/}
+            {/*        marginBottom: "0px",*/}
+            {/*        borderRadius: "10px 0 0",*/}
+            {/*        "& span": {*/}
+            {/*          // display: "none",*/}
+            {/*        },*/}
+            {/*      },*/}
+            {/*    }}*/}
+            {/*  >*/}
+            {/*    {PdfValue}*/}
+            {/*    /!*Report Types*!/*/}
+            {/*  </Dropdown.Button>*/}
+            {/*  <Dropdown.Menu*/}
+            {/*    // defaultSelectedKeys={'SampleReport.pdf'}*/}
+            {/*    aria-label="TimeActions"*/}
+            {/*    selectionMode="single"*/}
+            {/*    selectedKeys={selectedPDF}*/}
+            {/*    onSelectionChange={(key) => setSelectedPDF(key)}*/}
+            {/*    style={{ width: "100%" }}*/}
+            {/*  >*/}
+            {/*    <Dropdown.Item key="SampleReport.pdf">*/}
+            {/*      Half Page Report*/}
+            {/*    </Dropdown.Item>*/}
+            {/*    <Dropdown.Item*/}
+            {/*      key="IonExchangeHalfPageReport-English.pdf"*/}
+            {/*      css={{ width: "100vw" }}*/}
+            {/*    >*/}
+            {/*      Ion Exchange Half Page Report - English*/}
+            {/*    </Dropdown.Item>*/}
+            {/*    <Dropdown.Item key="DetailedReport.pdf">*/}
+            {/*      Detailed Report*/}
+            {/*    </Dropdown.Item>*/}
+            {/*  </Dropdown.Menu>*/}
+            {/*</Dropdown>*/}
+
             <Button
               flat
               onPress={() => setVisible(false)}
               css={{
-                alignSelf: "end",
-                width: "100%",
+                alignSelf: "center",
+                // width: "100%",
                 backgroundColor: "#ffa12e",
                 color: "#fff",
                 fontSize: 19,

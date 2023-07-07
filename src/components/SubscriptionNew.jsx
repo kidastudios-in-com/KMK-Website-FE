@@ -6,37 +6,12 @@ import CloseIcon from "@mui/icons-material/Close";
 import Login from "./Login";
 import AuthContext from "./AuthContext";
 import { useRouter } from "next/router";
-import { GET_USER } from "@/pages/api/URLs";
 
 const SubscriptionNew = () => {
   const { isLoggedIn } = useContext(AuthContext);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const router = useRouter();
-  const [isSubscribed, setIsSubscribed] = useState(false);
-
-  useEffect(() => {
-    const fetchUserDetails = async () => {
-      try {
-        const refreshToken = localStorage.getItem("refresh");
-        const response = await fetch(GET_USER, {
-          method: "GET",
-          headers: {
-            Authorization: `Token ${refreshToken}`,
-          },
-        });
-        const data = await response.json();
-        if (data.active_subscription !== "Free") {
-          setIsSubscribed(true);
-        } else {
-          setIsSubscribed(false);
-        }
-        // console.log(data);
-      } catch (error) {
-        console.error("Error fetching user details:", error);
-      }
-    };
-    fetchUserDetails();
-  }, []);
+  const { isSubscribed } = useContext(AuthContext);
 
   const handleLoginOrSub = () => {
     if (isLoggedIn) {
@@ -83,6 +58,7 @@ const SubscriptionNew = () => {
             paddingBottom: "10vh",
           },
         }}
+        className="subscriptionSection-mobile"
       >
         <Box
           style={{
@@ -353,7 +329,7 @@ const SubscriptionNew = () => {
                 "linear-gradient(to top , #105B54, #0F734D, #0F734D)",
               "@media only screen and (max-width: 672px)": {
                 order: 1,
-                width: "95%",
+                width: "100%",
               },
             }}
           >
@@ -498,7 +474,21 @@ const SubscriptionNew = () => {
               onClick={handleLoginOrSub}
             >
               <Text b color="#FFF" size={18}>
-                {isSubscribed ? "Stocks to buy" : "Subscribe Now"}
+                {isLoggedIn ? (
+                  isSubscribed ? (
+                    <Text b color="#FFF" size={18}>
+                      Stocks to buy
+                    </Text>
+                  ) : (
+                    <Text b color="#FFF" size={18}>
+                      Subscribe Now
+                    </Text>
+                  )
+                ) : (
+                  <Text b color="#FFF" size={18}>
+                    Subscribe Now
+                  </Text>
+                )}
               </Text>
             </Button>
 
@@ -548,7 +538,7 @@ const SubscriptionNew = () => {
               borderRadius: "35px",
               background: "#fff",
               filter: "none",
-              border: "4px solid #1877f2",
+              border: "2px solid #1877f2",
               justifyContent: "center",
               paddingTop: "50px",
               paddingBottom: "50px",
@@ -556,7 +546,7 @@ const SubscriptionNew = () => {
               paddingRight: "15px",
               "@media only screen and (max-width: 672px)": {
                 order: 2,
-                width: "95%",
+                width: "100%",
               },
             }}
           >

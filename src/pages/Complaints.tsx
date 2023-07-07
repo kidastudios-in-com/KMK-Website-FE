@@ -60,27 +60,38 @@ const Complaints = () => {
         >
           Complaints
         </Text>
-        <Text
-          size={20}
-          css={{
-            marginTop: "2.5vh",
-            width: "100%",
-            maxWidth: "80rem" /* 1280px */,
-            textAlign: "left",
-            lineHeight: 1.2,
-            paddingLeft: "15px",
-            paddingRight: "15px",
-            "@media only screen and (max-width: 764px)": {
-              fontSize: 15,
-              marginTop: "35px",
-              marginBottom: "35px",
-              maxWidth: "100%",
-              textAlign: "left",
-            },
+        {/*<Text*/}
+        {/*  size={20}*/}
+        {/*  css={{*/}
+        {/*    marginTop: "2.5vh",*/}
+        {/*    width: "100vw",*/}
+        {/*    maxWidth: "100vw",*/}
+        {/*    textAlign: "center",*/}
+        {/*    lineHeight: 1.2,*/}
+        {/*    paddingLeft: "15px",*/}
+        {/*    paddingRight: "15px",*/}
+        {/*    "@media only screen and (max-width: 764px)": {*/}
+        {/*      fontSize: 15,*/}
+        {/*      marginTop: "35px",*/}
+        {/*      marginBottom: "35px",*/}
+        {/*      maxWidth: "100%",*/}
+        {/*      textAlign: "left",*/}
+        {/*    },*/}
+        {/*  }}*/}
+        {/*>*/}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            padding: "50px 0px",
           }}
         >
-          As Of 06 Jun 2023 : 0
-        </Text>
+          <iframe
+            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRRif7G0NdTUfwk_5AcuO445X2lweaepDgv9Nc9zg7LMVAobXvFOKtl3sIUlicZQe4Pi5T1uA1ysI-a/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false&amp;chrome=false"
+            style={{ width: "80vw", height: "90vh", border: "none" }}
+          />
+        </Box>
+        {/*</Text>*/}
       </Box>
       <FaqsNew />
       <Footer />

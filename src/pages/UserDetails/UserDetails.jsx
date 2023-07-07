@@ -3,7 +3,10 @@ import React, { useEffect, useState, useContext } from "react";
 import { GET_USER, EDIT_USER, SUBSCRIPTION_HISTORY } from "../api/URLs";
 import { RiEdit2Fill } from "react-icons/ri";
 import AuthContext from "@/components/AuthContext";
-import { Box } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import Login from "@/components/Login";
+import PhoneInput from "react-phone-input-2";
 
 const UserDetails = () => {
   const [user, setUser] = useState(null);
@@ -15,6 +18,35 @@ const UserDetails = () => {
   const [newReferralCode, setNewReferralCode] = useState("");
   const [referralCodeSaved, setReferralCodeSaved] = useState(false);
   const [subscription, setSubscription] = useState(null);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [billingName, setBillingName] = useState("");
+  const [billingEmail, setBillingEmail] = useState("");
+  const [billingNumber, setBillingNumber] = useState("");
+  const [gstNo, setGstNo] = useState("");
+
+  const handleLogin = () => {
+    setShowLoginModal(true);
+  };
+
+  const handleCloseLoginModal = () => {
+    setShowLoginModal(false);
+  };
+
+  const handleInputChange = (value) => {
+    setBillingNumber(value);
+  };
+
+  const handleEmailChange = (e) => {
+    setBillingEmail(e.target.value);
+  };
+
+  const handleNameChange = (e) => {
+    setBillingName(e.target.value);
+  };
+
+  const handleGSTChange = (e) => {
+    setGstNo(e.target.value);
+  };
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -95,7 +127,10 @@ const UserDetails = () => {
           Authorization: `Token ${refreshToken}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ referral: newReferralCode }),
+        body: JSON.stringify({
+          referral: newReferralCode,
+          name: user.name ? user.name : newName,
+        }),
       });
       const data = await response.json();
       setUser(data);
@@ -143,7 +178,7 @@ const UserDetails = () => {
             paddingLeft: "20px",
             paddingRight: "20px",
             "@media only screen and (max-width: 764px)": {
-              width: "100%",
+              width: "100vw",
               paddingLeft: "15px",
               paddingRight: "15px",
               alignContent: "flex-start",
@@ -155,7 +190,13 @@ const UserDetails = () => {
           }}
         >
           <Box
-            sx={{ width: "50%", height: "auto" }}
+            sx={{
+              width: "50%",
+              height: "auto",
+              "@media only screen and (max-width: 764px)": {
+                width: "90vw !important",
+              },
+            }}
             className="aboutSectionGifAndText"
           >
             <video
@@ -174,32 +215,11 @@ const UserDetails = () => {
               flexDirection: "column",
               alignSelf: "center",
               paddingRight: "0px",
-              // paddingRight: "75px",
             }}
           >
-            {/*<Text*/}
-            {/*  b*/}
-            {/*  size={26}*/}
-            {/*  css={{*/}
-            {/*    lineHeight: 1.4,*/}
-            {/*    textAlign: "left",*/}
-            {/*    paddingBottom: "35px",*/}
-            {/*    paddingTop: "35px",*/}
-            {/*    "@media only screen and (max-width: 764px)": {*/}
-            {/*      textAlign: "left",*/}
-            {/*      fontSize: 25,*/}
-            {/*      lineHeight: 1.2,*/}
-            {/*      paddingLeft: "10px",*/}
-            {/*      paddingRight: "10px",*/}
-            {/*    },*/}
-            {/*  }}*/}
-            {/*>*/}
-            {/*  */}
-            {/*</Text>*/}
             <Button
               auto
-              // size={"xl"}/
-              onPress={() => setVisible(true)}
+              onPress={handleLogin}
               css={{
                 borderRadius: "10000px",
                 marginTop: 30,
@@ -216,10 +236,10 @@ const UserDetails = () => {
                   paddingLeft: 15,
                   paddingRight: 15,
                   marginLeft: 0,
-                  marginBottom: 0,
+                  marginBottom: "10px",
                   marginTop: "10px",
                   height: "55px",
-                  width: "250px",
+                  width: "100%",
                 },
               }}
             >
@@ -239,6 +259,38 @@ const UserDetails = () => {
               </Text>
             </Button>
           </Box>
+          <Modal
+            width="450px"
+            blur
+            open={showLoginModal}
+            onClose={handleCloseLoginModal}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                width: "100%",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <img src="kmk-k.png" style={{ maxWidth: "260px" }} />
+              <IconButton
+                sx={{
+                  width: "40px",
+                  "&:hover": { background: "#fff" },
+                  // alignSelf: "end",
+                  right: "20px",
+                }}
+                onClick={() => handleCloseLoginModal()}
+              >
+                <CloseIcon sx={{ color: "#e81123" }} />
+              </IconButton>
+            </Box>
+            <Modal.Body>
+              <Login />
+            </Modal.Body>
+          </Modal>
         </Box>
       </section>
     );
@@ -254,13 +306,14 @@ const UserDetails = () => {
           justifyContent: "center",
           alignItems: "center",
           flexDirection: "column",
+          // maxWidth: '80rem',
         }}
       >
         <Text
           b
           size={70}
           css={{
-            marginTop: "40px",
+            marginTop: "10vh",
             marginBottom: "40px",
             // width: "90%",
             maxWidth: "80rem" /* 1280px */,
@@ -273,7 +326,7 @@ const UserDetails = () => {
               lineHeight: 1.1,
               paddingLeft: "5px",
               paddingRight: "5px",
-              marginTop: "0px",
+              marginTop: "20px",
               marginBottom: "10px",
               maxWidth: "100%",
               textAlign: "left",
@@ -287,211 +340,731 @@ const UserDetails = () => {
             display: "flex",
             alignItems: "start",
             flexDirection: "column",
-            gap: "20px",
+            gap: "0px",
           }}
         >
           <div
             style={{
               display: "flex",
-              flexDirection: "row",
+              flexDirection: "column",
               alignItems: "center",
               justifyContent: "space-between",
-              border: "1px solid lightgrey",
+              // border: "1px solid lightgrey",
               borderRadius: "10000px",
-              padding: "10px 1px 10px 20px",
-              width: "95vw",
-              maxWidth: "500px",
-              height: "65px",
+              padding: "0px 10px",
+              width: "100vw",
+              maxWidth: "600px",
+              height: "fit-content",
             }}
           >
-            {editing ? (
-              <>
-                <Text b size={20}>
-                  Name:
-                </Text>
+            {/*{editing ? (*/}
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+                padding: "5px",
+              }}
+            >
+              <Text b size={15} style={{ paddingLeft: "20px" }}>
+                Full Name
+              </Text>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                  rowGap: "20px",
+                  columnGap: "20px",
+                  alignItems: "center",
+                  justifyContent: "flex-start",
+                  // border: "1px solid lightgrey",
+                }}
+              >
                 <Input
-                  underlined
+                  // underlined
                   value={newName}
                   onChange={(e) => setNewName(e.target.value)}
-                  css={{ marginRight: "10px" }}
+                  css={{
+                    marginRight: "0px",
+                    width: "62.5%",
+                    border: "none",
+                    "@media only screen and (max-width: 764px)": {
+                      width: "100vw",
+                      marginRight: "0px",
+                    },
+                  }}
                 />
                 <Button
                   color="success"
                   auto
                   onClick={handleSaveProfile}
-                  css={{ marginRight: "5px" }}
+                  css={{ marginRight: "0px", borderRadius: "10000px" }}
                 >
                   Save
                 </Button>
-                <Button color="error" auto onClick={handCancel}>
-                  Cancel
-                </Button>
-              </>
-            ) : (
-              <>
-                <Text b size={20} css={{ marginRight: "20px" }}>
-                  Name: {user?.name ? user.name : "N/A"}
-                </Text>
                 <Button
-                  onClick={handleEditProfile}
+                  color="error"
                   auto
-                  css={{
-                    background: "lightgrey",
-                    borderRadius: "10000px",
-                    fontSize: 20,
-                    width: "60px",
-                    height: "60px",
-                    color: "grey",
-                  }}
+                  onClick={handCancel}
+                  css={{ marginRight: "0px", borderRadius: "10000px" }}
                 >
-                  <RiEdit2Fill />
+                  Undo
                 </Button>
-              </>
-            )}
+              </div>
+            </div>
+            {/*// ) : (*/}
+            {/*//   <div*/}
+            {/*//     style={{*/}
+            {/*//       width: "100%",*/}
+            {/*//       display: "flex",*/}
+            {/*//       flexDirection: "column",*/}
+            {/*//       gap: "30px",*/}
+            {/*//     }}*/}
+            {/*//   >*/}
+            {/*//     <Text b size={20} css={{ marginRight: "20px" }}>*/}
+            {/*//       Full Name*/}
+            {/*//     </Text>*/}
+            {/*//     <Input*/}
+            {/*//       underlined*/}
+            {/*//       value={user?.name ? user.name : "N/A"}*/}
+            {/*//       onChange={(e) => setNewName(e.target.value)}*/}
+            {/*//       css={{ marginRight: "10px" }}*/}
+            {/*//     />*/}
+            {/*//     <Button*/}
+            {/*//       onClick={handleEditProfile}*/}
+            {/*//       auto*/}
+            {/*//       css={{*/}
+            {/*//         background: "lightgrey",*/}
+            {/*//         borderRadius: "10000px",*/}
+            {/*//         fontSize: 20,*/}
+            {/*//         width: "60px",*/}
+            {/*//         height: "60px",*/}
+            {/*//         color: "grey",*/}
+            {/*//       }}*/}
+            {/*//     >*/}
+            {/*//       <RiEdit2Fill />*/}
+            {/*//     </Button>*/}
+            {/*//   </div>*/}
+            {/*// )}*/}
           </div>
 
           <div
             style={{
               display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              border: "1px solid lightgrey",
-              borderRadius: "10000px",
-              padding: "10px 20px",
-              width: "95vw",
-              maxWidth: "500px",
-              height: "65px",
-            }}
-          >
-            <Text b size={20}>
-              Subscription:
-              {user.active_subscription ? user.active_subscription : "N/A"}
-            </Text>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
+              flexDirection: "column",
               alignItems: "center",
               justifyContent: "space-between",
-              border: "1px solid lightgrey",
+              // border: "1px solid lightgrey",
               borderRadius: "10000px",
-              padding: "10px 1px 10px 20px",
-              width: "95vw",
-              maxWidth: "500px",
-              height: "65px",
+              padding: "0px 10px",
+              width: "100vw",
+              maxWidth: "600px",
+              height: "fit-content",
             }}
           >
-            {editingRef && !user?.referral ? (
-              <>
-                <Text b size={20}>
-                  Referral Code:
-                </Text>
+            {/*{editing ? (*/}
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+                padding: "5px",
+              }}
+            >
+              <Text b size={15} style={{ paddingLeft: "20px" }}>
+                Email Address
+              </Text>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                  rowGap: "20px",
+                  columnGap: "20px",
+                  alignItems: "center",
+                  justifyContent: "flex-start",
+                  // border: "1px solid lightgrey",
+                }}
+              >
                 <Input
-                  underlined
-                  value={newReferralCode}
-                  onChange={(e) => setNewReferralCode(e.target.value)}
-                  css={{ marginRight: "10px" }}
+                  // underlined
+                  value={newName}
+                  onChange={(e) => setNewName(e.target.value)}
+                  css={{
+                    marginRight: "0px",
+                    width: "62.5%",
+                    border: "none",
+                    "@media only screen and (max-width: 764px)": {
+                      width: "100vw",
+                      marginRight: "0px",
+                    },
+                  }}
                 />
                 <Button
                   color="success"
                   auto
-                  onClick={() => {
-                    if (
-                      window.confirm(
-                        "Are you sure? Once saved, it cannot be edited again."
-                      )
-                    ) {
-                      handleSaveReferralCode();
-                    }
-                  }}
-                  css={{ marginRight: "5px" }}
+                  onClick={handleSaveProfile}
+                  css={{ marginRight: "0px", borderRadius: "10000px" }}
                 >
                   Save
                 </Button>
-                <Button color="error" auto onClick={handleCancelReferralCode}>
-                  Cancel
+                <Button
+                  color="error"
+                  auto
+                  onClick={handCancel}
+                  css={{ marginRight: "0px", borderRadius: "10000px" }}
+                >
+                  Undo
                 </Button>
-              </>
-            ) : (
-              <>
-                <Text b size={20} css={{ marginRight: "20px" }}>
-                  Referral Code: {user?.referral ? user.referral : "N/A"}
-                </Text>
-                {!user?.referral && (
-                  <Button
-                    onClick={handleEditReferralCode}
-                    auto
-                    css={{
-                      background: "lightgrey",
-                      borderRadius: "10000px",
-                      fontSize: 20,
-                      width: "60px",
-                      height: "60px",
-                      color: "grey",
-                    }}
-                  >
-                    <RiEdit2Fill />
-                  </Button>
-                )}
-                {referralCodeSaved && (
-                  <Text css={{ color: "green", marginLeft: "10px" }}>
-                    Referral code saved! Editing is disabled.
-                  </Text>
-                )}
-              </>
-            )}
+              </div>
+            </div>
+            {/*// ) : (*/}
+            {/*//   <div*/}
+            {/*//     style={{*/}
+            {/*//       width: "100%",*/}
+            {/*//       display: "flex",*/}
+            {/*//       flexDirection: "column",*/}
+            {/*//       gap: "30px",*/}
+            {/*//     }}*/}
+            {/*//   >*/}
+            {/*//     <Text b size={20} css={{ marginRight: "20px" }}>*/}
+            {/*//       Full Name*/}
+            {/*//     </Text>*/}
+            {/*//     <Input*/}
+            {/*//       underlined*/}
+            {/*//       value={user?.name ? user.name : "N/A"}*/}
+            {/*//       onChange={(e) => setNewName(e.target.value)}*/}
+            {/*//       css={{ marginRight: "10px" }}*/}
+            {/*//     />*/}
+            {/*//     <Button*/}
+            {/*//       onClick={handleEditProfile}*/}
+            {/*//       auto*/}
+            {/*//       css={{*/}
+            {/*//         background: "lightgrey",*/}
+            {/*//         borderRadius: "10000px",*/}
+            {/*//         fontSize: 20,*/}
+            {/*//         width: "60px",*/}
+            {/*//         height: "60px",*/}
+            {/*//         color: "grey",*/}
+            {/*//       }}*/}
+            {/*//     >*/}
+            {/*//       <RiEdit2Fill />*/}
+            {/*//     </Button>*/}
+            {/*//   </div>*/}
+            {/*// )}*/}
           </div>
+
           <div
             style={{
               display: "flex",
-              flexDirection: "row",
+              flexDirection: "column",
               alignItems: "center",
-              border: "1px solid lightgrey",
+              justifyContent: "space-between",
+              // border: "1px solid lightgrey",
               borderRadius: "10000px",
-              padding: "10px 20px",
-              width: "95vw",
-              maxWidth: "500px",
-              height: "65px",
+              padding: "0px 10px",
+              width: "100vw",
+              maxWidth: "600px",
+              height: "fit-content",
             }}
           >
-            {user.end_date ? (
-              <>
-                <Text b size={20}>
-                  Expire On: {new Date(user.end_date).toLocaleString()}
-                </Text>
-                <Text b size={20}>
-                  {" | "}
-                  Days Left:{" "}
-                  {user?.end_date
-                    ? Math.floor(
-                        (new Date(user.end_date).getTime() -
-                          new Date().getTime()) /
-                          (1000 * 60 * 60 * 24)
-                      )
-                    : "N/A"}
-                </Text>
-              </>
-            ) : (
-              ""
-            )}
+            {/*{editing ? (*/}
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+                padding: "5px",
+              }}
+            >
+              <Text b size={15} style={{ paddingLeft: "20px" }}>
+                GSTIN
+              </Text>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                  rowGap: "20px",
+                  columnGap: "20px",
+                  alignItems: "center",
+                  justifyContent: "flex-start",
+                  // border: "1px solid lightgrey",
+                }}
+              >
+                <Input
+                  // underlined
+                  value={newName}
+                  onChange={(e) => setNewName(e.target.value)}
+                  css={{
+                    marginRight: "0px",
+                    width: "62.5%",
+                    border: "none",
+                    "@media only screen and (max-width: 764px)": {
+                      width: "100vw",
+                      marginRight: "0px",
+                    },
+                  }}
+                />
+                <Button
+                  color="success"
+                  auto
+                  onClick={handleSaveProfile}
+                  css={{ marginRight: "0px", borderRadius: "10000px" }}
+                >
+                  Save
+                </Button>
+                <Button
+                  color="error"
+                  auto
+                  onClick={handCancel}
+                  css={{ marginRight: "0px", borderRadius: "10000px" }}
+                >
+                  Undo
+                </Button>
+              </div>
+            </div>
+            {/*// ) : (*/}
+            {/*//   <div*/}
+            {/*//     style={{*/}
+            {/*//       width: "100%",*/}
+            {/*//       display: "flex",*/}
+            {/*//       flexDirection: "column",*/}
+            {/*//       gap: "30px",*/}
+            {/*//     }}*/}
+            {/*//   >*/}
+            {/*//     <Text b size={20} css={{ marginRight: "20px" }}>*/}
+            {/*//       Full Name*/}
+            {/*//     </Text>*/}
+            {/*//     <Input*/}
+            {/*//       underlined*/}
+            {/*//       value={user?.name ? user.name : "N/A"}*/}
+            {/*//       onChange={(e) => setNewName(e.target.value)}*/}
+            {/*//       css={{ marginRight: "10px" }}*/}
+            {/*//     />*/}
+            {/*//     <Button*/}
+            {/*//       onClick={handleEditProfile}*/}
+            {/*//       auto*/}
+            {/*//       css={{*/}
+            {/*//         background: "lightgrey",*/}
+            {/*//         borderRadius: "10000px",*/}
+            {/*//         fontSize: 20,*/}
+            {/*//         width: "60px",*/}
+            {/*//         height: "60px",*/}
+            {/*//         color: "grey",*/}
+            {/*//       }}*/}
+            {/*//     >*/}
+            {/*//       <RiEdit2Fill />*/}
+            {/*//     </Button>*/}
+            {/*//   </div>*/}
+            {/*// )}*/}
           </div>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "space-between",
+              // border: "1px solid lightgrey",
+              borderRadius: "10000px",
+              padding: "0px 10px",
+              width: "100vw",
+              maxWidth: "600px",
+              height: "fit-content",
+            }}
+          >
+            {/*{editing ? (*/}
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+                padding: "5px",
+              }}
+            >
+              <Text b size={15} style={{ paddingLeft: "20px" }}>
+                Referral Code
+              </Text>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                  rowGap: "20px",
+                  columnGap: "20px",
+                  alignItems: "center",
+                  justifyContent: "flex-start",
+                  // border: "1px solid lightgrey",
+                }}
+              >
+                <Input
+                  // underlined
+                  value={newName}
+                  onChange={(e) => setNewName(e.target.value)}
+                  css={{
+                    marginRight: "0px",
+                    width: "62.5%",
+                    border: "none",
+                    "@media only screen and (max-width: 764px)": {
+                      width: "100vw",
+                      marginRight: "0px",
+                    },
+                  }}
+                />
+                <Button
+                  color="success"
+                  auto
+                  onClick={handleSaveProfile}
+                  css={{ marginRight: "0px", borderRadius: "10000px" }}
+                >
+                  Save
+                </Button>
+                <Button
+                  color="error"
+                  auto
+                  onClick={handCancel}
+                  css={{ marginRight: "0px", borderRadius: "10000px" }}
+                >
+                  Undo
+                </Button>
+              </div>
+            </div>
+            {/*// ) : (*/}
+            {/*//   <div*/}
+            {/*//     style={{*/}
+            {/*//       width: "100%",*/}
+            {/*//       display: "flex",*/}
+            {/*//       flexDirection: "column",*/}
+            {/*//       gap: "30px",*/}
+            {/*//     }}*/}
+            {/*//   >*/}
+            {/*//     <Text b size={20} css={{ marginRight: "20px" }}>*/}
+            {/*//       Full Name*/}
+            {/*//     </Text>*/}
+            {/*//     <Input*/}
+            {/*//       underlined*/}
+            {/*//       value={user?.name ? user.name : "N/A"}*/}
+            {/*//       onChange={(e) => setNewName(e.target.value)}*/}
+            {/*//       css={{ marginRight: "10px" }}*/}
+            {/*//     />*/}
+            {/*//     <Button*/}
+            {/*//       onClick={handleEditProfile}*/}
+            {/*//       auto*/}
+            {/*//       css={{*/}
+            {/*//         background: "lightgrey",*/}
+            {/*//         borderRadius: "10000px",*/}
+            {/*//         fontSize: 20,*/}
+            {/*//         width: "60px",*/}
+            {/*//         height: "60px",*/}
+            {/*//         color: "grey",*/}
+            {/*//       }}*/}
+            {/*//     >*/}
+            {/*//       <RiEdit2Fill />*/}
+            {/*//     </Button>*/}
+            {/*//   </div>*/}
+            {/*// )}*/}
+          </div>
+
+          {/*<div*/}
+          {/*  style={{*/}
+          {/*    display: "flex",*/}
+          {/*    flexDirection: "row",*/}
+          {/*    alignItems: "center",*/}
+          {/*    border: "1px solid lightgrey",*/}
+          {/*    borderRadius: "10000px",*/}
+          {/*    padding: "10px 20px",*/}
+          {/*    width: "95vw",*/}
+          {/*    maxWidth: "500px",*/}
+          {/*    height: "65px",*/}
+          {/*    marginTop: "20px",*/}
+          {/*  }}*/}
+          {/*>*/}
+          {/*  /!* <Input*/}
+          {/*		required*/}
+          {/*		placeholder="eg: support@kamayakya.com"*/}
+          {/*		clearable*/}
+          {/*		size="lg"*/}
+          {/*		value={billingEmail}*/}
+          {/*		onChange={handleEmailChange}*/}
+          {/*		css={{*/}
+          {/*			// marginBottom: "10px",*/}
+          {/*			alignSelf: "center",*/}
+          {/*			width: "100%",*/}
+          {/*			maxWidth: "500px",*/}
+          {/*			height: "65px",*/}
+          {/*			borderRadius: "1000px",*/}
+          {/*		}}*/}
+          {/*		className="countryPhone"*/}
+          {/*	/> *!/*/}
+          {/*  <Text b size={20}>*/}
+          {/*    Email:*/}
+          {/*  </Text>*/}
+          {/*  {!user?.email && (*/}
+          {/*    <Button*/}
+          {/*      // onClick={handleEditReferralCode}*/}
+          {/*      auto*/}
+          {/*      css={{*/}
+          {/*        background: "lightgrey",*/}
+          {/*        borderRadius: "10000px",*/}
+          {/*        // marginLeft: '79%',*/}
+          {/*        fontSize: 20,*/}
+          {/*        width: "60px",*/}
+          {/*        height: "60px",*/}
+          {/*        color: "grey",*/}
+          {/*      }}*/}
+          {/*    >*/}
+          {/*      <RiEdit2Fill />*/}
+          {/*    </Button>*/}
+          {/*  )}*/}
+          {/*  /!* {referralCodeSaved && (*/}
+          {/*			<Text css={{ color: "green", marginLeft: "10px" }}>*/}
+          {/*				Email saved! Editing is disabled.*/}
+          {/*			</Text>*/}
+          {/*		)} *!/*/}
+          {/*</div>*/}
+
+          {/*<div*/}
+          {/*  style={{*/}
+          {/*    display: "flex",*/}
+          {/*    flexDirection: "row",*/}
+          {/*    alignItems: "center",*/}
+          {/*    border: "1px solid lightgrey",*/}
+          {/*    borderRadius: "10000px",*/}
+          {/*    padding: "10px 20px",*/}
+          {/*    width: "95vw",*/}
+          {/*    maxWidth: "500px",*/}
+          {/*    height: "65px",*/}
+          {/*  }}*/}
+          {/*>*/}
+          {/*  <Text b size={20}>*/}
+          {/*    Subscription:*/}
+          {/*    {user.active_subscription ? user.active_subscription : "N/A"}*/}
+          {/*  </Text>*/}
+          {/*</div>*/}
+          {/*<div*/}
+          {/*  style={{*/}
+          {/*    display: "flex",*/}
+          {/*    flexDirection: "row",*/}
+          {/*    alignItems: "center",*/}
+          {/*    justifyContent: "space-between",*/}
+          {/*    border: "1px solid lightgrey",*/}
+          {/*    borderRadius: "10000px",*/}
+          {/*    padding: "10px 1px 10px 20px",*/}
+          {/*    width: "95vw",*/}
+          {/*    maxWidth: "500px",*/}
+          {/*    height: "65px",*/}
+          {/*  }}*/}
+          {/*>*/}
+          {/*  {editingRef && !user?.referral ? (*/}
+          {/*    <>*/}
+          {/*      <Text b size={20}>*/}
+          {/*        Referral Code:*/}
+          {/*      </Text>*/}
+          {/*      <Input*/}
+          {/*        underlined*/}
+          {/*        value={newReferralCode}*/}
+          {/*        onChange={(e) => setNewReferralCode(e.target.value)}*/}
+          {/*        css={{ marginRight: "10px" }}*/}
+          {/*      />*/}
+          {/*      <Button*/}
+          {/*        color="success"*/}
+          {/*        auto*/}
+          {/*        onClick={() => {*/}
+          {/*          if (*/}
+          {/*            window.confirm(*/}
+          {/*              "Are you sure? Once saved, it cannot be edited again."*/}
+          {/*            )*/}
+          {/*          ) {*/}
+          {/*            handleSaveReferralCode();*/}
+          {/*          }*/}
+          {/*        }}*/}
+          {/*        css={{ marginRight: "5px" }}*/}
+          {/*      >*/}
+          {/*        Save*/}
+          {/*      </Button>*/}
+          {/*      <Button color="error" auto onClick={handleCancelReferralCode}>*/}
+          {/*        Cancel*/}
+          {/*      </Button>*/}
+          {/*    </>*/}
+          {/*  ) : (*/}
+          {/*    <>*/}
+          {/*      <Text b size={20} css={{ marginRight: "20px" }}>*/}
+          {/*        Referral Code: {user?.referral ? user.referral : "N/A"}*/}
+          {/*      </Text>*/}
+          {/*      {!user?.referral && (*/}
+          {/*        <Button*/}
+          {/*          onClick={handleEditReferralCode}*/}
+          {/*          auto*/}
+          {/*          css={{*/}
+          {/*            background: "lightgrey",*/}
+          {/*            borderRadius: "10000px",*/}
+          {/*            fontSize: 20,*/}
+          {/*            width: "60px",*/}
+          {/*            height: "60px",*/}
+          {/*            color: "grey",*/}
+          {/*          }}*/}
+          {/*        >*/}
+          {/*          <RiEdit2Fill />*/}
+          {/*        </Button>*/}
+          {/*      )}*/}
+          {/*      {referralCodeSaved && (*/}
+          {/*        <Text css={{ color: "green", marginLeft: "10px" }}>*/}
+          {/*          Referral code saved! Editing is disabled.*/}
+          {/*        </Text>*/}
+          {/*      )}*/}
+          {/*    </>*/}
+          {/*  )}*/}
+          {/*</div>*/}
+          {/* <div
+						style={{
+							display: "flex",
+							flexDirection: "row",
+							alignItems: "center",
+							border: "1px solid lightgrey",
+							borderRadius: "10000px",
+							padding: "10px 20px",
+							width: "95vw",
+							maxWidth: "500px",
+							height: "65px",
+						}}
+					>
+						{user.end_date ? (
+							<>
+								<Text b size={20}>
+									Expire On: {new Date(user.end_date).toLocaleString()}
+								</Text>
+								<Text b size={20}>
+									{" | "}
+									Days Left:{" "}
+									{user?.end_date
+										? Math.floor(
+												(new Date(user.end_date).getTime() -
+													new Date().getTime()) /
+													(1000 * 60 * 60 * 24)
+										  )
+										: "N/A"}
+								</Text>
+							</>
+						) : (
+							""
+						)}
+					</div> */}
         </div>
-        <Box sx={{ display: "flex" }}>
+
+        {/* <Text
+					b
+					size={14}
+					css={{
+						marginBottom: "5px",
+						marginLeft: "5px",
+						alignSelf: "center",
+						width: "100%",
+						maxWidth: "500px",
+					}}
+				>
+					Email
+				</Text> */}
+
+        {/*<div*/}
+        {/*  style={{*/}
+        {/*    display: "flex",*/}
+        {/*    flexDirection: "row",*/}
+        {/*    alignItems: "center",*/}
+        {/*    border: "1px solid lightgrey",*/}
+        {/*    borderRadius: "10000px",*/}
+        {/*    padding: "10px 20px",*/}
+        {/*    width: "95vw",*/}
+        {/*    maxWidth: "500px",*/}
+        {/*    height: "65px",*/}
+        {/*    marginTop: "20px",*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  <Text b size={20}>*/}
+        {/*    GST No:*/}
+        {/*  </Text>*/}
+        {/*  /!* <Input*/}
+        {/*				placeholder="eg: 22AAAAA0000A1Z5"*/}
+        {/*				clearable*/}
+        {/*				size="lg"*/}
+        {/*				value={gstNo}*/}
+        {/*				onChange={handleGSTChange}*/}
+        {/*				css={{*/}
+        {/*					// marginBottom: "10px",*/}
+        {/*					alignSelf: "center",*/}
+        {/*					width: "100%",*/}
+        {/*					maxWidth: "500px",*/}
+        {/*					// height: "65px",*/}
+        {/*					borderRadius: "1000px",*/}
+        {/*				}}*/}
+        {/*				className="countryPhone"*/}
+        {/*			/> *!/*/}
+        {/*  {!user?.gst_no && (*/}
+        {/*    <Button*/}
+        {/*      // onClick={handleEditReferralCode}*/}
+        {/*      auto*/}
+        {/*      css={{*/}
+        {/*        background: "lightgrey",*/}
+        {/*        borderRadius: "10000px",*/}
+        {/*        // marginLeft: '82.5%',*/}
+        {/*        fontSize: 20,*/}
+        {/*        width: "60px",*/}
+        {/*        height: "60px",*/}
+        {/*        color: "grey",*/}
+        {/*      }}*/}
+        {/*    >*/}
+        {/*      <RiEdit2Fill />*/}
+        {/*    </Button>*/}
+        {/*  )}*/}
+        {/*  /!* {referralCodeSaved && (*/}
+        {/*				<Text css={{ color: "green", marginLeft: "10px" }}>*/}
+        {/*					GST No. Saved! Editing is disabled.*/}
+        {/*				</Text>*/}
+        {/*			)} *!/*/}
+        {/*</div>*/}
+        {/* </Box> */}
+        {/* </Box> */}
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            flexDirection: "row",
+            width: "100%",
+            maxWidth: "600px",
+            justifyContent: "flex-start",
+            gap: "20px",
+            padding: "20px",
+          }}
+        >
           {subscription ? (
             subscription.map((sub, index) => (
               <Box
                 key={index}
                 sx={{
                   display: "flex",
+                  // flexWrap: 'wrap',
                   flexDirection: "column",
-                  border: "2px solid",
-                  mr: "5px",
-                  mt: "10px",
-                  padding: "10px",
+                  backgroundColor: "lightgrey",
+                  border: "1px solid lightgrey",
+                  width: "48%",
+                  borderRadius: "20px",
+                  // mr: "5px",
+                  // mt: "10px",
+                  padding: "20px",
                 }}
+                className="subscriptionTypeBox-mobile"
               >
-                <Text b>Plan: {sub.plan}</Text>
+                <Text b>
+                  Plan:
+                  <br />
+                  <span style={{ fontSize: "25px" }}>{sub.plan}</span>
+                </Text>
+                <br />
                 <Text b>
                   Start Date:{" "}
                   {`${new Date(sub.start_date).getDate()} ${new Date(
@@ -516,7 +1089,15 @@ const UserDetails = () => {
             <Text>No subscriptions found</Text>
           )}
         </Box>
-        <Button css={{ background: "#fda629", marginTop: "20px" }}>
+        <Button
+          css={{
+            width: "90%",
+            maxWidth: "600px",
+            background: "#fda629",
+            margin: "0px 20px",
+            borderRadius: "1000px",
+          }}
+        >
           Get Invoice
         </Button>
       </div>

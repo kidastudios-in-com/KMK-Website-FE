@@ -109,7 +109,7 @@ const BlogPage = () => {
             textAlign: "left",
             padding: "15px",
             lineHeight: "1.1",
-            "@media only screen and (max-width: 724px)": {
+            "@media only screen and (maxWidth: : 724px)": {
               fontSize: "35px",
               lineHeight: "1.2",
             },
@@ -122,7 +122,7 @@ const BlogPage = () => {
             fontSize: 21,
             textAlign: "left",
             padding: "15px",
-            "@media only screen and (max-width: 724px)": {
+            "@media only screen and (maxWidth: : 724px)": {
               fontSize: "18px",
               lineHeight: "1.2",
             },

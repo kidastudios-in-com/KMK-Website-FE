@@ -6,6 +6,7 @@ import {
   Divider,
   Progress,
   Dropdown,
+  useModal,
 } from "@nextui-org/react";
 import Marquee from "react-fast-marquee";
 import React, { useState, useContext, useEffect } from "react";
@@ -26,6 +27,7 @@ const WhyUs = () => {
   const [flipStates, setFlipStates] = useState(Array(8).fill(false));
   const [record, setRecord] = useState([]);
   const { isLoggedIn } = useContext(AuthContext);
+  const { setVisible, bindings } = useModal();
 
   const handleTrackRecord = async () => {
     try {
@@ -250,12 +252,6 @@ const WhyUs = () => {
         alignItems: "center",
         height: "100%",
         backgroundColor: "#fff",
-        // backgroundImage: "url(coral_texture.svg)",
-        objectPosition: "center",
-        backgroundPositionY: "center",
-        backgroundPositionX: "center",
-        backgroundSize: "cover",
-        backgroundRepeat: "none",
       }}
     >
       <Box
@@ -456,11 +452,12 @@ const WhyUs = () => {
 				  > */}
         <Grid item container gap={"20px"} justifyContent={"center"}>
           {record.map((item, index) => (
-            <ReactCardFlip
-              key={index}
-              isFlipped={flipStates[index]}
-              flipDirection="horizontal"
-            >
+            // <ReactCardFlip
+            // 	key={index}
+            // 	isFlipped={flipStates[index]}
+            // 	flipDirection="horizontal"
+            // >
+            <>
               <Card
                 key={item.id}
                 isHoverable
@@ -567,7 +564,7 @@ const WhyUs = () => {
                           },
                         }}
                       >
-                        TARGET {item.tag1.toUpperCase()} |{" "}
+                        {item.tag1.toUpperCase()} |{" "}
                         {item.tag2 ? item.tag2.toUpperCase() : ""}
                       </Text>
                     </div>
@@ -588,13 +585,13 @@ const WhyUs = () => {
                       }}
                     />
                     <img
-                      src="kmk-LionFace.png"
-                      // height={'80px'}
-                      width={"60px"}
+                      src="trackRecord-lion.png"
+                      height={"120px"}
+                      // width={"610px"}
                       style={{
                         position: "absolute",
-                        right: "20px",
-                        top: "75px",
+                        right: "25px",
+                        top: "80px",
                       }}
                     />
                   </div>
@@ -895,7 +892,6 @@ const WhyUs = () => {
 													  (1000 * 60 * 60 * 24)
 												  )
 											)} */}
-                      {/* {console.log(item.start_date)} */}
                       <Box
                         sx={{
                           display: "flex",
@@ -986,347 +982,539 @@ const WhyUs = () => {
                     )}
                   </Box>
                 </Box>
+              </Card>
+              {/* Targets Modal */}
 
-                {/* Targets Modal */}
-
-                <Modal
-                  blur
-                  flat
-                  open={showTargets}
-                  onClose={handleCloseTargets}
-                  css={{
-                    // width: "800px",
-                    // background: "transparent",
-                    boxShadow: "none",
-                    "@media only screen and (max-width: 764px)": {
-                      width: "100vw",
-                      height: "95vh",
-                      paddingLeft: "15px",
-                      paddingRight: "15px",
-                    },
-                  }}
-                >
-                  {record[selectedCardIndex] && (
-                    <Card
-                      key={selectedCardIndex}
-                      css={{
-                        width: "350px",
-                        height: "230px",
+              <Modal
+                // blur
+                flat
+                open={showTargets}
+                onClose={handleCloseTargets}
+                // animated={false}
+                // {...bindings}
+                css={{
+                  // width: "800px",
+                  background: "transparent !important",
+                  boxShadow: "none",
+                  alignItems: "center",
+                  "@media only screen and (max-width: 764px)": {
+                    width: "100vw",
+                    height: "95vh",
+                    paddingLeft: "15px",
+                    paddingRight: "15px",
+                  },
+                  // "& .nextui-c-csEDlc-ivNdeP-css": {
+                  // 	"--nextui--backdropOpacity": 0.2,
+                  //   },
+                }}
+              >
+                {record[selectedCardIndex] && (
+                  <Card
+                    key={selectedCardIndex}
+                    css={{
+                      width: "450px",
+                      height: "300px",
+                      paddingTop: "30px",
+                      paddingBottom: "30px",
+                      backgroundImage:
+                        "linear-gradient(to top , #0F734D, #0F734D, #105B54)",
+                      borderRadius: "30px",
+                      borderBottomRightRadius: "5px",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      filter: "none",
+                      boxShadow: "none",
+                      "@media only screen and (max-width: 764px)": {
+                        width: "100%",
                         paddingTop: "30px",
                         paddingBottom: "30px",
-                        backgroundImage:
-                          "linear-gradient(to top , #0F734D, #0F734D, #105B54)",
-                        borderRadius: "30px",
-                        borderBottomRightRadius: "5px",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        filter: "none",
-                        boxShadow: "none",
-                        "@media only screen and (max-width: 764px)": {
-                          width: "100%",
-                          paddingTop: "30px",
-                          paddingBottom: "30px",
-                        },
-                      }}
-                    >
-                      <Text b size={22} color="#fff">
-                        {record[selectedCardIndex].stock_name}
-                      </Text>
-
-                      {record[selectedCardIndex].stock_targets.length > 0 ? (
-                        record[selectedCardIndex].stock_targets.map(
-                          (target) => (
-                            <div key={target.id} style={{ textAlign: "start" }}>
-                              <Text color="#fff">
-                                Hold Price: ₹{target.hold_price}
-                              </Text>
-                              <Text color="#fff">
-                                Target Price: ₹{target.target_price}
-                              </Text>
-                              <Text color="#fff">
-                                Target Date: {target.target_date}
-                              </Text>
-                              <Text color="#fff">
-                                Profit/Loss: {target.gain_loss}%
-                              </Text>
-                            </div>
-                          )
-                        )
-                      ) : (
-                        <Text>No targets available</Text>
-                      )}
-                    </Card>
-                  )}
-
-                  <Button
-                    flat
-                    onPress={handleCloseTargets}
-                    css={{
-                      alignSelf: "end",
-                      width: "100%",
-                      backgroundColor: "#ffa12e",
-                      color: "#fff",
-                      fontSize: 19,
-                      marginTop: "20px",
-                      borderRadius: "10px",
-                      height: "50px",
-                      "@media only screen and (max-width: 768px)": {
-                        width: "100%",
-                        fontSize: 15,
-                        height: "50px",
-                        marginTop: "0px",
-                        borderRadius: "0px 0px 10px",
-                        "& span": {
-                          // display: "none",
-                        },
                       },
                     }}
                   >
-                    Close
-                  </Button>
-                </Modal>
+                    {record[selectedCardIndex].stock_targets.length > 0 ? (
+                      record[selectedCardIndex].stock_targets.map((target) => (
+                        <div key={target.id}>
+                          <Box
+                            sx={{
+                              padding: "5px",
+                              paddingTop: "0px",
+                              paddingLeft: "15px",
+                              display: "flex",
+                              flexDirection: "column",
+                              // alignItems: "center",
+                              // background: 'rgba(255, 255, 255, 0.15) url("LineChartGreen.png")',
+                              backgroundSize: "cover",
+                              height: "auto",
+                              width: "410px",
+                              "@media only screen and (max-width: 764px)": {
+                                width: "100%",
+                                paddingLeft: "20px",
+                                paddingRight: "20px",
+                              },
+                            }}
+                          >
+                            <div
+                              style={{
+                                width: "100%",
+                                display: "flex",
+                                justifyContent: "space-between",
+                                alignItems: "center",
+                                flexDirection: "row",
+                                // paddingTop: "5%",
+                                paddingBottom: "5px",
+                              }}
+                            >
+                              <div
+                                style={{
+                                  display: "flex",
+                                  flexDirection: "column",
+                                }}
+                              >
+                                <Text
+                                  b
+                                  size={22}
+                                  color="#fff"
+                                  css={{
+                                    lineHeight: 1.5,
+                                    "@media only screen and (max-width: 764px)":
+                                      {
+                                        paddingTop: "5px",
+                                        fontSize: "22px",
+                                        lineHeight: 1.1,
+                                      },
+                                  }}
+                                >
+                                  {record[selectedCardIndex].stock_name.length >
+                                  28 ? (
+                                    <Marquee delay={5} speed={30}>
+                                      <span style={{ paddingRight: "40px" }}>
+                                        {record[selectedCardIndex].stock_name}
+                                      </span>
+                                    </Marquee>
+                                  ) : (
+                                    <>{record[selectedCardIndex].stock_name}</>
+                                  )}
+                                </Text>
+                              </div>
+                            </div>
+                            <Divider
+                              css={{
+                                height: "3px",
+                                width: "70%",
+                                background: "#fff",
+                                borderRadius: "20px",
+                                opacity: 0.5,
+                                alignSelf: "start",
+                                marginTop: "10px",
+                              }}
+                            />
+                            <div
+                              style={{
+                                width: "95%",
+                                display: "flex",
+                                flexDirection: "row",
+                                marginTop: "15px",
+                                gap: "20px",
+                              }}
+                            >
+                              <Box
+                                sx={{
+                                  display: "flex",
+                                  flexDirection: "column",
+                                }}
+                              >
+                                <Text
+                                  b
+                                  size={16}
+                                  color="#fff"
+                                  css={{
+                                    opacity: 1,
+                                    lineHeight: 1,
+                                    "@media only screen and (max-width: 764px)":
+                                      {
+                                        paddingTop: "0px",
+                                        fontSize: "14.5px",
+                                      },
+                                  }}
+                                >
+                                  HOLD PRICE
+                                </Text>
+                                <Text
+                                  b
+                                  size={22}
+                                  color="#fff"
+                                  css={{
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                    "@media only screen and (max-width: 764px)":
+                                      {
+                                        paddingTop: "0px",
+                                        fontSize: "20px",
+                                      },
+                                  }}
+                                >
+                                  <span style={{ fontSize: 16, opacity: 0.75 }}>
+                                    ₹
+                                  </span>
+                                  {target.hold_price}
+                                </Text>
+                                {/* <Text
+																			b
+																			size={16}
+																			color="#fff"
+																			css={{
+																				opacity: 0.7,
+																				lineHeight: 1,
+																				"@media only screen and (max-width: 764px)":
+																					{
+																						paddingTop: "0px",
+																						fontSize: "14.5px",
+																					},
+																			}}
+																		>
+																			{record[selectedCardIndex].start_date
+																				? `${new Date(
+																						item.start_date
+																				  ).getDate()} ${new Date(
+																						item.start_date
+																				  ).toLocaleString("default", {
+																						month: "short",
+																				  })} ${new Date(
+																						item.start_date
+																				  ).getFullYear()}`
+																				: "03 Nov 2022"}
+																		</Text> */}
+                              </Box>
+                              <Box
+                                sx={{
+                                  display: "flex",
+                                  flexDirection: "column",
+                                }}
+                              >
+                                <Text
+                                  b
+                                  size={16}
+                                  color="#fff"
+                                  css={{
+                                    opacity: 1,
+                                    lineHeight: 1,
+                                    alignSelf: "start",
+                                    "@media only screen and (max-width: 764px)":
+                                      {
+                                        paddingTop: "0px",
+                                        fontSize: "14.5px",
+                                      },
+                                  }}
+                                >
+                                  TARGET
+                                </Text>
+                                <Text
+                                  b
+                                  size={22}
+                                  color="#fff"
+                                  css={{
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                    alignSelf: "start",
+                                    "@media only screen and (max-width: 764px)":
+                                      {
+                                        paddingTop: "0px",
+                                        fontSize: "20px",
+                                      },
+                                  }}
+                                >
+                                  <span style={{ fontSize: 16, opacity: 0.75 }}>
+                                    ₹
+                                  </span>
+                                  {target.target_price}
+                                </Text>
+                                <Text
+                                  b
+                                  size={16}
+                                  color="#fff"
+                                  css={{
+                                    opacity: 0.7,
+                                    lineHeight: 1,
+                                    alignSelf: "start",
+                                    "@media only screen and (max-width: 764px)":
+                                      {
+                                        paddingTop: "0px",
+                                        fontSize: "14.5px",
+                                      },
+                                  }}
+                                >
+                                  {`${new Date(
+                                    target.target_date
+                                  ).getDate()} ${new Date(
+                                    target.target_date
+                                  ).toLocaleString("default", {
+                                    month: "short",
+                                  })} ${new Date().getFullYear()}`}
+                                </Text>
+                              </Box>
+                            </div>
+                            <Divider
+                              css={{
+                                height: "3px",
+                                width: "40%",
+                                background: "#fff",
+                                borderRadius: "20px",
+                                opacity: 0.5,
+                                alignSelf: "start",
+                                marginTop: "15px",
+                              }}
+                            />
+                            <Box
+                              sx={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                marginTop: "15px",
+                              }}
+                            >
+                              <Box
+                                sx={{
+                                  display: "flex",
+                                  flexDirection: "column",
+                                  alignSelf: "flex-start",
+                                }}
+                              >
+                                <Text
+                                  b
+                                  size={16}
+                                  color="#fff"
+                                  css={{
+                                    opacity: 1,
+                                    lineHeight: 1,
+                                    alignSelf: "start",
+                                    "@media only screen and (max-width: 764px)":
+                                      {
+                                        paddingTop: "0px",
+                                        fontSize: "14.5px",
+                                      },
+                                  }}
+                                >
+                                  RETURNS
+                                </Text>
+                                <Text
+                                  b
+                                  size={22}
+                                  color="#fff"
+                                  css={{
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                    "@media only screen and (max-width: 764px)":
+                                      {
+                                        paddingTop: "0px",
+                                        fontSize: "20px",
+                                      },
+                                  }}
+                                >
+                                  {target.gain_loss}%
+                                </Text>
+                                <Text
+                                  b
+                                  size={16}
+                                  color="#fff"
+                                  css={{
+                                    // width: "120px",
+                                    opacity: 0.7,
+                                    lineHeight: 1,
+                                    alignSelf: "start",
+                                    "@media only screen and (max-width: 764px)":
+                                      {
+                                        paddingTop: "0px",
+                                        fontSize: "14.5px",
+                                      },
+                                  }}
+                                >
+                                  {`${new Date().getDate()} ${new Date().toLocaleString(
+                                    "default",
+                                    {
+                                      month: "short",
+                                    }
+                                  )} ${new Date().getFullYear()}`}
+                                </Text>
+                              </Box>
+                            </Box>
+                          </Box>
 
-                {/* Reports Modal */}
+                          {/* <Text color="#fff">
+																Hold Price: ₹{target.hold_price}
+															</Text>
+															<Text color="#fff">
+																Target Price: ₹{target.target_price}
+															</Text>
+															<Text color="#fff">
+																Target Date: {target.target_date}
+															</Text>
+															<Text color="#fff">
+																Profit/Loss: {target.gain_loss}%
+															</Text> */}
+                        </div>
+                      ))
+                    ) : (
+                      <Text>No targets available</Text>
+                    )}
+                  </Card>
+                )}
 
-                <Modal
-                  // blur
-                  open={showReports}
-                  onClose={handleCloseReports}
+                <Button
+                  flat
+                  onPress={handleCloseTargets}
                   css={{
-                    // width: "800px",
-                    background: "transparent",
-                    boxShadow: "none",
-                    "@media only screen and (max-width: 764px)": {
-                      width: "100vw",
-                      height: "95vh",
-                      paddingLeft: "15px",
-                      paddingRight: "15px",
+                    alignSelf: "center",
+                    // width: "100%",
+                    backgroundColor: "#ffa12e",
+                    color: "#fff",
+                    fontSize: 19,
+                    marginTop: "20px",
+                    borderRadius: "10px",
+                    height: "50px",
+                    "@media only screen and (max-width: 768px)": {
+                      width: "100%",
+                      fontSize: 15,
+                      height: "50px",
+                      marginTop: "0px",
+                      borderRadius: "0px 0px 10px",
+                      "& span": {
+                        // display: "none",
+                      },
                     },
                   }}
                 >
-                  {record[selectedCardIndex] &&
-                  record[selectedCardIndex].stock_reports &&
-                  record[selectedCardIndex].stock_reports.length > 0 ? (
-                    <>
-                      <Dropdown>
-                        <Dropdown.Button
-                          flat
-                          css={{
-                            alignSelf: "center",
-                            width: "100%",
-                            backgroundColor: "#125a54",
-                            color: "#fff",
-                            fontSize: 19,
-                            marginBottom: "20px",
-                            borderRadius: "10px",
-                            height: "50px",
-                            "@media only screen and (max-width: 768px)": {
-                              width: "100%",
-                              fontSize: 15,
-                              height: "50px",
-                              marginBottom: "0px",
-                              borderRadius: "10px 0 0",
-                              "& span": {
-                                // display: "none",
-                              },
-                            },
-                          }}
-                        >
-                          {selectedPDF === "" || selectedPDF === undefined
-                            ? "Reports"
-                            : record[selectedCardIndex].stock_reports.find(
-                                (report) =>
-                                  report.document === Array.from(selectedPDF)[0]
-                              )?.report_name}
-                        </Dropdown.Button>
-                        <Dropdown.Menu
-                          // defaultSelectedKeys={'SampleReport.pdf'}
-                          aria-label="TractReports"
-                          selectionMode="single"
-                          selectedKeys={selectedPDF}
-                          onSelectionChange={(key) => setSelectedPDF(key)}
-                          // defaultSelectedKeys={[record[selectedCardIndex].stock_reports[0]?.document]}
-                          style={{ width: "100%" }}
-                        >
-                          {record[selectedCardIndex].stock_reports.map(
-                            (report) => (
-                              <Dropdown.Item key={report.document}>
-                                {report.report_name}
-                              </Dropdown.Item>
-                            )
-                          )}
-                        </Dropdown.Menu>
-                      </Dropdown>
-                      {/* {console.log(PdfURL)}
-											{console.log(selectedReportUrl)} */}
-                      <Worker
-                        workerUrl={`https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.7.107/pdf.worker.min.js`}
-                      >
-                        <Box
-                          sx={{
-                            height: "75vh",
-                            "@media only screen and (max-width: 768px)": {
-                              // width: '500px',
-                              // height: '80%',
-                            },
-                          }}
-                        >
-                          <Viewer
-                            fileUrl={`${
-                              PdfURL ? PdfURL : selectedReportUrl
-                            }#view=FitH&toolbar=0`}
-                            onDocumentAskPassword={handleAskPassword}
-                          />
-                        </Box>
-                      </Worker>
-                    </>
-                  ) : (
-                    <Text b size={22} color="#fff">
-                      No Reports Available
-                    </Text>
-                  )}
-                  <Button
-                    flat
-                    onPress={handleCloseReports}
-                    css={{
-                      alignSelf: "end",
-                      width: "100%",
-                      backgroundColor: "#ffa12e",
-                      color: "#fff",
-                      fontSize: 19,
-                      marginTop: "20px",
-                      borderRadius: "10px",
-                      height: "50px",
-                      "@media only screen and (max-width: 768px)": {
-                        width: "100%",
-                        fontSize: 15,
-                        height: "50px",
-                        marginTop: "0px",
-                        borderRadius: "0px 0px 10px",
-                        "& span": {
-                          // display: "none",
-                        },
-                      },
-                    }}
-                  >
-                    Close
-                  </Button>
-                </Modal>
-              </Card>
-              <Card
-                key={index}
-                isHoverable
+                  Close
+                </Button>
+              </Modal>
+
+              {/* Reports Modal */}
+
+              <Modal
+                // blur
+                open={showReports}
+                onClose={handleCloseReports}
                 css={{
-                  width: "450px",
-                  height: "330px",
-                  // padding: "40px",
-                  paddingTop: "30px",
-                  paddingBottom: "30px",
-                  backgroundImage:
-                    "linear-gradient(to top , #0F734D, #0F734D, #105B54)",
-                  borderRadius: "30px",
-                  borderBottomLeftRadius: "5px",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  filter: "none",
+                  // width: "800px",
+                  background: "transparent",
                   boxShadow: "none",
                   "@media only screen and (max-width: 764px)": {
-                    width: "95vw",
-                    height: "350px",
-                    paddingTop: "30px",
-                    paddingBottom: "30px",
+                    width: "100vw",
+                    height: "95vh",
+                    paddingLeft: "15px",
+                    paddingRight: "15px",
                   },
                 }}
               >
-                <Text b size={20} color="#fff">
-                  Stock Reports
-                </Text>
-                <IconButton
-                  // key={report.report_name}
-                  onClick={handlePDF}
-                  sx={{
-                    // "&:hover": { background: "#fff" },
-                    borderRadius: "0px",
-                    paddingLeft: "0px",
-                  }}
-                >
-                  <DocumentText size={25} color="#fff" />
-                  <Text
-                    b
-                    size={20}
-                    color="#fff"
-                    css={{
-                      marginLeft: "5px",
-                      alignSelf: "start",
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    English
+                {record[selectedCardIndex] &&
+                record[selectedCardIndex].stock_reports &&
+                record[selectedCardIndex].stock_reports.length > 0 ? (
+                  <>
+                    <Dropdown>
+                      <Dropdown.Button
+                        flat
+                        css={{
+                          alignSelf: "center",
+                          width: "100%",
+                          backgroundColor: "#125a54",
+                          color: "#fff",
+                          fontSize: 19,
+                          marginBottom: "20px",
+                          borderRadius: "10px",
+                          height: "50px",
+                          "@media only screen and (max-width: 768px)": {
+                            width: "100%",
+                            fontSize: 15,
+                            height: "50px",
+                            marginBottom: "0px",
+                            borderRadius: "10px 0 0",
+                            "& span": {
+                              // display: "none",
+                            },
+                          },
+                        }}
+                      >
+                        {selectedPDF === "" || selectedPDF === undefined
+                          ? "Reports"
+                          : record[selectedCardIndex].stock_reports.find(
+                              (report) =>
+                                report.document === Array.from(selectedPDF)[0]
+                            )?.report_name}
+                      </Dropdown.Button>
+                      <Dropdown.Menu
+                        // defaultSelectedKeys={'SampleReport.pdf'}
+                        aria-label="TractReports"
+                        selectionMode="single"
+                        selectedKeys={selectedPDF}
+                        onSelectionChange={(key) => setSelectedPDF(key)}
+                        // defaultSelectedKeys={[record[selectedCardIndex].stock_reports[0]?.document]}
+                        style={{ width: "100%" }}
+                      >
+                        {record[selectedCardIndex].stock_reports.map(
+                          (report) => (
+                            <Dropdown.Item key={report.document}>
+                              {report.report_name}
+                            </Dropdown.Item>
+                          )
+                        )}
+                      </Dropdown.Menu>
+                    </Dropdown>
+                    {/* {console.log(PdfURL)}
+											{console.log(selectedReportUrl)} */}
+                    <Worker
+                      workerUrl={`https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.7.107/pdf.worker.min.js`}
+                    >
+                      <Box
+                        sx={{
+                          height: "75vh",
+                          "@media only screen and (max-width: 768px)": {
+                            // width: '500px',
+                            // height: '80%',
+                          },
+                        }}
+                      >
+                        <Viewer
+                          fileUrl={`${
+                            PdfURL ? PdfURL : selectedReportUrl
+                          }#view=FitH&toolbar=0`}
+                          onDocumentAskPassword={handleAskPassword}
+                        />
+                      </Box>
+                    </Worker>
+                  </>
+                ) : (
+                  <Text b size={22} color="#fff">
+                    No Reports Available
                   </Text>
-                </IconButton>
-                <Modal
-                  blur
-                  width="790px"
-                  open={showPDF}
-                  onClose={handlePDFClose}
-                  css={{ background: "transparent", boxShadow: "none" }}
-                >
-                  <iframe
-                    src="SampleReport.pdf#view=FitH&toolbar=0"
-                    style={{
-                      width: "100%",
-                      height: "90vh",
-                      borderColor: "transparent",
-                      borderRadius: "15px",
-                      borderWidth: "0px",
-                      zoom: "1",
-                    }}
-                    className="iframePdfMobile"
-                  ></iframe>
-                  <Button
-                    auto
-                    onClick={handlePDFClose}
-                    css={{
-                      // alignSelf: "end",
-                      width: "100%",
-                      backgroundColor: "#ffa12e",
-                      color: "#fff",
-                      fontSize: 19,
-                      marginTop: "20px",
-                      borderRadius: "10px",
-                      height: "50px",
-                      "@media only screen and (max-width: 768px)": {
-                        width: "100%",
-                        fontSize: 15,
-                        height: "50px",
-                        marginTop: "0px",
-                        borderRadius: "0px 0px 10px",
-                        "& span": {
-                          // display: "none",
-                        },
-                      },
-                    }}
-                  >
-                    Close
-                  </Button>
-                </Modal>
+                )}
                 <Button
-                  auto
-                  onPress={() => handleClick(index)}
+                  flat
+                  onPress={handleCloseReports}
                   css={{
-                    top: "105px",
-                    background: "#ffa12e",
-                    borderRadius: "20px",
-                    fontSize: 18,
-                    width: "150px",
+                    alignSelf: "end",
+                    width: "100%",
+                    backgroundColor: "#ffa12e",
+                    color: "#fff",
+                    fontSize: 19,
+                    marginTop: "20px",
+                    borderRadius: "10px",
+                    height: "50px",
+                    "@media only screen and (max-width: 768px)": {
+                      width: "100%",
+                      fontSize: 15,
+                      height: "50px",
+                      marginTop: "0px",
+                      borderRadius: "0px 0px 10px",
+                    },
                   }}
                 >
-                  Return
+                  Close
                 </Button>
-              </Card>
-            </ReactCardFlip>
+              </Modal>
+            </>
           ))}
         </Grid>
         {/* </Grid> */}

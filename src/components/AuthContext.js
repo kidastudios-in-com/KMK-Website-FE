@@ -4,17 +4,18 @@ import React, { createContext, useState, useEffect } from "react";
 // Create the context
 const AuthContext = createContext({
   isLoggedIn: false,
+  isSubscribed: false,
   children: null,
 });
 
 // Create the provider component
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const refreshToken = localStorage.getItem("refresh");
 
   useEffect(() => {
     const verifyTokens = async () => {
-      const refreshToken = localStorage.getItem("refresh");
-
       if (refreshToken) {
         try {
           const response = await fetch(VERIFY_TOKEN_URL, {
@@ -42,8 +43,38 @@ export const AuthProvider = ({ children }) => {
     verifyTokens();
   }, [localStorage.getItem("access"), localStorage.getItem("refresh")]);
 
+  useEffect(() => {
+    const getUserDetails = async () => {
+      if (refreshToken) {
+        try {
+          const response = await fetch(GET_USER, {
+            method: "GET",
+            headers: {
+              Authorization: `Token ${refreshToken}`,
+            },
+          });
+          const data = await response.json();
+          if (data.active_subscription !== "Free") {
+            setIsSubscribed(true);
+          } else {
+            setIsSubscribed(false);
+          }
+        } catch (error) {
+          console.error("Error verifying tokens:", error);
+          setIsLoggedIn(false);
+        }
+      } else {
+        setIsLoggedIn(false);
+      }
+    };
+
+    getUserDetails();
+  }, [localStorage.getItem("access"), localStorage.getItem("refresh")]);
+
   return (
-    <AuthContext.Provider value={{ isLoggedIn }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ isLoggedIn, isSubscribed }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 

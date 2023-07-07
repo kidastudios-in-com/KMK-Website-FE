@@ -1,4 +1,5 @@
 //AUTH BASE
+// console.log(process.env.REACT_APP_STRIPE_KEY);
 export const BASE_URL = "https://api-server.kamayakya.in";
 // export const BASE_URL = 'http://192.168.0.151:8000/master';
 
@@ -26,6 +27,9 @@ export const SUBSCRIPTION_HISTORY = `${MASTER_URL}/subscribe_for_stock_picks/`;
 //Admin Stock URL
 export const GET_ALL_URL = `${USER_URL}/getStockPicksForUser`;
 // export const GET_ALL_URL = `${ADMIN_URL}/getAllStocks/`;
+
+//Billing Info
+export const BILLING_URL = `${USER_URL}/payment_details/`;
 
 //Blogs URL
 export const GET_BLOGS = `${USER_URL}/all_blogs/`;
