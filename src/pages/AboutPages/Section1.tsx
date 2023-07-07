@@ -10,11 +10,12 @@ const Section1 = () => {
         // background: "#edf6f8",
         background: "#fff",
         padding: "90px 15px",
-        paddingBottom: "140px",
+        paddingBottom: "120px",
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "center",
       }}
+      className="researchSection"
     >
       <div
         style={{
@@ -47,7 +48,7 @@ const Section1 = () => {
                 lineHeight: 1,
                 paddingBottom: "0px",
                 alignSelf: "flex-start",
-                marginTop: "-30px",
+                marginTop: "0px",
               },
             }}
           >

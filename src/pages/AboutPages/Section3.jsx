@@ -58,7 +58,7 @@ const Section3 = () => {
             autoPlay
             loop
             src="https://kamayakya.com/Landing%20Page.mp4"
-            style={{ borderRadius: "30px", width: "100%", height: "100%" }}
+            style={{ borderRadius: "20px", width: "100%", height: "100%" }}
           />
         </Box>
         <Box

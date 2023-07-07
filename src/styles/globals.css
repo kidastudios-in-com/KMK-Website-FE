@@ -991,6 +991,10 @@ header > div > div {
     padding-bottom: 10vh !important;
     padding-top: 7.5vh !important;
   }
+  .researchSection {
+    padding-top: 40px !important;
+    padding-bottom: 90px !important;
+  }
 }
 
 .custom-collapse .nextui-collapse-title {
