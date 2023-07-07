@@ -90,11 +90,19 @@ const Section6 = () => {
               },
             }}
           >
-            We promise 100% transparency
+            <span style={{ fontSize: "18px", opacity: "0.75" }}>
+              Performance Track Record
+            </span>
+            <br />
+            <span style={{ fontSize: "35px", fontWeight: "normal" }}>
+              We promise 100% transparency
+            </span>
             <br />
             <br />
-            Our entire philosophy is based on celebrating wins and embracing
-            losses. We want you to have access to our entire track record.
+            <span style={{ fontSize: "22px", opacity: "0.75" }}>
+              Our entire philosophy is based on celebrating wins and embracing
+              losses. We want you to have access to our entire track record.
+            </span>
           </Text>
 
           <Modal

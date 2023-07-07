@@ -90,11 +90,19 @@ const Section5 = () => {
               },
             }}
           >
-            Subscribe to our best picks!
+            <span style={{ fontSize: "18px", opacity: "0.75" }}>
+              KamayaKya recommendations
+            </span>
+            <br />
+            <span style={{ fontSize: "35px", fontWeight: "normal" }}>
+              Subscribe to our best picks
+            </span>
             <br />
             <br />
-            We only recommend stocks that we personally are willing to invest
-            in. We research rigorously, so you don't have to.
+            <span style={{ fontSize: "22px", opacity: "0.75" }}>
+              We only recommend stocks that we personally are willing to invest
+              in. We research rigorously, so you don't have to.
+            </span>
           </Text>
           {/*<Button*/}
           {/*  auto*/}

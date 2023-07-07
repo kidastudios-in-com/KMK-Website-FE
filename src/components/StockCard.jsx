@@ -529,22 +529,22 @@ const StockCard = () => {
             sx={{
               width: {
                 xs: "100vw",
-                sm: "400px",
+                sm: "550px",
               },
               maxWidth: {
                 xs: "100%",
-                sm: "400px",
+                sm: "550px",
               },
               "& .MuiDrawer-paper": {
                 borderRadius: { xs: "0px", sm: "25px 0px 0px 25px" },
                 padding: "15px",
                 width: {
                   xs: "100vw",
-                  sm: "400px",
+                  sm: "550px",
                 },
                 maxWidth: {
                   xs: "100%",
-                  sm: "400px",
+                  sm: "550px",
                 },
               },
             }}
@@ -563,7 +563,7 @@ const StockCard = () => {
               >
                 <CloseIcon />
               </ListItemButton>
-              <Text b size={30} css={{ paddingLeft: "30px" }}>
+              <Text b size={25} css={{ paddingLeft: "30px" }}>
                 Filter by industries :
               </Text>
               <ListItem>
@@ -642,6 +642,9 @@ const StockCard = () => {
 									</Dropdown.Menu>
 								</Dropdown>
 							</ListItem> */}
+              <Divider
+                style={{ marginTop: "30px", marginBottom: "30px" }}
+              ></Divider>
               <Text b size={25} css={{ paddingLeft: "30px" }}>
                 Sort by :
               </Text>

@@ -74,7 +74,6 @@ const Section7 = () => {
           }}
         >
           <Text
-            b
             size={26}
             css={{
               lineHeight: 1.4,
@@ -90,12 +89,18 @@ const Section7 = () => {
               },
             }}
           >
-            Understand your investments
+            <span style={{ fontSize: "18px", opacity: "0.75" }}>360° View</span>
+            <br />
+            <span style={{ fontSize: "35px", fontWeight: "bold" }}>
+              Understand your investments
+            </span>
             <br />
             <br />
-            Investing without context is like throwing a dart blindfolded. But
-            with KamayaKya, you’ll get all the information you need to establish
-            context, enabling you to make better investments.
+            <span style={{ fontSize: "22px", opacity: "0.75" }}>
+              Investing without context is like throwing a dart blindfolded. But
+              with KamayaKya, you’ll get all the information you need to
+              establish context, enabling you to make better investments.
+            </span>
           </Text>
           <Button
             auto
