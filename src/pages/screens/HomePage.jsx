@@ -6,6 +6,7 @@ import {
   Card,
   useModal,
   Dropdown,
+  Divider,
 } from "@nextui-org/react";
 import React, { useState, useContext } from "react";
 import { Box, IconButton } from "@mui/material";
@@ -49,21 +50,49 @@ const HomePage = () => {
     "https://i.pravatar.cc/150?u=a04258114e29026702d",
   ];
 
-  const handleHalfPageReportClick = () => {
+  const handleIonOnePage = () => {
     setShowIframe(true);
-    setSelectedPDF("SampleReport.pdf");
+    setSelectedPDF("Ion Exchange (India) Ltd. (IEIL) - 1 Page Report.pdf");
     setVisible(false);
   };
 
-  const handleDetailedReportClick = () => {
+  const handleIonDetailed = () => {
     setShowIframe(true);
-    setSelectedPDF("DetailedReport.pdf");
+    setSelectedPDF("Ion Exchange (India) Ltd. (IEIL) - Detailed Report.pdf");
     setVisible(false);
   };
 
-  const handleIonExchangeReportClick = () => {
+  const handleHGOnePage = () => {
     setShowIframe(true);
-    setSelectedPDF("IonExchangeHalfPageReport-English.pdf");
+    setSelectedPDF("H.G. Infra Engineering Ltd (HGIEL) - 1 Page Report.pdf");
+    setVisible(false);
+  };
+
+  const handleHGDetailed = () => {
+    setShowIframe(true);
+    setSelectedPDF("H.G. Infra Engineering Ltd (HGIEL) - Detailed Report.pdf");
+    setVisible(false);
+  };
+  const handleGravitaOnePage = () => {
+    setShowIframe(true);
+    setSelectedPDF("Gravita India Ltd. (GIL) - 1 Page Report.pdf");
+    setVisible(false);
+  };
+  const handleGravitaDetailed = () => {
+    setShowIframe(true);
+    setSelectedPDF("Gravita India Ltd. (GIL) - Detailed Report.pdf");
+    setVisible(false);
+  };
+
+  const handleMonteOnePage = () => {
+    setShowIframe(true);
+    setSelectedPDF("Monte Carlo Fashions Ltd. (MCFL) - 1 Page Report.pdf");
+    setVisible(false);
+  };
+
+  const handleMonteDetailed = () => {
+    setShowIframe(true);
+    setSelectedPDF("Monte Carlo Fashions Ltd. (MCFL) - Detailed Report.pdf");
     setVisible(false);
   };
 
@@ -89,7 +118,6 @@ const HomePage = () => {
         backgroundSize: "contain",
         backgroundRepeat: "repeat-x",
       }}
-      className={"waveBackground-mobile"}
     >
       <Box
         sx={{
@@ -110,7 +138,7 @@ const HomePage = () => {
           "@media only screen and (max-width: 764px)": {
             // maxHeight: "100vh",
             marginTop: "0px",
-            minHeight: "80vh",
+            minHeight: "50vh",
             height: "auto",
             justifyContent: "flex-start",
             alignItems: "flex-start",
@@ -128,8 +156,7 @@ const HomePage = () => {
             // marginTop: "25px",
             display: "flex",
             flexDirection: "column",
-            backgroundImage: "linear-gradient(to top , #0d2c7b, #6067b5)",
-            alignItems: "center",
+            background: "linear-gradient(to top , #0d2c7b, #6067b5)",
             // backgroundImage: "linear-gradient(to top , #106052, #0f734d)",
             borderRadius: "1200.5px",
             marginTop: "25px",
@@ -267,7 +294,6 @@ const HomePage = () => {
               marginTop: "10px",
               textAlign: "left",
               color: "#125a54",
-              display: "none",
             },
           }}
         >
@@ -415,36 +441,222 @@ const HomePage = () => {
           >
             <Card
               css={{
-                height: "350px",
-                width: "300px",
+                height: "fit-content",
+                width: "fit-content",
+                maxWidth: "80rem",
                 display: "flex",
+                alignItems: "center",
                 flexDirection: "column",
+                padding: "50px 30px",
+                borderRadius: "25px",
+                backgroundImage: "url(symbol-scatter-haikei-3.svg)",
+                objectPosition: "center",
+                backgroundPositionY: "center",
+                backgroundSize: "cover",
+                "@media only screen and (max-width: 764px)": {
+                  width: "100vw !important",
+                },
               }}
             >
-              <Button
-                css={{ background: "#fff" }}
-                onPress={handleHalfPageReportClick}
+              <Text b size={40} css={{ alignSelf: "center" }}>
+                Sample Reports
+              </Text>
+              <br />
+              <Divider
+                css={{
+                  width: "50px",
+                  height: "4px",
+                  borderRadius: "1000px",
+                  backgroundColor: "#FF9E24",
+                }}
+              />
+              <br />
+              <Text b size={21} css={{ alignSelf: "center" }}>
+                Ion Exchange (India) Ltd.
+              </Text>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                  alignContent: "center",
+                  justifyContent: "center",
+                }}
               >
-                <Text b size={20}>
-                  Half Page Report
-                </Text>
-              </Button>
-              <Button
-                css={{ background: "#fff" }}
-                onPress={handleDetailedReportClick}
+                <Button
+                  css={{
+                    background: "transparent",
+                    paddingLeft: "0px",
+                    marginTop: "0px",
+                    width: "auto",
+                  }}
+                  onPress={handleIonOnePage}
+                >
+                  <Text b size={21} color="#18501E">
+                    1-Page Report
+                  </Text>
+                </Button>
+                <Button
+                  css={{
+                    background: "transparent",
+                    paddingLeft: "0px",
+                    marginTop: "0px",
+                    width: "auto",
+                  }}
+                  onPress={handleIonDetailed}
+                >
+                  <Text b size={21} color="#18501E">
+                    Detailed Report
+                  </Text>
+                </Button>
+              </div>
+              <br />
+              <Divider
+                css={{
+                  width: "50px",
+                  height: "4px",
+                  borderRadius: "1000px",
+                  backgroundColor: "#FF9E24",
+                }}
+              />
+              <br />
+              <Text b size={21} css={{ alignSelf: "center" }}>
+                H.G. Infra Engineering Ltd.
+              </Text>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                  alignContent: "center",
+                  justifyContent: "center",
+                }}
               >
-                <Text b size={20}>
-                  Detailed Report
-                </Text>
-              </Button>
-              <Button
-                css={{ background: "#fff" }}
-                onPress={handleIonExchangeReportClick}
+                <Button
+                  css={{
+                    background: "transparent",
+                    paddingLeft: "0px",
+                    marginTop: "0px",
+                    width: "auto",
+                  }}
+                  onPress={handleHGOnePage}
+                >
+                  <Text b size={21} color="#18501E">
+                    1-Page Report
+                  </Text>
+                </Button>
+                <Button
+                  css={{
+                    background: "transparent",
+                    paddingLeft: "0px",
+                    marginTop: "0px",
+                    width: "auto",
+                  }}
+                  onPress={handleHGDetailed}
+                >
+                  <Text b size={21} color="#18501E">
+                    Detailed Report
+                  </Text>
+                </Button>
+              </div>
+              <br />
+              <Divider
+                css={{
+                  width: "50px",
+                  height: "4px",
+                  borderRadius: "1000px",
+                  backgroundColor: "#FF9E24",
+                }}
+              />
+              <br />
+              <Text b size={21} css={{ alignSelf: "center" }}>
+                Gravita India Ltd.
+              </Text>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                  alignContent: "center",
+                  justifyContent: "center",
+                }}
               >
-                <Text b size={20}>
-                  Ion Exchange Half Page Report - English
-                </Text>
-              </Button>
+                <Button
+                  css={{
+                    background: "transparent",
+                    paddingLeft: "0px",
+                    marginTop: "0px",
+                    width: "auto",
+                  }}
+                  onPress={handleGravitaOnePage}
+                >
+                  <Text b size={21} color="#18501E">
+                    1-Page Report
+                  </Text>
+                </Button>
+                <Button
+                  css={{
+                    background: "transparent",
+                    paddingLeft: "0px",
+                    marginTop: "0px",
+                    width: "auto",
+                  }}
+                  onPress={handleGravitaDetailed}
+                >
+                  <Text b size={21} color="#18501E">
+                    Detailed Report
+                  </Text>
+                </Button>
+              </div>
+              <br />
+              <Divider
+                css={{
+                  width: "50px",
+                  height: "4px",
+                  borderRadius: "1000px",
+                  backgroundColor: "#FF9E24",
+                }}
+              />
+              <br />
+              <Text b size={21} css={{ alignSelf: "center" }}>
+                Monte Carlo Fashions Ltd.
+              </Text>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                  alignContent: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Button
+                  css={{
+                    background: "transparent",
+                    paddingLeft: "0px",
+                    marginTop: "0px",
+                    width: "auto",
+                  }}
+                  onPress={handleMonteOnePage}
+                >
+                  <Text b size={21} color="#18501E">
+                    1-Page Report
+                  </Text>
+                </Button>
+                <Button
+                  css={{
+                    background: "transparent",
+                    paddingLeft: "0px",
+                    marginTop: "0px",
+                    width: "auto",
+                  }}
+                  onPress={handleMonteDetailed}
+                >
+                  <Text b size={21} color="#18501E">
+                    Detailed Report
+                  </Text>
+                </Button>
+              </div>
             </Card>
 
             {/*<Dropdown>*/}

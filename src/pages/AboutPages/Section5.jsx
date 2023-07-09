@@ -16,8 +16,8 @@ const Section5 = () => {
     <section
       style={{
         width: "100vw",
-        // backgroundColor: "white",
-        background: "#fafafa",
+        backgroundColor: "white",
+        // background: "#fafafa",
         paddingTop: "30px",
         paddingBottom: "30px",
         display: "flex",
@@ -91,13 +91,13 @@ const Section5 = () => {
             }}
           >
             <span style={{ fontSize: "18px", opacity: "0.75" }}>
-              KamayaKya recommendations
+              💬 KamayaKya recommendations
             </span>
             <br />
             <span style={{ fontSize: "35px", fontWeight: "normal" }}>
               Subscribe to our best picks
             </span>
-            <br />
+            {/*<br />*/}
             <br />
             <span style={{ fontSize: "22px", opacity: "0.75" }}>
               We only recommend stocks that we personally are willing to invest

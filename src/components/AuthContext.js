@@ -1,4 +1,4 @@
-import { VERIFY_TOKEN_URL } from "@/pages/api/URLs";
+import { GET_USER, VERIFY_TOKEN_URL } from "@/pages/api/URLs";
 import React, { createContext, useState, useEffect } from "react";
 
 // Create the context

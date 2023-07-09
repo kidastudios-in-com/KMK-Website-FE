@@ -538,7 +538,7 @@ const SubscriptionNew = () => {
               borderRadius: "35px",
               background: "#fff",
               filter: "none",
-              border: "2px solid #1877f2",
+              border: "4px solid #1877f2",
               justifyContent: "center",
               paddingTop: "50px",
               paddingBottom: "50px",
@@ -546,7 +546,7 @@ const SubscriptionNew = () => {
               paddingRight: "15px",
               "@media only screen and (max-width: 672px)": {
                 order: 2,
-                width: "100%",
+                width: "95%",
               },
             }}
           >
@@ -663,7 +663,7 @@ const SubscriptionNew = () => {
               onClick={() =>
                 window.open(
                   "https://kamayakya.smallcase.com/#portfolios",
-                  "_blank"
+                  "_blank",
                 )
               }
             >

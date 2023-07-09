@@ -16,8 +16,8 @@ const Section6 = () => {
     <section
       style={{
         width: "100vw",
-        // backgroundColor: "#fff",
-        background: "#fafafa",
+        backgroundColor: "#fff",
+        // background: "#fafafa",
         paddingTop: "30px",
         paddingBottom: "30px",
         display: "flex",
@@ -91,13 +91,13 @@ const Section6 = () => {
             }}
           >
             <span style={{ fontSize: "18px", opacity: "0.75" }}>
-              Performance Track Record
+              📈 Performance Track Record
             </span>
             <br />
             <span style={{ fontSize: "35px", fontWeight: "normal" }}>
               We promise 100% transparency
             </span>
-            <br />
+            {/*<br />*/}
             <br />
             <span style={{ fontSize: "22px", opacity: "0.75" }}>
               Our entire philosophy is based on celebrating wins and embracing

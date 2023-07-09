@@ -585,6 +585,7 @@ header > div > div {
   height: auto;
   padding: 40px;
   background-color: #f5f5f5;
+  /*background-color: #fff;*/
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -597,6 +598,9 @@ header > div > div {
 .testimonialCard-review {
   font-size: 25px;
   padding-bottom: 40px;
+  font-family: "SF Pro Rounded Bold", sans-serif;
+  font-weight: normal;
+  letter-spacing: 0.15px;
 }
 
 .testimonialCard-userDetail {
@@ -608,15 +612,18 @@ header > div > div {
 }
 
 .testimonialCard-userDetail-image {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border-radius: 1000px;
   object-fit: cover;
 }
 
 .testimonialCard-userDetail-name {
   padding-left: 10px;
-  font-size: 20px;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: "SF Pro Rounded Bold", sans-serif;
+  letter-spacing: 0.15px;
 }
 
 .trackRecordMobile {

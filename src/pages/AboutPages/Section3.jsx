@@ -1,17 +1,70 @@
 import { Box } from "@mui/material";
-import { Button, Dropdown, Modal, Text, useModal } from "@nextui-org/react";
+import {
+  Button,
+  Card,
+  Modal,
+  Text,
+  Divider,
+  useModal,
+} from "@nextui-org/react";
 import React, { useState } from "react";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 // import { useState } from "react/react.shared-subset";
 
 const Section3 = () => {
   const { setVisible, bindings } = useModal();
   const [selectedPDF, setSelectedPDF] = useState(new Set(["SampleReport.pdf"]));
+  const [showIframe, setShowIframe] = useState(false);
 
-  const PdfValue = React.useMemo(
-    () => Array.from(selectedPDF)[0]?.replaceAll("_", " ") || "",
-    [selectedPDF]
-  );
+  const handleCloseIframe = () => {
+    setShowIframe(false);
+  };
+
+  const handleIonOnePage = () => {
+    setShowIframe(true);
+    setSelectedPDF("Ion Exchange (India) Ltd. (IEIL) - 1 Page Report.pdf");
+    setVisible(false);
+  };
+
+  const handleIonDetailed = () => {
+    setShowIframe(true);
+    setSelectedPDF("Ion Exchange (India) Ltd. (IEIL) - Detailed Report.pdf");
+    setVisible(false);
+  };
+
+  const handleHGOnePage = () => {
+    setShowIframe(true);
+    setSelectedPDF("H.G. Infra Engineering Ltd (HGIEL) - 1 Page Report.pdf");
+    setVisible(false);
+  };
+
+  const handleHGDetailed = () => {
+    setShowIframe(true);
+    setSelectedPDF("H.G. Infra Engineering Ltd (HGIEL) - Detailed Report.pdf");
+    setVisible(false);
+  };
+  const handleGravitaOnePage = () => {
+    setShowIframe(true);
+    setSelectedPDF("Gravita India Ltd. (GIL) - 1 Page Report.pdf");
+    setVisible(false);
+  };
+  const handleGravitaDetailed = () => {
+    setShowIframe(true);
+    setSelectedPDF("Gravita India Ltd. (GIL) - Detailed Report.pdf");
+    setVisible(false);
+  };
+
+  const handleMonteOnePage = () => {
+    setShowIframe(true);
+    setSelectedPDF("Monte Carlo Fashions Ltd. (MCFL) - 1 Page Report.pdf");
+    setVisible(false);
+  };
+
+  const handleMonteDetailed = () => {
+    setShowIframe(true);
+    setSelectedPDF("Monte Carlo Fashions Ltd. (MCFL) - Detailed Report.pdf");
+    setVisible(false);
+  };
+
   return (
     <section
       style={{
@@ -89,9 +142,15 @@ const Section3 = () => {
               },
             }}
           >
-            Our methodology does not include doing technical analysis of stocks,
-            rather we do research that is deep, thorough and entirely
-            fundamentals based.
+            <span style={{ fontSize: "18px", opacity: "0.75" }}>
+              Our methodology
+            </span>
+            <br />
+            <span style={{ fontSize: "22px", opacity: "1" }}>
+              Instead of conducting technical analysis of stocks, our approach
+              focuses on conducting extensive and meticulous research that is
+              solely based on fundamental factors.
+            </span>
           </Text>
           <Button
             auto
@@ -104,8 +163,8 @@ const Section3 = () => {
               zIndex: 0,
               paddingLeft: 50,
               paddingRight: 50,
-              height: "60px",
-              width: "90px",
+              height: "55px",
+              width: "80px",
               "@media only screen and (max-width: 764px)": {
                 borderRadius: "15px",
                 paddingLeft: 15,
@@ -120,7 +179,7 @@ const Section3 = () => {
           >
             <Text
               b
-              size={20}
+              size={18}
               color="White"
               css={{
                 "@media only screen and (max-width: 764px)": {
@@ -135,6 +194,68 @@ const Section3 = () => {
           </Button>
           <Modal
             blur
+            aria-labelledby="modal-pdf"
+            aria-describedby="pdf-description"
+            open={showIframe}
+            onClose={handleCloseIframe}
+            css={{
+              width: "65vw",
+              maxWidth: "65vw",
+              alignSelf: "flex-end",
+              background: "transparent",
+              boxShadow: "none",
+              borderRadius: "15px",
+              alignItems: "center",
+              "@media only screen and (max-width: 764px)": {
+                width: "95vw !important",
+                maxWidth: "95vw !important",
+              },
+            }}
+          >
+            {selectedPDF && (
+              <iframe
+                src={`${selectedPDF}#view=FitH&toolbar=0`}
+                // src={`Test1.pdf#toolbar=0`}
+                style={{
+                  width: "100%",
+                  height: "75vh",
+                  borderColor: "transparent",
+                  borderRadius: "15px",
+                  borderWidth: "0px",
+                  zoom: "1",
+                }}
+                className="iframePdfMobile"
+              />
+            )}
+            <Button
+              flat
+              onPress={handleCloseIframe}
+              css={{
+                alignSelf: "center",
+                width: "100%",
+                backgroundColor: "#ffa12e",
+                color: "#fff",
+                fontSize: 19,
+                marginTop: "20px",
+                borderRadius: "10px",
+                height: "50px",
+                "@media only screen and (max-width: 768px)": {
+                  width: "100%",
+                  fontSize: 15,
+                  height: "50px",
+                  marginTop: "0px",
+                  borderRadius: "0px 0px 10px",
+                  "& span": {
+                    // display: "none",
+                  },
+                },
+              }}
+            >
+              Close
+            </Button>
+          </Modal>
+          <Modal
+            blur
             aria-labelledby="modal-title"
             aria-describedby="modal-description"
             {...bindings}
@@ -145,83 +266,179 @@ const Section3 = () => {
               background: "transparent",
               boxShadow: "none",
               borderRadius: "15px",
+              alignItems: "center",
               "@media only screen and (max-width: 764px)": {
                 width: "95vw !important",
                 maxWidth: "95vw !important",
-                maxHeight: "90vh !important",
               },
             }}
           >
-            <Dropdown>
-              <Dropdown.Button
-                flat
-                css={{
-                  alignSelf: "center",
-                  width: "100%",
-                  backgroundColor: "#125a54",
-                  color: "#fff",
-                  fontSize: 19,
-                  marginBottom: "20px",
-                  borderRadius: "10px",
-                  height: "50px",
-                  "@media only screen and (max-width: 768px)": {
-                    width: "100%",
-                    fontSize: 15,
-                    height: "50px",
-                    marginBottom: "0px",
-                    borderRadius: "10px 0 0",
-                    "& span": {
-                      // display: "none",
-                    },
-                  },
-                }}
-              >
-                {PdfValue}
-                {/*Report Types*/}
-              </Dropdown.Button>
-              <Dropdown.Menu
-                // defaultSelectedKeys={'SampleReport.pdf'}
-                aria-label="TimeActions"
-                selectionMode="single"
-                selectedKeys={selectedPDF}
-                onSelectionChange={(key) => {
-                  setSelectedPDF(key);
-                }}
-                style={{ width: "100%" }}
-              >
-                <Dropdown.Item key="SampleReport.pdf">
-                  Half Page Report
-                </Dropdown.Item>
-                <Dropdown.Item
-                  key="Ion Exchange Half Page Report - English.pdf"
-                  css={{ width: "100vw" }}
-                >
-                  Ion Exchange Half Page Report - English
-                </Dropdown.Item>
-                <Dropdown.Item key="DetailedReport.pdf">
-                  Detailed Report
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            <iframe
-              src={`${PdfValue}#view=FitH&toolbar=0`}
-              // src={`Test1.pdf#toolbar=0`}
-              style={{
-                width: "100%",
-                height: "75vh",
-                borderColor: "transparent",
-                borderRadius: "15px",
-                borderWidth: "0px",
-                zoom: "1",
+            <Card
+              css={{
+                height: "fit-content",
+                width: "fit-content",
+                maxWidth: "80rem",
+                display: "flex",
+                alignItems: "start",
+                flexDirection: "column",
+                padding: "50px 30px",
+                "@media only screen and (max-width: 764px)": {
+                  width: "100vw !important",
+                },
               }}
-              className="iframePdfMobile"
-            />
+            >
+              <Text b size={40}>
+                Sample Reports
+              </Text>
+              <br />
+              <Text b size={20}>
+                Ion Exchange (India) Ltd. (IEIL):
+              </Text>
+              <Button
+                css={{
+                  background: "#fff",
+                  paddingLeft: "11px",
+                  marginTop: "0px",
+                }}
+                onPress={handleIonOnePage}
+              >
+                <Text b size={17}>
+                  - One Page Report
+                </Text>
+              </Button>
+
+              <Button
+                css={{ background: "#fff", paddingLeft: "0px" }}
+                onPress={handleIonDetailed}
+              >
+                <Text b size={17}>
+                  - Detailed Report
+                </Text>
+              </Button>
+              <br />
+              <Divider />
+              <br />
+              <Text b size={20} css={{ textAlign: "start" }}>
+                H.G. Infra Engineering Ltd (HGIEL):
+              </Text>
+              <Button
+                css={{ background: "#fff", paddingLeft: "10px" }}
+                onPress={handleHGOnePage}
+              >
+                <Text b size={17}>
+                  - One Page Report
+                </Text>
+              </Button>
+              <Button
+                css={{ background: "#fff", paddingLeft: "0px" }}
+                onPress={handleHGDetailed}
+              >
+                <Text b size={17}>
+                  - Detailed Report
+                </Text>
+              </Button>
+              <br />
+              <Divider />
+              <br />
+              <Text b size={20}>
+                Gravita India Ltd. (GIL):
+              </Text>
+              <Button
+                css={{ background: "#fff", paddingLeft: "10px" }}
+                onPress={handleGravitaOnePage}
+              >
+                <Text b size={17}>
+                  - One Page Report
+                </Text>
+              </Button>
+              <Button
+                css={{ background: "#fff", paddingLeft: "0px" }}
+                onPress={handleGravitaDetailed}
+              >
+                <Text b size={17}>
+                  - Detailed Report
+                </Text>
+              </Button>
+              <br />
+              <Divider />
+              <br />
+              <Text b size={20} css={{ textAlign: "start" }}>
+                Monte Carlo Fashions Ltd. (MCFL):
+              </Text>
+              <Button
+                css={{ background: "#fff", paddingLeft: "10px" }}
+                onPress={handleMonteOnePage}
+              >
+                <Text b size={17}>
+                  - One Page Report
+                </Text>
+              </Button>
+              <Button
+                css={{ background: "#fff", paddingLeft: "0px" }}
+                onPress={handleMonteDetailed}
+              >
+                <Text b size={17}>
+                  - Detailed Report
+                </Text>
+              </Button>
+            </Card>
+
+            {/*<Dropdown>*/}
+            {/*  <Dropdown.Button*/}
+            {/*    flat*/}
+            {/*    css={{*/}
+            {/*      alignSelf: "center",*/}
+            {/*      width: "100%",*/}
+            {/*      backgroundColor: "#125a54",*/}
+            {/*      color: "#fff",*/}
+            {/*      fontSize: 19,*/}
+            {/*      marginBottom: "20px",*/}
+            {/*      borderRadius: "10px",*/}
+            {/*      height: "50px",*/}
+            {/*      "@media only screen and (max-width: 768px)": {*/}
+            {/*        width: "100%",*/}
+            {/*        fontSize: 15,*/}
+            {/*        height: "50px",*/}
+            {/*        marginBottom: "0px",*/}
+            {/*        borderRadius: "10px 0 0",*/}
+            {/*        "& span": {*/}
+            {/*          // display: "none",*/}
+            {/*        },*/}
+            {/*      },*/}
+            {/*    }}*/}
+            {/*  >*/}
+            {/*    {PdfValue}*/}
+            {/*    /!*Report Types*!/*/}
+            {/*  </Dropdown.Button>*/}
+            {/*  <Dropdown.Menu*/}
+            {/*    // defaultSelectedKeys={'SampleReport.pdf'}*/}
+            {/*    aria-label="TimeActions"*/}
+            {/*    selectionMode="single"*/}
+            {/*    selectedKeys={selectedPDF}*/}
+            {/*    onSelectionChange={(key) => setSelectedPDF(key)}*/}
+            {/*    style={{ width: "100%" }}*/}
+            {/*  >*/}
+            {/*    <Dropdown.Item key="SampleReport.pdf">*/}
+            {/*      Half Page Report*/}
+            {/*    </Dropdown.Item>*/}
+            {/*    <Dropdown.Item*/}
+            {/*      key="IonExchangeHalfPageReport-English.pdf"*/}
+            {/*      css={{ width: "100vw" }}*/}
+            {/*    >*/}
+            {/*      Ion Exchange Half Page Report - English*/}
+            {/*    </Dropdown.Item>*/}
+            {/*    <Dropdown.Item key="DetailedReport.pdf">*/}
+            {/*      Detailed Report*/}
+            {/*    </Dropdown.Item>*/}
+            {/*  </Dropdown.Menu>*/}
+            {/*</Dropdown>*/}
+
             <Button
               flat
               onPress={() => setVisible(false)}
               css={{
-                alignSelf: "end",
-                width: "100%",
+                alignSelf: "center",
+                // width: "100%",
                 backgroundColor: "#ffa12e",
                 color: "#fff",
                 fontSize: 19,

@@ -16,8 +16,8 @@ const Section7 = () => {
     <section
       style={{
         width: "100vw",
-        // backgroundColor: "white",
-        background: "#fafafa",
+        backgroundColor: "white",
+        // background: "#fafafa",
         paddingTop: "30px",
         paddingBottom: "140px",
         display: "flex",
@@ -74,6 +74,7 @@ const Section7 = () => {
           }}
         >
           <Text
+            b
             size={26}
             css={{
               lineHeight: 1.4,
@@ -89,12 +90,14 @@ const Section7 = () => {
               },
             }}
           >
-            <span style={{ fontSize: "18px", opacity: "0.75" }}>360° View</span>
-            <br />
-            <span style={{ fontSize: "35px", fontWeight: "bold" }}>
-              Understand your investments
+            <span style={{ fontSize: "18px", opacity: "0.75" }}>
+              🌏 360° View
             </span>
             <br />
+            <span style={{ fontSize: "35px", fontWeight: "normal" }}>
+              Understand your investments
+            </span>
+            {/*<br />*/}
             <br />
             <span style={{ fontSize: "22px", opacity: "0.75" }}>
               Investing without context is like throwing a dart blindfolded. But
@@ -102,6 +105,7 @@ const Section7 = () => {
               establish context, enabling you to make better investments.
             </span>
           </Text>
+
           <Button
             auto
             // size={"xl"}/

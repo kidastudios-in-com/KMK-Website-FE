@@ -7,7 +7,8 @@ const HeaderFuture = () => {
     <section
       style={{
         width: "100vw",
-        backgroundColor: "#fafafa",
+        // backgroundColor: "#fafafa",
+        backgroundColor: "#fff",
         paddingTop: "100px",
         paddingBottom: "50px",
         display: "flex",
