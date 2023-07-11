@@ -39,7 +39,7 @@ const Home: NextPage = () => {
       {/*<WhyUs />*/}
       {/* <Blogs2 /> */}
       {/* <Testimonials /> */}
-      <Solutions />
+      {/*<Solutions />*/}
       <FaqsNew />
       <Footer />
       {/* <Footer /> */}

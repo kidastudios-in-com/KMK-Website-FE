@@ -254,212 +254,322 @@ const Section3 = () => {
               Close
             </Button>
           </Modal>
-          <Modal
-            blur
-            aria-labelledby="modal-title"
-            aria-describedby="modal-description"
-            {...bindings}
-            css={{
-              width: "65vw",
-              maxWidth: "65vw",
-              alignSelf: "flex-end",
-              background: "transparent",
-              boxShadow: "none",
-              borderRadius: "15px",
-              alignItems: "center",
-              "@media only screen and (max-width: 764px)": {
-                width: "95vw !important",
-                maxWidth: "95vw !important",
-              },
-            }}
-          >
-            <Card
-              css={{
-                height: "fit-content",
-                width: "fit-content",
-                maxWidth: "80rem",
-                display: "flex",
-                alignItems: "start",
-                flexDirection: "column",
-                padding: "50px 30px",
-                "@media only screen and (max-width: 764px)": {
-                  width: "100vw !important",
-                },
-              }}
-            >
-              <Text b size={40}>
-                Sample Reports
-              </Text>
-              <br />
-              <Text b size={20}>
-                Ion Exchange (India) Ltd. (IEIL):
-              </Text>
-              <Button
+            <Modal
+                blur
+                aria-labelledby="modal-title"
+                aria-describedby="modal-description"
+                {...bindings}
                 css={{
-                  background: "#fff",
-                  paddingLeft: "11px",
-                  marginTop: "0px",
+                    width: "65vw",
+                    maxWidth: "65vw",
+                    alignSelf: "flex-end",
+                    background: "transparent",
+                    boxShadow: "none",
+                    borderRadius: "15px",
+                    alignItems: "center",
+                    "@media only screen and (max-width: 764px)": {
+                        width: "95vw !important",
+                        maxWidth: "95vw !important",
+                    },
                 }}
-                onPress={handleIonOnePage}
-              >
-                <Text b size={17}>
-                  - One Page Report
-                </Text>
-              </Button>
-
-              <Button
-                css={{ background: "#fff", paddingLeft: "0px" }}
-                onPress={handleIonDetailed}
-              >
-                <Text b size={17}>
-                  - Detailed Report
-                </Text>
-              </Button>
-              <br />
-              <Divider />
-              <br />
-              <Text b size={20} css={{ textAlign: "start" }}>
-                H.G. Infra Engineering Ltd (HGIEL):
-              </Text>
-              <Button
-                css={{ background: "#fff", paddingLeft: "10px" }}
-                onPress={handleHGOnePage}
-              >
-                <Text b size={17}>
-                  - One Page Report
-                </Text>
-              </Button>
-              <Button
-                css={{ background: "#fff", paddingLeft: "0px" }}
-                onPress={handleHGDetailed}
-              >
-                <Text b size={17}>
-                  - Detailed Report
-                </Text>
-              </Button>
-              <br />
-              <Divider />
-              <br />
-              <Text b size={20}>
-                Gravita India Ltd. (GIL):
-              </Text>
-              <Button
-                css={{ background: "#fff", paddingLeft: "10px" }}
-                onPress={handleGravitaOnePage}
-              >
-                <Text b size={17}>
-                  - One Page Report
-                </Text>
-              </Button>
-              <Button
-                css={{ background: "#fff", paddingLeft: "0px" }}
-                onPress={handleGravitaDetailed}
-              >
-                <Text b size={17}>
-                  - Detailed Report
-                </Text>
-              </Button>
-              <br />
-              <Divider />
-              <br />
-              <Text b size={20} css={{ textAlign: "start" }}>
-                Monte Carlo Fashions Ltd. (MCFL):
-              </Text>
-              <Button
-                css={{ background: "#fff", paddingLeft: "10px" }}
-                onPress={handleMonteOnePage}
-              >
-                <Text b size={17}>
-                  - One Page Report
-                </Text>
-              </Button>
-              <Button
-                css={{ background: "#fff", paddingLeft: "0px" }}
-                onPress={handleMonteDetailed}
-              >
-                <Text b size={17}>
-                  - Detailed Report
-                </Text>
-              </Button>
-            </Card>
-
-            {/*<Dropdown>*/}
-            {/*  <Dropdown.Button*/}
-            {/*    flat*/}
-            {/*    css={{*/}
-            {/*      alignSelf: "center",*/}
-            {/*      width: "100%",*/}
-            {/*      backgroundColor: "#125a54",*/}
-            {/*      color: "#fff",*/}
-            {/*      fontSize: 19,*/}
-            {/*      marginBottom: "20px",*/}
-            {/*      borderRadius: "10px",*/}
-            {/*      height: "50px",*/}
-            {/*      "@media only screen and (max-width: 768px)": {*/}
-            {/*        width: "100%",*/}
-            {/*        fontSize: 15,*/}
-            {/*        height: "50px",*/}
-            {/*        marginBottom: "0px",*/}
-            {/*        borderRadius: "10px 0 0",*/}
-            {/*        "& span": {*/}
-            {/*          // display: "none",*/}
-            {/*        },*/}
-            {/*      },*/}
-            {/*    }}*/}
-            {/*  >*/}
-            {/*    {PdfValue}*/}
-            {/*    /!*Report Types*!/*/}
-            {/*  </Dropdown.Button>*/}
-            {/*  <Dropdown.Menu*/}
-            {/*    // defaultSelectedKeys={'SampleReport.pdf'}*/}
-            {/*    aria-label="TimeActions"*/}
-            {/*    selectionMode="single"*/}
-            {/*    selectedKeys={selectedPDF}*/}
-            {/*    onSelectionChange={(key) => setSelectedPDF(key)}*/}
-            {/*    style={{ width: "100%" }}*/}
-            {/*  >*/}
-            {/*    <Dropdown.Item key="SampleReport.pdf">*/}
-            {/*      Half Page Report*/}
-            {/*    </Dropdown.Item>*/}
-            {/*    <Dropdown.Item*/}
-            {/*      key="IonExchangeHalfPageReport-English.pdf"*/}
-            {/*      css={{ width: "100vw" }}*/}
-            {/*    >*/}
-            {/*      Ion Exchange Half Page Report - English*/}
-            {/*    </Dropdown.Item>*/}
-            {/*    <Dropdown.Item key="DetailedReport.pdf">*/}
-            {/*      Detailed Report*/}
-            {/*    </Dropdown.Item>*/}
-            {/*  </Dropdown.Menu>*/}
-            {/*</Dropdown>*/}
-
-            <Button
-              flat
-              onPress={() => setVisible(false)}
-              css={{
-                alignSelf: "center",
-                // width: "100%",
-                backgroundColor: "#ffa12e",
-                color: "#fff",
-                fontSize: 19,
-                marginTop: "20px",
-                borderRadius: "10px",
-                height: "50px",
-                "@media only screen and (max-width: 768px)": {
-                  width: "100%",
-                  fontSize: 15,
-                  height: "50px",
-                  marginTop: "0px",
-                  borderRadius: "0px 0px 10px",
-                  "& span": {
-                    // display: "none",
-                  },
-                },
-              }}
             >
-              Close
-            </Button>
-          </Modal>
+                <Card
+                    css={{
+                        height: "fit-content",
+                        width: "fit-content",
+                        maxWidth: "80rem",
+                        display: "flex",
+                        alignItems: "center",
+                        flexDirection: "column",
+                        padding: "50px 30px",
+                        borderRadius: "25px",
+                        // backgroundImage: "url(symbol-scatter-haikei-3.svg)",
+                        objectPosition: "center",
+                        backgroundPositionY: "center",
+                        backgroundSize: "cover",
+                        "@media only screen and (max-width: 764px)": {
+                            width: "100vw !important",
+                        },
+                    }}
+                >
+                    <Text b size={40} css={{ alignSelf: "center" }}>
+                        Sample Reports
+                    </Text>
+                    <br />
+                    <Divider
+                        css={{
+                            width: "50px",
+                            height: "4px",
+                            borderRadius: "1000px",
+                            backgroundColor: "#FF9E24",
+                        }}
+                    />
+                    <br />
+                    <Text b size={21} css={{ alignSelf: "center" }}>
+                        Ion Exchange (India) Ltd.
+                    </Text>
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            flexWrap: "wrap",
+                            alignContent: "center",
+                            justifyContent: "center",
+                        }}
+                    >
+                        <Button
+                            css={{
+                                background: "transparent",
+                                paddingLeft: "0px",
+                                marginTop: "0px",
+                                width: "auto",
+                            }}
+                            onPress={handleIonOnePage}
+                        >
+                            <Text b size={21} color="#18501E">
+                                1-Page Report
+                            </Text>
+                        </Button>
+                        <Button
+                            css={{
+                                background: "transparent",
+                                paddingLeft: "0px",
+                                marginTop: "0px",
+                                width: "auto",
+                            }}
+                            onPress={handleIonDetailed}
+                        >
+                            <Text b size={21} color="#18501E">
+                                Detailed Report
+                            </Text>
+                        </Button>
+                    </div>
+                    <br />
+                    <Divider
+                        css={{
+                            width: "50px",
+                            height: "4px",
+                            borderRadius: "1000px",
+                            backgroundColor: "#FF9E24",
+                        }}
+                    />
+                    <br />
+                    <Text b size={21} css={{ alignSelf: "center" }}>
+                        H.G. Infra Engineering Ltd.
+                    </Text>
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            flexWrap: "wrap",
+                            alignContent: "center",
+                            justifyContent: "center",
+                        }}
+                    >
+                        <Button
+                            css={{
+                                background: "transparent",
+                                paddingLeft: "0px",
+                                marginTop: "0px",
+                                width: "auto",
+                            }}
+                            onPress={handleHGOnePage}
+                        >
+                            <Text b size={21} color="#18501E">
+                                1-Page Report
+                            </Text>
+                        </Button>
+                        <Button
+                            css={{
+                                background: "transparent",
+                                paddingLeft: "0px",
+                                marginTop: "0px",
+                                width: "auto",
+                            }}
+                            onPress={handleHGDetailed}
+                        >
+                            <Text b size={21} color="#18501E">
+                                Detailed Report
+                            </Text>
+                        </Button>
+                    </div>
+                    <br />
+                    <Divider
+                        css={{
+                            width: "50px",
+                            height: "4px",
+                            borderRadius: "1000px",
+                            backgroundColor: "#FF9E24",
+                        }}
+                    />
+                    <br />
+                    <Text b size={21} css={{ alignSelf: "center" }}>
+                        Gravita India Ltd.
+                    </Text>
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            flexWrap: "wrap",
+                            alignContent: "center",
+                            justifyContent: "center",
+                        }}
+                    >
+                        <Button
+                            css={{
+                                background: "transparent",
+                                paddingLeft: "0px",
+                                marginTop: "0px",
+                                width: "auto",
+                            }}
+                            onPress={handleGravitaOnePage}
+                        >
+                            <Text b size={21} color="#18501E">
+                                1-Page Report
+                            </Text>
+                        </Button>
+                        <Button
+                            css={{
+                                background: "transparent",
+                                paddingLeft: "0px",
+                                marginTop: "0px",
+                                width: "auto",
+                            }}
+                            onPress={handleGravitaDetailed}
+                        >
+                            <Text b size={21} color="#18501E">
+                                Detailed Report
+                            </Text>
+                        </Button>
+                    </div>
+                    <br />
+                    <Divider
+                        css={{
+                            width: "50px",
+                            height: "4px",
+                            borderRadius: "1000px",
+                            backgroundColor: "#FF9E24",
+                        }}
+                    />
+                    <br />
+                    <Text b size={21} css={{ alignSelf: "center" }}>
+                        Monte Carlo Fashions Ltd.
+                    </Text>
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            flexWrap: "wrap",
+                            alignContent: "center",
+                            justifyContent: "center",
+                        }}
+                    >
+                        <Button
+                            css={{
+                                background: "transparent",
+                                paddingLeft: "0px",
+                                marginTop: "0px",
+                                width: "auto",
+                            }}
+                            onPress={handleMonteOnePage}
+                        >
+                            <Text b size={21} color="#18501E">
+                                1-Page Report
+                            </Text>
+                        </Button>
+                        <Button
+                            css={{
+                                background: "transparent",
+                                paddingLeft: "0px",
+                                marginTop: "0px",
+                                width: "auto",
+                            }}
+                            onPress={handleMonteDetailed}
+                        >
+                            <Text b size={21} color="#18501E">
+                                Detailed Report
+                            </Text>
+                        </Button>
+                    </div>
+                </Card>
+
+                {/*<Dropdown>*/}
+                {/*  <Dropdown.Button*/}
+                {/*    flat*/}
+                {/*    css={{*/}
+                {/*      alignSelf: "center",*/}
+                {/*      width: "100%",*/}
+                {/*      backgroundColor: "#125a54",*/}
+                {/*      color: "#fff",*/}
+                {/*      fontSize: 19,*/}
+                {/*      marginBottom: "20px",*/}
+                {/*      borderRadius: "10px",*/}
+                {/*      height: "50px",*/}
+                {/*      "@media only screen and (max-width: 768px)": {*/}
+                {/*        width: "100%",*/}
+                {/*        fontSize: 15,*/}
+                {/*        height: "50px",*/}
+                {/*        marginBottom: "0px",*/}
+                {/*        borderRadius: "10px 0 0",*/}
+                {/*        "& span": {*/}
+                {/*          // display: "none",*/}
+                {/*        },*/}
+                {/*      },*/}
+                {/*    }}*/}
+                {/*  >*/}
+                {/*    {PdfValue}*/}
+                {/*    /!*Report Types*!/*/}
+                {/*  </Dropdown.Button>*/}
+                {/*  <Dropdown.Menu*/}
+                {/*    // defaultSelectedKeys={'SampleReport.pdf'}*/}
+                {/*    aria-label="TimeActions"*/}
+                {/*    selectionMode="single"*/}
+                {/*    selectedKeys={selectedPDF}*/}
+                {/*    onSelectionChange={(key) => setSelectedPDF(key)}*/}
+                {/*    style={{ width: "100%" }}*/}
+                {/*  >*/}
+                {/*    <Dropdown.Item key="SampleReport.pdf">*/}
+                {/*      Half Page Report*/}
+                {/*    </Dropdown.Item>*/}
+                {/*    <Dropdown.Item*/}
+                {/*      key="IonExchangeHalfPageReport-English.pdf"*/}
+                {/*      css={{ width: "100vw" }}*/}
+                {/*    >*/}
+                {/*      Ion Exchange Half Page Report - English*/}
+                {/*    </Dropdown.Item>*/}
+                {/*    <Dropdown.Item key="DetailedReport.pdf">*/}
+                {/*      Detailed Report*/}
+                {/*    </Dropdown.Item>*/}
+                {/*  </Dropdown.Menu>*/}
+                {/*</Dropdown>*/}
+
+                <Button
+                    flat
+                    onPress={() => setVisible(false)}
+                    css={{
+                        alignSelf: "center",
+                        // width: "100%",
+                        backgroundColor: "#ffa12e",
+                        color: "#fff",
+                        fontSize: 19,
+                        marginTop: "20px",
+                        borderRadius: "10px",
+                        height: "50px",
+                        "@media only screen and (max-width: 768px)": {
+                            width: "100%",
+                            fontSize: 15,
+                            height: "50px",
+                            marginTop: "0px",
+                            borderRadius: "0px 0px 10px",
+                            "& span": {
+                                // display: "none",
+                            },
+                        },
+                    }}
+                >
+                    Close
+                </Button>
+            </Modal>
         </Box>
       </Box>
     </section>

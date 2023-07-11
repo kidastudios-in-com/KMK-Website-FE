@@ -118,6 +118,7 @@ const HomePage = () => {
         backgroundSize: "contain",
         backgroundRepeat: "repeat-x",
       }}
+      className={"waveBackground-mobile"}
     >
       <Box
         sx={{
@@ -449,7 +450,7 @@ const HomePage = () => {
                 flexDirection: "column",
                 padding: "50px 30px",
                 borderRadius: "25px",
-                backgroundImage: "url(symbol-scatter-haikei-3.svg)",
+                // backgroundImage: "url(symbol-scatter-haikei-3.svg)",
                 objectPosition: "center",
                 backgroundPositionY: "center",
                 backgroundSize: "cover",
