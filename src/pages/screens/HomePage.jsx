@@ -14,6 +14,7 @@ import { useRouter } from "next/router";
 import CloseIcon from "@mui/icons-material/Close";
 import Login from "@/components/Login";
 import AuthContext from "@/components/AuthContext";
+import { TypeAnimation } from "react-type-animation";
 
 const HomePage = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -26,7 +27,13 @@ const HomePage = () => {
     setShowIframe(false);
   };
   const handleCert = () => {
-    setShowCert(true);
+    // setShowCert(true);
+    var win = window.open(
+      "Kamayakya-SEBI-License.pdf#toolbar=0&fitH=1",
+      "_blank",
+      "fullscreen=yes"
+    );
+    // win.document.write('<PdfViewer pdf={PDF}/>');
   };
 
   const handleCertClose = () => {
@@ -51,49 +58,86 @@ const HomePage = () => {
   ];
 
   const handleIonOnePage = () => {
-    setShowIframe(true);
-    setSelectedPDF("Ion Exchange (India) Ltd. (IEIL) - 1 Page Report.pdf");
-    setVisible(false);
+    // setShowIframe(true);
+    // setSelectedPDF("Ion Exchange (India) Ltd. (IEIL) - 1 Page Report.pdf");
+    // setVisible(false);
+    var win = window.open(
+      "Ion Exchange (India) Ltd. (IEIL) - 1 Page Report.pdf#toolbar=0&fitH=1",
+      "_blank",
+      "fullscreen=yes"
+    );
   };
-
   const handleIonDetailed = () => {
-    setShowIframe(true);
-    setSelectedPDF("Ion Exchange (India) Ltd. (IEIL) - Detailed Report.pdf");
-    setVisible(false);
+    // setShowIframe(true);
+    // setSelectedPDF("Ion Exchange (India) Ltd. (IEIL) - Detailed Report.pdf");
+    // setVisible(false);
+    var win = window.open(
+      "Ion Exchange (India) Ltd. (IEIL) - Detailed Report.pdf#toolbar=0&fitH=1",
+      "_blank",
+      "fullscreen=yes"
+    );
   };
-
   const handleHGOnePage = () => {
-    setShowIframe(true);
-    setSelectedPDF("H.G. Infra Engineering Ltd (HGIEL) - 1 Page Report.pdf");
-    setVisible(false);
+    // setShowIframe(true);
+    // setSelectedPDF("H.G. Infra Engineering Ltd (HGIEL) - 1 Page Report.pdf");
+    // setVisible(false);
+    var win = window.open(
+      "H.G. Infra Engineering Ltd (HGIEL) - 1 Page Report.pdf#toolbar=0&fitH=1",
+      "_blank",
+      "fullscreen=yes"
+    );
   };
-
   const handleHGDetailed = () => {
-    setShowIframe(true);
-    setSelectedPDF("H.G. Infra Engineering Ltd (HGIEL) - Detailed Report.pdf");
-    setVisible(false);
+    // setShowIframe(true);
+    // setSelectedPDF("H.G. Infra Engineering Ltd (HGIEL) - Detailed Report.pdf");
+    // setVisible(false);
+    var win = window.open(
+      "H.G. Infra Engineering Ltd (HGIEL) - Detailed Report.pdf#toolbar=0&fitH=1",
+      "_blank",
+      "fullscreen=yes"
+    );
   };
   const handleGravitaOnePage = () => {
-    setShowIframe(true);
-    setSelectedPDF("Gravita India Ltd. (GIL) - 1 Page Report.pdf");
-    setVisible(false);
+    // setShowIframe(true);
+    // setSelectedPDF("Gravita India Ltd. (GIL) - 1 Page Report.pdf");
+    // setVisible(false);
+    var win = window.open(
+      "Gravita India Ltd. (GIL) - 1 Page Report.pdf#toolbar=0&fitH=1",
+      "_blank",
+      "fullscreen=yes"
+    );
   };
   const handleGravitaDetailed = () => {
-    setShowIframe(true);
-    setSelectedPDF("Gravita India Ltd. (GIL) - Detailed Report.pdf");
-    setVisible(false);
+    // setShowIframe(true);
+    // setSelectedPDF("Gravita India Ltd. (GIL) - Detailed Report.pdf");
+    // setVisible(false);
+    var win = window.open(
+      "Ion Exchange (India) Ltd. (IEIL) - 1 Page Report.pdf#toolbar=0&fitH=1",
+      "_blank",
+      "fullscreen=yes"
+    );
   };
 
   const handleMonteOnePage = () => {
-    setShowIframe(true);
-    setSelectedPDF("Monte Carlo Fashions Ltd. (MCFL) - 1 Page Report.pdf");
-    setVisible(false);
+    // setShowIframe(true);
+    // setSelectedPDF("Monte Carlo Fashions Ltd. (MCFL) - 1 Page Report.pdf");
+    // setVisible(false);
+    var win = window.open(
+      "Monte Carlo Fashions Ltd. (MCFL) - 1 Page Report.pdf#toolbar=0&fitH=1",
+      "_blank",
+      "fullscreen=yes"
+    );
   };
 
   const handleMonteDetailed = () => {
-    setShowIframe(true);
-    setSelectedPDF("Monte Carlo Fashions Ltd. (MCFL) - Detailed Report.pdf");
-    setVisible(false);
+    // setShowIframe(true);
+    // setSelectedPDF("Monte Carlo Fashions Ltd. (MCFL) - Detailed Report.pdf");
+    // setVisible(false);
+    var win = window.open(
+      "Monte Carlo Fashions Ltd. (MCFL) - Detailed Report.pdf#toolbar=0&fitH=1",
+      "_blank",
+      "fullscreen=yes"
+    );
   };
 
   // const [selectedPDF, setSelectedPDF] = useState(new Set(["SampleReport.pdf"]));
@@ -251,60 +295,88 @@ const HomePage = () => {
           </Button>
           {/* </Modal.Footer> */}
         </Modal>
-        <Text
-          b
-          size={70}
-          css={{
-            marginTop: "40px",
-            // width: "90%",
-            maxWidth: "80rem" /* 1280px */,
+        <div
+          style={{
+            minHeight: "350px",
+            lineHeight: "1.2",
+            alignItems: "center",
+            paddingTop: "35px",
             textAlign: "center",
-            lineHeight: 1.2,
-            paddingLeft: "15px",
-            paddingRight: "15px",
-            "@media only screen and (max-width: 764px)": {
-              fontSize: 45,
-              lineHeight: 1.1,
-              paddingLeft: "5px",
-              paddingRight: "5px",
-              marginTop: "0px",
-              maxWidth: "100%",
-              textAlign: "left",
-            },
           }}
+          className="animated-header-div"
+          // b
+          // size={70}
+          // css={{
+          //   marginTop: "40px",
+          //   // width: "90%",
+          //   maxWidth: "80rem" /* 1280px */,
+          //   textAlign: "center",
+          //   lineHeight: 1.2,
+          //   paddingLeft: "15px",
+          //   paddingRight: "15px",
+          //   "@media only screen and (max-width: 764px)": {
+          //     fontSize: 45,
+          //     lineHeight: 1.1,
+          //     paddingLeft: "5px",
+          //     paddingRight: "5px",
+          //     marginTop: "0px",
+          //     maxWidth: "100%",
+          //     textAlign: "left",
+          //   },
+          // }}
         >
-          Maximize the growth of your funds by investing in{" "}
-          <span style={{ color: "#000000" }}>high-potential ideas</span>
-        </Text>
-        <Text
-          b
-          size={30}
-          css={{
-            marginTop: 10,
-            maxWidth: "80rem" /* 1280px */,
-            textAlign: "center",
-            color: "#125a54",
-            lineHeight: 1.2,
-            paddingLeft: "15px",
-            paddingRight: "15px",
-            "@media only screen and (max-width: 764px)": {
-              fontSize: 20,
-              maxWidth: "100%",
-              paddingLeft: "5px",
-              paddingRight: "5px",
-              marginTop: "10px",
-              textAlign: "left",
-              color: "#125a54",
-            },
-          }}
-        >
-          KamayaKya is your friendly investment guru who will assist you in
-          finding the best SME, MicroCap and SmallCap stocks to invest in,
-          backed by solid research.
-        </Text>
+          {/*Maximize the growth of your funds by investing in{" "}*/}
+          {/*<span style={{ color: "#000000" }}>high-potential ideas</span>*/}
+          <TypeAnimation
+            preRenderFirstString={true}
+            sequence={[
+              5000,
+              "Maximize the growth of your funds by investing in high-potential ideas", // initially rendered starting point
+              5000,
+              "Maximize the growth of your funds by investing in SME, micro-cap & small-cap stocks",
+              // 1000,
+              // 'We produce food for Guinea Pigs',
+              // 1000,
+              // 'We produce food for Chinchillas',
+              5000,
+            ]}
+            speed={60}
+            // speed={{type: 'keyStrokeDelayInMs', value: 120}}
+            deletionSpeed={60}
+            style={{ fontSize: "80px" }}
+            repeat={Infinity}
+            className="homePage-text-animated"
+          />
+        </div>
+        {/*<Text*/}
+        {/*  b*/}
+        {/*  size={30}*/}
+        {/*  css={{*/}
+        {/*    marginTop: 10,*/}
+        {/*    maxWidth: "80rem"*/}
+        {/*    textAlign: "center",*/}
+        {/*    color: "#125a54",*/}
+        {/*    lineHeight: 1.2,*/}
+        {/*    paddingLeft: "15px",*/}
+        {/*    paddingRight: "15px",*/}
+        {/*    "@media only screen and (max-width: 764px)": {*/}
+        {/*      fontSize: 20,*/}
+        {/*      maxWidth: "100%",*/}
+        {/*      paddingLeft: "5px",*/}
+        {/*      paddingRight: "5px",*/}
+        {/*      marginTop: "10px",*/}
+        {/*      textAlign: "left",*/}
+        {/*      color: "#125a54",*/}
+        {/*    },*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  KamayaKya is your friendly investment guru who will assist you in*/}
+        {/*  finding the best SME, MicroCap and SmallCap stocks to invest in,*/}
+        {/*  backed by solid research.*/}
+        {/*</Text>*/}
         <Box
           sx={{
-            marginTop: "40px",
+            marginTop: "10px",
             maxWidth: "80rem",
             display: "flex",
             flexDirection: "row",

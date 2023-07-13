@@ -19,51 +19,56 @@ const Section3 = () => {
     setShowIframe(false);
   };
 
-  const handleIonOnePage = () => {
-    setShowIframe(true);
-    setSelectedPDF("Ion Exchange (India) Ltd. (IEIL) - 1 Page Report.pdf");
-    setVisible(false);
-  };
+    const handleIonOnePage = () => {
+        // setShowIframe(true);
+        // setSelectedPDF("Ion Exchange (India) Ltd. (IEIL) - 1 Page Report.pdf");
+        // setVisible(false);
+        var win = window.open('Ion Exchange (India) Ltd. (IEIL) - 1 Page Report.pdf#toolbar=0&fitH=1', '_blank', 'fullscreen=yes');
+    };
+    const handleIonDetailed = () => {
+        // setShowIframe(true);
+        // setSelectedPDF("Ion Exchange (India) Ltd. (IEIL) - Detailed Report.pdf");
+        // setVisible(false);
+        var win = window.open('Ion Exchange (India) Ltd. (IEIL) - Detailed Report.pdf#toolbar=0&fitH=1', '_blank', 'fullscreen=yes');
+    };
+    const handleHGOnePage = () => {
+        // setShowIframe(true);
+        // setSelectedPDF("H.G. Infra Engineering Ltd (HGIEL) - 1 Page Report.pdf");
+        // setVisible(false);
+        var win = window.open('H.G. Infra Engineering Ltd (HGIEL) - 1 Page Report.pdf#toolbar=0&fitH=1', '_blank', 'fullscreen=yes');
+    };
+    const handleHGDetailed = () => {
+        // setShowIframe(true);
+        // setSelectedPDF("H.G. Infra Engineering Ltd (HGIEL) - Detailed Report.pdf");
+        // setVisible(false);
+        var win = window.open('H.G. Infra Engineering Ltd (HGIEL) - Detailed Report.pdf#toolbar=0&fitH=1', '_blank', 'fullscreen=yes');
+    };
+    const handleGravitaOnePage = () => {
+        // setShowIframe(true);
+        // setSelectedPDF("Gravita India Ltd. (GIL) - 1 Page Report.pdf");
+        // setVisible(false);
+        var win = window.open('Gravita India Ltd. (GIL) - 1 Page Report.pdf#toolbar=0&fitH=1', '_blank', 'fullscreen=yes');
+    };
+    const handleGravitaDetailed = () => {
+        // setShowIframe(true);
+        // setSelectedPDF("Gravita India Ltd. (GIL) - Detailed Report.pdf");
+        // setVisible(false);
+        var win = window.open('Ion Exchange (India) Ltd. (IEIL) - 1 Page Report.pdf#toolbar=0&fitH=1', '_blank', 'fullscreen=yes');
+    };
 
-  const handleIonDetailed = () => {
-    setShowIframe(true);
-    setSelectedPDF("Ion Exchange (India) Ltd. (IEIL) - Detailed Report.pdf");
-    setVisible(false);
-  };
+    const handleMonteOnePage = () => {
+        // setShowIframe(true);
+        // setSelectedPDF("Monte Carlo Fashions Ltd. (MCFL) - 1 Page Report.pdf");
+        // setVisible(false);
+        var win = window.open('Monte Carlo Fashions Ltd. (MCFL) - 1 Page Report.pdf#toolbar=0&fitH=1', '_blank', 'fullscreen=yes');
+    };
 
-  const handleHGOnePage = () => {
-    setShowIframe(true);
-    setSelectedPDF("H.G. Infra Engineering Ltd (HGIEL) - 1 Page Report.pdf");
-    setVisible(false);
-  };
-
-  const handleHGDetailed = () => {
-    setShowIframe(true);
-    setSelectedPDF("H.G. Infra Engineering Ltd (HGIEL) - Detailed Report.pdf");
-    setVisible(false);
-  };
-  const handleGravitaOnePage = () => {
-    setShowIframe(true);
-    setSelectedPDF("Gravita India Ltd. (GIL) - 1 Page Report.pdf");
-    setVisible(false);
-  };
-  const handleGravitaDetailed = () => {
-    setShowIframe(true);
-    setSelectedPDF("Gravita India Ltd. (GIL) - Detailed Report.pdf");
-    setVisible(false);
-  };
-
-  const handleMonteOnePage = () => {
-    setShowIframe(true);
-    setSelectedPDF("Monte Carlo Fashions Ltd. (MCFL) - 1 Page Report.pdf");
-    setVisible(false);
-  };
-
-  const handleMonteDetailed = () => {
-    setShowIframe(true);
-    setSelectedPDF("Monte Carlo Fashions Ltd. (MCFL) - Detailed Report.pdf");
-    setVisible(false);
-  };
+    const handleMonteDetailed = () => {
+        // setShowIframe(true);
+        // setSelectedPDF("Monte Carlo Fashions Ltd. (MCFL) - Detailed Report.pdf");
+        // setVisible(false);
+        var win = window.open('Monte Carlo Fashions Ltd. (MCFL) - Detailed Report.pdf#toolbar=0&fitH=1', '_blank', 'fullscreen=yes');
+    };
 
   return (
     <section

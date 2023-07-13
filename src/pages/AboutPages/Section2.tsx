@@ -357,7 +357,7 @@ const Section2 = () => {
           >
             <img
               src="https://www.greenapplewellness.com.au/wp-content/uploads/image-placeholder-350x350-1.png"
-              alt="Tushar Raghatate | KamayaKya Wealth Management"
+              alt="Dhiren Shah | KamayaKya Wealth Management"
               // width="100%";
               className="pfpTeam-mobile"
               style={{
@@ -443,8 +443,8 @@ const Section2 = () => {
             }}
           >
             <img
-              src="https://www.greenapplewellness.com.au/wp-content/uploads/image-placeholder-350x350-1.png"
-              alt="Tushar Raghatate | KamayaKya Wealth Management"
+              src="/nityaShah.jpg"
+              alt="Nitya Shah | KamayaKya Wealth Management"
               // width="100%";
               className="pfpTeam-mobile"
               style={{
@@ -453,6 +453,7 @@ const Section2 = () => {
                 // maxWidth: "265pxpx",
                 width: "265px",
                 objectFit: "cover",
+                  objectPosition: "top"
               }}
             />
             <div
@@ -530,8 +531,8 @@ const Section2 = () => {
             }}
           >
             <img
-              src="https://www.greenapplewellness.com.au/wp-content/uploads/image-placeholder-350x350-1.png"
-              alt="Tushar Raghatate | KamayaKya Wealth Management"
+              src="/aniketKulkarni.JPG"
+              alt="Aniket Kulkarni | KamayaKya Wealth Management"
               // width="100%";
               className="pfpTeam-mobile"
               style={{
@@ -616,7 +617,7 @@ const Section2 = () => {
             }}
           >
             <img
-              src="https://www.greenapplewellness.com.au/wp-content/uploads/image-placeholder-350x350-1.png"
+              src="/tusharRaghate.JPG"
               alt="Tushar Raghatate | KamayaKya Wealth Management"
               // width="100%";
               className="pfpTeam-mobile"

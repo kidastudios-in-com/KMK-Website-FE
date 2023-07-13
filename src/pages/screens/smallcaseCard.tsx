@@ -11,6 +11,7 @@ const SmallcaseCard = () => {
         width: "100vw",
         paddingLeft: "15px",
         paddingRight: "15px",
+        paddingBottom: "150px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",

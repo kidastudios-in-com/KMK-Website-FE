@@ -32,10 +32,16 @@ function MyApp({ Component, pageProps }: AppProps) {
             />
             <link
               rel="icon"
-              type="image/png"
-              href="/kamayaKya-website-favicon-white-bordered.png"
-              sizes="16x16"
+              // type="image/png"
+              href="/kamayaKya-website-favicon-white-bordered.ico"
+              sizes="any"
             />
+            {/*<link*/}
+            {/*  rel="icon"*/}
+            {/*  type="image/svg+xml"*/}
+            {/*  href="/kamayaKya-website-favicon-white-bordered.svg"*/}
+            {/*  sizes="any"*/}
+            {/*/>*/}
             <link rel="preload" href="/src/styles/globals.css" as="style" />
             <link rel="stylesheet" href="/src/styles/globals.css" />
 

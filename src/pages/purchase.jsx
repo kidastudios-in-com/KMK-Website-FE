@@ -1,6 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import { loadStripe } from "@stripe/stripe-js";
-import { Button, Card, Input, Loading, Modal, Text } from "@nextui-org/react";
+import {
+  Button,
+  Card,
+  Divider,
+  Input,
+  Loading,
+  Modal,
+  Text,
+} from "@nextui-org/react";
 import { BILLING_URL, GET_PRODUCT, PAYMENT_URL } from "./api/URLs";
 import { Box, IconButton } from "@mui/material";
 import { Elements } from "@stripe/react-stripe-js";
@@ -414,7 +422,7 @@ export default function PreviewPage() {
         <Card
           css={{
             width: "380px",
-            height: "520px",
+            height: "620px",
             alignSelf: "center",
             borderRadius: "24px",
             "@media only screen and (max-width: 764px)": {
@@ -447,7 +455,7 @@ export default function PreviewPage() {
               fontSize: 40,
               lineHeight: 1.2,
               marginTop: "40px",
-              marginBottom: "20px",
+              marginBottom: "0px",
               "@media only screen and (max-width: 764px)": {
                 fontSize: 30,
                 width: "100%",
@@ -458,6 +466,22 @@ export default function PreviewPage() {
           </Text>
           <Text
             b
+            color="#000"
+            css={{
+              fontSize: 15,
+              lineHeight: 1.2,
+              marginTop: "0px",
+              marginBottom: "25px",
+              "@media only screen and (max-width: 764px)": {
+                fontSize: 10,
+                width: "100%",
+              },
+            }}
+          >
+            You will receive your invoice via email
+          </Text>
+          <Text
+            b
             css={{
               alignSelf: "start",
               marginLeft: "50px",
@@ -465,7 +489,7 @@ export default function PreviewPage() {
               color: "#125a54",
             }}
           >
-            * required
+            NAME * required
           </Text>
           <Input
             required
@@ -492,7 +516,7 @@ export default function PreviewPage() {
               color: "#125a54",
             }}
           >
-            * required
+            WHATSAPP NUMBER * required
           </Text>
           <PhoneInput
             containerStyle={{
@@ -524,7 +548,7 @@ export default function PreviewPage() {
               color: "#125a54",
             }}
           >
-            * required
+            EMAIL ID * required
           </Text>
           <Input
             required
@@ -551,10 +575,36 @@ export default function PreviewPage() {
               color: "grey",
             }}
           >
-            optional
+            GSTIN (optional)
           </Text>
           <Input
             placeholder="eg: 22AAAAA0000A1Z5"
+            clearable
+            size="lg"
+            value={gstNo}
+            onChange={handleGSTChange}
+            css={{
+              marginBottom: "10px",
+              alignSelf: "center",
+              width: "300px",
+              height: "50px",
+              borderRadius: "1000px",
+            }}
+            className="countryPhone"
+          />
+          <Text
+            b
+            css={{
+              alignSelf: "start",
+              marginLeft: "50px",
+              fontSize: 12,
+              color: "grey",
+            }}
+          >
+            REFERRAL CODE (optional)
+          </Text>
+          <Input
+            placeholder="eg: KMK007"
             clearable
             size="lg"
             value={gstNo}
@@ -595,6 +645,14 @@ export default function PreviewPage() {
           </Box>
         </Card>
       </Modal>
+      <br />
+      <Divider
+        css={{
+          width: "500px",
+          maxWidth: "80rem",
+        }}
+      ></Divider>
+      {/*<br />*/}
       <Box
         style={{
           display: "flex",
@@ -608,100 +666,168 @@ export default function PreviewPage() {
         }}
         className="paymentsPage-box"
       >
-        <Text
-          b
-          size={35}
-          color="#000"
-          css={{
-            width: "100%",
-            mt: "30px",
+        <img
+          src="upi.png"
+          style={{
+            width: "500px",
+            maxWidth: "80rem",
+            height: "auto",
+            marginTop: "20px",
+            marginBottom: "20px",
+            borderRadius: "20px",
             alignSelf: "center",
-            "@media only screen and (max-width: 764px)": {
-              mt: "10px",
-            },
           }}
-        >
-          Account Transfer:
-        </Text>
-        <Text
-          size={21}
-          css={{
-            width: "100%",
-            "@media only screen and (max-width: 764px)": {
-              fontSize: "17px",
-              lineHeight: "1.3",
-            },
-          }}
-        >
-          If you are transferring through <b>Cheque/DD/Direct</b> account then
-          please send an email to{" "}
-          <a href="mailto: contact@kamayakya.com">contact@kamayakya.com</a>{" "}
-          <b>
-            mentioning your name, email id, account number, bank name,
-            transaction number and the amount transferred
-          </b>
-          . We do not accept cash. Please do not deposit CASH. Payment can be
-          through Cheque, DD, or direct account transfer.
-        </Text>
+          className="paymentsPage-box-account"
+        />
+        <br />
+        <Divider></Divider>
+        <br />
+        {/*<Text*/}
+        {/*  b*/}
+        {/*  size={35}*/}
+        {/*  color="#000"*/}
+        {/*  css={{*/}
+        {/*    width: "100%",*/}
+        {/*    mt: "30px",*/}
+        {/*    alignSelf: "center",*/}
+        {/*    "@media only screen and (max-width: 764px)": {*/}
+        {/*      mt: "10px",*/}
+        {/*      padding: "0px 10px",*/}
+        {/*    },*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  Account Transfer:*/}
+        {/*</Text>*/}
+        {/*<Text*/}
+        {/*  size={21}*/}
+        {/*  css={{*/}
+        {/*    width: "100%",*/}
+        {/*    "@media only screen and (max-width: 764px)": {*/}
+        {/*      fontSize: "17px",*/}
+        {/*      lineHeight: "1.3",*/}
+        {/*      padding: "0px 10px",*/}
+        {/*    },*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  If you are transferring through <b>Cheque/DD/Direct</b> account then*/}
+        {/*  please send an email to{" "}*/}
+        {/*  <a href="mailto: contact@kamayakya.com">contact@kamayakya.com</a>{" "}*/}
+        {/*  <b>*/}
+        {/*    mentioning your name, email id, account number, bank name,*/}
+        {/*    transaction number and the amount transferred*/}
+        {/*  </b>*/}
+        {/*  . We do not accept cash. Please do not deposit CASH. Payment can be*/}
+        {/*  through Cheque, DD, or direct account transfer.*/}
+        {/*</Text>*/}
         {/* <Box> */}
         <Box
           sx={{
             width: "500px",
             maxWidth: "80rem",
             display: "flex",
-            background: "#d3d3d3",
+            background: "#f3f3f3",
             // border: "2px solid",
             borderRadius: "20px",
             flexDirection: "column",
             mt: "20px",
-            padding: "20px",
+            mb: "50px",
+            padding: "30px",
           }}
           className="paymentsPage-box-account"
         >
           <Text
+            b
+            size={35}
+            color="#000"
+            css={{
+              width: "100%",
+              mt: "30px",
+              alignSelf: "center",
+              "@media only screen and (max-width: 764px)": {
+                mt: "10px",
+                fontSize: "30px",
+                padding: "0px 0px",
+              },
+            }}
+          >
+            Account Transfer:
+          </Text>
+          <Text
+            size={18}
+            css={{
+              width: "100%",
+              "@media only screen and (max-width: 764px)": {
+                fontSize: "14px",
+                lineHeight: "1.3",
+                padding: "0px 0px",
+              },
+            }}
+          >
+            If you are transferring through <b>Cheque/DD/Direct</b> account then
+            please send an email to{" "}
+            <a href="mailto: contact@kamayakya.com">contact@kamayakya.com</a>{" "}
+            <b>
+              mentioning your name, email id, account number, bank name,
+              transaction number and the amount transferred
+            </b>
+            . We do not accept cash. Please do not deposit CASH. Payment can be
+            through Cheque, DD, or direct account transfer.
+          </Text>
+          <br />
+          <Text
             size={18}
             css={{
               "@media only screen and (max-width: 764px)": {
-                fontSize: "16px",
+                fontSize: "18px",
                 lineHeight: "1.3",
               },
             }}
           >
-            Account Name: <b>Kamayakya Wealth Management Pvt. Ltd.</b>
+            Account Name: <br />
+            <b>KAMAYAKYA WEALTH MANAGEMENT PVT. LTD.</b>
           </Text>
+          <br />
           <Text size={18}>
-            PAN: <b>AAJCK1075B</b>
+            PAN: <br />
+            <b>AAJCK1075B</b>
           </Text>
+          <br />
+
           <Text size={18}>
-            Account Type: <b>Current Account</b>
+            Account Type: <br />
+            <b>Current Account</b>
           </Text>
+          <br />
+
           <Text size={18}>
-            Account Number: <b>50200063188457</b>
+            Account Number: <br />
+            <b>50200063188457</b>
           </Text>
+          <br />
+
           <Text size={18}>
-            Bank: <b>HDFC Bank</b>
+            Bank: <br />
+            <b>HDFC Bank</b>
           </Text>
+          <br />
+
           <Text size={18}>
-            IFSC Code: <b>HDFC0000039</b>
+            IFSC Code: <br />
+            <b>HDFC0000039</b>
           </Text>
+          <br />
+
           <Text size={18}>
-            MICR Code: <b>411240004</b>
+            MICR Code: <br />
+            <b>411240004</b>
           </Text>
+          <br />
+
           <Text size={18}>
-            Branch Location: <b>Boat Club, Pune</b>
+            Branch Location: <br />
+            <b>Boat Club, Pune</b>
           </Text>
         </Box>
-        <img
-          src="dummy_upi.jpeg"
-          style={{
-            width: "500px",
-            maxWidth: "80rem",
-            height: "auto",
-            marginTop: "30px",
-            marginBottom: "50px",
-          }}
-          className="paymentsPage-box-account"
-        />
 
         {/* <Box> */}
         {/* </Box> */}

@@ -96,7 +96,13 @@ const StockCard = () => {
   const [showCert, setShowCert] = useState(false);
 
   const handleCert = () => {
-    setShowCert(true);
+    // setShowCert(true);
+    var win = window.open(
+      "Kamayakya-SEBI-License.pdf#toolbar=0&fitH=1",
+      "_blank",
+      "fullscreen=yes"
+    );
+    // win.document.write('<PdfViewer pdf={PDF}/>');
   };
 
   const handleCertClose = () => {
@@ -541,22 +547,22 @@ const StockCard = () => {
             sx={{
               width: {
                 xs: "100vw",
-                sm: "400px",
+                sm: "500px",
               },
               maxWidth: {
                 xs: "100%",
-                sm: "400px",
+                sm: "500px",
               },
               "& .MuiDrawer-paper": {
                 borderRadius: { xs: "0px", sm: "25px 0px 0px 25px" },
                 padding: "15px",
                 width: {
                   xs: "100vw",
-                  sm: "400px",
+                  sm: "500px",
                 },
                 maxWidth: {
                   xs: "100%",
-                  sm: "400px",
+                  sm: "500px",
                 },
               },
             }}
@@ -575,7 +581,7 @@ const StockCard = () => {
               >
                 <CloseIcon />
               </ListItemButton>
-              <Text b size={30} css={{ paddingLeft: "30px" }}>
+              <Text b size={25} css={{ paddingLeft: "30px" }}>
                 Filter by industries :
               </Text>
               <ListItem>
@@ -654,6 +660,10 @@ const StockCard = () => {
 									</Dropdown.Menu>
 								</Dropdown>
 							</ListItem> */}
+              <br />
+              <Divider></Divider>
+              <br />
+              <br />
               <Text b size={25} css={{ paddingLeft: "30px" }}>
                 Sort by :
               </Text>
@@ -1362,23 +1372,23 @@ const StockCard = () => {
               >
                 <Card
                   css={{
-                      height: "fit-content",
-                      width: "fit-content",
-                      maxWidth: "80rem",
-                      minWidth: "100%",
-                      display: "flex",
-                      alignItems: "center",
-                      flexDirection: "column",
-                      padding: "50px 30px",
-                      borderRadius: "25px",
-                      backgroundImage: "url(symbol-scatter-haikei-3.svg)",
-                      objectPosition: "center",
-                      backgroundPositionY: "center",
-                      backgroundSize: "cover",
-                      "@media only screen and (max-width: 764px)": {
-                          minWidth: "100px",
-                          width: "100vw !important",
-                      },
+                    height: "fit-content",
+                    width: "fit-content",
+                    maxWidth: "80rem",
+                    minWidth: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                    flexDirection: "column",
+                    padding: "50px 30px",
+                    borderRadius: "25px",
+                    // backgroundImage: "url(symbol-scatter-haikei-3.svg)",
+                    objectPosition: "center",
+                    backgroundPositionY: "center",
+                    backgroundSize: "cover",
+                    "@media only screen and (max-width: 764px)": {
+                      minWidth: "100px",
+                      width: "100vw !important",
+                    },
                   }}
                 >
                   <Box
@@ -1387,7 +1397,7 @@ const StockCard = () => {
                       // height: "350px",
                       display: "flex",
                       flexDirection: "column",
-                        gap: "20px",
+                      gap: "20px",
                     }}
                   >
                     <Text b size={27}>
@@ -1441,24 +1451,24 @@ const StockCard = () => {
                   flat
                   onPress={handleCloseReports}
                   css={{
-                      alignSelf: "center",
-                      // width: "100%",
-                      backgroundColor: "#ffa12e",
-                      color: "#fff",
-                      fontSize: 19,
-                      marginTop: "20px",
-                      borderRadius: "10px",
+                    alignSelf: "center",
+                    // width: "100%",
+                    backgroundColor: "#ffa12e",
+                    color: "#fff",
+                    fontSize: 19,
+                    marginTop: "20px",
+                    borderRadius: "10px",
+                    height: "50px",
+                    "@media only screen and (max-width: 768px)": {
+                      width: "100%",
+                      fontSize: 15,
                       height: "50px",
-                      "@media only screen and (max-width: 768px)": {
-                          width: "100%",
-                          fontSize: 15,
-                          height: "50px",
-                          marginTop: "0px",
-                          borderRadius: "0px 0px 10px",
-                          "& span": {
-                              // display: "none",
-                          },
+                      marginTop: "0px",
+                      borderRadius: "0px 0px 10px",
+                      "& span": {
+                        // display: "none",
                       },
+                    },
                   }}
                 >
                   Close
@@ -1475,9 +1485,9 @@ const StockCard = () => {
                   borderRadius: "15px",
                   background: "transparent",
                   boxShadow: "none",
-                    alignSelf: "center",
-                    alignContent: "center",
-                    justifyContent: "center",
+                  alignSelf: "center",
+                  alignContent: "center",
+                  justifyContent: "center",
                   // backdropFilter: "blur(8px)",
                 }}
                 className="iframePdfMobile"
@@ -1489,7 +1499,7 @@ const StockCard = () => {
                   <Box
                     sx={{
                       height: "75vh",
-                        borderRadius: "15px",
+                      borderRadius: "15px",
                     }}
                   >
                     {/* {console.log(PdfValue)} */}
@@ -1505,25 +1515,25 @@ const StockCard = () => {
                   flat
                   onPress={handleCloseModal}
                   css={{
-                      alignSelf: "center",
-                      // width: "100%",
-                      backgroundColor: "#ffa12e",
-                      color: "#fff",
-                      fontSize: 19,
-                      marginTop: "20px",
-                      borderRadius: "10px",
-                      height: "50px",
+                    alignSelf: "center",
+                    // width: "100%",
+                    backgroundColor: "#ffa12e",
+                    color: "#fff",
+                    fontSize: 19,
+                    marginTop: "20px",
+                    borderRadius: "10px",
+                    height: "50px",
+                    width: "100%",
+                    "@media only screen and (max-width: 768px)": {
                       width: "100%",
-                      "@media only screen and (max-width: 768px)": {
-                          width: "100%",
-                          fontSize: 15,
-                          height: "50px",
-                          marginTop: "0px",
-                          borderRadius: "0px 0px 10px",
-                          "& span": {
-                              // display: "none",
-                          },
+                      fontSize: 15,
+                      height: "50px",
+                      marginTop: "0px",
+                      borderRadius: "0px 0px 10px",
+                      "& span": {
+                        // display: "none",
                       },
+                    },
                   }}
                 >
                   Close
@@ -1555,9 +1565,13 @@ const StockCard = () => {
                   }}
                   className="stocksPage-subscribe-mobile"
                 >
+                  <div className="cr cr-top cr-right cr-sticky cr-subscription">
+                    VIP+
+                  </div>
                   <img
-                    src="kamayakya-logo-white.png"
+                    src="kamayakya-logo-white-vip.png"
                     style={{ marginTop: "5px", width: "75%" }}
+                    alt="kamayakya"
                   />
 
                   <Divider
@@ -1713,7 +1727,7 @@ const StockCard = () => {
                     <span
                       style={{ color: "#fff", fontSize: 30, lineHeight: 1.2 }}
                     >
-                      11,800/year
+                      15,000/year
                     </span>
                   </Text>
 
@@ -1800,6 +1814,7 @@ const StockCard = () => {
                         border: "4px solid",
                         borderColor: "#ffa12e",
                         paddingBottom: "30px",
+                        marginBottom: "0px",
                       },
                     }}
                   >

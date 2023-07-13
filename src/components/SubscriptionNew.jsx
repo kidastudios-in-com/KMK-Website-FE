@@ -151,8 +151,10 @@ const SubscriptionNew = () => {
               },
             }}
           >
+            <div className="cr cr-top cr-right cr-sticky cr-blue">FREE</div>
+
             <img
-              src="./kmk-logo (1).png"
+              src="./kmk-logo-free.png"
               style={{ marginTop: "5px", width: "65%" }}
             />
             <Divider
@@ -306,7 +308,7 @@ const SubscriptionNew = () => {
               </Modal.Body>
             </Modal>
             <Text b size={20} css={{ marginTop: "10px", opacity: 0 }}>
-              for ₹<span style={{ fontSize: 28, opacity: 0 }}>11,800/year</span>
+              for ₹<span style={{ fontSize: 28, opacity: 0 }}>15,000/year</span>
             </Text>
           </Card>
           <Card
@@ -321,8 +323,8 @@ const SubscriptionNew = () => {
               background: "#fff",
               filter: "none",
               justifyContent: "center",
-              paddingTop: "50px",
-              paddingBottom: "50px",
+              paddingTop: "80px",
+              paddingBottom: "80px",
               paddingLeft: "15px",
               paddingRight: "15px",
               backgroundImage:
@@ -333,8 +335,11 @@ const SubscriptionNew = () => {
               },
             }}
           >
+            <div className="cr cr-top cr-right cr-sticky cr-subscription">
+              VIP+
+            </div>
             <img
-              src="kamayakya-logo-white.png"
+              src="kamayakya-logo-white-vip.png"
               style={{ marginTop: "5px", width: "75%" }}
             />
 
@@ -511,7 +516,7 @@ const SubscriptionNew = () => {
                   opacity: isSubscribed ? 0 : 1,
                 }}
               >
-                11,800/year
+                15,000/year
               </span>
             </Text>
 
@@ -663,7 +668,7 @@ const SubscriptionNew = () => {
               onClick={() =>
                 window.open(
                   "https://kamayakya.smallcase.com/#portfolios",
-                  "_blank",
+                  "_blank"
                 )
               }
             >
