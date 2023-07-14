@@ -232,7 +232,7 @@ const NavBar2 = () => {
                 borderRadius: "10000px",
                 fontSize: "large",
                 opacity: "0",
-                display: "none",
+                // display: "none",
               }}
             >
               <span style={{ fontSize: 20 }}>Track record</span>

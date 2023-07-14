@@ -403,6 +403,7 @@ export default function PreviewPage() {
       </Elements>
 
       <Modal
+        blur
         open={openBillingModal}
         onClose={handleCloseBillingModal}
         css={{

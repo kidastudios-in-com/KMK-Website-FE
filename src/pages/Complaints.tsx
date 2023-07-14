@@ -45,7 +45,7 @@ const Complaints = () => {
           css={{
             marginTop: "0px",
             width: "100%",
-            maxWidth: "80rem" /* 1280px */,
+            // maxWidth: "80rem" /* 1280px */,
             textAlign: "center",
             lineHeight: 1.2,
             paddingLeft: "15px",
@@ -88,7 +88,12 @@ const Complaints = () => {
         >
           <iframe
             src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRRif7G0NdTUfwk_5AcuO445X2lweaepDgv9Nc9zg7LMVAobXvFOKtl3sIUlicZQe4Pi5T1uA1ysI-a/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false&amp;chrome=false"
-            style={{ width: "80vw", height: "90vh", border: "none" }}
+            style={{
+              width: "85vw",
+              height: "90vh",
+              border: "none",
+              alignSelf: "center",
+            }}
           />
         </Box>
         {/*</Text>*/}
