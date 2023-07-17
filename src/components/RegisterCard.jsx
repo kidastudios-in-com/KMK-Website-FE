@@ -162,7 +162,7 @@ const RegisterCard = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              justifyContent: "center",
+              justifyContent: "flex-start",
             }}
           >
             <Box
@@ -192,7 +192,7 @@ const RegisterCard = () => {
               </Text>
               <Text
                 b
-                size={20}
+                size={17.5}
                 color="#ffa12e"
                 css={{
                   lineHeight: 1.1,
@@ -202,7 +202,7 @@ const RegisterCard = () => {
                   padding: "0px 10px",
                   opacity: "0.95",
                   "@media only screen and (max-width: 764px)": {
-                    fontSize: 20,
+                    fontSize: 17.5,
                     width: "100%",
                   },
                 }}

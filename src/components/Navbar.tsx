@@ -349,7 +349,12 @@ export default function App() {
                 color={"warning"}
                 // onPress={handleLoginClick}
                 onPress={handleLogin}
-                css={{ backgroundColor: "#ff9f24", borderRadius: "10000px" }}
+                css={{
+                  backgroundColor: "#ff9f24",
+                  borderRadius: "10000px",
+                  // border: "1px solid white",
+                  boxShadow: "0px 0px 0px 2px rgba(255,255,255,0.15)",
+                }}
               >
                 <span style={{ fontSize: 20 }}>Login</span>
               </Button>
@@ -409,6 +414,8 @@ export default function App() {
                 backgroundImage: "linear-gradient(to top , #106052, #0f734d)",
                 borderRadius: "10000px",
                 fontSize: "large",
+                // border: "1px solid white",
+                boxShadow: "0px 0px 0px 2px rgba(255,255,255,0.15)",
               }}
             >
               <span style={{ fontSize: 20 }}>Stocks to buy</span>

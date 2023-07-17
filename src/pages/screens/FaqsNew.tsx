@@ -135,8 +135,8 @@ const FaqsNew = () => {
               }}
             >
               <a href="mailto:contact@kamayakya.com" target="_blank">
-                <Text b size={20} color="#000">
-                  E-mail Us
+                <Text b size={20} color="white">
+                  Send an email
                 </Text>
               </a>
             </Button>

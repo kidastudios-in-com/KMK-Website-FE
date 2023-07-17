@@ -1103,32 +1103,34 @@ const WhyUs = () => {
                 }}
               >
                 {record[selectedCardIndex] && (
-                  <Card
-                    key={selectedCardIndex}
-                    css={{
-                      width: "450px",
-                      height: "300px",
-                      paddingTop: "30px",
-                      paddingBottom: "30px",
-                      backgroundImage:
-                        "linear-gradient(to top , #0F734D, #0F734D, #105B54)",
-                      borderRadius: "30px",
-                      borderBottomRightRadius: "5px",
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      filter: "none",
-                      boxShadow: "none",
-                      "@media only screen and (max-width: 764px)": {
-                        width: "100%",
-                        paddingTop: "30px",
-                        paddingBottom: "30px",
-                      },
-                    }}
+                  <Box
+                    sx={{ display: "flex", flexDirection: "row", gap: "20px" }}
                   >
                     {record[selectedCardIndex].stock_targets.length > 0 ? (
                       record[selectedCardIndex].stock_targets.map((target) => (
-                        <div key={target.id}>
+                        <Card
+                          key={target.id}
+                          css={{
+                            width: "450px",
+                            // height: "218px",
+                            paddingTop: "30px",
+                            paddingBottom: "30px",
+                            backgroundImage:
+                              "linear-gradient(to top , #0F734D, #0F734D, #105B54)",
+                            borderRadius: "30px",
+                            // borderBottomRightRadius: "5px",
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            filter: "none",
+                            boxShadow: "none",
+                            "@media only screen and (max-width: 764px)": {
+                              width: "100%",
+                              paddingTop: "30px",
+                              paddingBottom: "30px",
+                            },
+                          }}
+                        >
                           <Box
                             sx={{
                               padding: "5px",
@@ -1191,16 +1193,33 @@ const WhyUs = () => {
                                   )}
                                 </Text>
                               </div>
+                              <img
+                                src={
+                                  record[selectedCardIndex].action === "HOLD"
+                                    ? "HoldBubbleYellow.png"
+                                    : record[selectedCardIndex].action ===
+                                      "SELL"
+                                    ? "SellBubbleRed.png"
+                                    : record[selectedCardIndex].action === "BUY"
+                                    ? "BuyBubbleBlue.png"
+                                    : "HoldBubbleYellow.png"
+                                }
+                                style={{
+                                  width: "55px",
+                                  height: "55px",
+                                  alignSelf: "start",
+                                }}
+                              />
                             </div>
                             <Divider
                               css={{
                                 height: "3px",
-                                width: "70%",
+                                width: "100%",
                                 background: "#fff",
                                 borderRadius: "20px",
                                 opacity: 0.5,
                                 alignSelf: "start",
-                                marginTop: "10px",
+                                // marginTop: "10px",
                               }}
                             />
                             <div
@@ -1254,32 +1273,6 @@ const WhyUs = () => {
                                   </span>
                                   {target.hold_price}
                                 </Text>
-                                {/* <Text
-																			b
-																			size={16}
-																			color="#fff"
-																			css={{
-																				opacity: 0.7,
-																				lineHeight: 1,
-																				"@media only screen and (max-width: 764px)":
-																					{
-																						paddingTop: "0px",
-																						fontSize: "14.5px",
-																					},
-																			}}
-																		>
-																			{record[selectedCardIndex].start_date
-																				? `${new Date(
-																						item.start_date
-																				  ).getDate()} ${new Date(
-																						item.start_date
-																				  ).toLocaleString("default", {
-																						month: "short",
-																				  })} ${new Date(
-																						item.start_date
-																				  ).getFullYear()}`
-																				: "03 Nov 2022"}
-																		</Text> */}
                               </Box>
                               <Box
                                 sx={{
@@ -1349,26 +1342,6 @@ const WhyUs = () => {
                                   })} ${new Date().getFullYear()}`}
                                 </Text>
                               </Box>
-                            </div>
-                            <Divider
-                              css={{
-                                height: "3px",
-                                width: "40%",
-                                background: "#fff",
-                                borderRadius: "20px",
-                                opacity: 0.5,
-                                alignSelf: "start",
-                                marginTop: "15px",
-                              }}
-                            />
-                            <Box
-                              sx={{
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "center",
-                                marginTop: "15px",
-                              }}
-                            >
                               <Box
                                 sx={{
                                   display: "flex",
@@ -1434,27 +1407,25 @@ const WhyUs = () => {
                                   )} ${new Date().getFullYear()}`}
                                 </Text>
                               </Box>
-                            </Box>
+                            </div>
+                            {/* <Divider
+															css={{
+																height: "3px",
+																width: "40%",
+																background: "#fff",
+																borderRadius: "20px",
+																opacity: 0.5,
+																alignSelf: "start",
+																marginTop: "15px",
+															}}
+														/> */}
                           </Box>
-
-                          {/* <Text color="#fff">
-																Hold Price: ₹{target.hold_price}
-															</Text>
-															<Text color="#fff">
-																Target Price: ₹{target.target_price}
-															</Text>
-															<Text color="#fff">
-																Target Date: {target.target_date}
-															</Text>
-															<Text color="#fff">
-																Profit/Loss: {target.gain_loss}%
-															</Text> */}
-                        </div>
+                        </Card>
                       ))
                     ) : (
                       <Text>No targets available</Text>
                     )}
-                  </Card>
+                  </Box>
                 )}
 
                 <Button

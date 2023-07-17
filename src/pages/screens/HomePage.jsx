@@ -332,7 +332,7 @@ const HomePage = () => {
             sequence={[
               5000,
               "Maximize the growth of your funds by investing in high-potential ideas", // initially rendered starting point
-              5000,
+              3000,
               "Maximize the growth of your funds by investing in SME, micro-cap & small-cap stocks",
               // 1000,
               // 'We produce food for Guinea Pigs',

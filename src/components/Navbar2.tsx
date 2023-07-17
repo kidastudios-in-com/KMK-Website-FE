@@ -276,7 +276,7 @@ const NavBar2 = () => {
             <Dropdown.Item key="handleTrack">Track record</Dropdown.Item>
             <Dropdown.Item key="handleStockPicks">Stock to buy</Dropdown.Item>
             <Dropdown.Item key="settings" withDivider>
-              Settings
+              Profile
             </Dropdown.Item>
             {/* <Dropdown.Item key="purchase" withDivider color="warning">
 							Subscribe

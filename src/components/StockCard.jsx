@@ -581,15 +581,22 @@ const StockCard = () => {
               >
                 <CloseIcon />
               </ListItemButton>
-              <Text b size={25} css={{ paddingLeft: "30px" }}>
-                Filter by industries :
-              </Text>
+              {/*<Text b size={21} css={{ paddingLeft: "30px" }}>*/}
+              {/*  Filter by industries :*/}
+              {/*</Text>*/}
               <ListItem>
                 <FormControl
                   sx={{ mt: "5px", ml: "15px" }}
                   component="fieldset"
                   variant="standard"
                 >
+                  <Text
+                    b
+                    size={19}
+                    css={{ paddingLeft: "30px", marginBottom: "15px" }}
+                  >
+                    Filter by industries:
+                  </Text>
                   <FormGroup>
                     {/* <Grid container spacing={2}> */}
                     {industries.map((industry, index) => (
@@ -608,7 +615,7 @@ const StockCard = () => {
                     ))}
                     {/* </Grid> */}
                   </FormGroup>
-                  <FormHelperText>Multiple Selection</FormHelperText>
+                  {/*<FormHelperText>Multiple Selection</FormHelperText>*/}
                 </FormControl>
               </ListItem>
               {/* <ListItem sx={{ justifyContent: "center" }}>
@@ -660,28 +667,46 @@ const StockCard = () => {
 									</Dropdown.Menu>
 								</Dropdown>
 							</ListItem> */}
-              <br />
-              <Divider></Divider>
-              <br />
-              <br />
-              <Text b size={25} css={{ paddingLeft: "30px" }}>
-                Sort by :
-              </Text>
+
+              <Divider
+                css={{
+                  width: "50%",
+                  height: "4px",
+                  borderRadius: "1000px",
+                  backgroundColor: "#FF9E24",
+                  margin: "20px 25px 15px",
+                }}
+              />
+              {/*<Text b size={21} css={{ paddingLeft: "30px" }}>*/}
+              {/*  Sort by time left:*/}
+              {/*</Text>*/}
               <ListItem>
                 <FormControl sx={{ mt: "5px", ml: "15px" }}>
-                  <FormLabel id="demo-controlled-radio-buttons-group">
-                    Time left
-                  </FormLabel>
+                  {/*<FormLabel*/}
+                  {/*  id="demo-controlled-radio-buttons-group"*/}
+                  {/*  style={{*/}
+                  {/*    fontSize: "15px",*/}
+                  {/*    fontWeight: "bold",*/}
+                  {/*    color: "#106352",*/}
+                  {/*  }}*/}
+                  {/*>*/}
+                  {/*  Time left*/}
+                  {/*</FormLabel>*/}
+                  <Text b size={19} css={{ paddingLeft: "30px" }}>
+                    Sort by time left:
+                  </Text>
                   <RadioGroup value={timeSort} onChange={timeSortValue}>
-                    <FormControlLabel
-                      value="ascending"
-                      control={<Radio />}
-                      label="ascending -> descending"
-                    />
                     <FormControlLabel
                       value="descending"
                       control={<Radio />}
-                      label="descending -> ascending"
+                      label="Most Time Remaining (This means the stocks with the most time left are at the top)"
+                      style={{ paddingTop: "20px" }}
+                    />
+                    <FormControlLabel
+                      value="ascending"
+                      control={<Radio />}
+                      label="Least Time Remaining (This means the stocks with the least time left are at the top)"
+                      style={{ paddingTop: "20px" }}
                     />
                   </RadioGroup>
                 </FormControl>
@@ -735,19 +760,31 @@ const StockCard = () => {
 							</ListItem> */}
               <ListItem>
                 <FormControl sx={{ ml: "15px" }}>
-                  <FormLabel id="controlled-radio-buttons">
-                    By Upside Left
-                  </FormLabel>
+                  {/*<FormLabel*/}
+                  {/*  id="controlled-radio-buttons"*/}
+                  {/*  style={{*/}
+                  {/*    fontSize: "15px",*/}
+                  {/*    fontWeight: "bold",*/}
+                  {/*    color: "#106352",*/}
+                  {/*  }}*/}
+                  {/*>*/}
+                  {/*  Potential upside*/}
+                  {/*</FormLabel>*/}
+                  <Text b size={19} css={{ paddingLeft: "30px" }}>
+                    Sort by potential upside:
+                  </Text>
                   <RadioGroup value={upsideSort} onChange={upsideSortValue}>
-                    <FormControlLabel
-                      value="ascending"
-                      control={<Radio />}
-                      label="ascending -> descending"
-                    />
                     <FormControlLabel
                       value="descending"
                       control={<Radio />}
-                      label="descending -> ascending"
+                      label="Highest to Lowest (This means the stocks with the greatest potential upside are at the top)"
+                      style={{ paddingTop: "20px" }}
+                    />
+                    <FormControlLabel
+                      value="ascending"
+                      control={<Radio />}
+                      label="Lowest to Highest (This means the stocks with the least potential upside are at the top)"
+                      style={{ paddingTop: "20px" }}
                     />
                   </RadioGroup>
 
@@ -775,7 +812,13 @@ const StockCard = () => {
                   <Button
                     auto
                     onPress={handleClearSelection}
-                    css={{ background: "#ffa12e", fontSize: 17, width: "100%" }}
+                    css={{
+                      background: "#ffa12e",
+                      fontSize: 17,
+                      width: "100%",
+                      borderRadius: "10000px",
+                      marginTop: "20px",
+                    }}
                   >
                     Clear Selection
                   </Button>
@@ -1096,7 +1139,7 @@ const StockCard = () => {
                             },
                           }}
                         >
-                          (IN Cr.)
+                          (IN ₹ Cr.)
                         </Text>
                       </div>
                       <Text
@@ -1160,7 +1203,7 @@ const StockCard = () => {
                               },
                             }}
                           >
-                            (in ₹)
+                            (IN ₹)
                           </Text>
                         </div>
                         <Text
