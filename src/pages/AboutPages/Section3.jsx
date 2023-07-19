@@ -13,11 +13,11 @@ import React, { useState } from "react";
 const Section3 = () => {
   const { setVisible, bindings } = useModal();
   const [selectedPDF, setSelectedPDF] = useState(new Set(["SampleReport.pdf"]));
-  const [showIframe, setShowIframe] = useState(false);
+    const [showIframe, setShowIframe] = useState(false);
 
-  const handleCloseIframe = () => {
-    setShowIframe(false);
-  };
+    const handleCloseIframe = () => {
+        setShowIframe(false);
+    };
 
     const handleIonOnePage = () => {
         // setShowIframe(true);
@@ -197,68 +197,68 @@ const Section3 = () => {
               Read our reports
             </Text>
           </Button>
-          <Modal
-            blur
-            aria-labelledby="modal-pdf"
-            aria-describedby="pdf-description"
-            open={showIframe}
-            onClose={handleCloseIframe}
-            css={{
-              width: "65vw",
-              maxWidth: "65vw",
-              alignSelf: "flex-end",
-              background: "transparent",
-              boxShadow: "none",
-              borderRadius: "15px",
-              alignItems: "center",
-              "@media only screen and (max-width: 764px)": {
-                width: "95vw !important",
-                maxWidth: "95vw !important",
-              },
-            }}
-          >
-            {selectedPDF && (
-              <iframe
-                src={`${selectedPDF}#view=FitH&toolbar=0`}
-                // src={`Test1.pdf#toolbar=0`}
-                style={{
-                  width: "100%",
-                  height: "75vh",
-                  borderColor: "transparent",
-                  borderRadius: "15px",
-                  borderWidth: "0px",
-                  zoom: "1",
+            <Modal
+                blur
+                aria-labelledby="modal-pdf"
+                aria-describedby="pdf-description"
+                open={showIframe}
+                onClose={handleCloseIframe}
+                css={{
+                    width: "65vw",
+                    maxWidth: "65vw",
+                    alignSelf: "flex-end",
+                    background: "transparent",
+                    boxShadow: "none",
+                    borderRadius: "15px",
+                    alignItems: "center",
+                    "@media only screen and (max-width: 764px)": {
+                        width: "95vw !important",
+                        maxWidth: "95vw !important",
+                    },
                 }}
-                className="iframePdfMobile"
-              />
-            )}
-            <Button
-              flat
-              onPress={handleCloseIframe}
-              css={{
-                alignSelf: "center",
-                width: "100%",
-                backgroundColor: "#ffa12e",
-                color: "#fff",
-                fontSize: 19,
-                marginTop: "20px",
-                borderRadius: "10px",
-                height: "50px",
-                "@media only screen and (max-width: 768px)": {
-                  width: "100%",
-                  fontSize: 15,
-                  height: "50px",
-                  marginTop: "0px",
-                  borderRadius: "0px 0px 10px",
-                  "& span": {
-                    // display: "none",
-                  },
-                },
-              }}
             >
-              Close
-            </Button>
-          </Modal>
+                {selectedPDF && (
+                    <iframe
+                        src={`${selectedPDF}#view=FitH&toolbar=0`}
+                        // src={`Test1.pdf#toolbar=0`}
+                        style={{
+                            width: "100%",
+                            height: "75vh",
+                            borderColor: "transparent",
+                            borderRadius: "15px",
+                            borderWidth: "0px",
+                            zoom: "1",
+                        }}
+                        className="iframePdfMobile"
+                    />
+                )}
+                <Button
+                    flat
+                    onPress={handleCloseIframe}
+                    css={{
+                        alignSelf: "center",
+                        width: "100%",
+                        backgroundColor: "#ffa12e",
+                        color: "#fff",
+                        fontSize: 19,
+                        marginTop: "20px",
+                        borderRadius: "10px",
+                        height: "50px",
+                        "@media only screen and (max-width: 768px)": {
+                            width: "100%",
+                            fontSize: 15,
+                            height: "50px",
+                            marginTop: "0px",
+                            borderRadius: "0px 0px 10px",
+                            "& span": {
+                                // display: "none",
+                            },
+                        },
+                    }}
+                >
+                    Close
+                </Button>
+            </Modal>
             <Modal
                 blur
                 aria-labelledby="modal-title"

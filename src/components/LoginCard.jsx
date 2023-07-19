@@ -283,7 +283,7 @@ const LoginCard = () => {
                 disabled={isLoading || (!email && !mobile)}
                 loading={isLoading}
                 css={{
-                  backgroundImage: "linear-gradient(to top , #106052, #0f734d)",
+                  background: "linear-gradient(to top , #106052, #0f734d)",
                   padding: "0px 30px",
                   borderRadius: "1000px",
                   alignSelf: "center",

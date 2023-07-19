@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import NavBar from "@/components/Navbar";
 // import AboutUs from "./screens/AboutUs";
 import WhyUs from "./screens/WhyUs";
-import Solutions from "./screens/Solutions";
+// import Solutions from "./screens/Solutions";
 import SmallcaseCard from "./screens/smallcaseCard";
 // import Blogs2 from "./screens/blogs2";
 import Footer from "./screens/Footer";
@@ -18,11 +18,11 @@ import AuthProvider from "@/components/AuthContext";
 import HomePage from "@/pages/screens/HomePage";
 
 const Home: NextPage = () => {
-  const { isLoggedIn } = useContext(AuthProvider);
+	const { isLoggedIn } = useContext(AuthProvider);
 
-  return (
-    <>
-      {/* <script id="google-analytics" data-nscript="afterInteractive">
+	return (
+		<>
+			{/* <script id="google-analytics" data-nscript="afterInteractive">
           window.dataLayer = window.dataLayer || [];
           function gtag(){typeof window !== 'undefined' && window.dataLayer.push(arguments);}
           gtag('js', new Date());

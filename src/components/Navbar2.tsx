@@ -44,7 +44,12 @@ const NavBar2 = () => {
   const handleLogoutClick = () => {
     localStorage.removeItem("access");
     localStorage.removeItem("refresh");
+    // if(window.location.pathname === "/") {
+      // window.location.reload();
+    // }
+    // else{
     router.push("/");
+    // }
   };
 
   const ourStockPicks = () => {
