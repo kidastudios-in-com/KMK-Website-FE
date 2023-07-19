@@ -444,9 +444,8 @@ const WhyUs = () => {
             },
           }}
         >
-          KamayaKya is your friendly investment guru who will assist you in
-          finding the best SME, MicroCap and SmallCap stocks to invest in,
-          backed by solid research.
+          We present our scorecard. Our victories, our misses - all in the open.
+          Your trust is earned, not assumed.
         </Text>
         {/* <Grid
 					  xs={"auto"}

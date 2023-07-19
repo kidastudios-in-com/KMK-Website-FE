@@ -2047,7 +2047,7 @@ const StockCard = () => {
                                   <Button
                                     // variant="contained"
                                     css={{
-                                      width: "75%",
+                                      width: "85%",
                                       background:
                                         "linear-gradient(to top , #fb7716,#fe9807)",
                                       paddingTop: "5px",
@@ -2062,7 +2062,7 @@ const StockCard = () => {
                                     onPress={handleFirstCard}
                                   >
                                     <Text b color="#FFF" size={18}>
-                                      Subscribe Now
+                                      Subscribe to unlock
                                     </Text>
                                   </Button>
                                 ) : (
@@ -2084,7 +2084,7 @@ const StockCard = () => {
                                     onPress={handleFirstCard}
                                   >
                                     <Text b color="#FFF" size={18}>
-                                      Login
+                                      Login to unlock
                                     </Text>
                                   </Button>
                                 )}

@@ -109,9 +109,8 @@ const SubscriptionNew = () => {
               },
             }}
           >
-            Our methodology does not include doing technical analysis of stocks,
-            rather we do research that is deep, thorough and entirely
-            fundamentals based
+            Unravel our offerings - Elevate your wealth journey with KamayaKya
+            VIP!
           </Text>
         </Box>
         <Box
