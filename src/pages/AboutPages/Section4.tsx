@@ -6,7 +6,13 @@ import React from "react";
 const Section4 = () => {
   return (
     <Box
-      sx={{ display: "flex", justifyContent: "center", paddingBottom: "50px" }}
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        padding: "25px",
+        paddingBottom: "140px",
+        backgroundColor: "#fafafa",
+      }}
     >
       <Box
         sx={{
@@ -14,9 +20,10 @@ const Section4 = () => {
           flexDirection: "row",
           flexWrap: "wrap",
           width: "100%",
+          maxWidth: "80rem",
           justifyContent: "center",
           gap: "25px",
-          "@media only screen and (max-width: 672px)": {
+          "@media only screen and (max-width: 764px)": {
             gap: "2%",
           },
         }}
@@ -24,15 +31,17 @@ const Section4 = () => {
         <Card
           isHoverable
           css={{
-            background: "#e1ecfb",
+            // background: "#e1ecfb",
             display: "flex",
             flexDirection: "column",
-            marginBottom: "80px",
-            width: "430px",
+            marginBottom: "0px",
+            width: "31%",
             alignItems: "center",
+            padding: "20px",
             paddingBottom: "40px",
-            "@media only screen and (max-width: 672px)": {
-              width: "90%",
+            borderRadius: "30px",
+            "@media only screen and (max-width: 764px)": {
+              width: "100%",
               marginBottom: "20px",
             },
           }}
@@ -43,17 +52,17 @@ const Section4 = () => {
             loop
             src="/kmk-sebi.mp4"
             width="100%"
-            style={{ width: "100%" }}
+            style={{ width: "100%", borderRadius: "20px" }}
           />
           <Text
             b
-            size={30}
+            size={25}
             css={{
               width: "95%",
               textAlign: "center",
               marginTop: "30px",
-              marginBottom: "30px",
-              "@media only screen and (max-width: 672px)": {
+              marginBottom: "0px",
+              "@media only screen and (max-width: 764px)": {
                 // lineHeight: 1.5,
                 fontSize: 22,
               },
@@ -63,12 +72,12 @@ const Section4 = () => {
           </Text>
           <Text
             b
-            size={22}
+            size={15}
             css={{
               width: "95%",
               textAlign: "center",
               lineHeight: 1.2,
-              "@media only screen and (max-width: 672px)": {
+              "@media only screen and (max-width: 764px)": {
                 lineHeight: 1.2,
                 fontSize: 16,
               },
@@ -92,12 +101,12 @@ const Section4 = () => {
             />
             <Text
               b
-              size={22}
+              size={17}
               css={{
-                textAlign: "center",
+                textAlign: "left",
                 lineHeight: 1.2,
-                marginLeft: "30px",
-                "@media only screen and (max-width: 672px)": {
+                marginLeft: "10px",
+                "@media only screen and (max-width: 764px)": {
                   lineHeight: 1.2,
                   fontSize: 16,
                 },
@@ -121,11 +130,12 @@ const Section4 = () => {
             />
             <Text
               b
-              size={22}
+              size={17}
               css={{
+                textAlign: "left",
                 lineHeight: 1.2,
-                marginLeft: "30px",
-                "@media only screen and (max-width: 672px)": {
+                marginLeft: "10px",
+                "@media only screen and (max-width: 764px)": {
                   lineHeight: 1.2,
                   fontSize: 16,
                 },
@@ -150,11 +160,12 @@ const Section4 = () => {
             />
             <Text
               b
-              size={22}
+              size={17}
               css={{
+                textAlign: "left",
                 lineHeight: 1.2,
-                marginLeft: "30px",
-                "@media only screen and (max-width: 672px)": {
+                marginLeft: "10px",
+                "@media only screen and (max-width: 764px)": {
                   lineHeight: 1.2,
                   fontSize: 16,
                 },
@@ -168,15 +179,18 @@ const Section4 = () => {
         <Card
           isHoverable
           css={{
-            background: "#ffe5c5",
+            // background: "#ffe5c5",
             display: "flex",
             flexDirection: "column",
-            marginBottom: "80px",
-            width: "430px",
+            marginBottom: "0px",
+            width: "31%",
             alignItems: "center",
+            padding: "20px",
             paddingBottom: "40px",
-            "@media only screen and (max-width: 672px)": {
-              width: "90%",
+            borderRadius: "30px",
+            // paddingBottom: "40px",
+            "@media only screen and (max-width: 764px)": {
+              width: "100%",
               marginBottom: "20px",
             },
           }}
@@ -187,15 +201,17 @@ const Section4 = () => {
             loop
             src="/kmk-research.mp4"
             width="100%"
-            style={{ width: "100%" }}
+            style={{ width: "100%", borderRadius: "20px" }}
           />
           <Text
             b
-            size={30}
+            size={25}
             css={{
+              width: "95%",
+              textAlign: "center",
               marginTop: "30px",
-              marginBottom: "30px",
-              "@media only screen and (max-width: 672px)": {
+              marginBottom: "0px",
+              "@media only screen and (max-width: 764px)": {
                 // lineHeight: 1.5,
                 fontSize: 22,
               },
@@ -205,13 +221,12 @@ const Section4 = () => {
           </Text>
           <Text
             b
-            size={22}
+            size={15}
             css={{
-              width: "90%",
+              width: "95%",
               textAlign: "center",
               lineHeight: 1.2,
-              opacity: 0.75,
-              "@media only screen and (max-width: 672px)": {
+              "@media only screen and (max-width: 764px)": {
                 lineHeight: 1.2,
                 fontSize: 16,
               },
@@ -228,7 +243,7 @@ const Section4 = () => {
               textAlign: "center",
               lineHeight: 1.2,
               marginTop: "30px",
-              "@media only screen and (max-width: 672px)": {
+              "@media only screen and (max-width: 764px)": {
                 lineHeight: 1.2,
                 fontSize: 16,
               },
@@ -238,14 +253,12 @@ const Section4 = () => {
           </Text>
           <Text
             b
-            size={22}
+            size={17}
             css={{
-              width: "90%",
               textAlign: "center",
-              lineHeight: 1.2,
-              marginTop: "20px",
-              opacity: 0.75,
-              "@media only screen and (max-width: 672px)": {
+              lineHeight: 1.3,
+              marginTop: "5px",
+              "@media only screen and (max-width: 764px)": {
                 lineHeight: 1.2,
                 fontSize: 16,
               },
@@ -259,15 +272,18 @@ const Section4 = () => {
         <Card
           isHoverable
           css={{
-            background: "#bfe8c5",
+            // background: "#bfe8c5",
             display: "flex",
             flexDirection: "column",
-            marginBottom: "80px",
-            width: "430px",
+            marginBottom: "0px",
+            width: "31%",
             alignItems: "center",
+            borderRadius: "30px",
+            // paddingBottom: "40px",
+            padding: "20px",
             paddingBottom: "40px",
-            "@media only screen and (max-width: 672px)": {
-              width: "90%",
+            "@media only screen and (max-width: 764px)": {
+              width: "100%",
               marginBottom: "20px",
             },
           }}
@@ -278,17 +294,17 @@ const Section4 = () => {
             loop
             src="/kmk-starsTeam.mp4"
             width="100%"
-            style={{ width: "100%" }}
+            style={{ width: "100%", borderRadius: "20px" }}
           />
           <Text
             b
-            size={30}
+            size={25}
             css={{
               width: "95%",
               textAlign: "center",
               marginTop: "30px",
-              marginBottom: "30px",
-              "@media only screen and (max-width: 672px)": {
+              marginBottom: "0px",
+              "@media only screen and (max-width: 764px)": {
                 // lineHeight: 1.5,
                 fontSize: 22,
               },
@@ -298,14 +314,12 @@ const Section4 = () => {
           </Text>
           <Text
             b
-            size={22}
+            size={15}
             css={{
-              width: "90%",
+              width: "95%",
               textAlign: "center",
               lineHeight: 1.2,
-              // marginTop: "20px",
-              opacity: 0.75,
-              "@media only screen and (max-width: 672px)": {
+              "@media only screen and (max-width: 764px)": {
                 lineHeight: 1.2,
                 fontSize: 16,
               },
@@ -321,9 +335,8 @@ const Section4 = () => {
               width: "90%",
               textAlign: "center",
               lineHeight: 1.2,
-              marginTop: "20px",
-              opacity: 0.75,
-              "@media only screen and (max-width: 672px)": {
+              marginTop: "30px",
+              "@media only screen and (max-width: 764px)": {
                 lineHeight: 1.2,
                 fontSize: 16,
               },

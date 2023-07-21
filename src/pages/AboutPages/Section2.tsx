@@ -453,7 +453,7 @@ const Section2 = () => {
                 // maxWidth: "265pxpx",
                 width: "265px",
                 objectFit: "cover",
-                  objectPosition: "top"
+                objectPosition: "top",
               }}
             />
             <div
@@ -600,7 +600,181 @@ const Section2 = () => {
               field of investing.
             </Text>
           </Box>
-          {/* Person 3 */}
+          {/* Person 4 */}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              marginBottom: "80px",
+              maxWidth: "300px",
+              alignItems: "flex-start",
+              "@media only screen and (max-width: 764px)": {
+                width: "100%",
+                // height: "500px",
+                marginBottom: "20px",
+                maxWidth: "350px",
+              },
+            }}
+          >
+            <img
+              src="/tusharRaghate.JPG"
+              alt="Tushar Raghatate | KamayaKya Wealth Management"
+              // width="100%";
+              className="pfpTeam-mobile"
+              style={{
+                height: "265px",
+                // maxHeight: "350px",
+                // maxWidth: "265pxpx",
+                width: "265px",
+                objectFit: "cover",
+              }}
+            />
+            <div
+              style={{
+                width: "40px",
+                height: "4px",
+                backgroundColor: "#FF9E24",
+                marginTop: "20px",
+                marginBottom: "7.5px",
+                borderRadius: "1000px",
+              }}
+            />
+            <Text
+              b
+              size={28}
+              css={{
+                marginTop: 0,
+                "@media only screen and (max-width: 764px)": {
+                  lineHeight: 1.1,
+                  fontSize: 35,
+                  marginTop: "5px",
+                },
+              }}
+            >
+              Tushar Raghatate
+            </Text>
+            <Text
+              b
+              size={16}
+              css={{
+                lineHeight: 1,
+                "@media only screen and (max-width: 764px)": {
+                  lineHeight: 1.1,
+                  fontSize: 17.5,
+                },
+              }}
+            >
+              (Equity Research Analyst)
+            </Text>
+            <Text
+              size={15}
+              css={{
+                lineHeight: 1.2,
+                maxWidth: "265px",
+                marginTop: "10px",
+                "@media only screen and (max-width: 764px)": {
+                  lineHeight: 1.2,
+                  fontSize: 17.5,
+                  maxWidth: "100%",
+                  marginTop: "10px",
+                },
+              }}
+            >
+              Tushar, brings a comprehensive skill set to the table. With a
+              solid background of over 2 years of experience, Tushar possesses a
+              deep understanding of diverse sectors such as capital goods,
+              building materials, infrastructure, cement, steel, power, and
+              consumer durables.
+            </Text>
+          </Box>
+          {/* Person 5 */}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              marginBottom: "80px",
+              maxWidth: "300px",
+              alignItems: "flex-start",
+              "@media only screen and (max-width: 764px)": {
+                width: "100%",
+                // height: "500px",
+                marginBottom: "20px",
+                maxWidth: "350px",
+              },
+            }}
+          >
+            <img
+              src="/tusharRaghate.JPG"
+              alt="Tushar Raghatate | KamayaKya Wealth Management"
+              // width="100%";
+              className="pfpTeam-mobile"
+              style={{
+                height: "265px",
+                // maxHeight: "350px",
+                // maxWidth: "265pxpx",
+                width: "265px",
+                objectFit: "cover",
+              }}
+            />
+            <div
+              style={{
+                width: "40px",
+                height: "4px",
+                backgroundColor: "#FF9E24",
+                marginTop: "20px",
+                marginBottom: "7.5px",
+                borderRadius: "1000px",
+              }}
+            />
+            <Text
+              b
+              size={28}
+              css={{
+                marginTop: 0,
+                "@media only screen and (max-width: 764px)": {
+                  lineHeight: 1.1,
+                  fontSize: 35,
+                  marginTop: "5px",
+                },
+              }}
+            >
+              Tushar Raghatate
+            </Text>
+            <Text
+              b
+              size={16}
+              css={{
+                lineHeight: 1,
+                "@media only screen and (max-width: 764px)": {
+                  lineHeight: 1.1,
+                  fontSize: 17.5,
+                },
+              }}
+            >
+              (Equity Research Analyst)
+            </Text>
+            <Text
+              size={15}
+              css={{
+                lineHeight: 1.2,
+                maxWidth: "265px",
+                marginTop: "10px",
+                "@media only screen and (max-width: 764px)": {
+                  lineHeight: 1.2,
+                  fontSize: 17.5,
+                  maxWidth: "100%",
+                  marginTop: "10px",
+                },
+              }}
+            >
+              Tushar, brings a comprehensive skill set to the table. With a
+              solid background of over 2 years of experience, Tushar possesses a
+              deep understanding of diverse sectors such as capital goods,
+              building materials, infrastructure, cement, steel, power, and
+              consumer durables.
+            </Text>
+          </Box>
+          {/* Person 6 */}
           <Box
             sx={{
               display: "flex",

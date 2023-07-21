@@ -12,6 +12,7 @@ import Footer from "./screens/Footer";
 import NavBar2 from "@/components/Navbar2";
 import AuthContext from "@/components/AuthContext";
 import HeaderFuture from "@/pages/AboutPages/HeaderFuture";
+import HeaderCards from "@/pages/AboutPages/HeaderCards";
 
 const AboutCompany = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -21,7 +22,8 @@ const AboutCompany = () => {
       <Section1 />
       <Section3 />
       <Section2 />
-      {/* <Section4 /> */}
+      <HeaderCards />
+      <Section4 />
       <HeaderFuture />
       <Section5 />
       <Section6 />

@@ -90,11 +90,17 @@ const Section5 = () => {
               },
             }}
           >
-            <span style={{ fontSize: "18px", opacity: "0.75" }}>
+            <span style={{ fontSize: "18px", opacity: "1" }}>
               💬 KamayaKya recommendations
             </span>
             <br />
-            <span style={{ fontSize: "35px", fontWeight: "normal" }}>
+            <span
+              style={{
+                fontSize: "35px",
+                fontWeight: "normal",
+                color: "#FF9D28",
+              }}
+            >
               Subscribe to our best picks
             </span>
             {/*<br />*/}

@@ -90,11 +90,17 @@ const Section6 = () => {
               },
             }}
           >
-            <span style={{ fontSize: "18px", opacity: "0.75" }}>
+            <span style={{ fontSize: "18px", opacity: "1" }}>
               📈 Performance Track Record
             </span>
             <br />
-            <span style={{ fontSize: "35px", fontWeight: "normal" }}>
+            <span
+              style={{
+                fontSize: "35px",
+                fontWeight: "normal",
+                color: "#FF9D28",
+              }}
+            >
               We promise 100% transparency
             </span>
             {/*<br />*/}

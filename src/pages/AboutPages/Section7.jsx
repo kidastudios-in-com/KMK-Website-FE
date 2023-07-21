@@ -90,11 +90,15 @@ const Section7 = () => {
               },
             }}
           >
-            <span style={{ fontSize: "18px", opacity: "0.75" }}>
-              🌏 360° View
-            </span>
+            <span style={{ fontSize: "18px", opacity: "1" }}>🌏 360° View</span>
             <br />
-            <span style={{ fontSize: "35px", fontWeight: "normal" }}>
+            <span
+              style={{
+                fontSize: "35px",
+                fontWeight: "normal",
+                color: "#FF9D28",
+              }}
+            >
               Understand your investments
             </span>
             {/*<br />*/}

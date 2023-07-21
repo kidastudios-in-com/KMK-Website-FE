@@ -8,20 +8,20 @@ import {
   Dropdown,
   Divider,
 } from "@nextui-org/react";
-import React, {useState, useContext} from "react";
-import {Box, IconButton} from "@mui/material";
-import {useRouter} from "next/router";
+import React, { useState, useContext } from "react";
+import { Box, IconButton } from "@mui/material";
+import { useRouter } from "next/router";
 import CloseIcon from "@mui/icons-material/Close";
 import Login from "@/components/Login";
 import AuthContext from "@/components/AuthContext";
 import { TypeAnimation } from "react-type-animation";
 
 const HomePage = () => {
-    const {isLoggedIn} = useContext(AuthContext);
-    const {setVisible, bindings} = useModal();
-    const [showLoginModal, setShowLoginModal] = useState(false);
-    const [showCert, setShowCert] = useState(false);
-    const [showIframe, setShowIframe] = useState(false);
+  const { isLoggedIn } = useContext(AuthContext);
+  const { setVisible, bindings } = useModal();
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showCert, setShowCert] = useState(false);
+  const [showIframe, setShowIframe] = useState(false);
 
   const handleCloseIframe = () => {
     setShowIframe(false);
@@ -44,18 +44,18 @@ const HomePage = () => {
     setShowLoginModal(true);
   };
 
-    const handleCloseLoginModal = () => {
-        setShowLoginModal(false);
-    };
-    const router = useRouter();
-    const handleRegestier = () => {
-        router.push("/registration");
-    };
-    const pictureUsers = [
-        "https://i.pravatar.cc/150?u=a042581f4e29026024d",
-        "https://i.pravatar.cc/150?u=a042581f4e29026704d",
-        "https://i.pravatar.cc/150?u=a04258114e29026702d",
-    ];
+  const handleCloseLoginModal = () => {
+    setShowLoginModal(false);
+  };
+  const router = useRouter();
+  const handleRegestier = () => {
+    router.push("/registration");
+  };
+  const pictureUsers = [
+    "https://i.pravatar.cc/150?u=a042581f4e29026024d",
+    "https://i.pravatar.cc/150?u=a042581f4e29026704d",
+    "https://i.pravatar.cc/150?u=a04258114e29026702d",
+  ];
 
   const handleIonOnePage = () => {
     // setShowIframe(true);
@@ -331,9 +331,11 @@ const HomePage = () => {
             preRenderFirstString={true}
             sequence={[
               5000,
-              "Maximize the growth of your funds by investing in high-potential ideas", // initially rendered starting point
+              "Maximize the growth of your funds by investing in ideas with Big Potential", // initially rendered starting point
               3000,
-              "Maximize the growth of your funds by investing in SME, micro-cap & small-cap stocks",
+              "Maximize the growth of your funds by investing in SME, Microcap and Smallcap stocks",
+              3000,
+              "Maximize the growth of your funds by investing in potential Multibaggers",
               // 1000,
               // 'We produce food for Guinea Pigs',
               // 1000,
