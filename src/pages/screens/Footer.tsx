@@ -32,7 +32,7 @@ const Footer = () => {
 				{/* Pages */}
 				<div>
 					<nav className="bottomNavbarPageLinks">
-						<Link href={"/TermsAndCond"}>
+						<Link href={"/terms-conditions"}>
 							<a>
 								<Text className="bottomNavbarPageLinks-text">
 									Terms & Conditions
@@ -41,14 +41,14 @@ const Footer = () => {
 						</Link>
 					</nav>
 					<nav className="bottomNavbarPageLinks">
-						<Link href={"/Disclaimer"}>
+						<Link href={"/disclaimer"}>
 							<a>
 								<Text className="bottomNavbarPageLinks-text">Disclaimer</Text>
 							</a>
 						</Link>
 					</nav>
 					<nav className="bottomNavbarPageLinks">
-						<Link href={"/InvestorCharter"}>
+						<Link href={"/investor-charter"}>
 							<a>
 								<Text className="bottomNavbarPageLinks-text">
 									Investor Charter
@@ -57,14 +57,14 @@ const Footer = () => {
 						</Link>
 					</nav>
 					<nav className="bottomNavbarPageLinks">
-						<Link href={"/Complaints"}>
+						<Link href={"/complaints"}>
 							<a>
 								<Text className="bottomNavbarPageLinks-text">Complaints</Text>
 							</a>
 						</Link>
 					</nav>
 					<nav className="bottomNavbarPageLinks">
-						<Link href={"/PrivacyPolicy"}>
+						<Link href={"/privacy-policy"}>
 							<a>
 								<Text className="bottomNavbarPageLinks-text">
 									Privacy Policy
@@ -147,6 +147,7 @@ const Footer = () => {
 							"fullscreen=yes"
 						)
 					}
+					style={{ cursor: 'pointer' }}
 				>
 					<div className="registrationLogosIndividualCard-row">
 						<img
@@ -173,6 +174,7 @@ const Footer = () => {
 							"fullscreen=yes"
 						)
 					}
+					style={{ cursor: 'pointer' }}
 				>
 					<div className="registrationLogosIndividualCard-row">
 						<img
@@ -199,6 +201,7 @@ const Footer = () => {
 							"fullscreen=yes"
 						)
 					}
+					style={{ cursor: 'pointer' }}
 				>
 					<div className="registrationLogosIndividualCard-row">
 						<img

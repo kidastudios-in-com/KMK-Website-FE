@@ -103,6 +103,7 @@ export default function App() {
       >
         <Navbar.Brand
           css={{
+            cursor: "pointer",
             // w: "350px",
             zIndex: 99,
             "@media only screen and (max-width: 764px)": {

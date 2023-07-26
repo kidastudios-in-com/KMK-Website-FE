@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import AuthContext from "@/components/AuthContext";
 import NavBar2 from "@/components/Navbar2";
-import NavBar from "@/components/Navbar2";
+import NavBar from "@/components/Navbar";
 import FaqsNew from "./screens/FaqsNew";
 import Footer from "./screens/Footer";
 import { Text } from "@nextui-org/react";

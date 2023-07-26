@@ -413,8 +413,9 @@ const UserDetails = () => {
 								<Button
 									color="error"
 									auto
-									onClick={handCancel}
+									onClick={() => setNewName("")}
 									css={{ marginRight: "0px", borderRadius: "10000px" }}
+									disabled= {newName.length > 0 ? false : true}
 								>
 									Undo
 								</Button>
@@ -422,7 +423,7 @@ const UserDetails = () => {
 						</div>
 					</div>
 
-					<div
+					{/* <div
 						style={{
 							display: "flex",
 							flexDirection: "column",
@@ -435,9 +436,9 @@ const UserDetails = () => {
 							maxWidth: "600px",
 							height: "fit-content",
 						}}
-					>
+					> */}
 						{/*{editing ? (*/}
-						<div
+						{/* <div
 							style={{
 								width: "100%",
 								display: "flex",
@@ -445,11 +446,11 @@ const UserDetails = () => {
 								gap: "10px",
 								padding: "5px",
 							}}
-						>
-							<Text b size={15} style={{ paddingLeft: "20px" }}>
+						> */}
+							{/* <Text b size={15} style={{ paddingLeft: "20px" }}>
 								Email Address
-							</Text>
-							<div
+							</Text> */}
+							{/* <div
 								style={{
 									display: "flex",
 									flexDirection: "row",
@@ -460,8 +461,8 @@ const UserDetails = () => {
 									justifyContent: "flex-start",
 									// border: "1px solid lightgrey",
 								}}
-							>
-								<Input
+							> */}
+								{/* <Input
 									// underlined
 									value={billingEmail}
                                     placeholder={user?.email}
@@ -475,14 +476,14 @@ const UserDetails = () => {
 											marginRight: "0px",
 										},
 									}}
-								/>
-								<Button
+								/> */}
+								{/* <Button
 									color="success"
 									auto
 									onClick={handleSaveProfile}
 									css={{ marginRight: "0px", borderRadius: "10000px" }}
-								>
-									Save
+								> */}
+									{/* Save
 								</Button>
 								<Button
 									color="error"
@@ -491,10 +492,10 @@ const UserDetails = () => {
 									css={{ marginRight: "0px", borderRadius: "10000px" }}
 								>
 									Undo
-								</Button>
-							</div>
+								</Button> */}
+							{/* </div>
 						</div>
-					</div>
+					</div> */}
 
 					<div
 						style={{
@@ -561,8 +562,9 @@ const UserDetails = () => {
 								<Button
 									color="error"
 									auto
-									onClick={handCancel}
+									onClick={() => setGstNo("")}
 									css={{ marginRight: "0px", borderRadius: "10000px" }}
+									disabled= {gstNo.length > 0 ? false : true}
 								>
 									Undo
 								</Button>
@@ -634,8 +636,9 @@ const UserDetails = () => {
 								<Button
 									color="error"
 									auto
-									onClick={handCancel}
+									onClick={() => setNewReferralCode("")}
 									css={{ marginRight: "0px", borderRadius: "10000px" }}
+									disabled= {newReferralCode.length > 0 ? false : true}
 								>
 									Undo
 								</Button>

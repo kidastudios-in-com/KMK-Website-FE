@@ -1,4 +1,4 @@
-import NavBar from "@/components/Navbar2";
+import NavBar from "@/components/Navbar";
 import React, { useContext } from "react";
 import FaqsNew from "./screens/FaqsNew";
 import Footer from "./screens/Footer";
