@@ -68,7 +68,7 @@ const Section4 = () => {
               },
             }}
           >
-            We are trusted by SEBI ❤️
+            We are SEBI Registered ❤️
           </Text>
           <Text
             b
@@ -83,7 +83,7 @@ const Section4 = () => {
               },
             }}
           >
-            Counted among the select group of 890 certified research analyst
+            Counted among the select group of certified research analyst
             firms by the Securities and Exchange Board of India, we proudly
             offer our expertise and services.
           </Text>
@@ -343,7 +343,7 @@ const Section4 = () => {
             }}
           >
             We have curated the top 1% talent in finance, engineering, and
-            economics with 25 years of combined experience to ensure we deliver
+            business with 25 years of combined experience to ensure we deliver
             the best for you.
           </Text>
         </Card>

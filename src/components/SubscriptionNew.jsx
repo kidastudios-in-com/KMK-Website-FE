@@ -564,10 +564,13 @@ const SubscriptionNew = () => {
 							size={14}
 							color="#FFF"
 							css={{
+								textDecoration: 'underline',
+								position: 'absolute',
+								bottom: '35px',
 								cursor: "pointer",
-								mt: "10px",
+								// mt: "10px",
 								lineHeight: 1,
-								opacity: showPricing ? 0.75 : 0,
+								opacity: showPricing ? 1 : 0,
 							}}
 							onClick={handleShowModal}
 						>
@@ -764,6 +767,23 @@ const SubscriptionNew = () => {
 							css={{ mt: "0px", opacity: 0.95, lineHeight: 1 }}
 						>
 							inclusive of taxes
+						</Text>
+						<Text
+							b
+							size={14}
+							color="#000000"
+							css={{
+								textDecoration: 'underline',
+								position: 'absolute',
+								bottom: '22px',
+								cursor: "pointer",
+								// mt: "10px",
+								lineHeight: 1,
+								opacity: showPricing ? 1 : 0,
+							}}
+							onClick={handleShowModal}
+						>
+							Why do we charge annually?
 						</Text>
 					</Card>
 				</Box>

@@ -8,20 +8,20 @@ import {
   Dropdown,
   Divider,
 } from "@nextui-org/react";
-import React, {useState, useContext} from "react";
-import {Box, IconButton} from "@mui/material";
-import {useRouter} from "next/router";
+import React, { useState, useContext } from "react";
+import { Box, IconButton } from "@mui/material";
+import { useRouter } from "next/router";
 import CloseIcon from "@mui/icons-material/Close";
 import Login from "@/components/Login";
 import AuthContext from "@/components/AuthContext";
 import { TypeAnimation } from "react-type-animation";
 
 const HomePage = () => {
-    const {isLoggedIn} = useContext(AuthContext);
-    const {setVisible, bindings} = useModal();
-    const [showLoginModal, setShowLoginModal] = useState(false);
-    const [showCert, setShowCert] = useState(false);
-    const [showIframe, setShowIframe] = useState(false);
+  const { isLoggedIn } = useContext(AuthContext);
+  const { setVisible, bindings } = useModal();
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showCert, setShowCert] = useState(false);
+  const [showIframe, setShowIframe] = useState(false);
 
   const handleCloseIframe = () => {
     setShowIframe(false);
@@ -44,18 +44,18 @@ const HomePage = () => {
     setShowLoginModal(true);
   };
 
-    const handleCloseLoginModal = () => {
-        setShowLoginModal(false);
-    };
-    const router = useRouter();
-    const handleRegestier = () => {
-        router.push("/registration");
-    };
-    const pictureUsers = [
-        "https://i.pravatar.cc/150?u=a042581f4e29026024d",
-        "https://i.pravatar.cc/150?u=a042581f4e29026704d",
-        "https://i.pravatar.cc/150?u=a04258114e29026702d",
-    ];
+  const handleCloseLoginModal = () => {
+    setShowLoginModal(false);
+  };
+  const router = useRouter();
+  const handleRegestier = () => {
+    router.push("/registration");
+  };
+  const pictureUsers = [
+    "https://i.pravatar.cc/150?u=a042581f4e29026024d",
+    "https://i.pravatar.cc/150?u=a042581f4e29026704d",
+    "https://i.pravatar.cc/150?u=a04258114e29026702d",
+  ];
 
   const handleIonOnePage = () => {
     // setShowIframe(true);
@@ -173,9 +173,11 @@ const HomePage = () => {
           justifyContent: "center",
           alignItems: "center",
           width: "100vw",
-          height: "90vh",
+          minHeight: "90vh",
           maxWidth: "80rem",
           maxHeight: "900px",
+          marginTop: "0px",
+
           "@media only screen and (min-width: 764px)": {
             paddingTop: "0vh",
             paddingBottom: "10vh",
@@ -194,7 +196,7 @@ const HomePage = () => {
       >
         <Box
           sx={{
-            cursor: 'pointer',
+            cursor: "pointer",
             paddingLeft: "40px",
             paddingRight: "40px",
             paddingTop: "15px",
@@ -534,8 +536,11 @@ const HomePage = () => {
                 },
               }}
             >
-              <IconButton sx={{ position: 'absolute', top: '5px', right: '5px' }} onClick={() => setVisible(false)}> 
-                <CloseIcon color="error"/>
+              <IconButton
+                sx={{ position: "absolute", top: "5px", right: "5px" }}
+                onClick={() => setVisible(false)}
+              >
+                <CloseIcon color="error" />
               </IconButton>
               <Text b size={40} css={{ alignSelf: "center" }}>
                 Sample Reports

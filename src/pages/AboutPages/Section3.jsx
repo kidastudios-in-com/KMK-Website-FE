@@ -227,7 +227,7 @@ const Section3 = () => {
 								},
 							}}
 						>
-							Read our reports
+							Sample Reports
 						</Text>
 					</Button>
 					<Modal

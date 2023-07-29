@@ -61,11 +61,11 @@ const Section1 = () => {
             b
             css={{
               textAlign: "center",
-              lineHeight: 1.5,
+              lineHeight: 1.25,
               "@media only screen and (max-width: 764px)": {
                 textAlign: "left",
                 fontSize: 23,
-                lineHeight: 1.2,
+                lineHeight: 1.5,
               },
             }}
           >
@@ -83,20 +83,52 @@ const Section1 = () => {
             {/*investment decisions.*/}
             We carefully select stocks after studying factors such as{" "}
             <b>
-              cash flow, top-line and bottom-line growth, promoter holding,
-              management quality, valuations and more.
+              <span
+                style={{
+                  // background: "#125a54",
+                  color: "#FF9E24",
+                  padding: "0px 0px",
+                  borderRadius: "1000px",
+                }}
+              >
+                cash flow, top-line and bottom-line growth, promoter holding,
+                management quality, valuations
+              </span>{" "}
+              and more.
             </b>{" "}
             Some of the fundamental triggers we focus on are{" "}
             <b>
-              capacity expansion, debt reduction, change in management, industry
-              tailwinds, favorable government policies, structural stories,
-              turnaround plays and more.
+              <span
+                style={{
+                  // background: "#125a54",
+                  color: "#FF9E24",
+                  padding: "0px 0px",
+                  borderRadius: "1000px",
+                }}
+              >
+                capacity expansion, debt reduction, change in management,
+                industry tailwinds, favorable government policies, structural
+                stories, turnaround plays and more
+              </span>
+              .
             </b>{" "}
             These <b>hidden gems</b> (emerging companies that have enormous
             potential but overlooked by the market participants) are backed by
             solid data and research, including{" "}
-            <b>management interactions and channel checks</b>, minus the market
-            noise to minimize risks for you.
+            <b>
+              {" "}
+              <span
+                style={{
+                  // background: "#125a54",
+                  color: "#FF9E24",
+                  padding: "0px 0px",
+                  borderRadius: "1000px",
+                }}
+              >
+                management interactions and channel checks
+              </span>{" "}
+            </b>
+            , minus the market noise to minimize risks for you.
           </Text>
         </div>
       </div>

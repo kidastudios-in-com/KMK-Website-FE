@@ -707,7 +707,7 @@ const UserDetails = () => {
 						<Text>No subscriptions found</Text>
 					)}
 				</Box>
-				<Button
+				{/* <Button
 					css={{
 						width: "90%",
 						maxWidth: "600px",
@@ -717,7 +717,7 @@ const UserDetails = () => {
 					}}
 				>
 					Get Invoice
-				</Button>
+				</Button> */}
 			</div>
 		</section>
 	);

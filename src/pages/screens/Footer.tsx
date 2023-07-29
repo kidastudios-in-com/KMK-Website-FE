@@ -137,7 +137,7 @@ const Footer = () => {
 				<span className="bottomNavbar-divider" />
 			</div>
 			{/* Logos */}
-			<div className="registrationLogos-div">
+			<div className="registrationLogos-div" style={{ padding: '0px 15px' }}>
 				<div
 					className="registrationLogosIndividualCard"
 					onClick={() =>
