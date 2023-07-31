@@ -128,7 +128,10 @@ const Section1 = () => {
                 management interactions and channel checks
               </span>{" "}
             </b>
-            , minus the market noise to minimize risks for you.
+            , minus the market noise to minimize risks for you. Instead of
+            conducting technical analysis of stocks, our approach focuses on
+            conducting extensive and meticulous research that is solely based on
+            fundamental factors.
           </Text>
         </div>
       </div>

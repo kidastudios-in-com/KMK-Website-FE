@@ -83,9 +83,9 @@ const Section4 = () => {
               },
             }}
           >
-            Counted among the select group of certified research analyst
-            firms by the Securities and Exchange Board of India, we proudly
-            offer our expertise and services.
+            Counted among the select group of certified research analyst firms
+            by the Securities and Exchange Board of India, we proudly offer our
+            expertise and services.
           </Text>
           <Box
             sx={{
@@ -249,7 +249,7 @@ const Section4 = () => {
               },
             }}
           >
-            How do we pick the best bets?
+            How do we pick the best stocks?
           </Text>
           <Text
             b

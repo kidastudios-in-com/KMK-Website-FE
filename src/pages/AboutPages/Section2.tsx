@@ -61,8 +61,8 @@ const Section2 = () => {
 					on reliable data and research. By doing so, we ensure that our
 					recommendations are based on solid foundations, reducing the potential
 					risks associated with investing in these hidden gems. */}
-          Introducing our team of seasoned equity research analysts and business
-          leaders, driven by a passion for delivering unparalleled financial
+          Introducing our team of seasoned equity research analysts and
+          investors, driven by a passion for delivering unparalleled financial
           insights.
           <br />
           We eat, drink and breathe equities!
