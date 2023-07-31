@@ -318,21 +318,23 @@ const TermsAndCond = () => {
           <b>Copyright Infringement</b> <br /> If you believe that any content
           on KamayaKya infringes your copyrights, please send written notice to:
           contact@kamayakya.com This notice should include the following
-          information: The electronic or physical signature of the copyright
-          owner, or a person authorized to act on their behalf. A description of
-          the copyrighted work that you claim has been infringed. A description
-          of the exact location on KamayaKya of the content that you claim is
-          infringing. This description must allow us to find and identify the
-          content. Your name, address, telephone number and email address. A
-          statement by you that:
-          <br /> a. you believe in good faith that the use of the content that
-          you claim to infringe your copyright is not authorized by law, the
-          copyright owner, or the owner’s agent, <br />
-          b. all information contained in your copyright notice is accurate, and{" "}
+          information:
+          <br /> The electronic or physical signature of the copyright owner, or
+          a person authorized to act on their behalf. <br />
+          A description of the copyrighted work that you claim has been
+          infringed. A description of the exact location on KamayaKya of the
+          content that you claim is infringing. This description must allow us
+          to find and identify the content. Your name, address, telephone number
+          and email address.
+          <br />A statement by you that: a. you believe in good faith that the
+          use of the content that you claim to infringe your copyright is not
+          authorized by law, the copyright owner, or the owner’s agent, b. all
+          information contained in your copyright notice is accurate, and c.
+          under penalty of perjury, you are either the copyright owner, or
+          authorized to act on their behalf.
           <br />
-          c. under penalty of perjury, you are either the copyright owner, or
-          authorized to act on their behalf. In appropriate circumstances we may
-          also terminate the accounts of repeat infringers.
+          In appropriate circumstances we may also terminate the accounts of
+          repeat infringers.
           <br />
           <br />
           <b>Indemnity</b> <br /> You agree to indemnify and hold harmless,
@@ -366,9 +368,9 @@ const TermsAndCond = () => {
           data or/and information or/and services purchased or/and obtained
           or/and messages received or/and transactions entered into through
           or/and from the service or/and resulting from unauthorized access to
-          or/and alteration of user's transmissions or/and data or/and arising
-          from any other matter relating to the service, including but not
-          limited to, damages for loss of profits or/and use or/and data or
+          or/and alteration of user&#39;s transmissions or/and data or/and
+          arising from any other matter relating to the service, including but
+          not limited to, damages for loss of profits or/and use or/and data or
           other intangible, even if Company has been advised of the possibility
           of such damages. User further agrees that Company shall not be liable
           for any damages arising from interruption, suspension or termination
@@ -378,14 +380,14 @@ const TermsAndCond = () => {
           justified or not, negligent or intentional, inadvertent or advertent.
           User agrees that the Company shall not be responsible or liable to the
           user, or anyone, for the statements or conduct of any third party of
-          the service. In sum, in no event shall Company's total liability to
-          the User for all damages or/and losses or/and causes of action exceed
-          the amount paid by the User to Company, if any, that is related to the
-          cause of action. To the extent permitted by law, our liability for
-          damages is limited to the amount of money we have earned through your
-          use of KamayaKya. We are specifically not liable for loss associated
-          with failure to deliver content and from losses caused by conflicting
-          contractual agreements.
+          the service. In sum, in no event shall Company&#39;s total liability
+          to the User for all damages or/and losses or/and causes of action
+          exceed the amount paid by the User to Company, if any, that is related
+          to the cause of action. To the extent permitted by law, our liability
+          for damages is limited to the amount of money we have earned through
+          your use of KamayaKya. We are specifically not liable for loss
+          associated with failure to deliver content and from losses caused by
+          conflicting contractual agreements.
           <br />
           <br />
           <b>Disclaimer of consequential damage</b> <br /> In no event shall
@@ -432,38 +434,38 @@ const TermsAndCond = () => {
           infringement, defamation, obscenity or any other violation under
           applicable law. Third Party Content on the Site may include
           text/weblinks/audio/video content and/or interactive content developed
-          or owned by the third parties ("Online content").The Online content
-          will be run and made available over the Site and do not have to be
-          separately downloaded or installed. When You indulge in third party
-          content , You agree and acknowledge that the Site does not create
-          and/or broadcast any online content on its own accord and KamayaKya is
-          not responsible or liable for the content or accuracy of the online
-          content, including copyrights, that may be accessed by You through the
-          Site. Please note that may be subject to its own content rules and
-          code of conduct. Any personal data provided by You or collected
-          automatically when You use the Service relating to the online content
-          will be governed by the Privacy Notice accessible at our privacy
-          policy. Please note certain Third Party Content may be available only
-          on limited and/or compatible devices. KamayaKya does not endorse,
-          market, advertise or publicize any Third Party Content on the Site and
-          is not responsible or liable for any Third Party Content. KamayaKya
-          does not pre-screen the Third Party Content and has no obligation to
-          monitor any Third Party Content. Hence, KamayaKya does not have actual
-          or specific knowledge of any Third Party Content on the Site. However,
-          KamayaKya at its discretion and in accordance with applicable law may
-          monitor any Third Party Content and may remove any Third Party Content
-          from the Site if KamayaKya determines in its sole discretion that such
-          Third Party Content is in violation of this Agreement or any
-          applicable law. KamayaKya, at its discretion, may review the Third
-          Party Content when, and only when, complaints are received from You.
-          Such actions do not in any manner negate or dilute KamayaKya’s
-          position as an intermediary or impose any liability on KamayaKya with
-          respect to Third Party Content. KamayaKya will consider all
-          communications, requests and suggestions sent by You and other members
-          of the public provided that such communications are sent in a bona
-          fide manner in good faith in the interest of the Site and public good.
-          However, KamayaKya is not under any obligation to act on any such
-          communications, requests and suggestions or respond to anyone.
+          or owned by the third parties (&quot;Online content&quot;).The Online
+          content will be run and made available over the Site and do not have
+          to be separately downloaded or installed. When You indulge in third
+          party content , You agree and acknowledge that the Site does not
+          create and/or broadcast any online content on its own accord and
+          KamayaKya is not responsible or liable for the content or accuracy of
+          the online content, including copyrights, that may be accessed by You
+          through the Site. Please note that may be subject to its own content
+          rules and code of conduct. Any personal data provided by You or
+          collected automatically when You use the Service relating to the
+          online content will be governed by the Privacy Notice accessible at
+          our privacy policy. Please note certain Third Party Content may be
+          available only on limited and/or compatible devices. KamayaKya does
+          not endorse, market, advertise or publicize any Third Party Content on
+          the Site and is not responsible or liable for any Third Party Content.
+          KamayaKya does not pre-screen the Third Party Content and has no
+          obligation to monitor any Third Party Content. Hence, KamayaKya does
+          not have actual or specific knowledge of any Third Party Content on
+          the Site. However, KamayaKya at its discretion and in accordance with
+          applicable law may monitor any Third Party Content and may remove any
+          Third Party Content from the Site if KamayaKya determines in its sole
+          discretion that such Third Party Content is in violation of this
+          Agreement or any applicable law. KamayaKya, at its discretion, may
+          review the Third Party Content when, and only when, complaints are
+          received from You. Such actions do not in any manner negate or dilute
+          KamayaKya’s position as an intermediary or impose any liability on
+          KamayaKya with respect to Third Party Content. KamayaKya will consider
+          all communications, requests and suggestions sent by You and other
+          members of the public provided that such communications are sent in a
+          bona fide manner in good faith in the interest of the Site and public
+          good. However, KamayaKya is not under any obligation to act on any
+          such communications, requests and suggestions or respond to anyone.
           KamayaKya’s decision in this respect shall be final. Specifically, if
           any such request relates to a request / demand to take down/ disable/
           remove/ delete any Third Party Content in the Site, KamayaKyais under
@@ -472,6 +474,11 @@ const TermsAndCond = () => {
           applicable law. If there is any valid court order or administrative
           order issued requiring KamayaKya take any action, then KamayaKya will
           comply with such court order or administrative order.
+          <br />
+          <br />
+          <b>Subscription &amp; Payments</b> <br /> The Subscription Fees
+          billed, in app purchases are non-refundable irrespective of whether
+          the Subscription have been availed by You or not.
           <br />
           <br />
           <b>Termination of Service</b> <br /> KamayaKya reserves the right to
@@ -494,7 +501,7 @@ const TermsAndCond = () => {
           <br />
           <b>Disclosures</b> <br /> KamayaKya is a SEBI registered research
           analyst. All information present on KamayaKya.com is to help investors
-          in their decision-making process and shall not be considered as a
+          in their decision- making process and shall not be considered as a
           recommendation or solicitation of an investment or investment
           strategy. Investors are responsible for their investment decisions and
           are responsible to validate all the information used to make the

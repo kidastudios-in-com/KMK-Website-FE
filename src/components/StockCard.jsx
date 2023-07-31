@@ -72,6 +72,16 @@ const StockCard = () => {
   const staticNumbers = [94, 49, 28];
   const [showWhyModal, setShowWhyModal] = useState(false);
 
+  const handleDisclaimer = () => {
+    // setShowCert(true);
+    var win = window.open(
+      "https://6c20e9b8-4436-474a-a31f-665d7b41553d.usrfiles.com/ugd/6c20e9_b05424ae64794ddc84905b8a57e161a4.pdf#toolbar=0&fitH=1",
+      "_blank",
+      "fullscreen=yes"
+    );
+    // win.document.write('<PdfViewer pdf={PDF}/>');
+  };
+
   const handleShowWhyModal = () => {
     setShowWhyModal(true);
   };
@@ -1392,7 +1402,7 @@ const StockCard = () => {
                     auto
                     onClick={() =>
                       window.open(
-                        "SampleReport.pdf#toolbar=0",
+                        "https://6c20e9b8-4436-474a-a31f-665d7b41553d.usrfiles.com/ugd/6c20e9_b05424ae64794ddc84905b8a57e161a4.pdf#toolbar=0",
                         "_blank",
                         "fullscreen=yes"
                       )
