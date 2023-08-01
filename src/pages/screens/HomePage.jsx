@@ -173,11 +173,9 @@ const HomePage = () => {
           justifyContent: "center",
           alignItems: "center",
           width: "100vw",
-          minHeight: "90vh",
+          height: "90vh",
           maxWidth: "80rem",
           maxHeight: "900px",
-          marginTop: "0px",
-
           "@media only screen and (min-width: 764px)": {
             paddingTop: "0vh",
             paddingBottom: "10vh",

@@ -41,7 +41,7 @@ const Footer = () => {
             </Link>
           </nav>
           <nav className="bottomNavbarPageLinks">
-            <Link href={"/Disclaimer"}>
+            <Link href={"/disclaimer"}>
               <a>
                 <Text className="bottomNavbarPageLinks-text">Disclosures</Text>
               </a>

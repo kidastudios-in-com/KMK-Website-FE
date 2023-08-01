@@ -1,12 +1,19 @@
 import { Text, Button, Input, Card, Modal } from "@nextui-org/react";
 import React, { useEffect, useState, useContext } from "react";
-import { GET_USER, EDIT_USER, SUBSCRIPTION_HISTORY } from "../api/URLs";
+import {
+	GET_USER,
+	EDIT_USER,
+	SUBSCRIPTION_HISTORY,
+	INVOICE_UPLOAD,
+} from "../api/URLs";
 import { RiEdit2Fill } from "react-icons/ri";
 import AuthContext from "@/components/AuthContext";
 import { Box, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import Login from "@/components/Login";
 import PhoneInput from "react-phone-input-2";
+import InvoicePDF from "./InvoicePDF";
+import { pdf } from "@react-pdf/renderer";
 
 const UserDetails = () => {
 	const [user, setUser] = useState(null);
@@ -23,6 +30,8 @@ const UserDetails = () => {
 	const [billingEmail, setBillingEmail] = useState("");
 	const [billingNumber, setBillingNumber] = useState("");
 	const [gstNo, setGstNo] = useState("");
+	const [startDate, setStartDate] = useState(null);
+
 
 	const handleLogin = () => {
 		setShowLoginModal(true);
@@ -61,7 +70,7 @@ const UserDetails = () => {
 					});
 					const data = await response.json();
 					setUser(data);
-					console.log(data);
+					// console.log(data);
 				} catch (error) {
 					console.error("Error fetching user details:", error);
 				}
@@ -81,6 +90,7 @@ const UserDetails = () => {
 					},
 				});
 				const data = await response.json();
+				// console.log(data.list_of_subscriptions);
 				setSubscription(data.list_of_subscriptions);
 			} catch (error) {
 				console.error("Error fetching user details:", error);
@@ -110,7 +120,7 @@ const UserDetails = () => {
 				body: JSON.stringify({
 					name: user.name ? user.name : newName,
 					email: billingEmail,
-                    gst_no: gstNo !== "" ? gstNo : "",
+					gst_no: gstNo !== "" ? gstNo : "",
 					referral: newReferralCode !== "" ? newReferralCode : "",
 				}),
 			});
@@ -157,6 +167,117 @@ const UserDetails = () => {
 	// const handleCancelReferralCode = () => {
 	// 	setEditingREf(false);
 	// };
+
+	const getInvoice = async () => {
+		const fullName = user?.name;
+		const gstin = gstNo ? gstNo : "";
+		const referralCode = user.referral_code ? user.referral_code : "";
+		// const currentDate = new Date().toLocaleDateString('en-GB');
+		console.log(
+			user?.name,
+			user?.active_subscription,
+			user.referral_code ? user.referral_code : ""
+		);
+		const blob = await pdf(
+			<InvoicePDF
+				fullName={fullName}
+				gstin={gstin}
+				referralCode={referralCode}
+				phone_number={user?.mobile}
+				startDate={startDate}
+			/>
+		).toBlob();
+
+		const formData = new FormData();
+		formData.append("invoice", blob);
+		console.log(user?.active_subscription_id);
+
+		// Now you can make an API call to send the formData to the server
+		// Replace 'YOUR_API_ENDPOINT' with your actual API endpoint URL
+		try {
+			const formData = new FormData();
+			formData.append("invoice", blob, "Invoice.pdf");
+			formData.append("subscription_id", user?.active_subscription_id);
+
+			const response = await fetch(INVOICE_UPLOAD, {
+				method: "POST",
+				body: formData,
+			});
+
+			// Handle the API response here if needed
+			// For example, check the response status and display a success message
+			if (response.ok) {
+				console.log(response);
+				console.log("Invoice sent successfully!");
+			} else {
+				console.log(response);
+				console.log("Failed to send invoice.");
+			}
+		} catch (error) {
+			console.error("Error sending the invoice:", error);
+		}
+
+		// Save the PDF
+		// saveAs(blob, "Invoice.pdf");
+		// const pdfUrl = URL.createObjectURL(blob);
+
+		// Create a hidden anchor element and click it programmatically to trigger download
+		// const anchor = document.createElement("a");
+		// anchor.href = pdfUrl;
+		// anchor.download = "Invoice.pdf";
+		// anchor.style.display = "none";
+		// document.body.appendChild(anchor);
+		// anchor.click();
+		// document.body.removeChild(anchor);
+	};
+
+	const handleGenerateInvoice = async (startDate, subscription_id) => {
+		setStartDate(startDate);
+		const fullName = user?.name;
+		const gstin = gstNo ? gstNo : "";
+		const referralCode = user.referral_code ? user.referral_code : "";
+		// const currentDate = new Date().toLocaleDateString('en-GB');
+		// console.log(
+		// 	user?.name,
+		// 	user?.active_subscription,
+		// 	user.referral_code ? user.referral_code : ""
+		// );
+		const blob = await pdf(
+			<InvoicePDF
+				fullName={fullName}
+				gstin={gstin}
+				referralCode={referralCode}
+				phone_number={user?.mobile}
+				startDate={startDate}
+			/>
+		).toBlob();
+
+		const formData = new FormData();
+		formData.append("invoice", blob);
+		console.log(subscription_id);
+
+		try {
+			const formData = new FormData();
+			formData.append("invoice", blob, "Invoice.pdf");
+			formData.append("subscription_id", subscription_id);
+
+			const response = await fetch(INVOICE_UPLOAD, {
+				method: "POST",
+				body: formData,
+			});
+
+			if (response.ok) {
+				console.log(response);
+				console.log("Invoice sent successfully!");
+			} else {
+				console.log(response);
+				console.log("Failed to send invoice.");
+			}
+		} catch (error) {
+			console.error("Error sending the invoice:", error);
+		}
+
+	  };
 
 	if (!user) {
 		return (
@@ -415,7 +536,7 @@ const UserDetails = () => {
 									auto
 									onClick={() => setNewName("")}
 									css={{ marginRight: "0px", borderRadius: "10000px" }}
-									disabled= {newName.length > 0 ? false : true}
+									disabled={newName.length > 0 ? false : true}
 								>
 									Undo
 								</Button>
@@ -437,8 +558,8 @@ const UserDetails = () => {
 							height: "fit-content",
 						}}
 					> */}
-						{/*{editing ? (*/}
-						{/* <div
+					{/*{editing ? (*/}
+					{/* <div
 							style={{
 								width: "100%",
 								display: "flex",
@@ -447,10 +568,10 @@ const UserDetails = () => {
 								padding: "5px",
 							}}
 						> */}
-							{/* <Text b size={15} style={{ paddingLeft: "20px" }}>
+					{/* <Text b size={15} style={{ paddingLeft: "20px" }}>
 								Email Address
 							</Text> */}
-							{/* <div
+					{/* <div
 								style={{
 									display: "flex",
 									flexDirection: "row",
@@ -462,7 +583,7 @@ const UserDetails = () => {
 									// border: "1px solid lightgrey",
 								}}
 							> */}
-								{/* <Input
+					{/* <Input
 									// underlined
 									value={billingEmail}
                                     placeholder={user?.email}
@@ -477,13 +598,13 @@ const UserDetails = () => {
 										},
 									}}
 								/> */}
-								{/* <Button
+					{/* <Button
 									color="success"
 									auto
 									onClick={handleSaveProfile}
 									css={{ marginRight: "0px", borderRadius: "10000px" }}
 								> */}
-									{/* Save
+					{/* Save
 								</Button>
 								<Button
 									color="error"
@@ -493,7 +614,7 @@ const UserDetails = () => {
 								>
 									Undo
 								</Button> */}
-							{/* </div>
+					{/* </div>
 						</div>
 					</div> */}
 
@@ -539,7 +660,7 @@ const UserDetails = () => {
 								<Input
 									// underlined
 									value={gstNo}
-                                    placeholder={user?.gst_no}
+									placeholder={user?.gst_no}
 									onChange={(e) => setGstNo(e.target.value)}
 									css={{
 										marginRight: "0px",
@@ -564,7 +685,7 @@ const UserDetails = () => {
 									auto
 									onClick={() => setGstNo("")}
 									css={{ marginRight: "0px", borderRadius: "10000px" }}
-									disabled= {gstNo.length > 0 ? false : true}
+									disabled={gstNo.length > 0 ? false : true}
 								>
 									Undo
 								</Button>
@@ -613,7 +734,9 @@ const UserDetails = () => {
 							>
 								<Input
 									// underlined
-									value={user.referral_code ? user.referral_code : newReferralCode}
+									value={
+										user.referral_code ? user.referral_code : newReferralCode
+									}
 									onChange={(e) => setNewReferralCode(e.target.value)}
 									css={{
 										marginRight: "0px",
@@ -638,7 +761,7 @@ const UserDetails = () => {
 									auto
 									onClick={() => setNewReferralCode("")}
 									css={{ marginRight: "0px", borderRadius: "10000px" }}
-									disabled= {newReferralCode.length > 0 ? false : true}
+									disabled={newReferralCode.length > 0 ? false : true}
 								>
 									Undo
 								</Button>
@@ -701,13 +824,34 @@ const UserDetails = () => {
 										  })} ${new Date(sub.end_date).getFullYear()}`
 										: "N/A"}
 								</Text>
+								{sub.invoice ? (
+									<Button
+										auto
+										css={{ marginTop: "15px", background: "#fda629" }}
+										onPress={() => window.open(sub.invoice, "_blank")}
+									>
+										Get Invoice
+									</Button>
+								) : sub.plan === "KamayaKya" ? (
+									<Button
+										auto
+										css={{ marginTop: "15px", background: "#fda629" }}
+										onPress={() => handleGenerateInvoice(sub.start_date, sub.id)}
+									>
+										Generate Invoice
+									</Button>
+								) : (
+									""
+								)}
+								{/* <Text>{sub.invoice}</Text> */}
+								{/* {console.log(sub?.invoice)} */}
 							</Box>
 						))
 					) : (
 						<Text>No subscriptions found</Text>
 					)}
 				</Box>
-				{/* <Button
+				<Button
 					css={{
 						width: "90%",
 						maxWidth: "600px",
@@ -715,9 +859,10 @@ const UserDetails = () => {
 						margin: "0px 20px",
 						borderRadius: "1000px",
 					}}
+					onPress={getInvoice}
 				>
-					Get Invoice
-				</Button> */}
+					Generate Latest Invoice
+				</Button>
 			</div>
 		</section>
 	);
