@@ -115,7 +115,7 @@ const Section4 = () => {
               We follow compliances
             </Text>
           </Box>
-          <Box
+          {/* <Box
             sx={{
               display: "flex",
               flexDirection: "row",
@@ -143,8 +143,9 @@ const Section4 = () => {
             >
               Our competence is trusted by the governing body of the stock
               markets
+              We are registered with the governing body of the Indian stock market - SEBI
             </Text>
-          </Box>
+          </Box> */}
           <Box
             sx={{
               display: "flex",

@@ -300,7 +300,7 @@ const WhyUs = () => {
 			>
 				<Box
 					sx={{
-						cursor: 'pointer',
+						cursor: "pointer",
 						// paddingLeft: "40px",
 						// paddingRight: "40px",
 						// paddingTop: "15px",
@@ -456,7 +456,8 @@ const WhyUs = () => {
 					}}
 				>
 					We present our scorecard. Our victories, our misses - all in the open.
-					<br/>Your trust is earned, not assumed.
+					<br />
+					Your trust is earned, not assumed.
 				</Text>
 				{/* <Grid
 					  xs={"auto"}
@@ -937,10 +938,10 @@ const WhyUs = () => {
 													// justifyContent: 'center',
 													flexDirection: "row",
 													alignItems: "center",
-													textAlign: 'center',
+													textAlign: "center",
 													// background: '#125a54',
-													borderRadius: '10px',
-													background: 'trasparent',
+													borderRadius: "10px",
+													background: "trasparent",
 													"@media only screen and (max-width: 764px)": {
 														paddingTop: "0px",
 														fontSize: "20px",
@@ -1314,8 +1315,8 @@ const WhyUs = () => {
 																marginTop: "15px",
 																gap: "20px",
 																"@media only screen and (max-width: 764px)": {
-																	gap: '15px',
-																	width: '100%',
+																	gap: "15px",
+																	width: "100%",
 																	// justifyContent: 'space-evenly',
 																},
 															}}
@@ -1338,7 +1339,7 @@ const WhyUs = () => {
 																			{
 																				paddingTop: "0px",
 																				fontSize: "14.5px",
-																				width: '100%'
+																				width: "100%",
 																			},
 																	}}
 																>
@@ -1624,6 +1625,12 @@ const WhyUs = () => {
 												},
 											}}
 										>
+											<IconButton
+												sx={{ position: "absolute", top: "5px", right: "5px" }}
+												onClick={handleCloseReports}
+											>
+												<CloseIcon color="error" />
+											</IconButton>
 											<Text
 												b
 												size={27}
@@ -1703,7 +1710,7 @@ const WhyUs = () => {
 										No Reports Available
 									</Text>
 								)}
-								<Button
+								{/* <Button
 									flat
 									auto
 									onPress={handleCloseReports}
@@ -1712,7 +1719,7 @@ const WhyUs = () => {
 										// width: "100%",
 										backgroundColor: "#ffa12e",
 										color: "#fff",
-										fontSize: 19,
+										fontSize: 19,c
 										marginTop: "20px",
 										borderRadius: "14px",
 										height: "50px",
@@ -1726,7 +1733,7 @@ const WhyUs = () => {
 									}}
 								>
 									Close
-								</Button>
+								</Button> */}
 							</Modal>
 						</>
 					))}

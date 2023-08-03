@@ -269,9 +269,11 @@ const UserDetails = () => {
 			if (response.ok) {
 				console.log(response);
 				console.log("Invoice sent successfully!");
+				window.location.reload();
 			} else {
 				console.log(response);
 				console.log("Failed to send invoice.");
+				window.location.reload();
 			}
 		} catch (error) {
 			console.error("Error sending the invoice:", error);
@@ -851,7 +853,7 @@ const UserDetails = () => {
 						<Text>No subscriptions found</Text>
 					)}
 				</Box>
-				<Button
+				{/* <Button
 					css={{
 						width: "90%",
 						maxWidth: "600px",
@@ -862,7 +864,7 @@ const UserDetails = () => {
 					onPress={getInvoice}
 				>
 					Generate Latest Invoice
-				</Button>
+				</Button> */}
 			</div>
 		</section>
 	);

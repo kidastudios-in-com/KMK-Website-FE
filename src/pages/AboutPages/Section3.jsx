@@ -1,107 +1,107 @@
 import { Box, IconButton } from "@mui/material";
 import {
-  Button,
-  Card,
-  Modal,
-  Text,
-  Divider,
-  useModal,
+	Button,
+	Card,
+	Modal,
+	Text,
+	Divider,
+	useModal,
 } from "@nextui-org/react";
 import React, { useState } from "react";
 // import { useState } from "react/react.shared-subset";
 import CloseIcon from "@mui/icons-material/Close";
 
 const Section3 = () => {
-  const { setVisible, bindings } = useModal();
-  const [selectedPDF, setSelectedPDF] = useState(new Set(["SampleReport.pdf"]));
-  const [showIframe, setShowIframe] = useState(false);
+	const { setVisible, bindings } = useModal();
+	const [selectedPDF, setSelectedPDF] = useState(new Set(["SampleReport.pdf"]));
+	const [showIframe, setShowIframe] = useState(false);
 
-  const handleCloseIframe = () => {
-    setShowIframe(false);
-  };
+	const handleCloseIframe = () => {
+		setShowIframe(false);
+	};
 
-  const handleIonOnePage = () => {
-    // setShowIframe(true);
-    // setSelectedPDF("Ion Exchange (India) Ltd. (IEIL) - 1 Page Report.pdf");
-    // setVisible(false);
-    var win = window.open(
-      "Ion Exchange (India) Ltd. (IEIL) - 1 Page Report.pdf#toolbar=0&fitH=1",
-      "_blank",
-      "fullscreen=yes"
-    );
-  };
-  const handleIonDetailed = () => {
-    // setShowIframe(true);
-    // setSelectedPDF("Ion Exchange (India) Ltd. (IEIL) - Detailed Report.pdf");
-    // setVisible(false);
-    var win = window.open(
-      "Ion Exchange (India) Ltd. (IEIL) - Detailed Report.pdf#toolbar=0&fitH=1",
-      "_blank",
-      "fullscreen=yes"
-    );
-  };
-  const handleHGOnePage = () => {
-    // setShowIframe(true);
-    // setSelectedPDF("H.G. Infra Engineering Ltd (HGIEL) - 1 Page Report.pdf");
-    // setVisible(false);
-    var win = window.open(
-      "H.G. Infra Engineering Ltd (HGIEL) - 1 Page Report.pdf#toolbar=0&fitH=1",
-      "_blank",
-      "fullscreen=yes"
-    );
-  };
-  const handleHGDetailed = () => {
-    // setShowIframe(true);
-    // setSelectedPDF("H.G. Infra Engineering Ltd (HGIEL) - Detailed Report.pdf");
-    // setVisible(false);
-    var win = window.open(
-      "H.G. Infra Engineering Ltd (HGIEL) - Detailed Report.pdf#toolbar=0&fitH=1",
-      "_blank",
-      "fullscreen=yes"
-    );
-  };
-  const handleGravitaOnePage = () => {
-    // setShowIframe(true);
-    // setSelectedPDF("Gravita India Ltd. (GIL) - 1 Page Report.pdf");
-    // setVisible(false);
-    var win = window.open(
-      "Gravita India Ltd. (GIL) - 1 Page Report.pdf#toolbar=0&fitH=1",
-      "_blank",
-      "fullscreen=yes"
-    );
-  };
-  const handleGravitaDetailed = () => {
-    // setShowIframe(true);
-    // setSelectedPDF("Gravita India Ltd. (GIL) - Detailed Report.pdf");
-    // setVisible(false);
-    var win = window.open(
-      "Ion Exchange (India) Ltd. (IEIL) - 1 Page Report.pdf#toolbar=0&fitH=1",
-      "_blank",
-      "fullscreen=yes"
-    );
-  };
+	const handleIonOnePage = () => {
+		// setShowIframe(true);
+		// setSelectedPDF("Ion Exchange (India) Ltd. (IEIL) - 1 Page Report.pdf");
+		// setVisible(false);
+		var win = window.open(
+			"Ion Exchange (India) Ltd. (IEIL) - 1 Page Report.pdf#toolbar=0&fitH=1",
+			"_blank",
+			"fullscreen=yes"
+		);
+	};
+	const handleIonDetailed = () => {
+		// setShowIframe(true);
+		// setSelectedPDF("Ion Exchange (India) Ltd. (IEIL) - Detailed Report.pdf");
+		// setVisible(false);
+		var win = window.open(
+			"Ion Exchange (India) Ltd. (IEIL) - Detailed Report.pdf#toolbar=0&fitH=1",
+			"_blank",
+			"fullscreen=yes"
+		);
+	};
+	const handleHGOnePage = () => {
+		// setShowIframe(true);
+		// setSelectedPDF("H.G. Infra Engineering Ltd (HGIEL) - 1 Page Report.pdf");
+		// setVisible(false);
+		var win = window.open(
+			"H.G. Infra Engineering Ltd (HGIEL) - 1 Page Report.pdf#toolbar=0&fitH=1",
+			"_blank",
+			"fullscreen=yes"
+		);
+	};
+	const handleHGDetailed = () => {
+		// setShowIframe(true);
+		// setSelectedPDF("H.G. Infra Engineering Ltd (HGIEL) - Detailed Report.pdf");
+		// setVisible(false);
+		var win = window.open(
+			"H.G. Infra Engineering Ltd (HGIEL) - Detailed Report.pdf#toolbar=0&fitH=1",
+			"_blank",
+			"fullscreen=yes"
+		);
+	};
+	const handleGravitaOnePage = () => {
+		// setShowIframe(true);
+		// setSelectedPDF("Gravita India Ltd. (GIL) - 1 Page Report.pdf");
+		// setVisible(false);
+		var win = window.open(
+			"Gravita India Ltd. (GIL) - 1 Page Report.pdf#toolbar=0&fitH=1",
+			"_blank",
+			"fullscreen=yes"
+		);
+	};
+	const handleGravitaDetailed = () => {
+		// setShowIframe(true);
+		// setSelectedPDF("Gravita India Ltd. (GIL) - Detailed Report.pdf");
+		// setVisible(false);
+		var win = window.open(
+			"Ion Exchange (India) Ltd. (IEIL) - 1 Page Report.pdf#toolbar=0&fitH=1",
+			"_blank",
+			"fullscreen=yes"
+		);
+	};
 
-  const handleMonteOnePage = () => {
-    // setShowIframe(true);
-    // setSelectedPDF("Monte Carlo Fashions Ltd. (MCFL) - 1 Page Report.pdf");
-    // setVisible(false);
-    var win = window.open(
-      "Monte Carlo Fashions Ltd. (MCFL) - 1 Page Report.pdf#toolbar=0&fitH=1",
-      "_blank",
-      "fullscreen=yes"
-    );
-  };
+	const handleMonteOnePage = () => {
+		// setShowIframe(true);
+		// setSelectedPDF("Monte Carlo Fashions Ltd. (MCFL) - 1 Page Report.pdf");
+		// setVisible(false);
+		var win = window.open(
+			"Monte Carlo Fashions Ltd. (MCFL) - 1 Page Report.pdf#toolbar=0&fitH=1",
+			"_blank",
+			"fullscreen=yes"
+		);
+	};
 
-  const handleMonteDetailed = () => {
-    // setShowIframe(true);
-    // setSelectedPDF("Monte Carlo Fashions Ltd. (MCFL) - Detailed Report.pdf");
-    // setVisible(false);
-    var win = window.open(
-      "Monte Carlo Fashions Ltd. (MCFL) - Detailed Report.pdf#toolbar=0&fitH=1",
-      "_blank",
-      "fullscreen=yes"
-    );
-  };
+	const handleMonteDetailed = () => {
+		// setShowIframe(true);
+		// setSelectedPDF("Monte Carlo Fashions Ltd. (MCFL) - Detailed Report.pdf");
+		// setVisible(false);
+		var win = window.open(
+			"Monte Carlo Fashions Ltd. (MCFL) - Detailed Report.pdf#toolbar=0&fitH=1",
+			"_blank",
+			"fullscreen=yes"
+		);
+	};
 
   return (
     <section

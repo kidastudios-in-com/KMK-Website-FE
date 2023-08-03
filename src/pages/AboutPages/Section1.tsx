@@ -86,7 +86,10 @@ const Section1 = () => {
               <span
                 style={{
                   // background: "#125a54",
-                  color: "#FF9E24",
+                  color: "#ff8516",
+                  // color: '#f2982a',
+                  // textDecoration: 'underline #FF9E24',
+                  // textDecorationThickness: '3px',
                   padding: "0px 0px",
                   borderRadius: "1000px",
                 }}
@@ -101,7 +104,9 @@ const Section1 = () => {
               <span
                 style={{
                   // background: "#125a54",
-                  color: "#FF9E24",
+                  color: "#ff8516",
+                  // color: '#000',
+                  // textDecoration: 'underline #FF9E24',
                   padding: "0px 0px",
                   borderRadius: "1000px",
                 }}
@@ -120,7 +125,9 @@ const Section1 = () => {
               <span
                 style={{
                   // background: "#125a54",
-                  color: "#FF9E24",
+                  color: "#ff8516",
+                  // color: '#000',
+                  // textDecoration: 'underline #FF9E24',
                   padding: "0px 0px",
                   borderRadius: "1000px",
                 }}

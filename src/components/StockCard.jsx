@@ -1458,6 +1458,12 @@ const StockCard = () => {
 										},
 									}}
 								>
+									<IconButton
+										sx={{ position: "absolute", top: "5px", right: "5px" }}
+										onClick={handleCloseReports}
+									>
+										<CloseIcon color="error" />
+									</IconButton>
 									<Box
 										sx={{
 											width: "100%",
@@ -1521,7 +1527,7 @@ const StockCard = () => {
 										)}
 									</Box>
 								</Card>
-								<Button
+								{/* <Button
 									flat
 									onPress={handleCloseReports}
 									css={{
@@ -1546,7 +1552,7 @@ const StockCard = () => {
 									}}
 								>
 									Close
-								</Button>
+								</Button> */}
 							</Modal>
 							<Modal
 								// blur
