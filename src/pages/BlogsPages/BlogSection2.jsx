@@ -9,6 +9,7 @@ const BlogSection2 = () => {
   const [blogs, setBlogs] = useState([]);
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingBlogs, setIsLoadingBlogs] = useState(true);
 
   const handleImageLoad = () => {
     setIsLoading(false);
@@ -17,6 +18,7 @@ const BlogSection2 = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
+        setIsLoadingBlogs(true);
         const refresh = localStorage.getItem("refresh");
         const response = await fetch(GET_BLOGS, {
           method: "GET",
@@ -27,6 +29,7 @@ const BlogSection2 = () => {
         });
         const data = await response.json();
         setBlogs(data);
+        setIsLoadingBlogs(false);
       } catch (error) {
         console.log("Error fetching blogs:", error);
       }
@@ -50,6 +53,9 @@ const BlogSection2 = () => {
           margin: "0 auto",
         }}
       >
+        {isLoadingBlogs && (
+          <Loading type={"gradient"} style={{ marginBottom: "50px" }} />
+        )}
         <Box
           sx={{
             width: "100%",
