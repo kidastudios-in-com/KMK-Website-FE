@@ -86,6 +86,20 @@ const StockCard = () => {
 		setShowModal(true);
 	};
 
+	const handleOpenDisclosure = (stock) => {
+		if (stock?.stock_disclosures?.length > 0) {
+		  const disclosureUrl = stock.stock_disclosures[0].document;
+		  window.open(`${disclosureUrl}#toolbar=0`, "_blank", "fullscreen=yes");
+		} else {
+		  // If no disclosures available, open the dummy URL
+		  window.open(
+			"https://6c20e9b8-4436-474a-a31f-665d7b41553d.usrfiles.com/ugd/6c20e9_b05424ae64794ddc84905b8a57e161a4.pdf#toolbar=0",
+			"_blank",
+			"fullscreen=yes"
+		  );
+		}
+	  };
+
 	const handleOpenReports = (stock) => {
 		setSelectedStock(stock);
 		// console.log(selectedStock);
@@ -1390,13 +1404,7 @@ const StockCard = () => {
 									</Button>
 									<Button
 										auto
-										onClick={() =>
-											window.open(
-												"https://6c20e9b8-4436-474a-a31f-665d7b41553d.usrfiles.com/ugd/6c20e9_b05424ae64794ddc84905b8a57e161a4.pdf#toolbar=0",
-												"_blank",
-												"fullscreen=yes"
-											)
-										}
+										onPress={() => handleOpenDisclosure(stock)}
 										css={{
 											top: "10px",
 											// marginTop: "10%",

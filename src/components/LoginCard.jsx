@@ -348,6 +348,7 @@ const LoginCard = () => {
               border: "2px solid #ffa12e",
               borderRadius: "1000px",
               background: "#fff",
+              "-moz-appearance": "textfield",
             }}
             renderInput={(props) => (
               <input

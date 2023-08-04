@@ -40,6 +40,8 @@ const Section4 = () => {
             padding: "20px",
             paddingBottom: "40px",
             borderRadius: "30px",
+            filter: "none",
+            // boxShadow: 'none',
             "@media only screen and (max-width: 764px)": {
               width: "100%",
               marginBottom: "20px",
@@ -115,7 +117,7 @@ const Section4 = () => {
               We follow compliances
             </Text>
           </Box>
-          {/* <Box
+          <Box
             sx={{
               display: "flex",
               flexDirection: "row",
@@ -141,11 +143,9 @@ const Section4 = () => {
                 },
               }}
             >
-              Our competence is trusted by the governing body of the stock
-              markets
-              We are registered with the governing body of the Indian stock market - SEBI
+              Regulated and Approved by the governing body of the stock markets
             </Text>
-          </Box> */}
+          </Box>
           <Box
             sx={{
               display: "flex",
@@ -190,6 +190,8 @@ const Section4 = () => {
             paddingBottom: "40px",
             borderRadius: "30px",
             // paddingBottom: "40px",
+            filter: "none",
+            // boxShadow: 'none',
             "@media only screen and (max-width: 764px)": {
               width: "100%",
               marginBottom: "20px",
@@ -283,6 +285,8 @@ const Section4 = () => {
             // paddingBottom: "40px",
             padding: "20px",
             paddingBottom: "40px",
+            filter: "none",
+            // boxShadow: 'none',
             "@media only screen and (max-width: 764px)": {
               width: "100%",
               marginBottom: "20px",
