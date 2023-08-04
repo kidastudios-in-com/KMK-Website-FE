@@ -998,6 +998,8 @@ const WhyUs = () => {
                           <span>
                             {item.gain_loss > 0 ? (
                               <span>Profit booked in</span>
+                            ) : item.gain_loss == 0 ? (
+                              <span>Exit call given in</span>
                             ) : (
                               <span>Loss booked in</span>
                             )}{" "}
