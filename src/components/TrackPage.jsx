@@ -994,9 +994,23 @@ const WhyUs = () => {
                           },
                         }}
                       >
-                        {record[selectedCardIndex].action === "SELL"
-                          ? "Time Left: $item.time_left days"
-                          : ""}
+                        {item.action === "SELL" ? (
+                          <span>
+                            {item.gain_loss > 0 ? (
+                              <span>Profit booked in</span>
+                            ) : (
+                              <span>Loss booked in</span>
+                            )}{" "}
+                            {Math.ceil(
+                              (new Date(item.end_date) -
+                                new Date(item.start_date)) /
+                                (1000 * 60 * 60 * 24)
+                            )}{" "}
+                            days
+                          </span>
+                        ) : (
+                          <span>Time left: {item.time_left} days</span>
+                        )}
                       </Text>
                       <Progress
                         value={Math.floor(
