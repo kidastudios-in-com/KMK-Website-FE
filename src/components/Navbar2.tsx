@@ -45,7 +45,7 @@ const NavBar2 = () => {
     localStorage.removeItem("access");
     localStorage.removeItem("refresh");
     // if(window.location.pathname === "/") {
-      // window.location.reload();
+    // window.location.reload();
     // }
     // else{
     router.push("/");
@@ -128,7 +128,7 @@ const NavBar2 = () => {
     >
       <Navbar.Brand
         css={{
-          cursor: 'pointer',
+          cursor: "pointer",
           // w: "350px",
           zIndex: 99,
           "@media only screen and (max-width: 764px)": {
@@ -205,7 +205,7 @@ const NavBar2 = () => {
           }}
         >
           <Text b size={20} css={{ lineHeight: 5 }}>
-            Track record
+            Track Record
           </Text>
         </Navbar.Link>
       </Navbar.Content>

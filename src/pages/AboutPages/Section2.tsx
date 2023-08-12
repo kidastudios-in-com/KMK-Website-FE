@@ -515,10 +515,11 @@ const Section2 = () => {
                 },
               }}
             >
-              For the past 25 years, Dhiren has been an enthusiastic equity
-              investor who possesses a strong passion for small-cap stocks.
-              Additionally, he manages well-established businesses within the
-              e-Commerce, Animation Software, and Media sectors.
+              With over 25 years of expertise in system integration for media,
+              entertainment, and technology products, Anand possesses extensive
+              experience in online and offline distribution. Additionally, he
+              has actively invested in startups within the gaming industry and
+              contributed to equity research.
             </Text>
           </Box>
 
@@ -603,11 +604,11 @@ const Section2 = () => {
                 },
               }}
             >
-              Nitya, currently in the final year of M.Com, is a CFA Level 2
-              candidate. With a solid 5-year background in investing, Nitya has
-              also gained valuable experience in product development and
-              investment research during a 2-year tenure at an Investment
-              Advisory firm.
+              Nitya has cleared CFA Level 1, NISM Research Analyst exam and has
+              completed M.Com from Pune University. He has an investing
+              experience of 5 years and has worked for 2 years in product
+              development and investment research at an Investment Advisory in
+              the past.
             </Text>
           </Box>
           {/* Person 3 */}
@@ -692,9 +693,11 @@ const Section2 = () => {
               }}
             >
               With a wealth of entrepreneurial experience spanning over 10 years
-              in sports and internet businesses, Aniket also boasts more than 3
-              years of expertise in equity research and over 5 years in the
-              field of investing.
+              in sports and internet businesses, Aniket also possesses more than
+              3 years of specialized expertise in equity research and over 5
+              years in the field of investing, wherein he discovered several
+              multibaggers. As a testament to his continuous pursuit of growth
+              and learning, he is also an alumnus of GrowthX.
             </Text>
           </Box>
           {/* Person 3 */}

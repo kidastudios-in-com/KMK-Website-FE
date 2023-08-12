@@ -58,7 +58,7 @@ const Section5 = () => {
             muted
             autoPlay
             loop
-            src="https://kamayakya.com/KamayaKya%20Receommendations%20-%20Value%20Prop.mp4"
+            src="/kmk-recommendations.mp4"
             style={{ borderRadius: "30px", width: "100%", height: "100%" }}
           />
         </Box>

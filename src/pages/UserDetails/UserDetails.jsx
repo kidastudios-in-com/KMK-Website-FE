@@ -331,7 +331,7 @@ const UserDetails = () => {
 							muted
 							autoPlay
 							loop
-							src="https://kamayakya.com/In%20Depth%20Research%20-%20Why%20Us.mp4"
+							src="kmk-research.mp4"
 							style={{ borderRadius: "30px", width: "100%", height: "100%" }}
 						/>
 					</Box>
@@ -826,7 +826,7 @@ const UserDetails = () => {
 										  })} ${new Date(sub.end_date).getFullYear()}`
 										: "N/A"}
 								</Text>
-								{sub.invoice ? (
+								{/* {sub.invoice ? (
 									<Button
 										auto
 										css={{ marginTop: "15px", background: "#fda629" }}
@@ -844,7 +844,7 @@ const UserDetails = () => {
 									</Button>
 								) : (
 									""
-								)}
+								)} */}
 								{/* <Text>{sub.invoice}</Text> */}
 								{/* {console.log(sub?.invoice)} */}
 							</Box>

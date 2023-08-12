@@ -58,7 +58,7 @@ const Section6 = () => {
             muted
             autoPlay
             loop
-            src="https://kamayakya.com/Performance%20Track%20Record%20-%20Value%20Prop.mp4"
+            src="/kmk-performanceTrack.mp4"
             style={{ borderRadius: "30px", width: "100%", height: "100%" }}
           />
         </Box>

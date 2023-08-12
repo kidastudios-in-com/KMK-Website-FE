@@ -128,6 +128,7 @@ const BlogSection2 = () => {
                         display: isLoading ? "none" : "block",
                         opacity: isLoading ? 0 : 1,
                         transition: "opacity 0.5s",
+                        backgroundColor: "#f3f3f3",
                       }}
                       onLoad={handleImageLoad}
                     />

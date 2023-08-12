@@ -58,7 +58,7 @@ const Section7 = () => {
             muted
             autoPlay
             loop
-            src="https://kamayakya.com/360%20Degree%20View%20-%20Value%20Prop.mp4"
+            src="kmk-360.mp4"
             style={{ borderRadius: "30px", width: "100%", height: "100%" }}
           />
         </Box>

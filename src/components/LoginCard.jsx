@@ -116,8 +116,12 @@ const LoginCard = () => {
         localStorage.setItem("access", data.access);
         localStorage.setItem("refresh", data.refresh);
         Cookies.set("refresh", data.refresh, { expires: in30Minutes });
-        setShowOtpModal(false);
-        router.push("/stock-picks");
+        if (router.pathname !== "/track-record") {
+          router.push("/stock-picks");
+        } else {
+          setShowOtpModal(false);
+          window.location.reload();
+        }
       } else {
         setError("Failed to verify OTP. Please try again.");
         setShowOtpModal(true);
