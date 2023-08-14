@@ -717,7 +717,7 @@ const Section2 = () => {
             }}
           >
             <img
-              src="/tusharRaghate.JPG"
+              src="/tusharRaghate.jpg"
               alt="Tushar Raghatate | KamayaKya Wealth Management"
               // width="100%";
               className="pfpTeam-mobile"
@@ -804,7 +804,7 @@ const Section2 = () => {
             }}
           >
             <img
-              src="/kmk-pratik.JPG"
+              src="/kmk-pratik.jpg"
               alt="Pratik Kulkarni | KamayaKya Wealth Management"
               // width="100%";
               className="pfpTeam-mobile"
@@ -893,7 +893,7 @@ const Section2 = () => {
             }}
           >
             <img
-              src="/kmk-manan.JPG"
+              src="/kmk-manan.jpg"
               alt="Manan Madlani | KamayaKya Wealth Management"
               // width="100%";
               className="pfpTeam-mobile"

@@ -697,8 +697,12 @@ const WhyUs = () => {
                           },
                         }}
                       >
-                        {item.tag1.toUpperCase()} |{" "}
-                        {item.tag2 ? item.tag2.toUpperCase() : ""}
+                        {item.tag1.toUpperCase()}
+                        {item.tag2 ? (
+                          <span> | {item.tag2.toUpperCase()}</span>
+                        ) : (
+                          ""
+                        )}
                       </Text>
                     </div>
                     <img
