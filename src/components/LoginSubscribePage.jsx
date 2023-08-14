@@ -1,6 +1,15 @@
-import { Button, Card, Input, Modal, Text, Loading } from "@nextui-org/react";
 import React, { useState, useEffect } from "react";
-import { Alert, Box } from "@mui/material";
+import Cookies from "js-cookie";
+import {
+  Button,
+  Input,
+  Card,
+  Text,
+  Modal,
+  Loading,
+  Divider,
+} from "@nextui-org/react";
+import { Box, Alert } from "@mui/material";
 import {
   REG_USER_EMAIL,
   REG_USER_MOBILE,
@@ -8,12 +17,11 @@ import {
 } from "../pages/api/URLs";
 import OtpInput from "react-otp-input";
 import { useRouter } from "next/router";
-import { BiLockAlt } from "react-icons/bi";
 import PhoneInput from "react-phone-input-2";
-import { blockInvalidChar } from "@/components/LoginCard";
-import Cookies from "js-cookie";
+import "react-phone-input-2/lib/style.css";
+import { BiLockAlt } from "react-icons/bi";
 
-const RegisterCard = () => {
+const LoginSubscribeCard = () => {
   const router = useRouter();
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
@@ -39,19 +47,15 @@ const RegisterCard = () => {
       return () => clearTimeout(timer);
     }
   }, [secondsRemaining]);
+  const isMobileValid = mobile.replace(/\D/g, "").length === 12;
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-    setMobile("");
+  const handleInputChange = (value) => {
+    // const inputValue = e.target.value;
+    const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    setEmail(isEmail ? value : "");
+    setMobile(isEmail ? "" : value);
   };
-
-  const handleMobileChange = (e) => {
-    setMobile(e.target.value);
-    setEmail("");
-  };
-
   var in30Minutes = 1 / 48;
-
   const showAlert = () => {
     setIsAlertVisible(true);
     setTimeout(() => {
@@ -66,6 +70,8 @@ const RegisterCard = () => {
   }, [error]);
 
   const handleRegister = async () => {
+    console.log(mobile);
+    setSecondsRemaining(30);
     let URLs = email !== "" ? REG_USER_EMAIL : REG_USER_MOBILE;
     setIsLoading(true);
     try {
@@ -73,9 +79,8 @@ const RegisterCard = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          mobile: mobile,
-          // password: password,
-          email: email,
+          mobile: email !== "" ? undefined : "+" + mobile,
+          email: email !== "" ? email : undefined,
         }),
       });
       if (response.ok) {
@@ -83,16 +88,15 @@ const RegisterCard = () => {
         setOtp(data.otp);
         setShowOtpModal(true);
       } else {
-        console.log("RESPONSE NOT OK");
-        setError("Failed to Register. Please try again.");
+        setError("Failed to Login. Please try again.");
         showAlert();
       }
     } catch (e) {
-      console.log(e);
       setError("An error occurred. Please try again later.");
       showAlert();
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
   };
 
   const handleOtpSubmit = async () => {
@@ -104,7 +108,7 @@ const RegisterCard = () => {
         body: JSON.stringify({
           token: otp,
           email: email !== "" ? email : undefined,
-          mobile: mobile !== "" ? mobile : undefined,
+          mobile: mobile !== "" ? "+" + mobile : undefined,
         }),
       });
       if (response.ok) {
@@ -113,19 +117,17 @@ const RegisterCard = () => {
         localStorage.setItem("refresh", data.refresh);
         Cookies.set("refresh", data.refresh, { expires: in30Minutes });
         if (router.pathname !== "/track-record") {
-          router.push("/stock-picks");
+          router.push("/purchase");
         } else {
           setShowOtpModal(false);
           window.location.reload();
         }
       } else {
-        console.log("RESPONSE NOT OK");
         setError("Failed to verify OTP. Please try again.");
         setShowOtpModal(true);
         showAlert();
       }
     } catch (e) {
-      console.log(e);
       setError("An error occurred. Please try again later.");
       showAlert();
     }
@@ -142,6 +144,7 @@ const RegisterCard = () => {
         // padding: "50px",
         // alignItems: "center",
         padding: "15px",
+
         "@media only screen and (max-width: 764px)": {
           // padding: "5px",
         },
@@ -242,22 +245,26 @@ const RegisterCard = () => {
                   {error}
                 </Alert>
               )}
-
-              <Input
-                // labelLeft="Email"
-                placeholder="eg: support@kamayakya.com"
-                clearable
-                size="lg"
-                value={email}
-                onChange={handleEmailChange}
-                css={{
+              <PhoneInput
+                containerStyle={{
                   marginBottom: "10px",
                   alignSelf: "center",
                   width: "300px",
-                  height: "50px",
-                  borderRadius: "1000px",
                 }}
-                className="countryPhone"
+                dropdownStyle={{ height: "250px", zIndex: 10 }}
+                countryCodeEditable={false}
+                country="in"
+                placeholder="eg: 9012345678"
+                value={mobile}
+                onChange={handleInputChange}
+                inputProps={{
+                  required: true,
+                  autoFocus: true,
+                }}
+                inputExtraProps={{
+                  mask: "+(999) 999 9999",
+                }}
+                containerClass="countryPhone"
               />
               <Text
                 b
@@ -280,7 +287,7 @@ const RegisterCard = () => {
                 disabled={isLoading || (!email && !mobile)}
                 loading={isLoading}
                 css={{
-                  backgroundImage: "linear-gradient(to top , #106052, #0f734d)",
+                  background: "linear-gradient(to top , #106052, #0f734d)",
                   padding: "0px 30px",
                   borderRadius: "1000px",
                   alignSelf: "center",
@@ -306,6 +313,7 @@ const RegisterCard = () => {
           alignContent: "center",
           justifyContent: "center",
         }}
+        className="otpBox"
       >
         {isAlertVisible && (
           <Alert severity="error" onClose={() => setIsAlertVisible(false)}>
@@ -339,8 +347,8 @@ const RegisterCard = () => {
             inputStyle={{
               height: "55px",
               width: "40px",
-              marginLeft: 2,
-              marginRight: 2,
+              marginLeft: 1,
+              marginRight: 1,
               border: "2px solid #ffa12e",
               borderRadius: "1000px",
               background: "#fff",
@@ -364,7 +372,7 @@ const RegisterCard = () => {
             disabled={isLoading || (!email && !mobile)}
             loading={isLoading}
             css={{
-              backgroundImage: "linear-gradient(to top , #106052, #0f734d)",
+              background: "linear-gradient(to top , #106052, #0f734d)",
               padding: "0px 30px",
               borderRadius: "1000px",
               alignSelf: "center",
@@ -391,4 +399,12 @@ const RegisterCard = () => {
   );
 };
 
-export default RegisterCard;
+export default LoginSubscribeCard;
+
+export const blockInvalidChar = (e, keydownFunction) => {
+  if (e.key.match(/^[^\n]{1}$/)) {
+    // Matching single character
+    !e.key.match(/^[0-9]$/) && e.preventDefault(); // Prevent non-numeric characters
+  }
+  keydownFunction(e); // Execute package's onKeyDown function
+};

@@ -50,6 +50,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import Login from "./Login";
 import { SearchNormal, Filter } from "iconsax-react";
 import Marquee from "react-fast-marquee";
+import LoginForSubsribe from "./LoginForSubsribe";
 
 const StockCard = () => {
   const router = useRouter();
@@ -71,6 +72,9 @@ const StockCard = () => {
 
   const staticNumbers = [94, 49, 28];
   const [showWhyModal, setShowWhyModal] = useState(false);
+
+  const [showLoginModalForSubscribe, setShowLoginModalForSubscribe] =
+    useState(false);
 
   const handleShowWhyModal = () => {
     setShowWhyModal(true);
@@ -135,6 +139,10 @@ const StockCard = () => {
   const handleCloseModal = () => {
     setShowModal(false);
     setSelectedPDF("");
+  };
+
+  const handleCloseLoginModalForSubscribeNow = () => {
+    setShowLoginModalForSubscribe(false);
   };
 
   const handleAskPassword = (e) => {
@@ -269,6 +277,18 @@ const StockCard = () => {
 
   const handleCloseLoginModal = () => {
     setShowLoginModal(false);
+  };
+
+  const handleLoginOrSubForSubscribeNow = () => {
+    if (isLoggedIn === true && isSubscribed === false) {
+      router.push("/purchase");
+    }
+    if (isLoggedIn === true && isSubscribed === true) {
+      router.push("/stock-picks");
+    }
+    if (isLoggedIn === false) {
+      setShowLoginModalForSubscribe(true);
+    }
   };
 
   const handleFirstCard = () => {
@@ -1791,12 +1811,44 @@ const StockCard = () => {
                         "linear-gradient(to top , #FF9D28, #ffa736)",
                     },
                   }}
-                  onPress={handleFirstCard}
+                  onClick={handleLoginOrSubForSubscribeNow}
                 >
                   <Text b color="#FFF" size={18}>
                     Subscribe Now
                   </Text>
                 </Button>
+                <Modal
+                  width="450px"
+                  open={showLoginModalForSubscribe}
+                  onClose={handleCloseLoginModalForSubscribeNow}
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "row",
+                      width: "100%",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <img src="kmk-k.png" style={{ maxWidth: "260px" }} />
+                    <IconButton
+                      sx={{
+                        width: "40px",
+                        "&:hover": { background: "#fff" },
+                        // alignSelf: "end",
+                        right: "20px",
+                      }}
+                      onClick={() => handleCloseLoginModalForSubscribeNow()}
+                    >
+                      <CloseIcon sx={{ color: "#e81123" }} />
+                    </IconButton>
+                  </Box>
+
+                  <Modal.Body>
+                    <LoginForSubsribe />
+                  </Modal.Body>
+                </Modal>
 
                 <Text
                   b

@@ -13,7 +13,7 @@ import PhoneInput from "react-phone-input-2";
 import { blockInvalidChar } from "@/components/LoginCard";
 import Cookies from "js-cookie";
 
-const RegisterCard = () => {
+const RegisterSubscribeCard = () => {
   const router = useRouter();
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
@@ -113,7 +113,7 @@ const RegisterCard = () => {
         localStorage.setItem("refresh", data.refresh);
         Cookies.set("refresh", data.refresh, { expires: in30Minutes });
         if (router.pathname !== "/track-record") {
-          router.push("/stock-picks");
+          router.push("/purchase");
         } else {
           setShowOtpModal(false);
           window.location.reload();
@@ -391,4 +391,4 @@ const RegisterCard = () => {
   );
 };
 
-export default RegisterCard;
+export default RegisterSubscribeCard;

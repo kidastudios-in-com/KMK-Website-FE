@@ -451,7 +451,7 @@ const Section2 = () => {
           >
             <img
               // src="https://www.greenapplewellness.com.au/wp-content/uploads/image-placeholder-350x350-1.png"
-              src="kmk-dhiren-shah.jpeg"
+              src="56106010_864526223885470_7072335677806870528_n.jpg"
               alt="Dhiren Shah | KamayaKya Wealth Management"
               // width="100%";
               className="pfpTeam-mobile"
@@ -518,8 +518,8 @@ const Section2 = () => {
               With over 25 years of expertise in system integration for media,
               entertainment, and technology products, Anand possesses extensive
               experience in online and offline distribution. Additionally, he
-              has actively invested in startups within the gaming industry and
-              contributed to equity research.
+              has actively invested in startups within the gaming & equity
+              research industries.
             </Text>
           </Box>
 
