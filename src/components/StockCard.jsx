@@ -11,7 +11,12 @@ import {
 import { ArrowCircleUp, DocumentText, Lock, Lock1 } from "iconsax-react";
 import axios from "axios";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import { GET_ALL_URL } from "../pages/api/URLs";
+import {
+  GET_ALL_URL,
+  GET_SPECIFIC_STOCK_URL,
+  TRACK_RECORD_FOR_ALL,
+  TRACK_RECORD_FOR_USER,
+} from "../pages/api/URLs";
 import {
   Box,
   Grid,
@@ -73,6 +78,8 @@ const StockCard = () => {
   const staticNumbers = [94, 49, 28];
   const [showWhyModal, setShowWhyModal] = useState(false);
 
+  const [record, setRecord] = useState([]);
+
   const [showLoginModalForSubscribe, setShowLoginModalForSubscribe] =
     useState(false);
 
@@ -115,6 +122,44 @@ const StockCard = () => {
   };
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  // const handleTrackRecord = async () => {
+  //   try {
+  //     const refreshToken = localStorage.getItem("refresh");
+  //
+  //     const url = isLoggedIn ? TRACK_RECORD_FOR_USER : TRACK_RECORD_FOR_ALL;
+  //
+  //     const headers = {
+  //       "Content-Type": "application/json",
+  //     };
+  //
+  //     if (isLoggedIn) {
+  //       headers.Authorization = `token ${refreshToken}`;
+  //     }
+  //
+  //     const response = await fetch(url, {
+  //       method: "GET",
+  //       headers,
+  //     });
+  //
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       setRecord(data);
+  //       console.log(data);
+  //     } else {
+  //       // Handle API call error
+  //       console.error("Error Getting Track Records | Track Record Page");
+  //     }
+  //   } catch (error) {
+  //     // Handle any other error
+  //     console.error(error);
+  //     // console.log("no call");
+  //   }
+  // };
+  //
+  // useEffect(() => {
+  //   handleTrackRecord();
+  // }, [isLoggedIn]);
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
@@ -326,6 +371,7 @@ const StockCard = () => {
             },
           });
           setStocks(response.data);
+          console.log(response.data);
           setFlipStates(new Array(response.data.length).fill(false));
         } catch (error) {
           setError("Please Login First to see our stock picks!");
@@ -337,6 +383,33 @@ const StockCard = () => {
       fetchData();
     }
   }, [isLoggedIn]);
+
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     const refresh = localStorage.getItem("refresh");
+  //     setIsLoading(true);
+  //     const fetchData = async () => {
+  //       try {
+  //         const response = await axios.get(GET_SPECIFIC_STOCK_URL, {
+  //           method: "POST",
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //             Authorization: `token ${refresh}`,
+  //           },
+  //         });
+  //         setStocks(response.data);
+  //         console.log(response.data);
+  //         setFlipStates(new Array(response.data.length).fill(false));
+  //       } catch (error) {
+  //         setError("Please Login First to see our stock picks!");
+  //         showAlert();
+  //       } finally {
+  //         setIsLoading(false);
+  //       }
+  //     };
+  //     fetchData();
+  //   }
+  // }, [isLoggedIn]);
 
   const handleClearSelection = () => {
     setSelectedIndustries([]);
@@ -1072,7 +1145,7 @@ const StockCard = () => {
                         },
                       }}
                     >
-                      {stock.stock_name.length > 18 ? (
+                      {stock.stock_name.length > 15 ? (
                         <Marquee
                           delay={2}
                           speed={30}
@@ -1134,7 +1207,7 @@ const StockCard = () => {
                           },
                         }}
                       >
-                        {`${Math.round(stock.upside_left)}` || <Loading /> ||
+                        {`${Math.ceil(stock.upside_left)}` || <Loading /> ||
                           "-"}
                       </Text>
                       <span
@@ -1324,7 +1397,13 @@ const StockCard = () => {
                           }}
                           size={22}
                         >
-                          {`${stock.target_price}` || <Loading /> || "-"}
+                          {stock.stock_targets.length > 0
+                            ? `${
+                                stock.stock_targets[
+                                  stock.stock_targets.length - 1
+                                ].target_price
+                              }`
+                            : `${stock.target_price}`}
                         </Text>
                       </div>
                       <Divider
