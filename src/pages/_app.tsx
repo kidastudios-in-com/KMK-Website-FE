@@ -42,8 +42,9 @@ function MyApp({ Component, pageProps }: AppProps) {
             {/*  href="/kamayaKya-website-favicon-white-bordered.svg"*/}
             {/*  sizes="any"*/}
             {/*/>*/}
-            <link rel="preload" href="/src/styles/globals.css" as="style" />
-            <link rel="stylesheet" href="/src/styles/globals.css" />
+
+            {/*<link rel="preload" href="/src/styles/globals.css" as="style" />*/}
+            {/*<link rel="stylesheet" href="/src/styles/globals.css" />*/}
 
             {/* Hotjar */}
             {/*<script>*/}

@@ -165,10 +165,10 @@ const SubscriptionNew = () => {
               paddingBottom: "50px",
               paddingLeft: "15px",
               paddingRight: "15px",
-              "@media only screen and (max-width: 768px)": {
-                order: 0,
-                width: "95%",
-              },
+              // "@media only screen and (max-width: 768px)": {
+              //   order: 0,
+              //   width: "95%",
+              // },
             }}
           >
             <div className="cr cr-top cr-right cr-sticky cr-blue">FREE</div>

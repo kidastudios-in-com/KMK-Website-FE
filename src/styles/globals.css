@@ -970,6 +970,7 @@ header > div > div {
 
   .paymentsPage-box {
     width: 100vw !important;
+    flex-direction: column !important;
   }
   .paymentsPage-box-account {
     width: 90vw !important;

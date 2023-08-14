@@ -284,7 +284,7 @@ const HomePage = () => {
               marginTop: "20px",
               borderRadius: "10px",
               height: "50px",
-              "@media only screen and (max-width: 768px)": {
+              "@media only screen and (maxWidth: 768px)": {
                 width: "100%",
                 fontSize: 15,
                 height: "50px",
@@ -485,7 +485,7 @@ const HomePage = () => {
                 marginTop: "20px",
                 borderRadius: "10px",
                 height: "50px",
-                "@media only screen and (max-width: 768px)": {
+                "@media only screen and (maxWidth: 768px)": {
                   width: "100%",
                   fontSize: 15,
                   height: "50px",
