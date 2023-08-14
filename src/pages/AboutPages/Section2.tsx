@@ -628,7 +628,7 @@ const Section2 = () => {
             }}
           >
             <img
-              src="/aniketKulkarni.JPG"
+              src="/aniketKulkarni.jpg"
               alt="Aniket Kulkarni | KamayaKya Wealth Management"
               // width="100%";
               className="pfpTeam-mobile"
