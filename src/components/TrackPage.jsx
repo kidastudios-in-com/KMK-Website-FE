@@ -822,15 +822,21 @@ const WhyUs = () => {
                                 item?.stock_targets.length - 1
                               ].created
                             ).getDate()} ${new Date(
+                              item?.stock_targets[
+                                item?.stock_targets.length - 1
+                              ].created
+                            ).toLocaleString("default", {
+                              month: "short",
+                            })} ${new Date(
+                              item?.stock_targets[
+                                item?.stock_targets.length - 1
+                              ].created
+                            ).getFullYear()}`
+                          : `${new Date(item?.start_date).getDate()} ${new Date(
                               item.created
                             ).toLocaleString("default", {
                               month: "short",
-                            })} ${new Date(item?.created).getFullYear()}`
-                          : `${new Date(item?.created).getDate()} ${new Date(
-                              item.created
-                            ).toLocaleString("default", {
-                              month: "short",
-                            })} ${new Date(item?.created).getFullYear()}`}
+                            })} ${new Date(item?.start_date).getFullYear()}`}
                       </Text>
                     </Box>
                     <Box sx={{ display: "flex", flexDirection: "column" }}>
@@ -882,11 +888,11 @@ const WhyUs = () => {
                         }}
                       >
                         {item.action == "SELL"
-                          ? `${new Date(item.end_date).getDate()} ${new Date(
-                              item.end_date
+                          ? `${new Date(item.exit_date).getDate()} ${new Date(
+                              item.exit_date
                             ).toLocaleString("default", {
                               month: "short",
-                            })} ${new Date(item.end_date).getFullYear()}`
+                            })} ${new Date(item.exit_date).getFullYear()}`
                           : `${new Date().getDate()} ${new Date().toLocaleString(
                               "default",
                               {
@@ -1019,7 +1025,7 @@ const WhyUs = () => {
                               {
                                 month: "short",
                               }
-                            )} ${new Date().getFullYear()}`}
+                            )} ${new Date(item.end_date).getFullYear()}`}
                       </Text>
                     </Box>
                     <Box
@@ -1047,11 +1053,11 @@ const WhyUs = () => {
                         {item.action === "SELL" ? (
                           <span>
                             {item.gain_loss > 0 ? (
-                              <span>Profit booked in</span>
+                              <span>Profit booked in </span>
                             ) : item.gain_loss == 0 ? (
-                              <span>Exit call given in</span>
+                              <span>Exit call given in </span>
                             ) : (
-                              <span>Loss booked in</span>
+                              <span>Loss booked in </span>
                             )}{" "}
                             {Math.ceil(
                               (new Date(item.end_date) -
@@ -1062,7 +1068,7 @@ const WhyUs = () => {
                           </span>
                         ) : (
                           <span>
-                            Time left:
+                            Time left:{" "}
                             {item.stock_targets.length > 0
                               ? `${Math.round(
                                   (new Date(
