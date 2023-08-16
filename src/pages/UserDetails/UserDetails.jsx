@@ -805,11 +805,19 @@ const UserDetails = () => {
                 }}
                 className="subscriptionTypeBox-mobile"
               >
-                <Text b>
-                  Plan:
+                <Text b style={{ color: "#FF9D28" }}>
+                  Subscription Type
                   <br />
-                  <span style={{ fontSize: "25px" }}>{sub.plan}</span>
+                  <span style={{ fontSize: "25px", color: "#184D48" }}>
+                    {sub.plan == "KamayaKya"
+                      ? "KamayaKya VIP+"
+                      : "KamayaKya Free"}
+                  </span>
                 </Text>
+                <br />
+                <Divider
+                  style={{ height: "3px", backgroundColor: "#FF9D28" }}
+                ></Divider>
                 <br />
                 <Text b>
                   Start Date:{" "}

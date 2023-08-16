@@ -833,7 +833,7 @@ const WhyUs = () => {
                               ].created
                             ).getFullYear()}`
                           : `${new Date(item?.start_date).getDate()} ${new Date(
-                              item.created
+                              item.start_date
                             ).toLocaleString("default", {
                               month: "short",
                             })} ${new Date(item?.start_date).getFullYear()}`}
