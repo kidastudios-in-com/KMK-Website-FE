@@ -350,7 +350,7 @@ const HomePage = () => {
             speed={60}
             // speed={{type: 'keyStrokeDelayInMs', value: 120}}
             deletionSpeed={60}
-            style={{ fontSize: "80px" }}
+            // style={{ fontFamily: "STIXTwoText.ttf", fontSize: "80px" }}
             repeat={Infinity}
             className="homePage-text-animated"
           />

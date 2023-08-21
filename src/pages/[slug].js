@@ -10,7 +10,6 @@ import NavBar from "../components/Navbar";
 import FaqsNew from "./screens/FaqsNew";
 import Footer from "./screens/Footer";
 import { Loading, Text } from "@nextui-org/react";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 const BlogPage = () => {
   const router = useRouter();
@@ -125,7 +124,7 @@ const BlogPage = () => {
         >
           {/*<span dangerouslySetInnerHTML={blog.description}></span>*/}
           {/*{blog.description}*/}
-          {documentToReactComponents(blog.description)}
+          (blog.description)
         </div>
       </Box>
       <FaqsNew />
