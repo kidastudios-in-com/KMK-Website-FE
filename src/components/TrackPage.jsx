@@ -81,7 +81,7 @@ const WhyUs = () => {
 
   useEffect(() => {
     handleTrackRecord();
-  }, [isLoggedIn]);
+  }, []);
 
   const handleClick = (index) => {
     const newFlipStates = flipStates.map((state, i) =>
@@ -495,7 +495,7 @@ const WhyUs = () => {
             // >
             <>
               <Card
-                key={item.id}
+                key={index}
                 isHoverable
                 css={{
                   width: "450px",
@@ -1025,7 +1025,7 @@ const WhyUs = () => {
                               {
                                 month: "short",
                               }
-                            )} ${new Date(item.end_date).getFullYear()}`}
+                            )} ${new Date().getFullYear()}`}
                       </Text>
                     </Box>
                     <Box
@@ -1498,7 +1498,7 @@ const WhyUs = () => {
                                 },
                               }}
                             >
-                              EXIT PRICE
+                              TARGET PRICE
                             </Text>
                             <Text
                               b
@@ -1535,13 +1535,13 @@ const WhyUs = () => {
                               }}
                             >
                               {`${new Date(
-                                record[selectedCardIndex].created
+                                record[selectedCardIndex].target_met
                               ).getDate()} ${new Date(
-                                record[selectedCardIndex].created
+                                record[selectedCardIndex].target_met
                               ).toLocaleString("default", {
                                 month: "short",
                               })} ${new Date(
-                                record[selectedCardIndex].created
+                                record[selectedCardIndex].target_met
                               ).getFullYear()}`}
                             </Text>
                           </Box>
@@ -1600,15 +1600,16 @@ const WhyUs = () => {
                                 },
                               }}
                             >
-                              {`${new Date(
-                                record[selectedCardIndex].created
-                              ).getDate()} ${new Date(
-                                record[selectedCardIndex].created
-                              ).toLocaleString("default", {
+                              {`${
+                                new Date().getDate()
+                                // record[selectedCardIndex].created
+                              } ${new Date().toLocaleString("default", {
+                                // record[selectedCardIndex].created
                                 month: "short",
-                              })} ${new Date(
-                                record[selectedCardIndex].created
-                              ).getFullYear()}`}
+                              })} ${
+                                new Date().getFullYear()
+                                // record[selectedCardIndex].created
+                              }`}
                             </Text>
                           </Box>
                         </Box>

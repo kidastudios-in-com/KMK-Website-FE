@@ -29,6 +29,7 @@ const BlogSection2 = () => {
         });
         const data = await response.json();
         setBlogs(data);
+        console.log(data);
         setIsLoadingBlogs(false);
       } catch (error) {
         console.log("Error fetching blogs:", error);

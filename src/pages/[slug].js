@@ -10,6 +10,7 @@ import NavBar from "../components/Navbar";
 import FaqsNew from "./screens/FaqsNew";
 import Footer from "./screens/Footer";
 import { Loading, Text } from "@nextui-org/react";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 const BlogPage = () => {
   const router = useRouter();
@@ -33,7 +34,6 @@ const BlogPage = () => {
         }
       }
     };
-
     fetchBlogData();
   }, [slug]);
 
@@ -80,21 +80,6 @@ const BlogPage = () => {
           margin: "0 auto",
         }}
       >
-        {/*<Box*/}
-        {/*  sx={{*/}
-        {/*    width: "80%",*/}
-        {/*    display: "flex",*/}
-        {/*    justifyContent: "space-between",*/}
-        {/*    flexDirection: "row",*/}
-        {/*  }}*/}
-        {/*>*/}
-        {/*  <Text b size={20} css={{ lineHeight: 1, marginBottom: "20px" }}>*/}
-        {/*    {new Date(blog.created).toLocaleDateString()}*/}
-        {/*  </Text>*/}
-        {/*  <Text b size={20} css={{ lineHeight: 1, marginBottom: "10px" }}>*/}
-        {/*    Read Time: {blog.read_time} mins*/}
-        {/*  </Text>*/}
-        {/*</Box>*/}
         <Box sx={{ width: "100%" }}>
           <img
             placeholder={<Loading />}
@@ -127,7 +112,7 @@ const BlogPage = () => {
         </Text>
         <div
           style={{
-            fontSize: 21,
+            fontSize: 19,
             textAlign: "left",
             padding: "15px",
             fontWeight: "normal",
@@ -138,7 +123,9 @@ const BlogPage = () => {
             },
           }}
         >
-          {blog.description}
+          {/*<span dangerouslySetInnerHTML={blog.description}></span>*/}
+          {/*{blog.description}*/}
+          {documentToReactComponents(blog.description)}
         </div>
       </Box>
       <FaqsNew />
