@@ -371,7 +371,7 @@ const NavBar2 = () => {
               <GroupsOutlinedIcon sx={{ fontSize: 30 }} />
             </ListItemIcon>
             <Text b className="drawerElementText">
-              About us
+              About Us
             </Text>
           </ListItemButton>
           <ListItemButton
@@ -397,7 +397,7 @@ const NavBar2 = () => {
               <TrendingUpRoundedIcon sx={{ fontSize: 30 }} />
             </ListItemIcon>
             <Text b className="drawerElementText">
-              Track record
+              Track Record
             </Text>
           </ListItemButton>
           <ListItemButton
@@ -410,7 +410,7 @@ const NavBar2 = () => {
               <MoneyRoundedIcon sx={{ fontSize: 30 }} />
             </ListItemIcon>
             <Text b className="drawerElementText">
-              Stock to buy
+              Stock To Buy
             </Text>
           </ListItemButton>
           <ListItemButton

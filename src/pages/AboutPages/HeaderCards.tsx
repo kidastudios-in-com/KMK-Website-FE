@@ -47,6 +47,21 @@ const HeaderCards = () => {
         >
           Why should you trust us with your money?
         </Text>
+        <Text
+          b
+          size={25}
+          css={{
+            textAlign: "center",
+            "@media only screen and (max-width: 764px)": {
+              textAlign: "left",
+              fontSize: 20,
+              lineHeight: 1.1,
+            },
+          }}
+        >
+          Trust is an investment, earned with honesty, paid in consistency, and
+          yielding dividends of reliability.
+        </Text>
       </div>
     </section>
   );

@@ -124,7 +124,7 @@ const BlogPage = () => {
         >
           {/*<span dangerouslySetInnerHTML={blog.description}></span>*/}
           {/*{blog.description}*/}
-          (blog.description)
+          {blog.description}
         </div>
       </Box>
       <FaqsNew />

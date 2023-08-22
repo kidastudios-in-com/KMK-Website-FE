@@ -206,7 +206,7 @@ export default function App() {
                 <GroupsOutlinedIcon sx={{ fontSize: 30 }} />
               </ListItemIcon>
               <Text b className="drawerElementText">
-                About us
+                About Us
               </Text>
             </ListItemButton>
             <ListItemButton
@@ -232,7 +232,7 @@ export default function App() {
                 <TrendingUpRoundedIcon sx={{ fontSize: 30 }} />
               </ListItemIcon>
               <Text b className="drawerElementText">
-                Track record
+                Track Record
               </Text>
             </ListItemButton>
             <ListItemButton
@@ -245,7 +245,7 @@ export default function App() {
                 <MoneyRoundedIcon sx={{ fontSize: 30 }} />
               </ListItemIcon>
               <Text b className="drawerElementText">
-                Stock to buy
+                Stock To Buy
               </Text>
             </ListItemButton>
             <ListItemButton
