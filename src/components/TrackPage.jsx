@@ -1206,7 +1206,7 @@ const WhyUs = () => {
                                         item.stock_targets.length - 1
                                       ].target_date
                                     ).getTime() -
-                                      new Date().getTime()) /
+                                      new Date(item.start_date).getTime()) /
                                       (1000 * 60 * 60 * 24)
                                   )
                                 : Math.ceil(
