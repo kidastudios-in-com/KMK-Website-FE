@@ -65,7 +65,6 @@ const WhyUs = () => {
       if (response.ok) {
         const data = await response.json();
         setRecord(data);
-        console.log(data);
         // await delay(3);
         setisLoadingTrackRecord(false);
       } else {
@@ -80,8 +79,8 @@ const WhyUs = () => {
   };
 
   useEffect(() => {
-    handleTrackRecord();
-  }, []);
+    handleTrackRecord().then((r) => console.log(record));
+  }, [isLoggedIn]);
 
   const handleClick = (index) => {
     const newFlipStates = flipStates.map((state, i) =>
@@ -443,7 +442,7 @@ const WhyUs = () => {
           size={18}
           css={{
             marginTop: 0,
-            marginBottom: "40px",
+            marginBottom: "10px",
             maxWidth: "50rem" /* 1280px */,
             textAlign: "center",
             color: "#000",
@@ -456,7 +455,7 @@ const WhyUs = () => {
               paddingLeft: "5px",
               paddingRight: "5px",
               marginTop: "0px",
-              marginBottom: "40px",
+              marginBottom: "10px",
               textAlign: "left",
               color: "#000",
             },
@@ -466,6 +465,37 @@ const WhyUs = () => {
           <br />
           Your trust is earned, not assumed.
         </Text>
+        {!isLoggedIn ? (
+          <Text
+            b
+            size={18}
+            css={{
+              marginTop: 0,
+              marginBottom: "40px",
+              maxWidth: "50rem" /* 1280px */,
+              textAlign: "center",
+              color: "#FB7D15",
+              lineHeight: 1.2,
+              paddingLeft: "15px",
+              paddingRight: "15px",
+              "@media only screen and (max-width: 764px)": {
+                fontSize: 20,
+                maxWidth: "100%",
+                paddingLeft: "5px",
+                paddingRight: "5px",
+                marginTop: "0px",
+                marginBottom: "40px",
+                textAlign: "left",
+                color: "#FB7D15",
+              },
+            }}
+          >
+            NOTE: SEBI regulations restrict sharing past performance data with
+            non-clients.
+          </Text>
+        ) : (
+          <span style={{ height: "30px" }} />
+        )}
         {/* <Grid
 					  xs={"auto"}
 					  sm={"auto"}
@@ -871,7 +901,12 @@ const WhyUs = () => {
                         }}
                       >
                         <span style={{ fontSize: 16, opacity: 0.75 }}>₹</span>
-                        {item.live_price}
+
+                        {item.action == "SELL" ? (
+                          <>{item.exit_price}</>
+                        ) : (
+                          <>{item.live_price}</>
+                        )}
                       </Text>
                       <Text
                         b
@@ -987,18 +1022,14 @@ const WhyUs = () => {
                           textAlign: "center",
                           // background: '#125a54',
                           borderRadius: "10px",
-                          background: "trasparent",
+                          background: "transparent",
                           "@media only screen and (max-width: 764px)": {
                             paddingTop: "0px",
                             fontSize: "20px",
                           },
                         }}
                       >
-                        {item?.stock_targets.length > 0
-                          ? item?.stock_targets[item?.stock_targets.length - 1]
-                              .gain_loss
-                          : item?.gain_loss}
-                        %
+                        {item?.gain_loss}%
                       </Text>
                       <Text
                         b
@@ -1076,11 +1107,7 @@ const WhyUs = () => {
                                       item.stock_targets.length - 1
                                     ].target_date
                                   ).getTime() -
-                                    new Date(
-                                      item.stock_targets[
-                                        item.stock_targets.length - 1
-                                      ].created
-                                    ).getTime()) /
+                                    new Date().getTime()) /
                                     (1000 * 60 * 60 * 24)
                                 )}`
                               : item.time_left}{" "}
@@ -1093,11 +1120,23 @@ const WhyUs = () => {
                           (new Date() - new Date(item.start_date)) /
                             (1000 * 60 * 60 * 24)
                         )}
-                        max={Math.ceil(
-                          (new Date(item.end_date) -
-                            new Date(item.start_date)) /
-                            (1000 * 60 * 60 * 24)
-                        )}
+                        max={
+                          item.stock_targets.length > 0
+                            ? Math.round(
+                                (new Date(
+                                  item.stock_targets[
+                                    item.stock_targets.length - 1
+                                  ].target_date
+                                ).getTime() -
+                                  new Date(item.start_date).getTime()) /
+                                  (1000 * 60 * 60 * 24)
+                              )
+                            : Math.ceil(
+                                (new Date(item.end_date) -
+                                  new Date(item.start_date)) /
+                                  (1000 * 60 * 60 * 24)
+                              )
+                        }
                         css={{
                           width: "80%",
                           opacity: 1,
@@ -1160,11 +1199,21 @@ const WhyUs = () => {
                               color="#fff"
                               css={{ marginTop: "5px", opacity: 1 }}
                             >
-                              {`${Math.ceil(
-                                (new Date(item.end_date) -
-                                  new Date(item.start_date)) /
-                                  (1000 * 60 * 60 * 24)
-                              )}`}
+                              {item.stock_targets.length > 0
+                                ? Math.round(
+                                    (new Date(
+                                      item.stock_targets[
+                                        item.stock_targets.length - 1
+                                      ].target_date
+                                    ).getTime() -
+                                      new Date().getTime()) /
+                                      (1000 * 60 * 60 * 24)
+                                  )
+                                : Math.ceil(
+                                    (new Date(item.end_date) -
+                                      new Date(item.start_date)) /
+                                      (1000 * 60 * 60 * 24)
+                                  )}
                             </Text>
                           ) : (
                             <Text
@@ -1269,7 +1318,7 @@ const WhyUs = () => {
                     <Card
                       key={record[selectedCardIndex].id}
                       css={{
-                        width: "450px",
+                        width: "475px",
                         // height: "218px",
                         paddingTop: "30px",
                         paddingBottom: "30px",
@@ -1282,6 +1331,7 @@ const WhyUs = () => {
                         alignItems: "center",
                         filter: "none",
                         boxShadow: "none",
+                        border: "none",
                         "@media only screen and (max-width: 764px)": {
                           width: "95vw",
                           paddingTop: "30px",
@@ -1293,14 +1343,15 @@ const WhyUs = () => {
                         sx={{
                           padding: "5px",
                           paddingTop: "0px",
-                          paddingLeft: "15px",
+                          paddingLeft: "25px",
+                          paddingRight: "15px",
                           display: "flex",
                           flexDirection: "column",
                           // alignItems: "center",
                           // background: 'rgba(255, 255, 255, 0.15) url("LineChartGreen.png")',
                           backgroundSize: "cover",
                           height: "auto",
-                          width: "410px",
+                          width: "100%",
                           "@media only screen and (max-width: 764px)": {
                             width: "100%",
                             paddingLeft: "20px",
@@ -1366,6 +1417,50 @@ const WhyUs = () => {
                                 </div>
                               )}
                             </Text>
+                            {/*<Text*/}
+                            {/*  b*/}
+                            {/*  size={22}*/}
+                            {/*  color="#fff"*/}
+                            {/*  css={{*/}
+                            {/*    lineHeight: 1.5,*/}
+                            {/*    "@media only screen and (max-width: 764px)": {*/}
+                            {/*      paddingTop: "5px",*/}
+                            {/*      fontSize: "22px",*/}
+                            {/*      lineHeight: 1.1,*/}
+                            {/*    },*/}
+                            {/*  }}*/}
+                            {/*>*/}
+                            {/*  {record[selectedCardIndex].stock_name.length >*/}
+                            {/*  28 ? (*/}
+                            {/*    <Marquee delay={5} speed={30}>*/}
+                            {/*      <span*/}
+                            {/*        style={{*/}
+                            {/*          paddingRight: "40px",*/}
+                            {/*          filter:*/}
+                            {/*            isSubscribed === false*/}
+                            {/*              ? "blur(8px)"*/}
+                            {/*              : "blur(0px)",*/}
+                            {/*        }}*/}
+                            {/*      >*/}
+                            {/*        {record[selectedCardIndex].stock_name}*/}
+                            {/*      </span>*/}
+                            {/*    </Marquee>*/}
+                            {/*  ) : (*/}
+                            {/*    <div*/}
+                            {/*      style={{*/}
+                            {/*        filter:*/}
+                            {/*          isSubscribed === false*/}
+                            {/*            ? "blur(8px)"*/}
+                            {/*            : "blur(0px)",*/}
+                            {/*      }}*/}
+                            {/*    >*/}
+                            {/*      {*/}
+                            {/*        record[selectedCardIndex].stock_targets*/}
+                            {/*          .length*/}
+                            {/*      }*/}
+                            {/*    </div>*/}
+                            {/*  )}*/}
+                            {/*</Text>*/}
                           </div>
                           <img
                             src={
@@ -1423,6 +1518,7 @@ const WhyUs = () => {
                               css={{
                                 opacity: 1,
                                 lineHeight: 1,
+                                textAlign: "left",
                                 "@media only screen and (max-width: 764px)": {
                                   paddingTop: "0px",
                                   fontSize: "14.5px",
@@ -1492,6 +1588,7 @@ const WhyUs = () => {
                                 opacity: 1,
                                 lineHeight: 1,
                                 alignSelf: "start",
+                                textAlign: "left",
                                 "@media only screen and (max-width: 764px)": {
                                   paddingTop: "0px",
                                   fontSize: "14.5px",
@@ -1561,13 +1658,14 @@ const WhyUs = () => {
                                 opacity: 1,
                                 lineHeight: 1,
                                 alignSelf: "start",
+                                textAlign: "left",
                                 "@media only screen and (max-width: 764px)": {
                                   paddingTop: "0px",
                                   fontSize: "14.5px",
                                 },
                               }}
                             >
-                              RETURNS
+                              CURRENT RETURNS
                             </Text>
                             <Text
                               b
@@ -1927,7 +2025,7 @@ const WhyUs = () => {
                                       },
                                   }}
                                 >
-                                  RETURNS
+                                  CURRENT RETURNS
                                 </Text>
                                 <Text
                                   b
