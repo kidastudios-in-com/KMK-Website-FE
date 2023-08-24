@@ -827,10 +827,17 @@ const WhyUs = () => {
                         }}
                       >
                         <span style={{ fontSize: 16, opacity: 0.75 }}>₹</span>
-                        {item?.stock_targets.length > 0
-                          ? item?.stock_targets[item?.stock_targets.length - 1]
-                              .entry_price
-                          : item?.entry_price}
+                        {item?.id == "25bb9fba-5b3a-4156-bcae-b504f352d980" ? (
+                          "469"
+                        ) : (
+                          <>
+                            {item?.stock_targets.length > 0
+                              ? item?.stock_targets[
+                                  item?.stock_targets.length - 1
+                                ].entry_price
+                              : item?.entry_price}
+                          </>
+                        )}
                       </Text>
                       <Text
                         b

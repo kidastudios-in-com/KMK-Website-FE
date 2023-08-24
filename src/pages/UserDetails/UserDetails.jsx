@@ -69,7 +69,7 @@ const UserDetails = () => {
           });
           const data = await response.json();
           setUser(data);
-          // console.log(data);
+          console.log(data);
         } catch (error) {
           console.error("Error fetching user details:", error);
         }
@@ -89,7 +89,7 @@ const UserDetails = () => {
           },
         });
         const data = await response.json();
-        // console.log(data.list_of_subscriptions);
+        // console.log(data);
         setSubscription(data.list_of_subscriptions);
       } catch (error) {
         console.error("Error fetching user details:", error);
@@ -117,13 +117,14 @@ const UserDetails = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: user.name ? user.name : newName,
+          name: newName,
           email: billingEmail,
           gst_no: gstNo !== "" ? gstNo : "",
           referral: newReferralCode !== "" ? newReferralCode : "",
         }),
       });
       const data = await response.json();
+      console.log(data);
       setUser(data);
       setSaved(true);
       setEditing(false);
@@ -527,9 +528,10 @@ const UserDetails = () => {
                   }}
                 />
                 <Button
+                  aria-label="Submit"
                   color="success"
                   auto
-                  onClick={handleSaveProfile}
+                  onPress={handleSaveProfile}
                   css={{ marginRight: "0px", borderRadius: "10000px" }}
                 >
                   Save
