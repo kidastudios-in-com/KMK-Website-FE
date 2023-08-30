@@ -827,6 +827,7 @@ const WhyUs = () => {
                         }}
                       >
                         <span style={{ fontSize: 16, opacity: 0.75 }}>₹</span>
+                        {/* hard coding ion exchange price to 469, problem is that its giving buy rating for cmp<ep of target 2 */}
                         {item?.id == "25bb9fba-5b3a-4156-bcae-b504f352d980" ? (
                           "469"
                         ) : (
