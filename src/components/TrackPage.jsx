@@ -30,7 +30,7 @@ import "@react-pdf-viewer/core/lib/styles/index.css";
 import packageJson from "../../package.json";
 import CloseIcon from "@mui/icons-material/Close";
 import Login from "@/components/Login";
-
+//
 const WhyUs = () => {
   // const { setVisible, bindings } = useModal();
   const [flipStates, setFlipStates] = useState(Array(8).fill(false));
