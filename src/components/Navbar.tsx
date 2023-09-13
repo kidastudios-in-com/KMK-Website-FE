@@ -50,6 +50,9 @@ export default function App() {
   const trackRecord = () => {
     router.push("/track-record");
   };
+  const smeCorner = () => {
+    router.push("/sme");
+  };
 
   const handleAboutUs = () => {
     router.push("/about-company");
@@ -190,7 +193,7 @@ export default function App() {
               }}
             >
               <ListItemIcon sx={{ paddingLeft: "4px" }}>
-                <Home2 size={30} />
+                <Home2 size={30} style={{ color: "#FB9E29" }} />
               </ListItemIcon>
               <Text b className="drawerElementText">
                 Home
@@ -203,7 +206,10 @@ export default function App() {
               }}
             >
               <ListItemIcon sx={{ paddingLeft: "4px" }}>
-                <GroupsOutlinedIcon sx={{ fontSize: 30 }} />
+                <GroupsOutlinedIcon
+                  sx={{ fontSize: 30 }}
+                  style={{ color: "#FB9E29" }}
+                />
               </ListItemIcon>
               <Text b className="drawerElementText">
                 About Us
@@ -229,10 +235,29 @@ export default function App() {
               }}
             >
               <ListItemIcon sx={{ paddingLeft: "4px" }}>
-                <TrendingUpRoundedIcon sx={{ fontSize: 30 }} />
+                <TrendingUpRoundedIcon
+                  sx={{ fontSize: 30 }}
+                  style={{ color: "#FB9E29" }}
+                />
               </ListItemIcon>
               <Text b className="drawerElementText">
                 Track Record
+              </Text>
+            </ListItemButton>
+            <ListItemButton
+              onClick={() => {
+                smeCorner();
+                toggleDrawer();
+              }}
+            >
+              <ListItemIcon sx={{ paddingLeft: "4px" }}>
+                <MoneyRoundedIcon
+                  sx={{ fontSize: 30 }}
+                  style={{ color: "#FB9E29" }}
+                />
+              </ListItemIcon>
+              <Text b className="drawerElementText">
+                SME Corner
               </Text>
             </ListItemButton>
             <ListItemButton
@@ -242,7 +267,10 @@ export default function App() {
               }}
             >
               <ListItemIcon sx={{ paddingLeft: "4px" }}>
-                <MoneyRoundedIcon sx={{ fontSize: 30 }} />
+                <MoneyRoundedIcon
+                  sx={{ fontSize: 30 }}
+                  style={{ color: "#FB9E29" }}
+                />
               </ListItemIcon>
               <Text b className="drawerElementText">
                 Stock To Buy
@@ -255,7 +283,7 @@ export default function App() {
               }}
             >
               <ListItemIcon>
-                <BiLogIn size={30} />
+                <BiLogIn size={30} style={{ color: "#FB9E29" }} />
               </ListItemIcon>
               <Text b className="drawerElementText">
                 Login
@@ -327,6 +355,19 @@ export default function App() {
             >
               <Text b size={20} css={{ lineHeight: 5 }}>
                 Track Record
+              </Text>
+            </Navbar.Link>
+            <Navbar.Link
+              // isActive={activeLink === "blogs"}
+              isActive={
+                typeof window !== "undefined" &&
+                window.location.pathname === "/sme"
+              }
+              onClick={smeCorner}
+            >
+              <TrendingUpRoundedIcon sx={{ fontSize: 30, color: "#FB9E29" }} />
+              <Text b size={20} css={{ lineHeight: 5, paddingLeft: "5px" }}>
+                SME Corner
               </Text>
             </Navbar.Link>
           </Navbar.Content>

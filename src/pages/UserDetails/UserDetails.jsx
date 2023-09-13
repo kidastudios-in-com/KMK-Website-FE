@@ -117,7 +117,7 @@ const UserDetails = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: newName ? newName : newName,
+          name: newName.length < 1 ? user?.name : newName,
           email: billingEmail,
           gst_no: gstNo !== "" ? gstNo : "",
           referral: newReferralCode !== "" ? newReferralCode : "",
@@ -494,13 +494,13 @@ const UserDetails = () => {
                 padding: "5px",
               }}
             >
-              <Text
-                b
-                size={18}
-                style={{ paddingLeft: "20px", marginBottom: "5px" }}
-              >
-                Full Name
-              </Text>
+              {/*<Text*/}
+              {/*  b*/}
+              {/*  size={18}*/}
+              {/*  style={{ paddingLeft: "20px", marginBottom: "5px" }}*/}
+              {/*>*/}
+              {/*  Full Name*/}
+              {/*</Text>*/}
               <div
                 style={{
                   display: "flex",
@@ -509,10 +509,17 @@ const UserDetails = () => {
                   rowGap: "20px",
                   columnGap: "20px",
                   alignItems: "center",
-                  justifyContent: "flex-start",
+                  justifyContent: "space-between",
                   // border: "1px solid lightgrey",
                 }}
               >
+                <Text
+                  b
+                  size={18}
+                  style={{ paddingLeft: "20px", marginBottom: "0px" }}
+                >
+                  Full Name
+                </Text>
                 <Input
                   // underlined
                   placeholder={user?.name}
@@ -527,71 +534,14 @@ const UserDetails = () => {
                     },
                   }}
                 />
-                <Button
-                  aria-label="Submit"
-                  color="success"
-                  auto
-                  onPress={handleSaveProfile}
-                  css={{ marginRight: "0px", borderRadius: "10000px" }}
+                <span style={{ width: "100%", height: "0px" }} />
+                <Text
+                  b
+                  size={18}
+                  style={{ paddingLeft: "20px", marginBottom: "0px" }}
                 >
-                  Save
-                </Button>
-                <Button
-                  color="error"
-                  auto
-                  onClick={() => setNewName("")}
-                  css={{ marginRight: "0px", borderRadius: "10000px" }}
-                  disabled={newName.length > 0 ? false : true}
-                >
-                  Undo
-                </Button>
-              </div>
-            </div>
-          </div>
-          <br />
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "space-between",
-              // border: "1px solid lightgrey",
-              borderRadius: "10000px",
-              padding: "0px 10px",
-              width: "100vw",
-              maxWidth: "600px",
-              height: "fit-content",
-            }}
-          >
-            {/*{editing ? (*/}
-            <div
-              style={{
-                width: "100%",
-                display: "flex",
-                flexDirection: "column",
-                gap: "10px",
-                padding: "5px",
-              }}
-            >
-              <Text
-                b
-                size={18}
-                style={{ paddingLeft: "20px", marginBottom: "5px" }}
-              >
-                Email Address
-              </Text>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  flexWrap: "wrap",
-                  rowGap: "20px",
-                  columnGap: "20px",
-                  alignItems: "center",
-                  justifyContent: "flex-start",
-                  // border: "1px solid lightgrey",
-                }}
-              >
+                  Email Address
+                </Text>
                 <Input
                   // underlined
                   placeholder={user?.email}
@@ -606,27 +556,115 @@ const UserDetails = () => {
                     },
                   }}
                 />
-                <Button
-                  aria-label="Submit"
-                  color="success"
-                  auto
-                  onPress={handleSaveProfile}
-                  css={{ marginRight: "0px", borderRadius: "10000px" }}
-                >
-                  Save
-                </Button>
-                <Button
-                  color="error"
-                  auto
-                  onClick={() => setBillingEmail("")}
-                  css={{ marginRight: "0px", borderRadius: "10000px" }}
-                  disabled={billingEmail.length > 0 ? false : true}
-                >
-                  Undo
-                </Button>
+                {/*<Button*/}
+                {/*  color="error"*/}
+                {/*  auto*/}
+                {/*  onClick={() => setNewName("")}*/}
+                {/*  css={{ marginRight: "0px", borderRadius: "10000px" }}*/}
+                {/*  disabled={newName.length > 0 ? false : true}*/}
+                {/*>*/}
+                {/*  Undo*/}
+                {/*</Button>*/}
               </div>
+              <br />
+              <Button
+                aria-label="Submit"
+                color="success"
+                auto
+                onPress={handleSaveProfile}
+                css={{
+                  marginRight: "0px",
+                  borderRadius: "10000px",
+                  alignSelf: "flex-end",
+                  width: "50%",
+                  height: "50px",
+                  fontSize: "18px",
+                  backgroundColor: "#135B54",
+                }}
+              >
+                Save
+              </Button>
             </div>
           </div>
+          <br />
+          {/*<div*/}
+          {/*  style={{*/}
+          {/*    display: "flex",*/}
+          {/*    flexDirection: "column",*/}
+          {/*    alignItems: "center",*/}
+          {/*    justifyContent: "space-between",*/}
+          {/*    // border: "1px solid lightgrey",*/}
+          {/*    borderRadius: "10000px",*/}
+          {/*    padding: "0px 10px",*/}
+          {/*    width: "100vw",*/}
+          {/*    maxWidth: "600px",*/}
+          {/*    height: "fit-content",*/}
+          {/*  }}*/}
+          {/*>*/}
+          {/*  /!*{editing ? (*!/*/}
+          {/*  <div*/}
+          {/*    style={{*/}
+          {/*      width: "100%",*/}
+          {/*      display: "flex",*/}
+          {/*      flexDirection: "column",*/}
+          {/*      gap: "10px",*/}
+          {/*      padding: "5px",*/}
+          {/*    }}*/}
+          {/*  >*/}
+          {/*    <Text*/}
+          {/*      b*/}
+          {/*      size={18}*/}
+          {/*      style={{ paddingLeft: "20px", marginBottom: "5px" }}*/}
+          {/*    >*/}
+          {/*      Email Address*/}
+          {/*    </Text>*/}
+          {/*    <div*/}
+          {/*      style={{*/}
+          {/*        display: "flex",*/}
+          {/*        flexDirection: "row",*/}
+          {/*        flexWrap: "wrap",*/}
+          {/*        rowGap: "20px",*/}
+          {/*        columnGap: "20px",*/}
+          {/*        alignItems: "center",*/}
+          {/*        justifyContent: "flex-start",*/}
+          {/*        // border: "1px solid lightgrey",*/}
+          {/*      }}*/}
+          {/*    >*/}
+          {/*      <Input*/}
+          {/*        // underlined*/}
+          {/*        placeholder={user?.email}*/}
+          {/*        value={billingEmail}*/}
+          {/*        onChange={(e) => setBillingEmail(e.target.value)}*/}
+          {/*        css={{*/}
+          {/*          marginRight: "0px",*/}
+          {/*          width: "62.5%",*/}
+          {/*          "@media only screen and (max-width: 764px)": {*/}
+          {/*            width: "100vw",*/}
+          {/*            marginRight: "0px",*/}
+          {/*          },*/}
+          {/*        }}*/}
+          {/*      />*/}
+          {/*      <Button*/}
+          {/*        aria-label="Submit"*/}
+          {/*        color="success"*/}
+          {/*        auto*/}
+          {/*        onPress={handleSaveProfile}*/}
+          {/*        css={{ marginRight: "0px", borderRadius: "10000px" }}*/}
+          {/*      >*/}
+          {/*        Save*/}
+          {/*      </Button>*/}
+          {/*      /!*<Button*!/*/}
+          {/*      /!*  color="error"*!/*/}
+          {/*      /!*  auto*!/*/}
+          {/*      /!*  onClick={() => setBillingEmail("")}*!/*/}
+          {/*      /!*  css={{ marginRight: "0px", borderRadius: "10000px" }}*!/*/}
+          {/*      /!*  disabled={billingEmail.length > 0 ? false : true}*!/*/}
+          {/*      /!*>*!/*/}
+          {/*      /!*  Undo*!/*/}
+          {/*      /!*</Button>*!/*/}
+          {/*    </div>*/}
+          {/*  </div>*/}
+          {/*</div>*/}
 
           {/* <div
 						style={{

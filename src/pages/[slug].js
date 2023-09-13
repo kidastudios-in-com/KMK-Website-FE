@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { GET_SPECIFIC_BLOG } from "./api/URLs";
+import { BASE_URL, GET_SPECIFIC_BLOG } from "./api/URLs";
 import { Box } from "@mui/material";
 import AuthContext from "../components/AuthContext";
 import { useContext } from "react";
@@ -10,6 +10,11 @@ import NavBar from "../components/Navbar";
 import FaqsNew from "./screens/FaqsNew";
 import Footer from "./screens/Footer";
 import { Loading, Text } from "@nextui-org/react";
+import ReactQuill from "react-quill";
+import Markdown from "markdown-to-jsx";
+// import { ReactQuill } from "react-quill";
+
+// import Markdown from "markdown-to-jsx";
 
 const BlogPage = () => {
   const router = useRouter();
@@ -22,10 +27,16 @@ const BlogPage = () => {
       if (slug) {
         try {
           const refresh = localStorage.getItem("refresh");
+          // console.log(
+          //   `https://api-server.kamayakya.in/user/specificStock/${slug}`
+          // );
+
           const response = await axios.get(`${GET_SPECIFIC_BLOG}${slug}`, {
             headers: {
-              // Authorization: `Token ${refresh}`,
+              "Content-Type": "application/json",
+              Authorization: `Token ${refresh}`,
             },
+            next: { revalidate: 3600 },
           });
           setBlog(response.data);
         } catch (error) {
@@ -124,7 +135,9 @@ const BlogPage = () => {
         >
           {/*<span dangerouslySetInnerHTML={blog.description}></span>*/}
           {/*{blog.description}*/}
-          {blog.description}
+          {/*{blog.description}*/}
+          {/*<ReactQuill theme="bubble" value={blog.description} />*/}
+          <Markdown>{blog.description}</Markdown>
         </div>
       </Box>
       <FaqsNew />

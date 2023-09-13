@@ -434,7 +434,7 @@ const WhyUs = () => {
             },
           }}
         >
-          Track record
+          Track Record
         </Text>
 
         <Text

@@ -20,7 +20,7 @@ import MoneyRoundedIcon from "@mui/icons-material/MoneyRounded";
 import { BiLogIn } from "react-icons/bi";
 
 const NavBar2 = () => {
-  const isMobile = useMediaQuery("(max-width:764px)");
+  const isMobile = useMediaQuery("(max-width:1280px)");
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -58,6 +58,9 @@ const NavBar2 = () => {
 
   const trackRecord = () => {
     router.push("/track-record");
+  };
+  const smeCorner = () => {
+    router.push("/sme");
   };
 
   const handleAboutUs = () => {
@@ -208,6 +211,18 @@ const NavBar2 = () => {
             Track Record
           </Text>
         </Navbar.Link>
+        <Navbar.Link
+          // isActive={activeLink === "blogs"}
+          isActive={
+            typeof window !== "undefined" && window.location.pathname === "/sme"
+          }
+          onClick={smeCorner}
+        >
+          <TrendingUpRoundedIcon sx={{ fontSize: 30, color: "#FB9E29" }} />
+          <Text b size={20} css={{ lineHeight: 5, paddingLeft: "5px" }}>
+            SME Corner
+          </Text>
+        </Navbar.Link>
       </Navbar.Content>
       {/* </div> */}
       <Navbar.Content hideIn={"sm"}>
@@ -225,7 +240,7 @@ const NavBar2 = () => {
                 fontSize: "large",
               }}
             >
-              <span style={{ fontSize: 20 }}>Stocks to buy</span>
+              <span style={{ fontSize: 20 }}>Stocks To Buy</span>
             </Button>
           ) : (
             <Button
@@ -355,7 +370,7 @@ const NavBar2 = () => {
             }}
           >
             <ListItemIcon sx={{ paddingLeft: "4px" }}>
-              <Home2 size={30} />
+              <Home2 size={30} style={{ color: "#FB9E29" }} />
             </ListItemIcon>
             <Text b className="drawerElementText">
               Home
@@ -368,7 +383,10 @@ const NavBar2 = () => {
             }}
           >
             <ListItemIcon sx={{ paddingLeft: "4px" }}>
-              <GroupsOutlinedIcon sx={{ fontSize: 30 }} />
+              <GroupsOutlinedIcon
+                sx={{ fontSize: 30 }}
+                style={{ color: "#FB9E29" }}
+              />
             </ListItemIcon>
             <Text b className="drawerElementText">
               About Us
@@ -394,10 +412,29 @@ const NavBar2 = () => {
             }}
           >
             <ListItemIcon sx={{ paddingLeft: "4px" }}>
-              <TrendingUpRoundedIcon sx={{ fontSize: 30 }} />
+              <TrendingUpRoundedIcon
+                sx={{ fontSize: 30 }}
+                style={{ color: "#FB9E29" }}
+              />
             </ListItemIcon>
             <Text b className="drawerElementText">
               Track Record
+            </Text>
+          </ListItemButton>
+          <ListItemButton
+            onClick={() => {
+              smeCorner();
+              toggleDrawer();
+            }}
+          >
+            <ListItemIcon sx={{ paddingLeft: "4px" }}>
+              <MoneyRoundedIcon
+                sx={{ fontSize: 30 }}
+                style={{ color: "#FB9E29" }}
+              />
+            </ListItemIcon>
+            <Text b className="drawerElementText">
+              SME Corner
             </Text>
           </ListItemButton>
           <ListItemButton
@@ -407,7 +444,10 @@ const NavBar2 = () => {
             }}
           >
             <ListItemIcon sx={{ paddingLeft: "4px" }}>
-              <MoneyRoundedIcon sx={{ fontSize: 30 }} />
+              <MoneyRoundedIcon
+                sx={{ fontSize: 30 }}
+                style={{ color: "#FB9E29" }}
+              />
             </ListItemIcon>
             <Text b className="drawerElementText">
               Stock To Buy
@@ -420,7 +460,7 @@ const NavBar2 = () => {
             }}
           >
             <ListItemIcon>
-              <BiLogIn size={30} />
+              <BiLogIn size={30} style={{ color: "#FB9E29" }} />
             </ListItemIcon>
             <Text b className="drawerElementText">
               Profile
@@ -433,7 +473,7 @@ const NavBar2 = () => {
             }}
           >
             <ListItemIcon>
-              <BiLogIn size={30} />
+              <BiLogIn size={30} style={{ color: "#FB9E29" }} />
             </ListItemIcon>
             <Text b className="drawerElementText">
               Logout

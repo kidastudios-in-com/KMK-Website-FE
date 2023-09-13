@@ -4,6 +4,7 @@ import { Button, Loading, Text } from "@nextui-org/react";
 import { BiChevronRight } from "react-icons/bi";
 import { GET_BLOGS } from "../api/URLs";
 import { useRouter } from "next/router";
+import Markdown from "markdown-to-jsx";
 
 const BlogSection2 = () => {
   const [blogs, setBlogs] = useState([]);
@@ -15,27 +16,28 @@ const BlogSection2 = () => {
     setIsLoading(false);
   };
 
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        setIsLoadingBlogs(true);
-        const refresh = localStorage.getItem("refresh");
-        const response = await fetch(GET_BLOGS, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            // Authorization: `token ${refresh}`,
-          },
-        });
-        const data = await response.json();
-        setBlogs(data);
-        console.log(data);
-        setIsLoadingBlogs(false);
-      } catch (error) {
-        console.log("Error fetching blogs:", error);
-      }
-    };
+  const fetchBlogs = async () => {
+    try {
+      setIsLoadingBlogs(true);
+      // const refresh = localStorage.getItem("refresh");
+      // console.log("URL: ", GET_BLOGS);
+      const response = await fetch(`${GET_BLOGS}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          // Authorization: `token ${refresh}`,
+        },
+      });
+      const data = await response.json();
+      setBlogs(data);
+      console.log(data);
+      setIsLoadingBlogs(false);
+    } catch (error) {
+      console.log("Error fetching blogs:", error);
+    }
+  };
 
+  useEffect(() => {
     fetchBlogs();
   }, []);
 
@@ -83,10 +85,11 @@ const BlogSection2 = () => {
           >
             {blogs.map((blog) => (
               <Box
+                onClick={() => router.push(`${blog.slug}`)}
                 key={blog.id}
                 sx={{
                   width: "280px",
-                  height: "430px",
+                  height: "450px",
                   display: "flex",
                   flexWrap: "wrap",
                   flexDirection: "column",
@@ -180,15 +183,21 @@ const BlogSection2 = () => {
                     >
                       {blog.title}
                     </Text>
-                    <Text
-                      b
-                      size={14}
-                      css={{ lineHeight: 1.2, marginTop: "5px" }}
-                    >
+                    {/*<Text*/}
+                    {/*  b*/}
+                    {/*  size={14}*/}
+                    {/*  css={{ lineHeight: 1.2, marginTop: "5px" }}*/}
+                    {/*>*/}
+                    {/*  {blog.description.length > 200*/}
+                    {/*    ? `${blog.description.substring(0, 100)}...`*/}
+                    {/*    : blog.description}*/}
+                    {/*</Text>*/}
+                    <span style={{ height: "10px" }} />
+                    <Markdown>
                       {blog.description.length > 200
                         ? `${blog.description.substring(0, 100)}...`
                         : blog.description}
-                    </Text>
+                    </Markdown>
                   </div>
                 </div>
                 <Box

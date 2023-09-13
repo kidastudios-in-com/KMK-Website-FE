@@ -1124,6 +1124,45 @@ header > div > div {
   background-color: #ec0;
 }
 
+.sme {
+  width: 200px;
+  padding: 5px;
+  position: absolute;
+  text-align: center;
+  color: #f0f0f0;
+}
+
+.sme-sticky {
+  position: fixed;
+}
+
+/* Positions */
+
+.sme-top {
+  top: 25px;
+}
+.sme-bottom {
+  bottom: 25px;
+}
+.sme-left {
+  left: -50px;
+}
+.sme-right {
+  right: -60px;
+}
+
+/* Rotations */
+
+.sme-top.cr-left,
+.sme-bottom.cr-right {
+  transform: rotate(-45deg);
+}
+
+.sme-top.cr-right,
+.sme-bottom.cr-left {
+  transform: rotate(45deg);
+}
+
 @media print {
   .pdf-container {
     display: none;

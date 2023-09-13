@@ -12,6 +12,7 @@ import { ArrowCircleUp, DocumentText, Lock, Lock1 } from "iconsax-react";
 import axios from "axios";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import {
+  GET_ALL_SME_URL,
   GET_ALL_URL,
   GET_SPECIFIC_STOCK_URL,
   TRACK_RECORD_FOR_ALL,
@@ -57,7 +58,7 @@ import { SearchNormal, Filter } from "iconsax-react";
 import Marquee from "react-fast-marquee";
 import LoginForSubsribe from "./LoginForSubsribe";
 
-const StockCard = () => {
+const StockCardSME = () => {
   const router = useRouter();
   const [stocks, setStocks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -75,8 +76,9 @@ const StockCard = () => {
   const [selectedStock, setSelectedStock] = useState(null);
   const [showReportsModal, setShowReportsModal] = useState(false);
 
-  const staticNumbers = [94, 49, 28];
+  const staticNumbers = [194, 137, 48];
   const [showWhyModal, setShowWhyModal] = useState(false);
+  const [showSMENote, setShowSMENote] = useState(false);
 
   const [record, setRecord] = useState([]);
 
@@ -89,6 +91,14 @@ const StockCard = () => {
 
   const handleWhyModalClose = () => {
     setShowWhyModal(false);
+  };
+
+  const handleShowSMENoteForUser = () => {
+    setShowSMENote(true);
+  };
+
+  const handleCloseSMENoteForUser = () => {
+    setShowSMENote(false);
   };
 
   const handleOpenModal = (documentUrl) => {
@@ -329,7 +339,7 @@ const StockCard = () => {
       router.push("/purchase");
     }
     if (isLoggedIn === true && isSubscribed === true) {
-      router.push("/stock-picks");
+      router.push("/sme");
     }
     if (isLoggedIn === false) {
       setShowLoginModalForSubscribe(true);
@@ -363,7 +373,7 @@ const StockCard = () => {
       setIsLoading(true);
       const fetchData = async () => {
         try {
-          const response = await axios.get(GET_ALL_URL, {
+          const response = await axios.get(GET_ALL_SME_URL, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -586,7 +596,34 @@ const StockCard = () => {
             },
           }}
         >
-          Stocks To Buy
+          SME Stocks To Buy
+        </Text>
+        <Text
+          b
+          size={18}
+          css={{
+            marginTop: 0,
+            marginBottom: "10px",
+            maxWidth: "50rem" /* 1280px */,
+            textAlign: "center",
+            color: "#000",
+            lineHeight: 1.2,
+            paddingLeft: "15px",
+            paddingRight: "15px",
+            "@media only screen and (max-width: 764px)": {
+              fontSize: 20,
+              maxWidth: "100%",
+              paddingLeft: "5px",
+              paddingRight: "5px",
+              marginTop: "0px",
+              marginBottom: "10px",
+              textAlign: "left",
+              color: "#000",
+            },
+          }}
+        >
+          Unlocking Potential, Fuelling Growth – Your One-Stop Resource for SME
+          Success
         </Text>
       </Box>
       {isLoggedIn ? (
@@ -1049,7 +1086,7 @@ const StockCard = () => {
                   "@media only screen and (max-width: 768px)": {
                     width: "92.5vw",
                     maxWidth: "620px",
-                    height: "650px",
+                    height: "635px",
                     borderRadius: "35px",
                   },
                 }}
@@ -1087,6 +1124,9 @@ const StockCard = () => {
                       },
                     }}
                   >
+                    {/*<div className="sme sme-top sme-right sme-sticky sme-subscription">*/}
+                    {/*  SME*/}
+                    {/*</div>*/}
                     <Box
                       sx={{
                         width: "100%",
@@ -1190,7 +1230,7 @@ const StockCard = () => {
                         },
                       }}
                     >
-                      Upside Left
+                      Upside Potential
                     </Text>
                     <div style={{ display: "flex", alignItems: "center" }}>
                       <ArrowCircleUp size={25} color="#fff" />
@@ -1239,54 +1279,54 @@ const StockCard = () => {
                         alignItems: "center",
                       }}
                     >
-                      <div style={{ display: "flex", flexDirection: "column" }}>
-                        <Text
-                          b
-                          css={{
-                            lineHeight: 1.1,
-                            "@media only screen and (max-width: 768px)": {
-                              fontSize: 21,
-                            },
-                          }}
-                          size={15}
-                        >
-                          MKT. CAP.
-                        </Text>
-                        <Text
-                          b
-                          size={15}
-                          css={{
-                            lineHeight: 1.1,
-                            "@media only screen and (max-width: 768px)": {
-                              fontSize: 15,
-                            },
-                          }}
-                        >
-                          (IN Cr.)
-                        </Text>
-                      </div>
-                      <Text
-                        b
-                        css={{
-                          flex: 1,
-                          textAlign: "right",
-                          "@media only screen and (max-width: 768px)": {
-                            fontSize: 30,
-                          },
-                        }}
-                        size={22}
-                      >
-                        {`${stock.market_cap}` || <Loading /> || "-"}
-                      </Text>
+                      {/*<div style={{ display: "flex", flexDirection: "column" }}>*/}
+                      {/*  <Text*/}
+                      {/*    b*/}
+                      {/*    css={{*/}
+                      {/*      lineHeight: 1.1,*/}
+                      {/*      "@media only screen and (max-width: 768px)": {*/}
+                      {/*        fontSize: 21,*/}
+                      {/*      },*/}
+                      {/*    }}*/}
+                      {/*    size={15}*/}
+                      {/*  >*/}
+                      {/*    MKT. CAP.*/}
+                      {/*  </Text>*/}
+                      {/*  <Text*/}
+                      {/*    b*/}
+                      {/*    size={15}*/}
+                      {/*    css={{*/}
+                      {/*      lineHeight: 1.1,*/}
+                      {/*      "@media only screen and (max-width: 768px)": {*/}
+                      {/*        fontSize: 15,*/}
+                      {/*      },*/}
+                      {/*    }}*/}
+                      {/*  >*/}
+                      {/*    (IN Cr.)*/}
+                      {/*  </Text>*/}
+                      {/*</div>*/}
+                      {/*<Text*/}
+                      {/*  b*/}
+                      {/*  css={{*/}
+                      {/*    flex: 1,*/}
+                      {/*    textAlign: "right",*/}
+                      {/*    "@media only screen and (max-width: 768px)": {*/}
+                      {/*      fontSize: 30,*/}
+                      {/*    },*/}
+                      {/*  }}*/}
+                      {/*  size={22}*/}
+                      {/*>*/}
+                      {/*  {`${stock.market_cap}` || <Loading /> || "-"}*/}
+                      {/*</Text>*/}
                     </div>
-                    <Divider
-                      height={2}
-                      style={{
-                        backgroundColor: "#ffa12e",
-                        marginTop: "10px",
-                        marginBottom: "10px",
-                      }}
-                    />
+                    {/*<Divider*/}
+                    {/*  height={2}*/}
+                    {/*  style={{*/}
+                    {/*    backgroundColor: "#ffa12e",*/}
+                    {/*    marginTop: "10px",*/}
+                    {/*    marginBottom: "10px",*/}
+                    {/*  }}*/}
+                    {/*/>*/}
                     <div
                       style={{
                         display: "flex",
@@ -1314,7 +1354,7 @@ const StockCard = () => {
                             }}
                             size={15}
                           >
-                            CMP
+                            ENTRY PRICE
                           </Text>
                           <Text
                             b
@@ -1326,7 +1366,7 @@ const StockCard = () => {
                               },
                             }}
                           >
-                            (in ₹)
+                            (IN ₹)
                           </Text>
                         </div>
                         <Text
@@ -1467,7 +1507,123 @@ const StockCard = () => {
                       </div>
                     </div>
                   </Box>
+                  <Button
+                    auto
+                    onPress={() => handleShowSMENoteForUser()}
+                    css={{
+                      top: "40px",
+                      // marginTop: "10%",
+                      color: "white",
+                      width: "95%",
+                      borderRadius: "10000px",
+                      // backgroundColor: "#fff",
+                      padding: "20px",
+                      // backgroundImage:
+                      //   "linear-gradient(to top , #106052, #0f734d)",
+                      backgroundColor: "#041C61",
+                      fontSize: 18,
+                      height: "20px",
+                      "@media only screen and (max-width: 768px)": {
+                        top: "20px",
+                        lineHeight: 1,
+                        height: "20px",
+                        fontSize: 18,
+                        width: "100%",
+                      },
+                    }}
+                  >
+                    SME - Note
+                  </Button>
+                  <Modal
+                    open={showSMENote}
+                    onClose={handleCloseSMENoteForUser}
+                    css={{
+                      justifyContent: "center",
+                      background: "transparent",
+                      alignItems: "center",
+                      boxShadow: "none",
+                    }}
+                  >
+                    <Card
+                      css={{
+                        padding: "50px 50px",
+                        width: "550px",
+                        "@media only screen and (max-width: 768px)": {
+                          width: "95%",
+                        },
+                      }}
+                    >
+                      <IconButton
+                        sx={{ position: "absolute", top: "5px", right: "5px" }}
+                        onClick={handleCloseSMENoteForUser}
+                      >
+                        <CloseIcon color="error" />
+                      </IconButton>
+                      <Text b size={21} css={{ textAlign: "start" }}>
+                        Note:
+                      </Text>
+                      <br />
+                      <Text
+                        b
+                        css={{
+                          lineHeight: 1.2,
+                          textAlign: "start",
+                          fontSize: "17.5px",
+                        }}
+                      >
+                        SME shares can be traded on the stock exchanges via your
+                        stock broker in a similar way as the mainboard shares
+                        are traded.
+                        <br />
+                        <br />
+                        A few of the differences are:
+                        <br />
+                        <br />
+                        1. SME shares can be traded only on the exchanges where
+                        they are listed i.e. BSE or NSE.
+                        <br />
+                        <br />
+                        2. Lot-Based Investing: SME shares are traded in lots
+                        instead of any numbers. For example:
+                        <br />
+                        <span style={{ marginLeft: "20px", display: "block" }}>
+                          • Mainboard share of Reliance Industries Ltd. can be
+                          traded in a minimum quantity of 1 share.
+                        </span>
+                        <span
+                          style={{
+                            marginLeft: "20px",
+                            display: "block",
+                          }}
+                        >
+                          • SME share of Timescan Logistics is traded in the lot
+                          size of 2000 shares. This means you can buy/sell a
+                          minimum of 2000 shares in one order.
+                        </span>
+                        <br />
+                        3. Higher Volatility: SME stocks are generally more
+                        volatile compared to mainboard stocks. This elevated
+                        volatility translates into higher risk, but also higher
+                        potential returns.
+                        <br />
+                        <br />
+                        4. Limited Liquidity: Due to the lot-size requirement,
+                        liquidity can be relatively lower for SME shares.
+                        However, liquidity generally improves once the company
+                        graduates to the mainboard.
+                        <br />
+                        <br />
+                        Understanding these nuances can help you make
+                        well-informed decisions when it comes to investing in
+                        SME shares. As always, due diligence and proper risk
+                        assessment are strongly advised.
+                        <br />
+                        <br />
+                      </Text>
+                    </Card>
+                  </Modal>
                 </Box>
+
                 <Box
                   sx={{
                     bottom: "5px",
@@ -2124,6 +2280,12 @@ const StockCard = () => {
                           },
                         }}
                       >
+                        <div
+                          className="cr cr-top cr-right cr-sticky cr-subscription"
+                          style={{ zIndex: 10 }}
+                        >
+                          SME
+                        </div>
                         <Box
                           sx={{
                             zIndex: 0,
@@ -2210,7 +2372,7 @@ const StockCard = () => {
                             lineHeight: 1.5,
                           }}
                         >
-                          Upside Left
+                          Upside Potential
                         </Text>
                         <div style={{ display: "flex", alignItems: "center" }}>
                           <ArrowCircleUp size={25} color="#fff" />
@@ -2373,7 +2535,7 @@ const StockCard = () => {
                                     onPress={handleFirstCard}
                                   >
                                     <Text b color="#FFF" size={18}>
-                                      Login to unlock
+                                      Subscribe to unlock
                                     </Text>
                                   </Button>
                                 </div>
@@ -2406,4 +2568,4 @@ const StockCard = () => {
   );
 };
 
-export default StockCard;
+export default StockCardSME;

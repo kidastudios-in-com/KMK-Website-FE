@@ -1,8 +1,9 @@
 //AUTH BASE
 // console.log(process.env.NEXT_PUBLIC_STRIPE_KEY);
-// export const BASE_URL = 'https://api-server.kamayakya.in';
-// export const BASE_URL = 'http://192.168.0.151:8000/master';
+// export const BASE_URL = "https://api-server.kamayakya.in";
 export const BASE_URL = process.env.NEXT_PUBLIC_BASEPATH;
+// export const BASE_URL = "http://192.168.0.151:8000";
+// export const BASE_U       RL = process.env.NEXT_PUBLIC_BASEPATH;
 // console.log(process.env.NEXT_PUBLIC_BASEPATH);
 // console.log(BASE_URL);
 export const ADMIN_URL = `${BASE_URL}/kmkadmin`;
@@ -28,6 +29,8 @@ export const SUBSCRIPTION_HISTORY = `${USER_URL}/subscribe_for_stock_picks/`;
 
 //Admin Stock URL
 export const GET_ALL_URL = `${USER_URL}/getStockPicksForUser`;
+// export const GET_ALL_SME_URL = `${USER_URL}/getStockPicksForUser`;
+export const GET_ALL_SME_URL = `${USER_URL}/getSMEStockPicks`;
 export const GET_SPECIFIC_STOCK_URL = `${USER_URL}/specificStock`;
 // export const GET_ALL_URL = `${ADMIN_URL}/getAllStocks/`;
 
