@@ -273,7 +273,7 @@ export default function App() {
                 />
               </ListItemIcon>
               <Text b className="drawerElementText">
-                Stock To Buy
+                Stocks To Buy
               </Text>
             </ListItemButton>
             <ListItemButton

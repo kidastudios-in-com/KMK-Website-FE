@@ -295,7 +295,7 @@ const NavBar2 = () => {
             <Dropdown.Item key="handleAboutUs">About us</Dropdown.Item>
             {/*<Dropdown.Item key="handleBlog">Blogs</Dropdown.Item>*/}
             <Dropdown.Item key="handleTrack">Track record</Dropdown.Item>
-            <Dropdown.Item key="handleStockPicks">Stock to buy</Dropdown.Item>
+            <Dropdown.Item key="handleStockPicks">Stocks to buy</Dropdown.Item>
             <Dropdown.Item key="settings" withDivider>
               Profile
             </Dropdown.Item>
@@ -450,7 +450,7 @@ const NavBar2 = () => {
               />
             </ListItemIcon>
             <Text b className="drawerElementText">
-              Stock To Buy
+              Stocks To Buy
             </Text>
           </ListItemButton>
           <ListItemButton
