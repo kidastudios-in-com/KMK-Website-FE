@@ -10,7 +10,6 @@ import NavBar from "../components/Navbar";
 import FaqsNew from "./screens/FaqsNew";
 import Footer from "./screens/Footer";
 import { Loading, Text } from "@nextui-org/react";
-import ReactQuill from "react-quill";
 import Markdown from "markdown-to-jsx";
 // import { ReactQuill } from "react-quill";
 
@@ -133,10 +132,6 @@ const BlogPage = () => {
             },
           }}
         >
-          {/*<span dangerouslySetInnerHTML={blog.description}></span>*/}
-          {/*{blog.description}*/}
-          {/*{blog.description}*/}
-          {/*<ReactQuill theme="bubble" value={blog.description} />*/}
           <Markdown>{blog.description}</Markdown>
         </div>
       </Box>
