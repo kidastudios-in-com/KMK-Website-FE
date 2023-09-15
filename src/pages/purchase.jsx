@@ -23,9 +23,9 @@ import PhoneInput from "react-phone-input-2";
 // const stripePromise = loadStripe(
 // 	"pk_test_51N3dAPSFPooNZtZaCwGwRUC1IHpC4HqARVbxMBia13Fqan4H6SoLZUhLz21xqqMhtDU5Kiurtzia2uznSEbGSADk00LRBh1V2p"
 // );
-const Stripe_Key = process.env.NEXT_PUBLIC_STRIPE_KEY;
+// const Stripe_Key = process.env.NEXT_PUBLIC_STRIPE_KEY;
 
-const stripePromise = loadStripe(Stripe_Key);
+// const stripePromise = loadStripe(Stripe_Key);
 
 export default function PreviewPage() {
   const [productID, setProductID] = useState("");
@@ -731,19 +731,19 @@ export default function PreviewPage() {
         }}
         className="paymentsPage-box"
       >
-        <img
-          src="upi.png"
-          style={{
-            width: "500px",
-            maxWidth: "80rem",
-            height: "auto",
-            marginTop: "10px",
-            marginBottom: "20px",
-            borderRadius: "20px",
-            alignSelf: "flex-start",
-          }}
-          className="paymentsPage-box-account"
-        />
+        {/*<img*/}
+        {/*  src="upi.png"*/}
+        {/*  style={{*/}
+        {/*    width: "500px",*/}
+        {/*    maxWidth: "80rem",*/}
+        {/*    height: "auto",*/}
+        {/*    marginTop: "10px",*/}
+        {/*    marginBottom: "20px",*/}
+        {/*    borderRadius: "20px",*/}
+        {/*    alignSelf: "flex-start",*/}
+        {/*  }}*/}
+        {/*  className="paymentsPage-box-account"*/}
+        {/*/>*/}
         {/*<br />*/}
         {/*<Divider></Divider>*/}
         {/*<br />*/}
