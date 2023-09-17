@@ -20,7 +20,7 @@ import MoneyRoundedIcon from "@mui/icons-material/MoneyRounded";
 import { BiLogIn } from "react-icons/bi";
 
 const NavBar2 = () => {
-  const isMobile = useMediaQuery("(max-width:1280px)");
+  const isMobile = useMediaQuery("(max-width:940px)");
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -161,7 +161,7 @@ const NavBar2 = () => {
       </Navbar.Brand>
       <Navbar.Content
         activeColor="warning"
-        hideIn="md"
+        hideIn="sm"
         variant="underline-rounded"
       >
         <Navbar.Link
@@ -170,7 +170,7 @@ const NavBar2 = () => {
           }
           onClick={() => handleHome()}
         >
-          <Text b size={20} css={{ lineHeight: 5 }}>
+          <Text b size={16} css={{ lineHeight: 5 }}>
             Home
           </Text>
         </Navbar.Link>
@@ -181,7 +181,7 @@ const NavBar2 = () => {
           }
           onClick={() => handleAboutUs()}
         >
-          <Text b size={20} css={{ lineHeight: 5 }}>
+          <Text b size={16} css={{ lineHeight: 5 }}>
             About Us
           </Text>
         </Navbar.Link>
@@ -192,7 +192,7 @@ const NavBar2 = () => {
         {/*  }*/}
         {/*  onClick={() => handleBlog()}*/}
         {/*>*/}
-        {/*  <Text b size={20} css={{ lineHeight: 5 }}>*/}
+        {/*  <Text b size={16} css={{ lineHeight: 5 }}>*/}
         {/*    Blogs*/}
         {/*  </Text>*/}
         {/*</Navbar.Link>*/}
@@ -207,7 +207,7 @@ const NavBar2 = () => {
             // toggleDrawer();
           }}
         >
-          <Text b size={20} css={{ lineHeight: 5 }}>
+          <Text b size={16} css={{ lineHeight: 5 }}>
             Track Record
           </Text>
         </Navbar.Link>
@@ -219,14 +219,14 @@ const NavBar2 = () => {
           onClick={smeCorner}
         >
           <TrendingUpRoundedIcon sx={{ fontSize: 30, color: "#FB9E29" }} />
-          <Text b size={20} css={{ lineHeight: 5, paddingLeft: "5px" }}>
+          <Text b size={16} css={{ lineHeight: 5, paddingLeft: "5px" }}>
             SME Corner
           </Text>
         </Navbar.Link>
       </Navbar.Content>
       {/* </div> */}
       <Navbar.Content hideIn={"sm"}>
-        <Navbar.Item hideIn="md">
+        <Navbar.Item hideIn="sm">
           {typeof window !== "undefined" &&
           window.location.pathname !== "/stock-picks" ? (
             <Button

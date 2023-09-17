@@ -731,19 +731,20 @@ export default function PreviewPage() {
         }}
         className="paymentsPage-box"
       >
-        {/*<img*/}
-        {/*  src="upi.png"*/}
-        {/*  style={{*/}
-        {/*    width: "500px",*/}
-        {/*    maxWidth: "80rem",*/}
-        {/*    height: "auto",*/}
-        {/*    marginTop: "10px",*/}
-        {/*    marginBottom: "20px",*/}
-        {/*    borderRadius: "20px",*/}
-        {/*    alignSelf: "flex-start",*/}
-        {/*  }}*/}
-        {/*  className="paymentsPage-box-account"*/}
-        {/*/>*/}
+        <img
+          src="upi.png"
+          style={{
+            width: "500px",
+            maxWidth: "80rem",
+            height: "auto",
+            marginTop: "10px",
+            marginBottom: "20px",
+            borderRadius: "20px",
+            alignSelf: "flex-start",
+          }}
+          className="paymentsPage-box-account"
+          alt="UPI"
+        />
         {/*<br />*/}
         {/*<Divider></Divider>*/}
         {/*<br />*/}

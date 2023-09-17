@@ -25,7 +25,7 @@ import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 export default function App() {
   const [activeLink, setActiveLink] = useState("home");
 
-  const isMobile = useMediaQuery("(max-width:1280px)");
+  const isMobile = useMediaQuery("(max-width:940px)");
 
   const router = useRouter();
 
@@ -301,7 +301,7 @@ export default function App() {
         >
           <Navbar.Content
             activeColor="warning"
-            hideIn="md"
+            hideIn="sm"
             variant="underline-rounded"
             // css={{
             // 	"@media only screen and (max-width: 1000px)": {
@@ -317,7 +317,7 @@ export default function App() {
               }
               onClick={() => handleHome()}
             >
-              <Text b size={20} css={{ lineHeight: 5 }}>
+              <Text b size={16} css={{ lineHeight: 5 }}>
                 Home
               </Text>
             </Navbar.Link>
@@ -329,7 +329,7 @@ export default function App() {
               }
               onClick={handleAboutUs}
             >
-              <Text b size={20} css={{ lineHeight: 5 }}>
+              <Text b size={16} css={{ lineHeight: 5 }}>
                 About Us
               </Text>
             </Navbar.Link>
@@ -341,7 +341,7 @@ export default function App() {
             {/*  }*/}
             {/*  onClick={handleBlog}*/}
             {/*>*/}
-            {/*  <Text b size={20} css={{ lineHeight: 5 }}>*/}
+            {/*  <Text b size={16} css={{ lineHeight: 5 }}>*/}
             {/*    Blogs*/}
             {/*  </Text>*/}
             {/*</Navbar.Link>*/}
@@ -353,7 +353,7 @@ export default function App() {
               }
               onClick={trackRecord}
             >
-              <Text b size={20} css={{ lineHeight: 5 }}>
+              <Text b size={16} css={{ lineHeight: 5 }}>
                 Track Record
               </Text>
             </Navbar.Link>
@@ -366,14 +366,14 @@ export default function App() {
               onClick={smeCorner}
             >
               <TrendingUpRoundedIcon sx={{ fontSize: 30, color: "#FB9E29" }} />
-              <Text b size={20} css={{ lineHeight: 5, paddingLeft: "5px" }}>
+              <Text b size={16} css={{ lineHeight: 5, paddingLeft: "5px" }}>
                 SME Corner
               </Text>
             </Navbar.Link>
           </Navbar.Content>
         </div>
         <Navbar.Content
-          hideIn={"md"}
+          hideIn={"sm"}
           css={{
             "@xs": {
               w: "12%",
@@ -384,7 +384,7 @@ export default function App() {
           }}
         >
           {router.pathname !== "/login" && (
-            <Navbar.Item>
+            <Navbar.Item hideIn={"md"}>
               <Button
                 size={"lg"}
                 auto
