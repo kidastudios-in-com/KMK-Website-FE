@@ -1380,7 +1380,7 @@ const StockCardSME = () => {
                           }}
                           size={22}
                         >
-                          {`${stock.live_price}` || <Loading /> || "-"}
+                          {`${stock.entry_price}` || <Loading /> || "-"}
                         </Text>
                       </div>
                       <Divider
