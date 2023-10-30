@@ -12,7 +12,7 @@ import {
 import Marquee from "react-fast-marquee";
 import React, { useState, useContext, useEffect } from "react";
 import { Box, Grid, IconButton, LinearProgress } from "@mui/material";
-// import ReactECharts from "echarts-for-react";
+import ReactECharts from "echarts-for-react";
 import ReactCardFlip from "react-card-flip";
 import {
   ArrowCircleRight,
@@ -30,15 +30,15 @@ import "@react-pdf-viewer/core/lib/styles/index.css";
 import packageJson from "../../package.json";
 import CloseIcon from "@mui/icons-material/Close";
 import Login from "@/components/Login";
-//
+
 const WhyUs = () => {
-  // const { setVisible, bindings } = useModal();
-  const [flipStates, setFlipStates] = useState(Array(8).fill(false));
-  const [record, setRecord] = useState([]);
-  const { isLoggedIn } = useContext(AuthContext);
-  const { isSubscribed } = useContext(AuthContext);
-  const pdfjsVersion = packageJson.dependencies["pdfjs-dist"];
-  const { setVisible, bindings } = useModal();
+	// const { setVisible, bindings } = useModal();
+	const [flipStates, setFlipStates] = useState(Array(8).fill(false));
+	const [record, setRecord] = useState([]);
+	const { isLoggedIn } = useContext(AuthContext);
+	const { isSubscribed } = useContext(AuthContext);
+	// const pdfjsVersion = packageJson.dependencies["pdfjs-dist"];
+	// const { setVisible, bindings } = useModal();
 
   const [isLoadingTrackRecord, setisLoadingTrackRecord] = useState(true);
 
@@ -65,6 +65,7 @@ const WhyUs = () => {
       if (response.ok) {
         const data = await response.json();
         setRecord(data);
+        // console.log(data);
         // await delay(3);
         setisLoadingTrackRecord(false);
       } else {
@@ -1115,7 +1116,7 @@ const WhyUs = () => {
                           <span>
                             Time left:{" "}
                             {item.stock_targets.length > 0
-                              ? `${Math.round(
+                              ? `${Math.max(0,(Math.round(
                                   (new Date(
                                     item.stock_targets[
                                       item.stock_targets.length - 1
@@ -1123,7 +1124,7 @@ const WhyUs = () => {
                                   ).getTime() -
                                     new Date().getTime()) /
                                     (1000 * 60 * 60 * 24)
-                                )}`
+                                )))}`
                               : item.time_left}{" "}
                             days
                           </span>
@@ -1323,7 +1324,9 @@ const WhyUs = () => {
                     sx={{
                       display: "flex",
                       flexDirection: "row",
-                      gap: "20px",
+                      gap: "15px",
+											flexWrap: 'wrap',
+											justifyContent: 'center',
                       "@media only screen and (max-width: 764px)": {
                         flexWrap: "wrap",
                       },
@@ -1679,7 +1682,7 @@ const WhyUs = () => {
                                 },
                               }}
                             >
-                              CURRENT RETURNS
+                              RETURNS
                             </Text>
                             <Text
                               b
@@ -1712,16 +1715,27 @@ const WhyUs = () => {
                                 },
                               }}
                             >
-                              {`${
-                                new Date().getDate()
-                                // record[selectedCardIndex].created
-                              } ${new Date().toLocaleString("default", {
+                              {/* {console.log(record[selectedCardIndex].target_met ? record[selectedCardIndex].target_met : "NO DATE")} */}
+                              {/* {console.log(record[selectedCardIndex].target_met)} */}
+                              {/* {`${
+                                new Date().getDate(
+                                record[selectedCardIndex].target_met)
+                              } ${new Date(record[selectedCardIndex].target_met).toLocaleString("default", {
                                 // record[selectedCardIndex].created
                                 month: "short",
                               })} ${
-                                new Date().getFullYear()
+                                new Date(record[selectedCardIndex].target_met).getFullYear()
                                 // record[selectedCardIndex].created
-                              }`}
+                              }`} */}
+                              {`${new Date(
+                                record[selectedCardIndex].target_met
+                              ).getDate()} ${new Date(
+                                record[selectedCardIndex].target_met
+                              ).toLocaleString("default", {
+                                month: "short",
+                              })} ${new Date(
+                                record[selectedCardIndex].target_met
+                              ).getFullYear()}`}
                             </Text>
                           </Box>
                         </Box>
@@ -1866,7 +1880,7 @@ const WhyUs = () => {
                                 display: "flex",
                                 flexDirection: "row",
                                 marginTop: "15px",
-                                gap: "20px",
+                                gap: "15px",
                                 "@media only screen and (max-width: 764px)": {
                                   gap: "15px",
                                   width: "100%",
@@ -1935,13 +1949,13 @@ const WhyUs = () => {
                                   }}
                                 >
                                   {`${new Date(
-                                    target.start_date
+                                    target.target_date
                                   ).getDate()} ${new Date(
-                                    target.start_date
+                                    target.target_date
                                   ).toLocaleString("default", {
                                     month: "short",
                                   })} ${new Date(
-                                    target.start_date
+                                    target.target_date
                                   ).getFullYear()}`}
                                 </Text>
                               </Box>
@@ -1949,7 +1963,7 @@ const WhyUs = () => {
                                 sx={{
                                   display: "flex",
                                   flexDirection: "column",
-                                  // width: "30%"
+                                  width: "30%"
                                 }}
                               >
                                 <Text
@@ -2039,7 +2053,7 @@ const WhyUs = () => {
                                       },
                                   }}
                                 >
-                                  CURRENT RETURNS
+                                  RETURNS
                                 </Text>
                                 <Text
                                   b
@@ -2074,15 +2088,22 @@ const WhyUs = () => {
                                       },
                                   }}
                                 >
-                                  {`${new Date(
-                                    target.start_date
+                                  {/* {`${new Date(
+                                    target.target_met
                                   ).getDate()} ${new Date(
-                                    target.start_date
+                                    target.target_met
                                   ).toLocaleString("default", {
                                     month: "short",
                                   })} ${new Date(
-                                    target.start_date
-                                  ).getFullYear()}`}
+                                    target.target_met
+                                  ).getFullYear()}`} */}
+
+{
+  target.target_met
+    ? `${new Date(target.target_met).getDate()} ${new Date(target.target_met).toLocaleString("default", { month: "short" })} ${new Date(target.target_met).getFullYear()}`
+    : `${new Date().getDate()} ${new Date().toLocaleString("default", { month: "short" })} ${new Date().getFullYear()}`
+}
+
                                 </Text>
                               </Box>
                             </Box>

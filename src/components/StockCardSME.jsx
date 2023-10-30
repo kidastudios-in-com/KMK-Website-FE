@@ -2486,7 +2486,7 @@ const StockCardSME = () => {
                             lineHeight: 1.5,
                           }}
                         >
-                          Upside Potential
+                          Upside Left
                         </Text>
                         <div style={{ display: "flex", alignItems: "center" }}>
                           <ArrowCircleUp size={25} color="#fff" />

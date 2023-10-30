@@ -75,10 +75,12 @@ export default function PreviewPage() {
     getUserDetails();
   }, []);
 
-  useEffect(() => {
-    // Define a function to update form validity
-    updateFormValidity();
-  }, [billingNumber, billingEmail, billingName, userPincode]);
+
+	useEffect(() => {
+		// Define a function to update form validity
+		updateFormValidity();
+
+	  }, [billingNumber, billingEmail, billingName, userPincode]);
 
   const handleOpenBillingModal = () => {
     setOpenBillingModal(true);
@@ -142,39 +144,46 @@ export default function PreviewPage() {
     updateFormValidity();
   };
 
-  const handlePincodeChange = (e) => {
-    const pincode = e.target.value;
-    setUserPincode(pincode);
-    // Check if the pincode is a 6-digit number
-    const isSixDigitPincode = /^\d{6}$/.test(pincode);
+	const handlePincodeChange = (e) => {
+		const pincode = e.target.value;
+	    setUserPincode(pincode);
+		// Check if the pincode is a 6-digit number
+		const isSixDigitPincode = /^\d{6}$/.test(pincode);
 
-    if (isSixDigitPincode) {
-      updateFormValidity();
-      // Find the pincode entry in the pincodeData array
-      const result = pincodeData.find((entry) => entry.pincode === pincode);
-      if (result) {
-        setUserCity(result.city);
-        setUserState(result.state);
-      }
-    } else {
-      // Handle invalid pincode input, e.g., display an error message.
-    }
-  };
+		if (isSixDigitPincode) {
 
-  const updateFormValidity = () => {
-    setIsFormValid(
-      billingNumber !== "" &&
-        billingEmail !== "" &&
-        billingName !== "" &&
-        userState !== "" &&
-        userCity !== "" &&
-        userPincode !== ""
-    );
-  };
+		  updateFormValidity();
+		  // Find the pincode entry in the pincodeData array
+		  const result = pincodeData.find(
+			(entry) => entry.pincode === pincode
+		  );
+		  if (result) {
+			setUserCity(result.city);
+			setUserState(result.state);
+		  }
+		} else {
+		  // Handle invalid pincode input, e.g., display an error message.
+		}
+	  };
 
-  const handleGSTChange = (e) => {
-    setGstNo(e.target.value.toUpperCase());
-  };
+	  const updateFormValidity = () => {
+		setIsFormValid(
+		  billingNumber !== "" &&
+		  billingEmail !== "" &&
+		  billingName !== "" &&
+		  userState !== "" &&
+		  userCity !== "" &&
+		  userPincode !== ""
+		);
+	  };
+
+
+
+
+
+	const handleGSTChange = (e) => {
+		setGstNo(e.target.value.toUpperCase());
+	};
 
   const handleReferralChange = (e) => {
     setReferralCode(e.target.value.toUpperCase());
@@ -491,19 +500,19 @@ export default function PreviewPage() {
       >
         {/* <img src="kmk-k.png" style={{ width: "50px" }} /> */}
 
-        <Card
-          css={{
-            width: "380px",
-            // height: "620px",
-            alignSelf: "center",
-            borderRadius: "24px",
-            "@media only screen and (max-width: 764px)": {
-              width: "95vw !important",
-              maxWidth: "95vw !important",
-            },
-          }}
-        >
-          {/* <IconButton
+				<Card
+					css={{
+						width: "380px",
+						// height: "620px",
+						alignSelf: "center",
+						borderRadius: "24px",
+						"@media only screen and (max-width: 764px)": {
+							width: "95vw !important",
+							maxWidth: "380px !important",
+						},
+					}}
+				>
+					{/* <IconButton
 						sx={{
 							position: "absolute",
 							width: "40px",
@@ -520,131 +529,147 @@ export default function PreviewPage() {
 					>
 						<ArrowBack sx={{ color: "#e81123" }} />
 					</IconButton> */}
-          <Text
-            b
-            color="#000"
-            css={{
-              fontSize: 40,
-              lineHeight: 1.2,
-              marginTop: "40px",
-              marginBottom: "0px",
-              "@media only screen and (max-width: 764px)": {
-                fontSize: 32,
-                width: "100%",
-              },
-            }}
-          >
-            Invoice Details
-          </Text>
-          <Text
-            b
-            color="#000"
-            css={{
-              fontSize: 15,
-              lineHeight: 1.2,
-              marginTop: "0px",
-              marginBottom: "25px",
-              "@media only screen and (max-width: 764px)": {
-                fontSize: 13,
-                width: "100%",
-              },
-            }}
-          >
-            You will receive your invoice via email
-          </Text>
-          <Text
-            b
-            css={{
-              alignSelf: "start",
-              marginLeft: "50px",
-              marginBottom: "5px",
-              fontSize: 14,
-              color: "#125a54",
-            }}
-          >
-            NAME * required
-          </Text>
-          <Input
-            required
-            type="text"
-            placeholder="eg: Aniket Kulkarni"
-            clearable
-            size="lg"
-            value={billingName}
-            onChange={handleNameChange}
-            css={{
-              marginBottom: "15px",
-              alignSelf: "center",
-              width: "300px",
-              height: "40px",
-              borderRadius: "1000px",
-            }}
-            className="countryPhone"
-          />
-          <Text
-            b
-            css={{
-              alignSelf: "start",
-              marginLeft: "50px",
-              // marginBottom: "5px",
-              fontSize: 14,
-              color: "#125a54",
-            }}
-          >
-            WHATSAPP NUMBER * required
-          </Text>
-          <PhoneInput
-            containerStyle={{
-              marginBottom: "10px",
-              marginRight: "5px",
-              alignSelf: "center",
-              width: "316px",
-            }}
-            dropdownStyle={{ height: "250px", zIndex: 10 }}
-            countryCodeEditable={false}
-            country="in"
-            placeholder="eg: 9012345678"
-            value={billingNumber}
-            onChange={handleInputChange}
-            inputProps={{
-              required: true,
-              autoFocus: true,
-            }}
-            inputExtraProps={{
-              mask: "+(999) 999 9999",
-            }}
-            containerClass="countryPhone"
-          />
-          <Text
-            b
-            css={{
-              alignSelf: "start",
-              marginLeft: "50px",
-              marginBottom: "5px",
-              fontSize: 14,
-              color: "#125a54",
-            }}
-          >
-            EMAIL ID * required
-          </Text>
-          <Input
-            required
-            type="email"
-            placeholder="eg: support@kamayakya.com"
-            clearable
-            size="lg"
-            value={billingEmail}
-            onChange={handleEmailChange}
-            css={{
-              marginBottom: "15px",
-              alignSelf: "center",
-              width: "300px",
-              height: "40px",
-              borderRadius: "1000px",
-            }}
-            className="countryPhone"
-          />
-          {/* <Text
+					<Text
+						b
+						color="#000"
+						css={{
+							fontSize: 40,
+							lineHeight: 1.2,
+							marginTop: "40px",
+							marginBottom: "0px",
+							"@media only screen and (max-width: 764px)": {
+								fontSize: 32,
+								width: "100%",
+							},
+						}}
+					>
+						Invoice Details
+					</Text>
+					<Text
+						b
+						color="#000"
+						css={{
+							fontSize: 15,
+							lineHeight: 1.2,
+							marginTop: "0px",
+							marginBottom: "25px",
+							"@media only screen and (max-width: 764px)": {
+								fontSize: 13,
+								width: "100%",
+							},
+						}}
+					>
+						You will receive your invoice via email
+					</Text>
+					<Text
+						b
+						css={{
+							alignSelf: "start",
+							marginLeft: "50px",
+							// position: 'absolute',
+							marginBottom: "5px",
+							fontSize: 14,
+							color: "#125a54",
+							"@media only screen and (max-width: 764px)": {
+								fontSize: 13,
+								// width: "50%",
+							},
+						}}
+					>
+						NAME * required
+					</Text>
+					<Input
+						required
+						type="text"
+						placeholder="eg: Aniket Kulkarni"
+						clearable
+						size="lg"
+						value={billingName}
+						onChange={handleNameChange}
+						css={{
+							marginBottom: "15px",
+							alignSelf: "center",
+							width: "300px",
+							height: "40px",
+							borderRadius: "1000px",
+							// paddingRight: '10px'
+						}}
+						className="countryPhone"
+					/>
+					<Text
+						b
+						css={{
+							alignSelf: "start",
+							marginLeft: "50px",
+							// marginBottom: "5px",
+							fontSize: 14,
+							color: "#125a54",
+							"@media only screen and (max-width: 764px)": {
+								fontSize: 13,
+								// width: "50%",
+							},
+						}}
+					>
+						WHATSAPP NUMBER * required
+					</Text>
+					<PhoneInput
+						containerStyle={{
+							marginBottom: "10px",
+							marginRight: "5px",
+							alignSelf: "center",
+							width: "316px",
+						}}
+						dropdownStyle={{ height: "250px", zIndex: 10 }}
+						countryCodeEditable={false}
+						country="in"
+						placeholder="eg: 9012345678"
+						value={billingNumber}
+
+						onChange={handleInputChange}
+						inputProps={{
+
+							required: true,
+							autoFocus: true,
+						}}
+						inputExtraProps={{
+							mask: "+(999) 999 9999",
+						}}
+						containerClass="countryPhone"
+					/>
+					<Text
+						b
+						css={{
+							alignSelf: "start",
+							marginLeft: "50px",
+							marginBottom: "5px",
+							fontSize: 14,
+							color: "#125a54",
+							"@media only screen and (max-width: 764px)": {
+								fontSize: 13,
+								// width: "50%",
+							},
+						}}
+					>
+						EMAIL ID * required
+					</Text>
+					<Input
+						required
+						type="email"
+						placeholder="eg: support@kamayakya.com"
+						clearable
+						size="lg"
+						value={billingEmail}
+						onChange={handleEmailChange}
+						css={{
+							marginBottom: "15px",
+							alignSelf: "center",
+							width: "300px",
+							height: "40px",
+							borderRadius: "1000px",
+						}}
+						className="countryPhone"
+					/>
+					{/* <Text
 						b
 						css={{
 							alignSelf: "start",
@@ -700,176 +725,200 @@ export default function PreviewPage() {
 						}}
 						className="countryPhone"
 					/> */}
-          <Text
-            b
-            css={{
-              alignSelf: "start",
-              marginLeft: "50px",
-              marginBottom: "5px",
-              fontSize: 14,
-              color: "#125a54",
-            }}
-          >
-            PINCODE * required
-          </Text>
-          <Input
-            required
-            type="text"
-            placeholder="eg: 411001"
-            clearable
-            size="lg"
-            value={userPincode}
-            onChange={handlePincodeChange}
-            css={{
-              marginBottom: "15px",
-              alignSelf: "center",
-              width: "300px",
-              height: "40px",
-              borderRadius: "1000px",
-            }}
-            className="countryPhone"
-          />
-          <Text
-            b
-            css={{
-              alignSelf: "start",
-              marginLeft: "50px",
-              marginBottom: "5px",
-              fontSize: 14,
-              color: "grey",
-            }}
-          >
-            GSTIN (optional)
-          </Text>
-          <Input
-            placeholder="eg: 22AAAAA0000A1Z5"
-            clearable
-            size="lg"
-            value={gstNo}
-            maxLength={15}
-            minLength={15}
-            onChange={handleGSTChange}
-            css={{
-              marginBottom: "15px",
-              alignSelf: "center",
-              width: "300px",
-              height: "40px",
-              borderRadius: "1000px",
-            }}
-            className="countryPhone"
-          />
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-              gap: "15px",
-              // marginTop: "20px",
-            }}
-          >
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-evenly",
-                // marginTop: "20px",
-                // alignContent: 'start',
-                width: "140px",
-              }}
-            >
-              <Text
-                b
-                css={{
-                  alignSelf: "start",
-                  marginLeft: "10px",
-                  // marginBottom: "5px",
-                  fontSize: 14,
-                  color: "grey",
-                }}
-              >
-                REFERRAL CODE
-              </Text>
-              <Text
-                b
-                css={{
-                  alignSelf: "start",
-                  marginLeft: "10px",
-                  marginBottom: "5px",
-                  fontSize: 13,
-                  color: "grey",
-                }}
-              >
-                (optional)
-              </Text>
-              <Input
-                placeholder="eg: KMK007"
-                clearable
-                size="lg"
-                maxLength={6}
-                minLength={6}
-                value={referralCode}
-                onChange={handleReferralChange}
-                css={{
-                  marginBottom: "10px",
-                  alignSelf: "center",
-                  // width: "300px",
-                  height: "40px",
-                  borderRadius: "1000px",
-                }}
-                className="countryPhone"
-              />
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-evenly",
-                // marginTop: "20px",
-                width: "140px",
-              }}
-            >
-              <Text
-                b
-                css={{
-                  alignSelf: "start",
-                  marginLeft: "10px",
-                  fontSize: 14,
-                  color: "grey",
-                }}
-              >
-                DISCOUNT CODE
-              </Text>
-              <Text
-                b
-                css={{
-                  alignSelf: "start",
-                  marginLeft: "10px",
-                  marginBottom: "5px",
-                  fontSize: 13,
-                  color: "grey",
-                }}
-              >
-                (optional)
-              </Text>
-              <Input
-                placeholder="eg: KMK007"
-                clearable
-                size="lg"
-                maxLength={6}
-                minLength={6}
-                value={discountCode}
-                onChange={handleDiscountChange}
-                css={{
-                  marginBottom: "10px",
-                  alignSelf: "center",
-                  // width: "300px",
-                  height: "40px",
-                  borderRadius: "1000px",
-                }}
-                className="countryPhone"
-              />
-            </Box>
-          </Box>
+					<Text
+						b
+						css={{
+							alignSelf: "start",
+							marginLeft: "50px",
+							marginBottom: "5px",
+							fontSize: 14,
+							color: "#125a54",
+							"@media only screen and (max-width: 764px)": {
+								fontSize: 13,
+								// width: "50%",
+							},
+						}}
+					>
+						PINCODE * required
+					</Text>
+					<Input
+						required
+						type="text"
+						placeholder="eg: 411001"
+						clearable
+						size="lg"
+						value={userPincode}
+						onChange={handlePincodeChange}
+						css={{
+							marginBottom: "15px",
+							alignSelf: "center",
+							width: "300px",
+							height: "40px",
+							borderRadius: "1000px",
+						}}
+						className="countryPhone"
+					/>
+					<Text
+						b
+						css={{
+							alignSelf: "start",
+							marginLeft: "50px",
+							marginBottom: "5px",
+							fontSize: 14,
+							color: "grey",
+							"@media only screen and (max-width: 764px)": {
+								fontSize: 13,
+								// width: "50%",
+							},
+						}}
+					>
+						GSTIN (optional)
+					</Text>
+					<Input
+						placeholder="eg: 22AAAAA0000A1Z5"
+						clearable
+						size="lg"
+						value={gstNo}
+						maxLength={15}
+						minLength={15}
+						onChange={handleGSTChange}
+						css={{
+							marginBottom: "15px",
+							alignSelf: "center",
+							width: "300px",
+							height: "40px",
+							borderRadius: "1000px",
+						}}
+						className="countryPhone"
+					/>
+					<Box
+						sx={{
+							display: "flex",
+							flexDirection: "row",
+							justifyContent: "center",
+							gap: "15px",
+							// marginTop: "20px",
+						}}
+					>
+						<Box
+							sx={{
+								display: "flex",
+								flexDirection: "column",
+								justifyContent: "space-evenly",
+								// marginTop: "20px",
+								// alignContent: 'start',
+								width: "140px",
+							}}
+						>
+							<Text
+								b
+								css={{
+									alignSelf: "start",
+									marginLeft: "10px",
+									// marginBottom: "5px",
+									fontSize: 14,
+									color: "grey",
+									"@media only screen and (max-width: 764px)": {
+										fontSize: 13,
+										// width: "50%",
+									},
+								}}
+							>
+								REFERRAL CODE
+							</Text>
+							<Text
+								b
+								css={{
+									alignSelf: "start",
+									marginLeft: "10px",
+									marginBottom: "5px",
+									fontSize: 13,
+									color: "grey",
+									"@media only screen and (max-width: 764px)": {
+										fontSize: 12,
+										// width: "50%",
+									},
+								}}
+							>
+								(optional)
+							</Text>
+							<Input
+								placeholder="eg: KMK007"
+								clearable
+								size="lg"
+								maxLength={6}
+								minLength={6}
+								value={referralCode}
+								onChange={handleReferralChange}
+								css={{
+									marginBottom: "10px",
+									alignSelf: "center",
+									// width: "300px",
+									height: "40px",
+									borderRadius: "1000px",
+								}}
+								className="countryPhone"
+							/>
+						</Box>
+						<Box
+							sx={{
+								display: "flex",
+								flexDirection: "column",
+								justifyContent: "space-evenly",
+								// marginTop: "20px",
+								width: "140px",
+							}}
+						>
+							<Text
+								b
+								css={{
+									alignSelf: "start",
+									marginLeft: "10px",
+									fontSize: 14,
+									color: "grey",
+									"@media only screen and (max-width: 764px)": {
+										fontSize: 13,
+										// width: "50%",
+									},
+								}}
+							>
+								DISCOUNT CODE
+							</Text>
+							<Text
+								b
+								css={{
+									alignSelf: "start",
+									marginLeft: "10px",
+									marginBottom: "5px",
+									fontSize: 13,
+									color: "grey",
+									"@media only screen and (max-width: 764px)": {
+										fontSize: 12,
+										// width: "50%",
+									},
+								}}
+							>
+								(optional)
+							</Text>
+							<Input
+								placeholder="eg: KMK007"
+								clearable
+								size="lg"
+								maxLength={6}
+								minLength={6}
+								value={discountCode}
+								onChange={handleDiscountChange}
+								css={{
+									marginBottom: "10px",
+									alignSelf: "center",
+									// width: "300px",
+									height: "40px",
+									borderRadius: "1000px",
+								}}
+								className="countryPhone"
+							/>
+						</Box>
+					</Box>
 
           <Button
             auto
