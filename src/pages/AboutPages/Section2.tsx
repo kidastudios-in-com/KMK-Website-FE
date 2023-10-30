@@ -344,7 +344,7 @@ const Section2 = () => {
           {/*  </Text>*/}
           {/*</Box>*/}
 
-          {/* Person 2 */}
+          {/* Person 1 */}
           <Box
             sx={{
               display: "flex",
@@ -451,8 +451,8 @@ const Section2 = () => {
           >
             <img
               // src="https://www.greenapplewellness.com.au/wp-content/uploads/image-placeholder-350x350-1.png"
-              src="56106010_864526223885470_7072335677806870528_n.jpg"
-              alt="Dhiren Shah | KamayaKya Wealth Management"
+              src="anandShah.jpg"
+              alt="Anand Shah | KamayaKya Wealth Management"
               // width="100%";
               className="pfpTeam-mobile"
               style={{
@@ -523,7 +523,7 @@ const Section2 = () => {
             </Text>
           </Box>
 
-          {/* Person 2 */}
+          {/* Person 3 */}
           <Box
             sx={{
               display: "flex",
@@ -604,11 +604,10 @@ const Section2 = () => {
                 },
               }}
             >
-              Nitya has cleared CFA Level 1, NISM Research Analyst exam and has
-              completed M.Com from Pune University. He has an investing
-              experience of 5 years and has worked for 2 years in product
-              development and investment research at an Investment Advisory in
-              the past.
+              Nitya has cleared CFA Level 1 and NISM Research Analyst exam. He
+              has an investing experience of 5 years and has worked for 2 years
+              in product development and investment research at an Investment
+              Advisory in the past.
             </Text>
           </Box>
           {/* Person 3 */}

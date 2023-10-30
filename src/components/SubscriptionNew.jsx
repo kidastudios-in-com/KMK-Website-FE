@@ -32,17 +32,19 @@ const SubscriptionNew = () => {
     }
   }, [showPricing, isLoggedIn, isSubscribed]);
 
-  const handleLoginOrSub = () => {
-    if (isLoggedIn === true && isSubscribed === false) {
-      router.push("/purchase");
-    }
-    if (isLoggedIn === true && isSubscribed === true) {
-      router.push("/stock-picks");
-    }
-    if (isLoggedIn === false) {
-      setShowLoginModal(true);
-    }
-  };
+	const handleLoginOrSub = () => {
+		const location = router.asPath;
+		localStorage.setItem("location", location);
+		if (isLoggedIn === true && isSubscribed === false) {
+			router.push("/purchase");
+		}
+		if (isLoggedIn === true && isSubscribed === true) {
+			router.push("/stock-picks");
+		}
+		if (isLoggedIn === false) {
+			setShowLoginModal(true);
+		}
+	};
 
   const handleLoginOrSubForSubscribeNow = () => {
     if (isLoggedIn === true && isSubscribed === false) {
