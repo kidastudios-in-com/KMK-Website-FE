@@ -809,7 +809,7 @@ const WhyUs = () => {
                           },
                         }}
                       >
-                        FIRST ENTRY
+                        ENTRY PRICE
                       </Text>
                       <Text
                         b
@@ -1259,7 +1259,7 @@ const WhyUs = () => {
                         onPress={() => handleOpenReports(index)}
                         css={{
                           alignSelf: "center",
-                          borderRadius: "11px",
+                          borderRadius: "1000px",
                           width: "47.5%",
                           fontSize: 18,
                           backgroundImage:
@@ -1276,7 +1276,7 @@ const WhyUs = () => {
                         auto
                         onPress={() => handleOpenTargets(index)}
                         css={{
-                          borderRadius: "11px 11px 1px 11px",
+                          borderRadius: "1000px",
                           width: "47.5%",
                           fontSize: 18,
                           backgroundImage:
@@ -1334,7 +1334,7 @@ const WhyUs = () => {
                     <Card
                       key={record[selectedCardIndex].id}
                       css={{
-                        width: "475px",
+                        width: "450px",
                         // height: "218px",
                         paddingTop: "30px",
                         paddingBottom: "30px",
@@ -1508,7 +1508,7 @@ const WhyUs = () => {
                         />
                         <Box
                           sx={{
-                            width: "95%",
+                            width: "100%",
                             display: "flex",
                             flexDirection: "row",
                             marginTop: "15px",
@@ -1875,7 +1875,7 @@ const WhyUs = () => {
                             />
                             <Box
                               sx={{
-                                width: "95%",
+                                width: "100%",
                                 display: "flex",
                                 flexDirection: "row",
                                 marginTop: "15px",
@@ -1901,6 +1901,7 @@ const WhyUs = () => {
                                   css={{
                                     opacity: 1,
                                     lineHeight: 1,
+                                    width: '100%',
                                     "@media only screen and (max-width: 764px)":
                                       {
                                         paddingTop: "0px",
@@ -1909,7 +1910,7 @@ const WhyUs = () => {
                                       },
                                   }}
                                 >
-                                  1ST ENTRY PRICE
+                                  ENTRY PRICE
                                 </Text>
                                 <Text
                                   b

@@ -46,17 +46,19 @@ const SubscriptionNew = () => {
 		}
 	};
 
-  const handleLoginOrSubForSubscribeNow = () => {
-    if (isLoggedIn === true && isSubscribed === false) {
-      router.push("/purchase");
-    }
-    if (isLoggedIn === true && isSubscribed === true) {
-      router.push("/stock-picks");
-    }
-    if (isLoggedIn === false) {
-      setShowLoginModalForSubscribe(true);
-    }
-  };
+	const handleLoginOrSubForSubscribeNow = () => {
+		if (isLoggedIn === true && isSubscribed === false) {
+			const location = router.asPath;
+      localStorage.setItem("location", location);
+			router.push("/purchase");
+		}
+		if (isLoggedIn === true && isSubscribed === true) {
+			router.push("/stock-picks");
+		}
+		if (isLoggedIn === false) {
+			setShowLoginModalForSubscribe(true);
+		}
+	};
 
   const handleCloseLoginModalForSubscribeNow = () => {
     setShowLoginModalForSubscribe(false);
