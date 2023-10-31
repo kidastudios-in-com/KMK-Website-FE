@@ -32,48 +32,50 @@ import { useRouter } from "next/router";
 // const stripePromise = loadStripe(Stripe_Key);
 
 export default function PreviewPage() {
-  // const [productID, setProductID] = useState("");
-  const router = useRouter();
-  const { isLoggedIn } = useContext(AuthContext);
-  const [showLoginModal, setShowLoginModal] = useState(false);
-  const [openBillingModal, setOpenBillingModal] = useState(true);
-  const [billingNumber, setBillingNumber] = useState("");
-  const [gstNo, setGstNo] = useState("");
-  const [referralCode, setReferralCode] = useState("");
-  const [userCity, setUserCity] = useState("");
-  const [userState, setUserState] = useState("");
-  const [userPincode, setUserPincode] = useState("");
-  const [discountCode, setDiscountCode] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [isFormValid, setIsFormValid] = useState(false);
-  const [userInvoiceDetails, setUserInvoiceDetails] = useState([]);
-  const [billingName, setBillingName] = useState("");
-  const [billingEmail, setBillingEmail] = useState("");
-  const refreshToken = localStorage.getItem("refresh");
+	// const [productID, setProductID] = useState("");
+	const router = useRouter();
+	const { isLoggedIn } = useContext(AuthContext);
+	const [showLoginModal, setShowLoginModal] = useState(false);
+	const [openBillingModal, setOpenBillingModal] = useState(true);
+	const [billingNumber, setBillingNumber] = useState("");
+	const [gstNo, setGstNo] = useState("");
+	const [referralCode, setReferralCode] = useState("");
+	const [userCity, setUserCity] = useState("");
+	const [userState, setUserState] = useState("");
+	const [userPincode, setUserPincode] = useState("");
+	const [discountCode, setDiscountCode] = useState("");
+	const [loading, setLoading] = useState(false);
+	const [isFormValid, setIsFormValid] = useState(false);
+	const [emailValid, setEmailValid] = useState(true);
+	const [validNumber, setValidNumber] = useState(true);
+	// const [userInvoiceDetails, setUserInvoiceDetails] = useState([]);
+	const [billingName, setBillingName] = useState("");
+	const [billingEmail, setBillingEmail] = useState("");
+	const refreshToken = localStorage.getItem("refresh");
 
-  useEffect(() => {
-    const getUserDetails = async () => {
-      if (refreshToken) {
-        try {
-          const response = await fetch(GET_USER, {
-            method: "GET",
-            headers: {
-              Authorization: `Token ${refreshToken}`,
-            },
-          });
-          const data = await response.json();
-          setUserInvoiceDetails(data);
-          setBillingName(data.username || "");
-          setBillingEmail(data.email || "");
-          setBillingNumber(data.mobile) || "";
-        } catch (error) {
-          console.error("Error verifying tokens:", error);
-        }
-      }
-    };
+	useEffect(() => {
+		const getUserDetails = async () => {
+			if (refreshToken) {
+				try {
+					const response = await fetch(GET_USER, {
+						method: "GET",
+						headers: {
+							Authorization: `Token ${refreshToken}`,
+						},
+					});
+					const data = await response.json();
+					// setUserInvoiceDetails(data);
+					setBillingName(data.username || "");
+					setBillingEmail(data.email || "");
+					setBillingNumber(data.mobile) || "";
+				} catch (error) {
+					console.error("Error verifying tokens:", error);
+				}
+			}
+		};
 
-    getUserDetails();
-  }, []);
+		getUserDetails();
+	}, []);
 
 
 	useEffect(() => {
@@ -82,41 +84,41 @@ export default function PreviewPage() {
 
 	  }, [billingNumber, billingEmail, billingName, userPincode]);
 
-  const handleOpenBillingModal = () => {
-    setOpenBillingModal(true);
-  };
-  const handleCloseBillingModal = () => {
-    setOpenBillingModal(false);
-  };
-  const handleLogin = () => {
-    setShowLoginModal(true);
-  };
+	const handleOpenBillingModal = () => {
+		setOpenBillingModal(true);
+	};
+	const handleCloseBillingModal = () => {
+		setOpenBillingModal(false);
+	};
+	const handleLogin = () => {
+		setShowLoginModal(true);
+	};
 
-  const handleCloseLoginModal = () => {
-    setShowLoginModal(false);
-  };
+	const handleCloseLoginModal = () => {
+		setShowLoginModal(false);
+	};
 
-  const handleNameChange = (e) => {
-    const name = e.target.value;
-    // Use a regular expression to check if the name contains only letters and spaces
-    const isValidName = /^[A-Za-z\s]*$/.test(name);
-    setBillingName(name);
-    if (isValidName) {
-      updateFormValidity();
-    }
-  };
+	const handleNameChange = (e) => {
+		const name = e.target.value;
+		// Use a regular expression to check if the name contains only letters and spaces
+		const isValidName = /^[A-Za-z\s]*$/.test(name);
+		setBillingName(name);
+		if (isValidName) {
+			updateFormValidity();
+		}
+	};
 
-  // const handleCityChange = (e) => {
-  // 	setUserCity(e.target.value);
-  // 	setIsFormValid(
-  // 		e.target.value !== "" &&
-  // 			billingNumber &&
-  // 			billingEmail &&
-  // 			userState &&
-  // 			userCity &&
-  // 			userPincode !== ""
-  // 	);
-  // };
+	// const handleCityChange = (e) => {
+	// 	setUserCity(e.target.value);
+	// 	setIsFormValid(
+	// 		e.target.value !== "" &&
+	// 			billingNumber &&
+	// 			billingEmail &&
+	// 			userState &&
+	// 			userCity &&
+	// 			userPincode !== ""
+	// 	);
+	// };
 
   // const handleStateChange = (e) => {
   // 	setUserState(e.target.value);
@@ -130,19 +132,45 @@ export default function PreviewPage() {
   // 	);
   // };
 
-  const handleInputChange = (value) => {
-    // setBillingNumber(value.replace(/-/g, " "));
-    // setIsFormValid(billingNumber !== "" && value && billingEmail !== "");
-    updateFormValidity();
-  };
+	const handleInputChange = (value) => {
+		const lengthNumber = value.length;
+		// console.log(lengthNumber);
+		// setBillingNumber(value.replace(/-/g, " "));
+		if(value !== "" && lengthNumber === 12) {
+			setValidNumber(true);
+		}
+		else{
+			setValidNumber(false);
+		}
+		// setIsFormValid(billingNumber !== "" && value && billingEmail !== "");
+		updateFormValidity();
+	};
 
-  const handleEmailChange = (e) => {
-    const email = e.target.value;
-    setBillingEmail(e.target.value);
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	// const handleEmailChange = (e) => {
+	// 	const email = e.target.value;
+	// 	setBillingEmail(e.target.value);
+	// 	const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    updateFormValidity();
-  };
+	// 	updateFormValidity();
+	// };
+
+	const handleEmailChange = (e) => {
+		const email = e.target.value;
+		setBillingEmail(email);
+
+		// Define a regular expression for email validation
+		const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+		if (emailPattern.test(email)) {
+		  // Email is valid, set the border color to light grey
+		  setEmailValid(true);
+		} else {
+		  // Email is not valid, set the border color to red
+		  setEmailValid(false);
+		}
+
+		updateFormValidity();
+	  };
 
 	const handlePincodeChange = (e) => {
 		const pincode = e.target.value;
@@ -162,6 +190,8 @@ export default function PreviewPage() {
 			setUserState(result.state);
 		  }
 		} else {
+			setUserCity("");
+			setUserState("");
 		  // Handle invalid pincode input, e.g., display an error message.
 		}
 	  };
@@ -176,10 +206,6 @@ export default function PreviewPage() {
 		  userPincode !== ""
 		);
 	  };
-
-
-
-
 
 	const handleGSTChange = (e) => {
 		setGstNo(e.target.value.toUpperCase());
@@ -538,7 +564,7 @@ export default function PreviewPage() {
 							marginTop: "40px",
 							marginBottom: "0px",
 							"@media only screen and (max-width: 764px)": {
-								fontSize: 32,
+								fontSize: 36,
 								width: "100%",
 							},
 						}}
@@ -567,7 +593,7 @@ export default function PreviewPage() {
 							alignSelf: "start",
 							marginLeft: "50px",
 							// position: 'absolute',
-							marginBottom: "5px",
+							marginBottom: "3px",
 							fontSize: 14,
 							color: "#125a54",
 							"@media only screen and (max-width: 764px)": {
@@ -581,7 +607,7 @@ export default function PreviewPage() {
 					<Input
 						required
 						type="text"
-						placeholder="eg: Aniket Kulkarni"
+						placeholder="eg: Nitya Shah"
 						clearable
 						size="lg"
 						value={billingName}
@@ -590,8 +616,10 @@ export default function PreviewPage() {
 							marginBottom: "15px",
 							alignSelf: "center",
 							width: "300px",
-							height: "40px",
+							height: "48px",
 							borderRadius: "1000px",
+							border: "2px solid",
+							borderColor: billingName === "" ? "red" : "lightgrey",
 							// paddingRight: '10px'
 						}}
 						className="countryPhone"
@@ -601,7 +629,7 @@ export default function PreviewPage() {
 						css={{
 							alignSelf: "start",
 							marginLeft: "50px",
-							// marginBottom: "5px",
+							marginBottom: "1px",
 							fontSize: 14,
 							color: "#125a54",
 							"@media only screen and (max-width: 764px)": {
@@ -617,14 +645,17 @@ export default function PreviewPage() {
 							marginBottom: "10px",
 							marginRight: "5px",
 							alignSelf: "center",
-							width: "316px",
+							width: "302px",
+							border: validNumber ? "" : "1px solid",
+							borderRadius: '10000px',
+							borderColor: validNumber ? "lightgrey" : "red",
 						}}
 						dropdownStyle={{ height: "250px", zIndex: 10 }}
 						countryCodeEditable={false}
 						country="in"
-						placeholder="eg: 9012345678"
+						onlyCountries={['in']}
+						placeholder="9175939641"
 						value={billingNumber}
-
 						onChange={handleInputChange}
 						inputProps={{
 
@@ -641,7 +672,7 @@ export default function PreviewPage() {
 						css={{
 							alignSelf: "start",
 							marginLeft: "50px",
-							marginBottom: "5px",
+							marginBottom: "3px",
 							fontSize: 14,
 							color: "#125a54",
 							"@media only screen and (max-width: 764px)": {
@@ -655,7 +686,7 @@ export default function PreviewPage() {
 					<Input
 						required
 						type="email"
-						placeholder="eg: support@kamayakya.com"
+						placeholder="eg: contact@kamayakya.com"
 						clearable
 						size="lg"
 						value={billingEmail}
@@ -664,7 +695,9 @@ export default function PreviewPage() {
 							marginBottom: "15px",
 							alignSelf: "center",
 							width: "300px",
-							height: "40px",
+							height: "48px",
+							border: "2px solid",
+							borderColor: emailValid ? "lightgrey" : "red",
 							borderRadius: "1000px",
 						}}
 						className="countryPhone"
@@ -730,7 +763,7 @@ export default function PreviewPage() {
 						css={{
 							alignSelf: "start",
 							marginLeft: "50px",
-							marginBottom: "5px",
+							marginBottom: "3px",
 							fontSize: 14,
 							color: "#125a54",
 							"@media only screen and (max-width: 764px)": {
@@ -753,7 +786,9 @@ export default function PreviewPage() {
 							marginBottom: "15px",
 							alignSelf: "center",
 							width: "300px",
-							height: "40px",
+							height: "48px",
+							border: "2px solid",
+							borderColor: userCity && userState !== "" ? "lightgrey" : "red",
 							borderRadius: "1000px",
 						}}
 						className="countryPhone"
@@ -763,7 +798,7 @@ export default function PreviewPage() {
 						css={{
 							alignSelf: "start",
 							marginLeft: "50px",
-							marginBottom: "5px",
+							marginBottom: "3px",
 							fontSize: 14,
 							color: "grey",
 							"@media only screen and (max-width: 764px)": {
@@ -772,10 +807,10 @@ export default function PreviewPage() {
 							},
 						}}
 					>
-						GSTIN (optional)
+						GSTIN
 					</Text>
 					<Input
-						placeholder="eg: 22AAAAA0000A1Z5"
+						placeholder="eg: 27AAJCK1075B1ZS"
 						clearable
 						size="lg"
 						value={gstNo}
@@ -786,7 +821,8 @@ export default function PreviewPage() {
 							marginBottom: "15px",
 							alignSelf: "center",
 							width: "300px",
-							height: "40px",
+							height: "48px",
+							border: "2px solid lightgrey",
 							borderRadius: "1000px",
 						}}
 						className="countryPhone"
@@ -815,7 +851,7 @@ export default function PreviewPage() {
 								css={{
 									alignSelf: "start",
 									marginLeft: "10px",
-									// marginBottom: "5px",
+									marginBottom: "3px",
 									fontSize: 14,
 									color: "grey",
 									"@media only screen and (max-width: 764px)": {
@@ -826,7 +862,7 @@ export default function PreviewPage() {
 							>
 								REFERRAL CODE
 							</Text>
-							<Text
+							{/* <Text
 								b
 								css={{
 									alignSelf: "start",
@@ -841,9 +877,9 @@ export default function PreviewPage() {
 								}}
 							>
 								(optional)
-							</Text>
+							</Text> */}
 							<Input
-								placeholder="eg: KMK007"
+								// placeholder="eg: KMK007"
 								clearable
 								size="lg"
 								maxLength={6}
@@ -854,7 +890,8 @@ export default function PreviewPage() {
 									marginBottom: "10px",
 									alignSelf: "center",
 									// width: "300px",
-									height: "40px",
+									height: "48px",
+									border: "2px solid lightgrey",
 									borderRadius: "1000px",
 								}}
 								className="countryPhone"
@@ -874,6 +911,7 @@ export default function PreviewPage() {
 								css={{
 									alignSelf: "start",
 									marginLeft: "10px",
+									marginBottom: "3px",
 									fontSize: 14,
 									color: "grey",
 									"@media only screen and (max-width: 764px)": {
@@ -884,7 +922,7 @@ export default function PreviewPage() {
 							>
 								DISCOUNT CODE
 							</Text>
-							<Text
+							{/* <Text
 								b
 								css={{
 									alignSelf: "start",
@@ -899,9 +937,9 @@ export default function PreviewPage() {
 								}}
 							>
 								(optional)
-							</Text>
+							</Text> */}
 							<Input
-								placeholder="eg: KMK007"
+								// placeholder="eg: KMK007"
 								clearable
 								size="lg"
 								maxLength={6}
@@ -912,7 +950,8 @@ export default function PreviewPage() {
 									marginBottom: "10px",
 									alignSelf: "center",
 									// width: "300px",
-									height: "40px",
+									height: "48px",
+									border: "2px solid lightgrey",
 									borderRadius: "1000px",
 								}}
 								className="countryPhone"
@@ -920,27 +959,27 @@ export default function PreviewPage() {
 						</Box>
 					</Box>
 
-          <Button
-            auto
-            onPress={handleSaveAndPay}
-            css={{
-              width: "50%",
-              marginBottom: "15px",
-              marginTop: "10px",
-              fontSize: 18,
-              borderRadius: "1000px",
-              alignSelf: "center",
-              background: "linear-gradient(to top , #fb7716,#fe9807)",
-            }}
-            disabled={!isFormValid}
-          >
-            {loading ? (
-              <Loading color={"white"} css={{ background: "transparent" }} />
-            ) : (
-              "Proceed"
-            )}
-          </Button>
-          {/* <Text
+					<Button
+						auto
+						onPress={handleSaveAndPay}
+						css={{
+							width: "50%",
+							marginBottom: "15px",
+							marginTop: "10px",
+							fontSize: 18,
+							borderRadius: "1000px",
+							alignSelf: "center",
+							background: "linear-gradient(to top , #fb7716,#fe9807)",
+						}}
+						disabled={!isFormValid}
+					>
+						{loading ? (
+							<Loading color={"white"} css={{ background: "transparent" }} />
+						) : (
+							"Proceed"
+						)}
+					</Button>
+					{/* <Text
 						b
 						css={{
 							alignSelf: "center",
@@ -952,18 +991,18 @@ export default function PreviewPage() {
 					>
 						fill required field/s to proceed
 					</Text> */}
-          {/* </Box> */}
-        </Card>
-      </Modal>
-      <br />
-      <Divider
-        css={{
-          width: "500px",
-          maxWidth: "80rem",
-        }}
-      ></Divider>
-      <FaqsNew />
-      <Footer />
-    </section>
-  );
+					{/* </Box> */}
+				</Card>
+			</Modal>
+			<br />
+			<Divider
+				css={{
+					width: "500px",
+					maxWidth: "80rem",
+				}}
+			></Divider>
+			<FaqsNew />
+			<Footer />
+		</section>
+	);
 }
