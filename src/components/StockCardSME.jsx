@@ -284,14 +284,30 @@ const StockCardSME = () => {
           passUpsideFilter = stock.upside_left >= 0;
         }
 
-        if (searchQuery.trim() !== "") {
+				if (searchQuery.trim() !== "") {
+					// passSearchFilter =
+					//   stock.stock_name
+					//     .toLowerCase()
+					//     .includes(searchQuery.toLowerCase()) ||
+					//   stock.stock_symbol ? stock.stock_symbol.includes(searchQuery) : "";
+
+					// const regex = new RegExp(searchQuery.toLowerCase()); // 'i' flag for case-insensitive search
+					// passSearchFilter =
+					// 	regex.test(stock.stock_name.toLowerCase()) || stock.stock_symbol ? regex.test(stock.stock_symbol?.toLowerCase()) : "";
+
+          const lowercaseSearchQuery = searchQuery.toLowerCase();
+          const lowercaseStockName = stock.stock_name.toLowerCase();
+          const lowercaseStockSymbol = stock.stock_symbol
+            ? stock.stock_symbol.toLowerCase()
+            : null; // Ensure it's either a string in lowercase or null
+
           passSearchFilter =
-            stock.stock_name
-              .toLowerCase()
-              .includes(searchQuery.toLowerCase()) ||
-            stock.stock_symbol.includes(searchQuery);
-          // console.log(searchQuery)
-        }
+            lowercaseStockName.includes(lowercaseSearchQuery) ||
+            (lowercaseStockSymbol !== null &&
+              lowercaseStockSymbol.includes(lowercaseSearchQuery));
+
+					// console.log(searchQuery)
+				}
 
         return passTimeFilter && passUpsideFilter && passSearchFilter;
       })
@@ -371,32 +387,32 @@ const StockCardSME = () => {
     }
   }, [error]);
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      const refresh = localStorage.getItem("refresh");
-      setIsLoading(true);
-      const fetchData = async () => {
-        try {
-          const response = await axios.get(GET_ALL_SME_URL, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `token ${refresh}`,
-            },
-          });
-          setStocks(response.data);
-          console.log(response.data);
-          setFlipStates(new Array(response.data.length).fill(false));
-        } catch (error) {
-          setError("Please Login First to see our stock picks!");
-          showAlert();
-        } finally {
-          setIsLoading(false);
-        }
-      };
-      fetchData();
-    }
-  }, [isLoggedIn]);
+	useEffect(() => {
+		if (isLoggedIn) {
+			const refresh = localStorage.getItem("refresh");
+			setIsLoading(true);
+			const fetchData = async () => {
+				try {
+					const response = await axios.get(GET_ALL_SME_URL, {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: `token ${refresh}`,
+						},
+					});
+					setStocks(response.data);
+					// console.log(response.data);
+					setFlipStates(new Array(response.data.length).fill(false));
+				} catch (error) {
+					setError("Please Login First to see our stock picks!");
+					showAlert();
+				} finally {
+					setIsLoading(false);
+				}
+			};
+			fetchData();
+		}
+	}, [isLoggedIn]);
 
   // useEffect(() => {
   //   if (isLoggedIn) {
