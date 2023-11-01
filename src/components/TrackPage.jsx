@@ -1276,7 +1276,7 @@ const WhyUs = () => {
                         auto
                         onPress={() => handleOpenTargets(index)}
                         css={{
-                          borderRadius: "1000px",
+                          borderRadius: "11px 11px 1px 11px",
                           width: "47.5%",
                           fontSize: 18,
                           backgroundImage:
