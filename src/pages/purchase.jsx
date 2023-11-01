@@ -650,6 +650,7 @@ export default function PreviewPage() {
 							borderRadius: '10000px',
 							borderColor: validNumber ? "lightgrey" : "red",
 						}}
+						disableDropdown= {true}
 						dropdownStyle={{ height: "250px", zIndex: 10 }}
 						countryCodeEditable={false}
 						country="in"
