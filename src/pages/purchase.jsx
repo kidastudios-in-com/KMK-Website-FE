@@ -254,7 +254,7 @@ export default function PreviewPage() {
         city: userCity,
         state: userState,
         gst_number: gstNo ? gstNo : "",
-        // referral: referralCode ? referralCode : "",
+        referral_code: referralCode ? referralCode : "",
         discount_code: discountCode,
       };
 
@@ -609,6 +609,7 @@ export default function PreviewPage() {
 						type="text"
 						placeholder="eg: Nitya Shah"
 						clearable
+						animated={false}
 						size="lg"
 						value={billingName}
 						onChange={handleNameChange}
@@ -689,6 +690,7 @@ export default function PreviewPage() {
 						type="email"
 						placeholder="eg: contact@kamayakya.com"
 						clearable
+						animated={false}
 						size="lg"
 						value={billingEmail}
 						onChange={handleEmailChange}
@@ -719,6 +721,7 @@ export default function PreviewPage() {
 						type="text"
 						placeholder="eg: Pune"
 						clearable
+      						animated={false}
 						size="lg"
 						value={userCity}
 						onChange={handleCityChange}
@@ -747,6 +750,7 @@ export default function PreviewPage() {
 						type="text"
 						placeholder="eg: MAHARASHTRA"
 						clearable
+      						animated={false}
 						size="lg"
 						value={userState}
 						onChange={handleStateChange}
@@ -780,6 +784,7 @@ export default function PreviewPage() {
 						type="text"
 						placeholder="eg: 411001"
 						clearable
+						animated={false}
 						size="lg"
 						value={userPincode}
 						onChange={handlePincodeChange}
@@ -813,6 +818,7 @@ export default function PreviewPage() {
 					<Input
 						placeholder="eg: 27AAJCK1075B1ZS"
 						clearable
+						animated={false}
 						size="lg"
 						value={gstNo}
 						maxLength={15}
@@ -882,6 +888,7 @@ export default function PreviewPage() {
 							<Input
 								// placeholder="eg: KMK007"
 								clearable
+								animated={false}
 								size="lg"
 								maxLength={6}
 								minLength={6}
@@ -942,6 +949,7 @@ export default function PreviewPage() {
 							<Input
 								// placeholder="eg: KMK007"
 								clearable
+								animated={false}
 								size="lg"
 								maxLength={6}
 								minLength={6}
