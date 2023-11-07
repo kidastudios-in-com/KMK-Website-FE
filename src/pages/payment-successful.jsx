@@ -14,7 +14,32 @@ const paymentsuccessful = () => {
   const [showMessage, setShowMessage] = useState(false);
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [billingData, setBillingData] = useState({});
   const router = useRouter();
+
+  useEffect(() => {
+		const refreshToken = localStorage.getItem("refresh");
+		const GetPaymentInfo = async () => {
+			try {
+				const billingInfo = await fetch(BILLING_INFO_URL, {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `token ${refreshToken}`,
+					},
+				});
+				console.log(billingInfo);
+				if (billingInfo.ok) {
+					const billingInfoResponse = await billingInfo.json();
+					setBillingData(billingInfoResponse);
+				}
+			} catch (error) {
+				console.error("Error:", error);
+			}
+		};
+
+		GetPaymentInfo();
+	}, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -56,16 +81,38 @@ const paymentsuccessful = () => {
       <Text b size={34}>
         Payment Successful!
       </Text>
+      <Text
+				b
+				size={22}
+				css={{
+					"@media only screen and (max-width: 764px)": {
+						fontSize: 18,
+					},
+				}}
+			>
+				Order Number:{billingData?.order_number}
+			</Text>
       {showMessage ? (
         ""
       ) : (
-        <Text b size={22}>
+        <Text
+					b
+					size={22}
+					css={{
+						"@media only screen and (max-width: 764px)": {
+							fontSize: 18,
+						},
+					}}
+				>
           Success! Your payment has rocketed into our account. Buckle up and get
           ready, your financial exploration is about to take off!
           {/* <br /> */}
           {/* Please wait while your invoice is being generated... */}
         </Text>
       )}
+      <Text b size={34}>
+				Amount: ₹ {billingData?.amount}/-
+			</Text>
       {isLoading ? <Loading size="lg" color={"success"} type="gradient" /> : ""}
       {showMessage ? (
         <Text b size={20}>
