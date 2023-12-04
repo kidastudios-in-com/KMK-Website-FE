@@ -81,8 +81,7 @@ export default function PreviewPage() {
 	useEffect(() => {
 		// Define a function to update form validity
 		updateFormValidity();
-
-	  }, [billingNumber, billingEmail, billingName, userPincode]);
+	}, [billingNumber, billingEmail, billingName, userPincode]);
 
 	const handleOpenBillingModal = () => {
 		setOpenBillingModal(true);
@@ -136,10 +135,9 @@ export default function PreviewPage() {
 		const lengthNumber = value.length;
 		// console.log(lengthNumber);
 		// setBillingNumber(value.replace(/-/g, " "));
-		if(value !== "" && lengthNumber === 12) {
+		if (value !== "" && lengthNumber === 12) {
 			setValidNumber(true);
-		}
-		else{
+		} else {
 			setValidNumber(false);
 		}
 		// setIsFormValid(billingNumber !== "" && value && billingEmail !== "");
@@ -690,10 +688,10 @@ export default function PreviewPage() {
 						type="email"
 						placeholder="eg: contact@kamayakya.com"
 						clearable
-						animated={false}
 						size="lg"
 						value={billingEmail}
 						onChange={handleEmailChange}
+						animated={false}
 						css={{
 							marginBottom: "15px",
 							alignSelf: "center",

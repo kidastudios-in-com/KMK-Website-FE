@@ -1,5 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
-import { BILLING_DETAILS_URL, GET_USER, INVOICE_UPLOAD, BILLING_INFO_URL } from "./api/URLs";
+import {
+	BILLING_DETAILS_URL,
+	BILLING_INFO_URL,
+	GET_USER,
+	INVOICE_UPLOAD,
+} from "./api/URLs";
 import { Loading, Text } from "@nextui-org/react";
 import AuthContext from "@/components/AuthContext";
 import { useRouter } from "next/router";
@@ -7,17 +12,17 @@ import { pdf } from "@react-pdf/renderer";
 import InvoicePDF from "./UserDetails/InvoicePDF";
 
 const paymentsuccessful = () => {
-  // const { isLoggedIn } = useContext(AuthContext);
-  // const [user, setUser] = useState(null);
-  // const [UserDetails, setUserDetails] = useState(null);
-  const [countdown, setCountdown] = useState(5);
-  const [showMessage, setShowMessage] = useState(false);
-  const [message, setMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
-  const [billingData, setBillingData] = useState({});
-  const router = useRouter();
+	// const { isLoggedIn } = useContext(AuthContext);
+	// const [user, setUser] = useState(null);
+	// const [UserDetails, setUserDetails] = useState(null);
+	const [countdown, setCountdown] = useState(5);
+	const [showMessage, setShowMessage] = useState(false);
+	const [message, setMessage] = useState("");
+	const [isLoading, setIsLoading] = useState(true);
+	const [billingData, setBillingData] = useState({});
+	const router = useRouter();
 
-  useEffect(() => {
+	useEffect(() => {
 		const refreshToken = localStorage.getItem("refresh");
 		const GetPaymentInfo = async () => {
 			try {
