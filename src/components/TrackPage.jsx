@@ -1312,7 +1312,7 @@ const WhyUs = () => {
 										}}
 									>
 										{/* Main Target Card  */}
-										<Card
+										{/* <Card
 													key={record[selectedCardIndex].id}
 													css={{
 														width: "450px",
@@ -1502,7 +1502,7 @@ const WhyUs = () => {
 																		₹
 																	</span>
 																	{record[selectedCardIndex].stock_targets[record[selectedCardIndex].stock_targets.length - 1].entry_price}
-																	{/* {target.entry_price} */}
+
 																</Text>
 																<Text
 																	b
@@ -1552,7 +1552,7 @@ const WhyUs = () => {
 																			},
 																	}}
 																>
-																	{/* EXIT PRICE */}
+
 																	CMP
 																</Text>
 																<Text
@@ -1642,7 +1642,7 @@ const WhyUs = () => {
 																			},
 																	}}
 																>
-																	{/* {target.gain_loss}% */}
+
 																	{`${record[selectedCardIndex].gain_loss} %`}
 																</Text>
 																<Text
@@ -1661,33 +1661,15 @@ const WhyUs = () => {
 																			},
 																	}}
 																>
-																	{/* {`${new Date(
-                                    target.target_met
-                                  ).getDate()} ${new Date(
-                                    target.target_met
-                                  ).toLocaleString("default", {
-                                    month: "short",
-                                  })} ${new Date(
-                                    target.target_met
-                                  ).getFullYear()}`} */}
+
 
 																	{`Target ${record[selectedCardIndex].stock_targets.length} Active`}
 																</Text>
 															</Box>
 														</Box>
-														{/* <Divider
-															css={{
-																height: "3px",
-																width: "40%",
-																background: "#fff",
-																borderRadius: "20px",
-																opacity: 0.5,
-																alignSelf: "start",
-																marginTop: "15px",
-															}}
-														/> */}
+
 													</Box>
-												</Card>
+												</Card> */}
 
 
 										{/* Mapping of Previous Targets  */}
