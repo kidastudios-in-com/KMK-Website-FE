@@ -12,6 +12,7 @@ import {
 import Marquee from "react-fast-marquee";
 import React, { useState, useContext, useEffect } from "react";
 import { Box, Grid, IconButton, LinearProgress } from "@mui/material";
+import ReactECharts from "echarts-for-react";
 import ReactCardFlip from "react-card-flip";
 import {
 	ArrowCircleRight,
@@ -1273,56 +1274,71 @@ const WhyUs = () => {
 
 							<Modal
 								// blur
-								flat
+								scroll
+								fullScreen
+								closeButton
+								noPadding
+								// flat
 								open={showTargets}
 								onClose={handleCloseTargets}
-								// animated={false}
-								// {...bindings}
+								aria-describedby="modal-description"
 								css={{
-									// width: "800px",
 									display: "flex",
-									background: "transparent !important",
+									// background: "transparent !important",
+									background: "#000",
 									boxShadow: "none",
 									alignItems: "center",
-									// gap: "15px",
-									// flexWrap: "wrap",
+									borderRadius: "0px",
+									position: "fixed",
+									top: "0px",
+									bottom: "10px",
+									left: "0px",
+									right: "10px",
+									// width: "100%",
 									"@media only screen and (max-width: 764px)": {
 										flexWrap: "wrap",
 										width: "100vw",
-										height: "95vh",
-										// paddingLeft: "15px",
-										// paddingRight: "15px",
+										height: "100vh",
 									},
 									// "& .nextui-c-csEDlc-ivNdeP-css": {
 									// 	"--nextui--backdropOpacity": 0.2,
 									//   },
+									"& .nextui-c-iDzHRq": {
+										padding: "$0 !important",
+										// paddingLeft: "10px !important",
+									}
 								}}
 							>
+								<Modal.Body style={{ width: "100vw", justifyContent: "flex-start", alignItems: "center", marginTop: "0px" }}>
 								{record[selectedCardIndex] && (
 									<Box
 										sx={{
 											display: "flex",
-											flexDirection: "row", //change back to row
+											flexDirection: "column", //change back to row
 											gap: "15px",
-											flexWrap: "wrap",
+											// flexWrap: "wrap",
+											// width: "100vw",
 											justifyContent: "center",
+											// overflowY: "scroll",
 											"@media only screen and (max-width: 764px)": {
-												flexWrap: "wrap",
+												// flexWrap: "wrap",
+												// overflowY: "scroll",
 											},
 										}}
 									>
 										{/* Main Target Card  */}
-										{/* <Card
+										 <Card
 													key={record[selectedCardIndex].id}
 													css={{
 														width: "450px",
 														// height: "218px",
-														paddingTop: "30px",
-														paddingBottom: "30px",
+														paddingTop: "20px",
+														paddingBottom: "20px",
 														backgroundImage:
 															"linear-gradient(to top , #0F734D, #0F734D, #105B54)",
 														borderRadius: "30px",
 														// borderBottomRightRadius: "5px",
+														// border: "4px solid #ffa230",
 														display: "flex",
 														flexDirection: "column",
 														alignItems: "center",
@@ -1461,7 +1477,7 @@ const WhyUs = () => {
 																sx={{
 																	display: "flex",
 																	flexDirection: "column",
-																	width: "30%",
+																	width: "35%",
 																}}
 															>
 																<Text
@@ -1502,7 +1518,7 @@ const WhyUs = () => {
 																		₹
 																	</span>
 																	{record[selectedCardIndex].stock_targets[record[selectedCardIndex].stock_targets.length - 1].entry_price}
-
+																	
 																</Text>
 																<Text
 																	b
@@ -1552,7 +1568,7 @@ const WhyUs = () => {
 																			},
 																	}}
 																>
-
+																
 																	CMP
 																</Text>
 																<Text
@@ -1606,14 +1622,14 @@ const WhyUs = () => {
 																sx={{
 																	display: "flex",
 																	flexDirection: "column",
-																	// width: "40%",
+																	width: "35%",
 																	alignSelf: "flex-start",
 																}}
 															>
 																<Text
 																	b
 																	size={16}
-																	color="#fff"
+																	color="#ffa230"
 																	css={{
 																		opacity: 1,
 																		lineHeight: 1,
@@ -1625,7 +1641,7 @@ const WhyUs = () => {
 																			},
 																	}}
 																>
-																	RETURNS
+																	TOTAL RETURNS
 																</Text>
 																<Text
 																	b
@@ -1642,7 +1658,7 @@ const WhyUs = () => {
 																			},
 																	}}
 																>
-
+																	
 																	{`${record[selectedCardIndex].gain_loss} %`}
 																</Text>
 																<Text
@@ -1661,16 +1677,16 @@ const WhyUs = () => {
 																			},
 																	}}
 																>
-
+																	
 
 																	{`Target ${record[selectedCardIndex].stock_targets.length} Active`}
 																</Text>
 															</Box>
 														</Box>
-
+														
 													</Box>
-												</Card> */}
-
+												</Card>
+										<Divider style={{ height: "5px",width: "30%",alignSelf: 'center', background: "#fff", borderRadius: "10px" }}/>						
 
 										{/* Mapping of Previous Targets  */}
 										{record[selectedCardIndex].stock_targets.length > 1 ? (
@@ -1680,21 +1696,23 @@ const WhyUs = () => {
 													css={{
 														width: "450px",
 														// height: "218px",
-														paddingTop: "30px",
-														paddingBottom: "30px",
+														paddingTop: "20px",
+														paddingBottom: "20px",
 														backgroundImage:
 															"linear-gradient(to top , #0F734D, #0F734D, #105B54)",
 														borderRadius: "30px",
 														// borderBottomRightRadius: "5px",
 														display: "flex",
 														flexDirection: "column",
+														// overflowY: "scroll",
 														alignItems: "center",
 														filter: "none",
 														boxShadow: "none",
 														"@media only screen and (max-width: 764px)": {
 															width: "95vw",
-															paddingTop: "30px",
-															paddingBottom: "30px",
+															paddingTop: "20px",
+															paddingBottom: "20px",
+															// overflowY: "scroll",
 														},
 													}}
 												>
@@ -2071,6 +2089,9 @@ const WhyUs = () => {
 									</Box>
 								)}
 
+								
+								</Modal.Body>
+								{/* <Modal.Footer>
 								<Button
 									flat
 									onPress={handleCloseTargets}
@@ -2080,7 +2101,8 @@ const WhyUs = () => {
 										backgroundColor: "#ffa12e",
 										color: "#fff",
 										fontSize: 19,
-										marginTop: "20px",
+										marginTop: "10px",
+										marginBottom: "20px",
 										borderRadius: "10px",
 										height: "50px",
 										"@media only screen and (max-width: 768px)": {
@@ -2097,6 +2119,7 @@ const WhyUs = () => {
 								>
 									Close
 								</Button>
+								</Modal.Footer> */}
 							</Modal>
 
 							{/* Reports Modal */}
