@@ -2051,7 +2051,7 @@ const WhyUs = () => {
                                     target.target_met
                                   ).getFullYear()}`} */}
 
-																	{target.target_met
+																	{/* {target.target_met
 																		? `${new Date(
 																				target.target_met
 																		  ).getDate()} ${new Date(
@@ -2062,6 +2062,10 @@ const WhyUs = () => {
 																				target.target_met
 																		  ).getFullYear()}`
 																		: `${new Date().getDate()} ${new Date().toLocaleString(
+																				"default",
+																				{ month: "short" }
+																		  )} ${new Date().getFullYear()}`} */}
+																	{target.target_met ? `In ${Math.round(Math.abs((new Date(target.target_met) - new Date(target.created))/( 24 * 60 * 60 * 1000)))} Days` : `${new Date().getDate()} ${new Date().toLocaleString(
 																				"default",
 																				{ month: "short" }
 																		  )} ${new Date().getFullYear()}`}
