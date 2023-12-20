@@ -1861,7 +1861,7 @@ const WhyUs = () => {
 																			},
 																	}}
 																>
-																	{`ENTRY PRICE ${record[selectedCardIndex].stock_targets.length - index}`}
+																	{target.target_action === "BUY" ? "ENTRY" : "HOLD"}{" "}{`PRICE ${record[selectedCardIndex].stock_targets.length - index}`}
 																</Text>
 																<Text
 																	b
