@@ -1239,7 +1239,7 @@ const WhyUs = () => {
 												onPress={() => handleOpenReports(index)}
 												css={{
 													alignSelf: "center",
-													borderRadius: "1000px",
+													borderRadius: "11px 11px 1px 11px",
 													width: "47.5%",
 													fontSize: 18,
 													backgroundImage:
