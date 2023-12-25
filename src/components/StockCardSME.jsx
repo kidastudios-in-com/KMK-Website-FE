@@ -1571,7 +1571,15 @@ const StockCardSME = () => {
                           }}
                           size={22}
                         >
-                          {`${stock.target_price}`}
+                            {/* {stock.stock_targets.length > 0
+														? `${
+																stock.stock_targets[
+																	stock.stock_targets.length - 1
+																].target_price
+														  }`
+														: `${stock.target_price}`} */}
+                            {stock.latest_target_price}
+                            {/* {console.log(stock.latest_target_price)} */}
                         </Text>
                       </div>
                       <Divider

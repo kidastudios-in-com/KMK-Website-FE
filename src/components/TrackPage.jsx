@@ -711,9 +711,10 @@ const WhyUs = () => {
 													// 	!isLoggedIn || !isSubscribed
 													// 		? "blur(10px)"
 													// 		: "none",
-													filter: isLoggedIn && item.action == "BUY" ? "blur(10px)" : "none",
+													filter: ((!isLoggedIn || !isSubscribed) && item.action) === "BUY" ? "blur(10px)" : "none",
 												}}
 											>
+												{/* {console.log((!isLoggedIn || !isSubscribed) && item.action === "BUY" ? true : false,)} */}
 												{item.stock_name.length > 28 ? (
 													<Marquee delay={5} speed={30}>
 														<span style={{ paddingRight: "40px" }}>
