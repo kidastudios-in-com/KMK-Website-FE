@@ -36,6 +36,7 @@ const paymentsuccessful = () => {
 				console.log(billingInfo);
 				if (billingInfo.ok) {
 					const billingInfoResponse = await billingInfo.json();
+					console.log(billingInfoResponse);
 					setBillingData(billingInfoResponse);
 				}
 			} catch (error) {
@@ -46,47 +47,47 @@ const paymentsuccessful = () => {
 		GetPaymentInfo();
 	}, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCountdown((prevCountdown) => prevCountdown - 1);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
-  useEffect(() => {
-    if (countdown === -1) {
-      setShowMessage(true);
-      // console.log('window.history.previous.href', window.history.back)
-      const redirect = localStorage.getItem("location");
-      router.push(redirect ? redirect : "/");
-      // setMessage("Taking longer than usual please wait...");
-      setIsLoading(false);
-      localStorage.removeItem("location");
-    }
-  }, [countdown]);
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setCountdown((prevCountdown) => prevCountdown - 1);
+		}, 1000);
+		return () => clearInterval(interval);
+	}, []);
+	useEffect(() => {
+		if (countdown === -1) {
+			setShowMessage(true);
+			// console.log('window.history.previous.href', window.history.back)
+			const redirect = localStorage.getItem("location");
+			router.push(redirect ? redirect : "/");
+			// setMessage("Taking longer than usual please wait...");
+			setIsLoading(false);
+			localStorage.removeItem("location");
+		}
+	}, [countdown]);
 
-  return (
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        textAlign: "center",
-        gap: "10px",
-        backgroundColor: "white",
-        background: "white",
-      }}
-    >
-      <img
-        src="./kmk-logo (1).png"
-        alt="KamayaKya Logo"
-        style={{ width: "220px", height: "60px", alignSelf: "center" }}
-      />
-      <Text b size={34}>
-        Payment Successful!
-      </Text>
-      <Text
+	return (
+		<div
+			style={{
+				width: "100vw",
+				height: "100vh",
+				display: "flex",
+				flexDirection: "column",
+				justifyContent: "center",
+				textAlign: "center",
+				gap: "10px",
+				backgroundColor: "white",
+				background: "white",
+			}}
+		>
+			<img
+				src="./kmk-logo (1).png"
+				alt="KamayaKya Logo"
+				style={{ width: "220px", height: "60px", alignSelf: "center" }}
+			/>
+			<Text b size={34}>
+				Payment Successful!
+			</Text>
+			<Text
 				b
 				size={22}
 				css={{
@@ -97,10 +98,10 @@ const paymentsuccessful = () => {
 			>
 				Order Number:{billingData?.order_number}
 			</Text>
-      {showMessage ? (
-        ""
-      ) : (
-        <Text
+			{showMessage ? (
+				""
+			) : (
+				<Text
 					b
 					size={22}
 					css={{
@@ -109,34 +110,34 @@ const paymentsuccessful = () => {
 						},
 					}}
 				>
-          Success! Your payment has rocketed into our account. Buckle up and get
-          ready, your financial exploration is about to take off!
-          {/* <br /> */}
-          {/* Please wait while your invoice is being generated... */}
-        </Text>
-      )}
-      <Text b size={34}>
+					Success! Your payment has rocketed into our account. Buckle up and get
+					ready, your financial exploration is about to take off!
+					{/* <br /> */}
+					{/* Please wait while your invoice is being generated... */}
+				</Text>
+			)}
+			<Text b size={34}>
 				Amount: ₹ {billingData?.amount}/-
 			</Text>
-      {isLoading ? <Loading size="lg" color={"success"} type="gradient" /> : ""}
-      {showMessage ? (
-        <Text b size={20}>
-          {message}
-        </Text>
-      ) : (
-        <Text b size={20}>
-          You will be redirected in {countdown} seconds
-        </Text>
-      )}
-      {isLoading ? (
-        ""
-      ) : (
-        <Text b size={20}>
-          Redirecting Now...
-        </Text>
-      )}
-    </div>
-  );
+			{isLoading ? <Loading size="lg" color={"success"} type="gradient" /> : ""}
+			{showMessage ? (
+				<Text b size={20}>
+					{message}
+				</Text>
+			) : (
+				<Text b size={20}>
+					You will be redirected in {countdown} seconds
+				</Text>
+			)}
+			{isLoading ? (
+				""
+			) : (
+				<Text b size={20}>
+					Redirecting Now...
+				</Text>
+			)}
+		</div>
+	);
 };
 
 export default paymentsuccessful;

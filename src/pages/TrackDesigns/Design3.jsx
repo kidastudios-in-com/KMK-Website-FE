@@ -13,6 +13,7 @@ import { DocumentText, LockCircle } from "iconsax-react";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import CloseIcon from "@mui/icons-material/Close";
 import Login from "@/components/Login";
+import { useRouter } from "next/router";
 
 const Design3 = ({ record, isLoggedIn, isSubscribed }) => {
 	const [showTargets, setShowTargets] = useState(false);
@@ -20,6 +21,20 @@ const Design3 = ({ record, isLoggedIn, isSubscribed }) => {
 	const [selectedCardIndex, setSelectedCardIndex] = useState([]);
 	const [selectedReportUrl, setSelectedReportUrl] = useState("");
 	const [showLoginModal, setShowLoginModal] = useState(false);
+
+	const handleLogin = () => {
+		setShowLoginModal(true);
+	};
+
+	const handleCloseLoginModal = () => {
+		setShowLoginModal(false);
+	};
+
+	const router = useRouter();
+
+	const toSubscribePage = () => {
+		router.push("/purchase");
+	};
 
 	const handleCloseTargets = () => {
 		setShowTargets(false);
@@ -104,7 +119,7 @@ const Design3 = ({ record, isLoggedIn, isSubscribed }) => {
 					<>
 						<Card
 							key={index}
-							isHoverable
+							// isHoverable
 							css={{
 								width: "450px",
 								// height: "380px",
@@ -145,7 +160,13 @@ const Design3 = ({ record, isLoggedIn, isSubscribed }) => {
 								>
 									<IconButton
 										onClick={handleLogin}
-										sx={{ top: "35%", left: "43.5%" }}
+										sx={{
+											top: "35%",
+											left: "43.5%",
+											"@media only screen and (max-width: 768px)": {
+												left: "42%",
+											},
+										}}
 									>
 										<LockCircle
 											size={55}
@@ -251,7 +272,13 @@ const Design3 = ({ record, isLoggedIn, isSubscribed }) => {
 										paddingBottom: "5px",
 									}}
 								>
-									<div style={{ display: "flex", flexDirection: "column",width: "75%" }}>
+									<div
+										style={{
+											display: "flex",
+											flexDirection: "column",
+											width: "75%",
+										}}
+									>
 										<Text
 											b
 											size={15}
@@ -603,9 +630,10 @@ const Design3 = ({ record, isLoggedIn, isSubscribed }) => {
 										display: "flex",
 										flexDirection: "row",
 										// alignItems: "center",
-										justifyContent: "space-between",
+										// justifyContent: "space-between",
 										marginTop: "15px",
 										zIndex: "0",
+										width: "100%",
 									}}
 								>
 									<Box
@@ -614,24 +642,10 @@ const Design3 = ({ record, isLoggedIn, isSubscribed }) => {
 											flexDirection: "column",
 											// alignSelf: "flex-start",
 											justifyContent: "end",
-											// width: "50%",
+											width: "65%",
+											// maxWidth: "60%",
 										}}
 									>
-										{/* <Text
-											b
-											size={16}
-											color="#fff"
-											css={{
-												opacity: 1,
-												lineHeight: 1,
-												"@media only screen and (max-width: 764px)": {
-													paddingTop: "0px",
-													fontSize: "14.5px",
-												},
-											}}
-										>
-											RETURNS
-										</Text> */}
 										<Text
 											b
 											size={44}
@@ -694,27 +708,13 @@ const Design3 = ({ record, isLoggedIn, isSubscribed }) => {
 										sx={{
 											display: "flex",
 											flexDirection: "column",
-											// width: "40%",
+											width: "45%",
 											height: "70px",
-											// marginLeft: "20px",
-
 											justifyContent: "end",
+											alignSelf: "end",
 										}}
 									>
-										{item.stock_targets.length > 1 ? (
-											// <Button
-											// 	auto
-											// 	onPress={() => handleOpenTargets(index)}
-											// 	css={{
-											// 		borderRadius: "11px 11px 1px 11px",
-											// 		width: "47.5%",
-											// 		fontSize: 18,
-											// 		backgroundImage:
-											// 			"linear-gradient(to top , #FF9D28, #ffa736)",
-											// 	}}
-											// >
-											// 	Previous Targets
-											// </Button>
+										{item.stock_targets.length > 1 && (
 											<Text
 												onClick={() => handleOpenTargets(index)}
 												style={{
@@ -728,10 +728,8 @@ const Design3 = ({ record, isLoggedIn, isSubscribed }) => {
 											>
 												Previous Targets
 											</Text>
-										) : (
-											""
 										)}
-										{isSubscribed === true ? (
+										{isSubscribed === true && (
 											<Button
 												auto
 												onPress={() => handleOpenReports(index)}
@@ -749,8 +747,24 @@ const Design3 = ({ record, isLoggedIn, isSubscribed }) => {
 											>
 												Details Reports
 											</Button>
-										) : (
-											""
+										)}
+										{isSubscribed === false && (
+											<Button
+												onPress={toSubscribePage}
+												css={{
+													alignSelf: "center",
+													borderRadius: "5px",
+													width: "47.5%",
+													fontSize: 18,
+													backgroundImage:
+														"linear-gradient(to top , #FF9D28, #ffa736)",
+													// background: "#fc8019",
+													fontWeight: "$semibold",
+													letterSpacing: 0.2,
+												}}
+											>
+												Subscribe
+											</Button>
 										)}
 									</Box>
 								</Box>

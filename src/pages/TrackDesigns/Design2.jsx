@@ -18,13 +18,28 @@ import {
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import CloseIcon from "@mui/icons-material/Close";
 import Login from "@/components/Login";
+import { useRouter } from "next/router";
 
 const Design2 = ({ record, isLoggedIn, isSubscribed }) => {
+	const router = useRouter();
+
+	const toSubscribePage = () => {
+		router.push("/purchase");
+	};
+
 	const [showTargets, setShowTargets] = useState(false);
 	const [showReports, setShowReports] = useState(false);
 	const [selectedCardIndex, setSelectedCardIndex] = useState([]);
 	const [selectedReportUrl, setSelectedReportUrl] = useState("");
 	const [showLoginModal, setShowLoginModal] = useState(false);
+
+	const handleLogin = () => {
+		setShowLoginModal(true);
+	};
+
+	const handleCloseLoginModal = () => {
+		setShowLoginModal(false);
+	};
 
 	const handleCloseTargets = () => {
 		setShowTargets(false);
@@ -111,7 +126,8 @@ const Design2 = ({ record, isLoggedIn, isSubscribed }) => {
 										WebkitBackdropFilter: "blur(10px)",
 										margin: "0px",
 										alignItems: "center",
-										zIndex: "100",
+										justifyContent: "center",
+										zIndex: "1000",
 										"@media only screen and (max-width: 768px)": {
 											margin: "0px",
 										},
@@ -119,14 +135,21 @@ const Design2 = ({ record, isLoggedIn, isSubscribed }) => {
 								>
 									<IconButton
 										onClick={handleLogin}
-										sx={{ top: "35%", left: "43.5%" }}
+										sx={{
+											top: "35%",
+											left: "43.5%",
+											"@media only screen and (max-width: 768px)": {
+												top: "35%",
+												left: "45.5%",
+											},
+										}}
 									>
 										<LockCircle
 											size={55}
 											color={"white"}
 											style={{
 												top: "35%",
-												left: "43.5%",
+												left: "-10px",
 												background: "linear-gradient(to top , #fb7716,#fe9807)",
 												paddingTop: "5px",
 												paddingBottom: "5px",
@@ -146,7 +169,7 @@ const Design2 = ({ record, isLoggedIn, isSubscribed }) => {
 										css={{
 											width: "50%",
 											top: "55.5%",
-											left: "25%",
+											left: "15%",
 											background: "linear-gradient(to top , #fb7716,#fe9807)",
 											paddingTop: "5px",
 											paddingBottom: "5px",
@@ -158,6 +181,10 @@ const Design2 = ({ record, isLoggedIn, isSubscribed }) => {
 											},
 											position: "absolute",
 											alignSelf: "center",
+											"@media only screen and (max-width: 768px)": {
+												top: "55.5%",
+												left: "24%",
+											},
 										}}
 										onPress={handleLogin}
 									>
@@ -376,7 +403,7 @@ const Design2 = ({ record, isLoggedIn, isSubscribed }) => {
 								sx={{
 									padding: "10px",
 									paddingTop: "0px",
-									// paddingLeft: "15px",
+									paddingBottom: "0px",
 									display: "flex",
 									flexDirection: "column",
 									justifyContent: "space-between",
@@ -624,7 +651,7 @@ const Design2 = ({ record, isLoggedIn, isSubscribed }) => {
 											zIndex: "0",
 										}}
 									>
-										{isSubscribed === true ? (
+										{isSubscribed === true && (
 											<Button
 												auto
 												onPress={() => handleOpenReports(index)}
@@ -641,10 +668,8 @@ const Design2 = ({ record, isLoggedIn, isSubscribed }) => {
 											>
 												Reports
 											</Button>
-										) : (
-											""
 										)}
-										{item.stock_targets.length > 1 ? (
+										{item.stock_targets.length > 1 && (
 											<Button
 												auto
 												onPress={() => handleOpenTargets(index)}
@@ -660,8 +685,23 @@ const Design2 = ({ record, isLoggedIn, isSubscribed }) => {
 											>
 												Previous Targets
 											</Button>
-										) : (
-											""
+										)}
+										{isSubscribed === false && (
+											<Button
+												onPress={toSubscribePage}
+												css={{
+													alignSelf: "center",
+													borderRadius: "15px",
+													width: "100%",
+													fontSize: 18,
+													backgroundImage:
+														"linear-gradient(to top , #FF9D28, #ffa736)",
+													// background: "#bbbbbb",
+													color: "#000",
+												}}
+											>
+												Subscribe
+											</Button>
 										)}
 									</Box>
 								</div>

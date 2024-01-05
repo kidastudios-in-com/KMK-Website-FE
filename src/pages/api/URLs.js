@@ -64,3 +64,7 @@ export const STRIPE_KEY = process.env.NEXT_PUBLIC_STRIPE_KEY;
 // export const TEST_URL = "https://test-server.kamayakya.in";
 export const USER_URL1 = `${BASE_URL}/user`;
 export const SUBS_URL1 = `${USER_URL1}/subscribe/`;
+
+
+// Discount Code Validation
+export const CODE_VALID = `${USER_URL}/validate_discount_code/`;
