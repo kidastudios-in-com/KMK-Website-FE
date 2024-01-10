@@ -711,7 +711,11 @@ const WhyUs = () => {
 													// 	!isLoggedIn || !isSubscribed
 													// 		? "blur(10px)"
 													// 		: "none",
-													filter: ((!isLoggedIn || !isSubscribed) && item.action) === "BUY" ? "blur(10px)" : "none",
+													filter:
+														((!isLoggedIn || !isSubscribed) && item.action) ===
+														"BUY"
+															? "blur(10px)"
+															: "none",
 												}}
 											>
 												{/* {console.log((!isLoggedIn || !isSubscribed) && item.action === "BUY" ? true : false,)} */}
@@ -1420,7 +1424,12 @@ const WhyUs = () => {
 																				// 	isSubscribed === false
 																				// 		? "blur(8px)" //8px blur
 																				// 		: "blur(0px)",
-																				filter: ((!isLoggedIn || !isSubscribed) && record[selectedCardIndex].action) === "BUY" ? "blur(10px)" : "none",
+																				filter:
+																					((!isLoggedIn || !isSubscribed) &&
+																						record[selectedCardIndex]
+																							.action) === "BUY"
+																						? "blur(10px)"
+																						: "none",
 																			}}
 																		>
 																			{record[selectedCardIndex].stock_name}
@@ -1433,7 +1442,12 @@ const WhyUs = () => {
 																			// 	isSubscribed === false
 																			// 		? "blur(8px)" //8px Blur
 																			// 		: "blur(0px)",
-																			filter: ((!isLoggedIn || !isSubscribed) && record[selectedCardIndex].action) === "BUY" ? "blur(10px)" : "none",
+																			filter:
+																				((!isLoggedIn || !isSubscribed) &&
+																					record[selectedCardIndex].action) ===
+																				"BUY"
+																					? "blur(10px)"
+																					: "none",
 																		}}
 																	>
 																		{record[selectedCardIndex].stock_name}
@@ -1868,8 +1882,6 @@ const WhyUs = () => {
 																			width: "30%",
 																		}}
 																	>
-
-
 																		<Text
 																			b
 																			size={16}
@@ -1887,14 +1899,17 @@ const WhyUs = () => {
 																					},
 																			}}
 																		>
-																			{target.target_action === "BUY" || index == record[selectedCardIndex].stock_targets.length - 1
+																			{target.target_action === "BUY" ||
+																			index ==
+																				record[selectedCardIndex].stock_targets
+																					.length -
+																					1
 																				? "ENTRY"
 																				: "HOLD"}{" "}
 																			{`PRICE ${
 																				record[selectedCardIndex].stock_targets
 																					.length - index
 																			}`}
-
 																		</Text>
 
 																		<Text
@@ -2103,7 +2118,7 @@ const WhyUs = () => {
                                     target.target_met
                                   ).getFullYear()}`} */}
 
-																	{/* {target.target_met
+																			{/* {target.target_met
 																		? `${new Date(
 																				target.target_met
 																		  ).getDate()} ${new Date(
