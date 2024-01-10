@@ -231,6 +231,7 @@ export default function PreviewPage() {
 	};
 
 	const [discountAmount, setDiscountAmount] = useState("");
+	const [totalAmount, setTotalAmount] = useState("");
 	const [discountApplied, setDiscountApplied] = useState(false);
 
 	const validateDiscountCode = async () => {
@@ -248,7 +249,9 @@ export default function PreviewPage() {
 			});
 			if (discountCodeValidation.ok) {
 				const responseData = await discountCodeValidation.json();
-				setDiscountAmount(responseData.discount_amount);
+				// console.log(responseData);
+				setDiscountAmount(responseData.discount);
+				setTotalAmount(responseData.total_amount);
 				setDiscountApplied(true);
 				handleDiscountConfirmationOpen();
 			} else if (discountCodeValidation.status === 400) {
@@ -406,333 +409,333 @@ export default function PreviewPage() {
 	return (
 		// <PageVisibility>
 		// 	{(isPageVisible) => (
-		// 		<>
-					<Box
-						sx={{
-							display: "flex",
-							flexDirection: "column",
+		<>
+			<Box
+				sx={{
+					display: "flex",
+					flexDirection: "column",
+					justifyContent: "center",
+					alignItems: "center",
+					background: "#fff",
+					"@media only screen and (maxWidth: 764px)": {
+						// maxHeight: "100vh",
+						marginTop: "0px",
+						paddingTop: "0px",
+						justifyContent: "flex-start",
+						alignItems: "flex-start",
+						paddingLeft: "5px",
+						paddingRight: "5px",
+					},
+				}}
+			>
+				<NavBar2 />
+				<Text
+					b
+					color="#000"
+					css={{
+						fontSize: 70,
+						lineHeight: 1.2,
+						// marginTop: "40px",
+						marginBottom: "0px",
+						textAlign: "center",
+						"@media only screen and (max-width: 764px)": {
+							fontSize: 45,
+							width: "100%",
+						},
+					}}
+				>
+					Invoice Details
+				</Text>
+				<Text
+					b
+					color="#000"
+					css={{
+						fontSize: 25,
+						lineHeight: 1.2,
+						marginTop: "0px",
+						marginBottom: "25px",
+						textAlign: "center",
+						"@media only screen and (max-width: 764px)": {
+							fontSize: 20,
+							width: "100%",
+						},
+					}}
+				>
+					You will receive your invoice via email
+				</Text>
+				<Box
+					sx={{
+						display: "flex",
+						flexDirection: "row",
+						flexWrap: "wrap-reverse",
+						// width: "60%",
+						maxWidth: "80rem",
+						// justifyContent: "space-between",
+						justifyContent: "center",
+						gap: "15px",
+						// alignItems: "center",
+						paddingBottom: "30px",
+						marginTop: "15px",
+						"@media only screen and (max-width: 1269px)": {
+							justifyContent: "center",
+							gap: "10px",
+						},
+						"@media only screen and (max-width: 764px)": {
 							justifyContent: "center",
 							alignItems: "center",
+							width: "98vw !important",
+							maxWidth: "380px !important",
+							gap: "10px",
+						},
+					}}
+				>
+					<Card
+						variant="bordered"
+						css={{
+							shadow: "none",
+							width: "380px",
+							// background: "#f4f4f5",
 							background: "#fff",
-							"@media only screen and (maxWidth: 764px)": {
-								// maxHeight: "100vh",
-								marginTop: "0px",
-								paddingTop: "0px",
-								justifyContent: "flex-start",
-								alignItems: "flex-start",
-								paddingLeft: "5px",
-								paddingRight: "5px",
+							borderRadius: "10px",
+							paddingTop: "40px",
+							"@media only screen and (max-width: 764px)": {
+								width: "98vw !important",
+								maxWidth: "380px !important",
 							},
 						}}
 					>
-						<NavBar2 />
-						<Text
-							b
-							color="#000"
-							css={{
-								fontSize: 40,
-								lineHeight: 1.2,
-								// marginTop: "40px",
-								marginBottom: "0px",
-								textAlign: "center",
-								"@media only screen and (max-width: 764px)": {
-									fontSize: 36,
-									width: "100%",
-								},
-							}}
-						>
-							Invoice Details
-						</Text>
-						<Text
-							b
-							color="#000"
-							css={{
-								fontSize: 15,
-								lineHeight: 1.2,
-								marginTop: "0px",
-								marginBottom: "25px",
-								textAlign: "center",
-								"@media only screen and (max-width: 764px)": {
-									fontSize: 13,
-									width: "100%",
-								},
-							}}
-						>
-							You will receive your invoice via email
-						</Text>
-						<Box
-							sx={{
-								display: "flex",
-								flexDirection: "row",
-								flexWrap: "wrap-reverse",
-								// width: "60%",
-								maxWidth: "80rem",
-								// justifyContent: "space-between",
-								justifyContent: "center",
-								gap: "15px",
-								// alignItems: "center",
-								paddingBottom: "30px",
-								marginTop: "15px",
-								"@media only screen and (max-width: 1269px)": {
-									justifyContent: "center",
-									gap: "10px",
-								},
-								"@media only screen and (max-width: 764px)": {
-									justifyContent: "center",
-									alignItems: "center",
-									width: "98vw !important",
-									maxWidth: "380px !important",
-									gap: "10px",
-								},
-							}}
-						>
-							<Card
-								variant="bordered"
-								css={{
-									shadow: "none",
-									width: "380px",
-									// background: "#f4f4f5",
-									background: "#fff",
-									borderRadius: "10px",
-									paddingTop: "40px",
-									"@media only screen and (max-width: 764px)": {
-										width: "98vw !important",
-										maxWidth: "380px !important",
-									},
-								}}
-							>
-								{step === 1 && (
-									<>
-										<Text
-											b
-											css={{
-												alignSelf: "start",
-												marginLeft: "50px",
-												marginBottom: "3px",
-												fontSize: 14,
-												color: "#125a54",
-												"@media only screen and (max-width: 764px)": {
-													fontSize: 13,
-													// width: "50%",
-												},
-											}}
-										>
-											NAME *
-										</Text>
-										<Input
-											required
-											type="text"
-											placeholder="eg: Nitya Shah"
-											clearable
-											animated={false}
-											size="lg"
-											value={billingName}
-											onChange={handleNameChange}
-											css={{
-												marginBottom: "15px",
-												alignSelf: "center",
-												width: "300px",
-												height: "47px",
-												borderRadius: "10px",
-												border: "1px solid",
-												borderColor: billingName === "" ? "red" : "lightgrey",
-												// paddingRight: '10px'
-											}}
-										/>
+						{step === 1 && (
+							<>
+								<Text
+									b
+									css={{
+										alignSelf: "start",
+										marginLeft: "50px",
+										marginBottom: "3px",
+										fontSize: 14,
+										color: "#125a54",
+										"@media only screen and (max-width: 764px)": {
+											fontSize: 13,
+											// width: "50%",
+										},
+									}}
+								>
+									NAME *
+								</Text>
+								<Input
+									required
+									type="text"
+									placeholder="eg: Nitya Shah"
+									clearable
+									animated={false}
+									size="lg"
+									value={billingName}
+									onChange={handleNameChange}
+									css={{
+										marginBottom: "15px",
+										alignSelf: "center",
+										width: "300px",
+										// height: "48px",
+										borderRadius: "10px",
+										border: "1px solid",
+										borderColor: billingName === "" ? "red" : "lightgrey",
+										// paddingRight: '10px'
+									}}
+								/>
 
-										<Text
-											b
-											css={{
-												alignSelf: "start",
-												marginLeft: "50px",
-												marginBottom: "1px",
-												fontSize: 14,
-												color: "#125a54",
-												"@media only screen and (max-width: 764px)": {
-													fontSize: 13,
-													// width: "50%",
-												},
-											}}
-										>
-											WHATSAPP NUMBER *
-										</Text>
-										<PhoneInput
-											containerStyle={{
-												marginBottom: "10px",
-												// marginRight: "5px",
-												alignSelf: "center",
-												width: "302px",
-												border: validNumber ? "" : "1px solid",
-												borderRadius: "10px",
-												borderColor: validNumber ? "lightgrey" : "red",
-											}}
-											disableDropdown={true}
-											dropdownStyle={{ height: "250px", zIndex: 10 }}
-											countryCodeEditable={false}
-											country="in"
-											onlyCountries={["in"]}
-											placeholder="9175939641"
-											value={billingNumber}
-											onChange={handleInputChange}
-											inputProps={{
-												required: true,
-												autoFocus: true,
-											}}
-											inputExtraProps={{
-												mask: "+(999) 999 9999",
-											}}
-											containerClass="billingForm"
-										/>
-									</>
-								)}
-								{step === 1 && (
-									<>
-										<Text
-											b
-											css={{
-												alignSelf: "start",
-												marginLeft: "50px",
-												marginBottom: "3px",
-												fontSize: 14,
-												color: "#125a54",
-												"@media only screen and (max-width: 764px)": {
-													fontSize: 13,
-													// width: "50%",
-												},
-											}}
-										>
-											EMAIL ID *
-										</Text>
-										<Input
-											required
-											type="email"
-											placeholder="eg: contact@kamayakya.com"
-											clearable
-											size="lg"
-											value={billingEmail}
-											onChange={handleEmailChange}
-											animated={false}
-											css={{
-												marginBottom: "15px",
-												alignSelf: "center",
-												width: "300px",
-												height: "47px",
-												border: "1px solid",
-												borderColor: emailValid ? "lightgrey" : "red",
-												borderRadius: "10px",
-											}}
-										/>
-										<Text
-											b
-											css={{
-												alignSelf: "start",
-												marginLeft: "50px",
-												marginBottom: "3px",
-												fontSize: 14,
-												color: "#125a54",
-												"@media only screen and (max-width: 764px)": {
-													fontSize: 13,
-													// width: "50%",
-												},
-											}}
-										>
-											PINCODE *
-										</Text>
-										<Input
-											required
-											type="text"
-											placeholder="eg: 411001"
-											clearable
-											animated={false}
-											size="lg"
-											value={userPincode}
-											onChange={handlePincodeChange}
-											css={{
-												marginBottom: "15px",
-												alignSelf: "center",
-												width: "300px",
-												height: "47px",
-												border: "1px solid",
-												borderColor:
-													userCity && userState !== "" ? "lightgrey" : "red",
-												borderRadius: "10px",
-											}}
-										/>
-									</>
-								)}
-								{step === 1 && (
-									<>
-										<Text
-											b
-											css={{
-												alignSelf: "start",
-												marginLeft: "50px",
-												marginBottom: "3px",
-												fontSize: 14,
-												color: "grey",
-												"@media only screen and (max-width: 764px)": {
-													fontSize: 13,
-													// width: "50%",
-												},
-											}}
-										>
-											GSTIN
-										</Text>
-										<Input
-											placeholder="eg: 27AAJCK1075B1ZS"
-											clearable
-											animated={false}
-											size="lg"
-											value={gstNo}
-											maxLength={15}
-											minLength={15}
-											onChange={handleGSTChange}
-											css={{
-												marginBottom: "15px",
-												alignSelf: "center",
-												width: "300px",
-												height: "46px",
-												border: "1px solid lightgrey",
-												borderRadius: "10px",
-											}}
-										/>
-										<Text
-											b
-											css={{
-												textAlign: "start",
-												marginLeft: "50px",
-												marginBottom: "3px",
-												fontSize: 14,
-												color: "grey",
-												"@media only screen and (max-width: 764px)": {
-													fontSize: 13,
-													// width: "50%",
-												},
-											}}
-										>
-											REFERRAL CODE
-										</Text>
-										<Input
-											clearable
-											animated={false}
-											size="lg"
-											maxLength={6}
-											minLength={6}
-											value={referralCode}
-											onChange={handleReferralChange}
-											css={{
-												marginBottom: "10px",
-												alignSelf: "center",
-												width: "300px",
-												height: "46px",
-												border: "1px solid lightgrey",
-												borderRadius: "10px",
-												// transition: "none !important",
-											}}
-										/>
-									</>
-								)}
-								{/* {step === 2 && (
+								<Text
+									b
+									css={{
+										alignSelf: "start",
+										marginLeft: "50px",
+										marginBottom: "1px",
+										fontSize: 14,
+										color: "#125a54",
+										"@media only screen and (max-width: 764px)": {
+											fontSize: 13,
+											// width: "50%",
+										},
+									}}
+								>
+									WHATSAPP NUMBER *
+								</Text>
+								<PhoneInput
+									containerStyle={{
+										marginBottom: "10px",
+										// marginRight: "5px",
+										alignSelf: "center",
+										width: "302px",
+										border: validNumber ? "" : "1px solid",
+										borderRadius: "10px",
+										borderColor: validNumber ? "lightgrey" : "red",
+									}}
+									disableDropdown={true}
+									dropdownStyle={{ height: "250px", zIndex: 10 }}
+									countryCodeEditable={false}
+									country="in"
+									onlyCountries={["in"]}
+									placeholder="9175939641"
+									value={billingNumber}
+									onChange={handleInputChange}
+									inputProps={{
+										required: true,
+										autoFocus: true,
+									}}
+									inputExtraProps={{
+										mask: "+(999) 999 9999",
+									}}
+									containerClass="billingForm"
+								/>
+							</>
+						)}
+						{step === 1 && (
+							<>
+								<Text
+									b
+									css={{
+										alignSelf: "start",
+										marginLeft: "50px",
+										marginBottom: "3px",
+										fontSize: 14,
+										color: "#125a54",
+										"@media only screen and (max-width: 764px)": {
+											fontSize: 13,
+											// width: "50%",
+										},
+									}}
+								>
+									EMAIL ID *
+								</Text>
+								<Input
+									required
+									type="email"
+									placeholder="eg: contact@kamayakya.com"
+									clearable
+									size="lg"
+									value={billingEmail}
+									onChange={handleEmailChange}
+									animated={false}
+									css={{
+										marginBottom: "15px",
+										alignSelf: "center",
+										width: "300px",
+										// height: "47px",
+										border: "1px solid",
+										borderColor: emailValid ? "lightgrey" : "red",
+										borderRadius: "10px",
+									}}
+								/>
+								<Text
+									b
+									css={{
+										alignSelf: "start",
+										marginLeft: "50px",
+										marginBottom: "3px",
+										fontSize: 14,
+										color: "#125a54",
+										"@media only screen and (max-width: 764px)": {
+											fontSize: 13,
+											// width: "50%",
+										},
+									}}
+								>
+									PINCODE *
+								</Text>
+								<Input
+									required
+									type="text"
+									placeholder="eg: 411001"
+									clearable
+									animated={false}
+									size="lg"
+									value={userPincode}
+									onChange={handlePincodeChange}
+									css={{
+										marginBottom: "15px",
+										alignSelf: "center",
+										width: "300px",
+										height: "47px",
+										border: "1px solid",
+										borderColor:
+											userCity && userState !== "" ? "lightgrey" : "red",
+										borderRadius: "10px",
+									}}
+								/>
+							</>
+						)}
+						{step === 1 && (
+							<>
+								<Text
+									b
+									css={{
+										alignSelf: "start",
+										marginLeft: "50px",
+										marginBottom: "3px",
+										fontSize: 14,
+										color: "grey",
+										"@media only screen and (max-width: 764px)": {
+											fontSize: 13,
+											// width: "50%",
+										},
+									}}
+								>
+									GSTIN
+								</Text>
+								<Input
+									placeholder="eg: 27AAJCK1075B1ZS"
+									clearable
+									animated={false}
+									size="lg"
+									value={gstNo}
+									maxLength={15}
+									minLength={15}
+									onChange={handleGSTChange}
+									css={{
+										marginBottom: "15px",
+										alignSelf: "center",
+										width: "300px",
+										// height: "46px",
+										border: "1px solid lightgrey",
+										borderRadius: "10px",
+									}}
+								/>
+								<Text
+									b
+									css={{
+										textAlign: "start",
+										marginLeft: "50px",
+										marginBottom: "3px",
+										fontSize: 14,
+										color: "grey",
+										"@media only screen and (max-width: 764px)": {
+											fontSize: 13,
+											// width: "50%",
+										},
+									}}
+								>
+									REFERRAL CODE
+								</Text>
+								<Input
+									clearable
+									animated={false}
+									size="lg"
+									maxLength={6}
+									minLength={6}
+									value={referralCode}
+									onChange={handleReferralChange}
+									css={{
+										marginBottom: "10px",
+										alignSelf: "center",
+										width: "300px",
+										// height: "46px",
+										border: "1px solid lightgrey",
+										borderRadius: "10px",
+										// transition: "none !important",
+									}}
+								/>
+							</>
+						)}
+						{/* {step === 2 && (
 						<div style={{ display: 'flex', flexDirection: 'column', gap: "14px" }}>
 							<TextInput
 								label="NAME"
@@ -782,14 +785,14 @@ export default function PreviewPage() {
 							/>
 						</div>
 					)} */}
-								<Box
-									sx={{
-										display: "flex",
-										flexDirection: "row",
-										justifyContent: "space-evenly",
-									}}
-								>
-									{step > 1 && (
+						<Box
+							sx={{
+								display: "flex",
+								flexDirection: "row",
+								justifyContent: "space-evenly",
+							}}
+						>
+							{/* {step > 1 && (
 										<Button
 											auto
 											onPress={handlePrevStep}
@@ -802,9 +805,9 @@ export default function PreviewPage() {
 										>
 											Previous
 										</Button>
-									)}
+									)} */}
 
-									{step < 1 && (
+							{/* {step < 1 && (
 										<Button
 											auto
 											onPress={handleNextStep}
@@ -817,248 +820,244 @@ export default function PreviewPage() {
 										>
 											Next
 										</Button>
-									)}
+									)} */}
 
-									{step === 1 && (
-										<Button
-											auto
-											onPress={handleSaveAndPay}
-											disabled={!isFormValid}
-											css={{
-												background: "linear-gradient(to top , #fb7716,#fe9807)",
-												marginBottom: "20px",
-												borderRadius: "10px",
-												marginTop: "10px",
-												width: "33%",
-											}}
-										>
-											{loading ? <Loading color={"white"} /> : "Proceed"}
-										</Button>
-									)}
-								</Box>
-							</Card>
+							{step === 1 && (
+								<Button
+									auto
+									onPress={handleSaveAndPay}
+									disabled={!isFormValid}
+									css={{
+										background: "linear-gradient(to top , #fb7716,#fe9807)",
+										marginBottom: "20px",
+										borderRadius: "10px",
+										marginTop: "10px",
+										width: "33%",
+									}}
+								>
+									{loading ? <Loading color={"white"} /> : "Proceed"}
+								</Button>
+							)}
+						</Box>
+					</Card>
+					<Box
+						sx={{
+							display: "flex",
+							flexDirection: "column",
+							width: "382px",
+							alignContent: "center",
+						}}
+						className="paymentsPage-box"
+					>
+						{discountApplied === false && (
 							<Box
 								sx={{
+									background: "#fff",
+									borderRadius: "5px",
 									display: "flex",
-									flexDirection: "column",
-									width: "382px",
-									alignContent: "center",
+									justifyContent: "center",
+									gap: "2px",
+									flexDirection: "row",
 								}}
-								className="paymentsPage-box"
 							>
-								{discountApplied === false && (
-									<Box
-										sx={{
-											background: "#fff",
-											borderRadius: "5px",
-											display: "flex",
-											justifyContent: "center",
-											gap: "2px",
-											flexDirection: "row",
-										}}
-									>
-										<Input
-											placeholder="Have a discount code?"
-											clearable
-											animated={false}
-											size="lg"
-											value={discountCode}
-											onChange={handleDiscountChange}
-											css={{
-												alignSelf: "center",
-												height: "46px",
-												border: "1px solid lightgrey",
-												borderRadius: "10px",
-											}}
-										/>
-										<Button
-											auto
-											css={{
-												alignSelf: "center",
-												maxWidth: "262px",
-												borderRadius: "10px",
-												fontSize: 16,
-												// backgroundImage:
-												// 	"linear-gradient(to right , #51168C, #3C4AB3, #32C0C8)",
-												backgroundColor: "#ff9f24",
-											}}
-											onClick={validateDiscountCode}
-											disabled={discountCode === ""}
-										>
-											Apply Code
-										</Button>
-									</Box>
-								)}
-								{discountApplied === true && (
-									<Box
-										sx={{
-											border: "1px dashed #bebfc5",
-											borderRadius: "5px",
-											marginTop: discountApplied ? "0px" : "15px",
-											padding: "15px",
-											display: "flex",
-											justifyContent: "space-between",
-											alignItems: "center",
-											textAlign: "center",
-										}}
-									>
-										<div
-											style={{
-												fontSize: "16px",
-												display: "flex",
-												flexDirection: "column",
-												alignItems: "start",
-											}}
-										>
-											<span style={{ color: "#3d4152", fontWeight: 500 }}>
-												Code : {discountCode}
-											</span>
-											<span
-												style={{
-													color: "#93959f",
-													fontSize: "14px",
-													lineHeight: 1,
-												}}
-											>
-												saved on base value ₹12711.86/-
-											</span>
-										</div>
-										<span
-											onClick={handleRemoveDiscount}
-											className="discount-remove"
-											style={{
-												"@media only screen and (maxWidth: 764px)": {
-													color: "#ff9e29 !important",
-												},
-											}}
-										>
-											Remove
-										</span>
-									</Box>
-								)}
-								<Box
-									sx={{
-										display: "flex",
-										paddingTop: "15px",
-										flexDirection: "column",
-										gap: "8px",
-									}}
-								>
-									<Box sx={{ textAlign: "center" }}>Billing Details</Box>
-									<Divider css={{ marginTop: "5px", marginBottom: "5px" }} />
-									<Box
-										sx={{ display: "flex", justifyContent: "space-between" }}
-									>
-										<Box>Subscription Plan</Box>
-										<Box>KamayaKya VIP+</Box>
-									</Box>
-									<Box
-										sx={{ display: "flex", justifyContent: "space-between" }}
-									>
-										<Box>Base Price</Box>
-										<Box>₹12711.86/-</Box>
-									</Box>
-									{discountApplied === true && (
-										<Box
-											sx={{ display: "flex", justifyContent: "space-between" }}
-										>
-											<Box sx={{ display: "flex", alignItems: "center" }}>
-												Discount
-												{/* <img src="discount-img.png" alt="discount-png" width={20} height={20} /> */}
-											</Box>
-											<Box>₹{discountAmount}/-</Box>
-										</Box>
-									)}
-									<Box
-										sx={{ display: "flex", justifyContent: "space-between" }}
-									>
-										<Box>Taxable Amount</Box>
-										<Box>₹{12711.86 - discountAmount}/- </Box>
-									</Box>
-									<Box
-										sx={{ display: "flex", justifyContent: "space-between" }}
-									>
-										<Box>Tax</Box>
-										<Box>
-											₹{((12711.86 - discountAmount) * 0.18).toFixed(2)}/-{" "}
-										</Box>
-									</Box>
-									<hr
-										style={{
-											marginTop: "5px",
-											marginBottom: "5px",
-											border: "1px dashed #e7e7e8",
-										}}
-									/>
-									<Box
-										sx={{ display: "flex", justifyContent: "space-between" }}
-									>
-										<Box>Total Amount</Box>
-										<Box>
-											₹
-											{discountApplied === false
-												? `15000.00`
-												: ((12711.86 - discountAmount) * 1.18).toFixed(2)}
-											/-{" "}
-										</Box>
-									</Box>
-									<hr
-										style={{
-											marginTop: "5px",
-											marginBottom: "5px",
-											border: "1px dashed #e7e7e8",
-										}}
-									/>
-								</Box>
-							</Box>
-						</Box>
-						<Modal
-							open={showDiscountConfirmation}
-							onClose={handleDiscountConfirmationClose}
-							width="350px"
-						>
-							<Confetti width={"350px"} height={"300px"} numberOfPieces={50} />
-							<Modal.Header
-								css={{ textAlign: "center", color: "#ff9e29", fontSize: 28 }}
-							>
-								Disocunt Applied!
-							</Modal.Header>
-							<Modal.Body css={{ alignItems: "center" }}>
-								<TaskAltOutlined
-									sx={{
-										fontSize: 100,
-										color: "#37b24d",
+								<Input
+									placeholder="Have a discount code?"
+									clearable
+									animated={false}
+									size="lg"
+									value={discountCode}
+									onChange={handleDiscountChange}
+									css={{
+										alignSelf: "center",
+										height: "46px",
+										border: "1px solid lightgrey",
+										borderRadius: "10px",
 									}}
 								/>
-								<Box sx={{ fontSize: 22, color: "#282c3f" }}>
-									{" "}
-									Code: {discountCode}
-								</Box>
-								<Box
-									sx={{ fontSize: 24, marginTop: "-20px", color: "#282c3f" }}
-								>
-									Saved: ₹{discountAmount}/-
-								</Box>
-							</Modal.Body>
-							<Modal.Footer>
 								<Button
+									auto
 									css={{
-										width: "100%",
-										backgroundImage:
-											"linear-gradient(to top , #106052, #0f734d)",
-										fontSize: 20,
+										alignSelf: "center",
+										maxWidth: "262px",
+										borderRadius: "10px",
+										fontSize: 16,
+										// backgroundImage:
+										// 	"linear-gradient(to right , #51168C, #3C4AB3, #32C0C8)",
+										backgroundColor: "#ff9f24",
 									}}
-									onClick={handleDiscountConfirmationClose}
+									onClick={validateDiscountCode}
+									disabled={discountCode === ""}
 								>
-									Yay!
+									Apply Code
 								</Button>
-							</Modal.Footer>
-						</Modal>
-
-						<FaqsNew />
-						<Footer />
+							</Box>
+						)}
+						{discountApplied === true && (
+							<Box
+								sx={{
+									border: "1px dashed #bebfc5",
+									borderRadius: "5px",
+									marginTop: discountApplied ? "0px" : "15px",
+									padding: "15px",
+									display: "flex",
+									justifyContent: "space-between",
+									alignItems: "center",
+									textAlign: "center",
+								}}
+							>
+								<div
+									style={{
+										fontSize: "16px",
+										display: "flex",
+										flexDirection: "column",
+										alignItems: "start",
+									}}
+								>
+									<span style={{ color: "#3d4152", fontWeight: 500 }}>
+										Code : {discountCode}
+									</span>
+									<span
+										style={{
+											color: "#93959f",
+											fontSize: "14px",
+											lineHeight: 1,
+										}}
+									>
+										saved on base value ₹12711.86/-
+									</span>
+								</div>
+								<span
+									onClick={handleRemoveDiscount}
+									className="discount-remove"
+									style={{
+										"@media only screen and (maxWidth: 764px)": {
+											color: "#ff9e29 !important",
+										},
+									}}
+								>
+									Remove
+								</span>
+							</Box>
+						)}
+						<Box
+							sx={{
+								display: "flex",
+								paddingTop: "15px",
+								flexDirection: "column",
+								gap: "8px",
+							}}
+						>
+							<Box sx={{ textAlign: "center" }}>Billing Details</Box>
+							<Divider css={{ marginTop: "5px", marginBottom: "5px" }} />
+							<Box sx={{ display: "flex", justifyContent: "space-between" }}>
+								<Box>Subscription Plan</Box>
+								<Box>KamayaKya VIP+</Box>
+							</Box>
+							<Box sx={{ display: "flex", justifyContent: "space-between" }}>
+								<Box>Base Price</Box>
+								<Box>₹12711.86/-</Box>
+							</Box>
+							{discountApplied === true && (
+								<Box sx={{ display: "flex", justifyContent: "space-between" }}>
+									<Box sx={{ display: "flex", alignItems: "center", color: "#37b24d" }}>
+										Discount
+										{/* <img src="discount-img.png" alt="discount-png" width={20} height={20} /> */}
+									</Box>
+									<Box sx={{ color: "#37b24d" }} > - ₹{discountAmount}/-</Box>
+								</Box>
+							)}
+							<Box sx={{ display: "flex", justifyContent: "space-between" }}>
+								<Box>Taxable Amount</Box>
+								<Box>₹{12711.86 - discountAmount}/- </Box>
+							</Box>
+							<Box sx={{ display: "flex", justifyContent: "space-between" }}>
+								<Box>Tax</Box>
+								<Box>₹{((12711.86 - discountAmount) * 0.18).toFixed(2)}/- </Box>
+							</Box>
+							<hr
+								style={{
+									marginTop: "5px",
+									marginBottom: "5px",
+									border: "1px dashed #e7e7e8",
+								}}
+							/>
+							<Box sx={{ display: "flex", justifyContent: "space-between" }}>
+								<Box>Total Amount</Box>
+								<Box>
+									₹
+									{discountApplied === false
+										? `15000.00`
+										: ((12711.86 - discountAmount) * 1.18).toFixed(2)}
+									/-{" "}
+								</Box>
+							</Box>
+							<hr
+								style={{
+									marginTop: "5px",
+									marginBottom: "5px",
+									border: "1px dashed #e7e7e8",
+								}}
+							/>
+						</Box>
 					</Box>
-		// 		</>
+				</Box>
+				<Modal
+					open={showDiscountConfirmation}
+					onClose={handleDiscountConfirmationClose}
+					width="350px"
+				>
+					<Confetti width={"350px"} height={"300px"} numberOfPieces={50} />
+					<Modal.Header
+						css={{ textAlign: "center", color: "#ff9e29", fontSize: 28 }}
+					>
+						Discount Applied!
+					</Modal.Header>
+					<Modal.Body css={{ alignItems: "center" }}>
+						<TaskAltOutlined
+							sx={{
+								fontSize: 100,
+								color: "#37b24d",
+							}}
+						/>
+						<Box sx={{ fontSize: 24, color: "#282c3f" }}>
+							Code: {discountCode}
+						</Box>
+						<Box sx={{ fontSize: 20, marginTop: "-10px" }}>
+							Original Price:{" "}
+							<span
+								style={{
+									textDecoration: "2px line-through red",
+								}}
+							>
+								₹{totalAmount}/-
+							</span>
+						</Box>
+						<Box sx={{ fontSize: 20, marginTop: "-20px", }}>
+							Discounted Price: ₹{((12711.86 - discountAmount) * 1.18).toFixed(2)}/-
+						</Box>
+
+						<Box sx={{ fontSize: 24, marginTop: "-10px", color: "#37b24d" }}>
+							You saved: ₹{discountAmount}/-
+						</Box>
+					</Modal.Body>
+					<Modal.Footer>
+						<Button
+							css={{
+								width: "100%",
+								backgroundImage: "linear-gradient(to top , #106052, #0f734d)",
+								fontSize: 20,
+							}}
+							onClick={handleDiscountConfirmationClose}
+						>
+							Yay!
+						</Button>
+					</Modal.Footer>
+				</Modal>
+
+				<FaqsNew />
+				<Footer />
+			</Box>
+		</>
 		// 	)}
 		// </PageVisibility>
 	);
