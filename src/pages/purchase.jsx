@@ -435,7 +435,7 @@ export default function PreviewPage() {
 					css={{
 						fontSize: 70,
 						lineHeight: 1.2,
-						// marginTop: "40px",
+						marginTop: "30px",
 						marginBottom: "0px",
 						textAlign: "center",
 						"@media only screen and (max-width: 764px)": {
@@ -474,7 +474,8 @@ export default function PreviewPage() {
 						justifyContent: "center",
 						gap: "15px",
 						// alignItems: "center",
-						paddingBottom: "30px",
+						// paddingBottom: "30px",
+						marginBottom: "100px",
 						marginTop: "15px",
 						"@media only screen and (max-width: 1269px)": {
 							justifyContent: "center",
@@ -654,7 +655,7 @@ export default function PreviewPage() {
 										marginBottom: "15px",
 										alignSelf: "center",
 										width: "300px",
-										height: "47px",
+										height: "48px",
 										border: "1px solid",
 										borderColor:
 											userCity && userState !== "" ? "lightgrey" : "red",
