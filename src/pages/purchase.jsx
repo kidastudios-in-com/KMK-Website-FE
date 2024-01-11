@@ -437,7 +437,7 @@ export default function PreviewPage() {
 					css={{
 						fontSize: 70,
 						lineHeight: 1.2,
-						marginTop: "300px",
+						marginTop: "30px",
 						marginBottom: "0px",
 						textAlign: "center",
 						"@media only screen and (max-width: 764px)": {
