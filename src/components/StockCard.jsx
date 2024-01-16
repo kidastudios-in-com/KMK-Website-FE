@@ -399,33 +399,6 @@ const StockCard = () => {
     }
   }, [isLoggedIn]);
 
-  // useEffect(() => {
-  //   if (isLoggedIn) {
-  //     const refresh = localStorage.getItem("refresh");
-  //     setIsLoading(true);
-  //     const fetchData = async () => {
-  //       try {
-  //         const response = await axios.get(GET_SPECIFIC_STOCK_URL, {
-  //           method: "POST",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //             Authorization: `token ${refresh}`,
-  //           },
-  //         });
-  //         setStocks(response.data);
-  //         console.log(response.data);
-  //         setFlipStates(new Array(response.data.length).fill(false));
-  //       } catch (error) {
-  //         setError("Please Login First to see our stock picks!");
-  //         showAlert();
-  //       } finally {
-  //         setIsLoading(false);
-  //       }
-  //     };
-  //     fetchData();
-  //   }
-  // }, [isLoggedIn]);
-
   const handleClearSelection = () => {
     setSelectedIndustries([]);
     setTimeSort("");
@@ -433,6 +406,7 @@ const StockCard = () => {
   };
 
   return (
+
     <div
       style={{
         // maxWidth: "80rem",
@@ -1049,7 +1023,7 @@ const StockCard = () => {
               <Card
                 isHoverable
                 css={{
-                  height: "580px",
+                  // height: "580px",
                   width: "285px",
                   display: "flex",
                   flexDirection: "column",
@@ -1077,7 +1051,7 @@ const StockCard = () => {
                     marginBottom: "20px",
                     minWidth: "90%",
                     maxWidth: "90%",
-                    height: "600px",
+                    // height: "600px",
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
@@ -1309,6 +1283,63 @@ const StockCard = () => {
                         flexDirection: "column",
                       }}
                     >
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                        }}
+                      >
+                        <div
+                          style={{ display: "flex", flexDirection: "column" }}
+                        >
+                          <Text
+                            b
+                            css={{
+                              lineHeight: 1.1,
+                              "@media only screen and (max-width: 768px)": {
+                                fontSize: 21,
+                              },
+                            }}
+                            size={15}
+                          >
+                            ENTRY PRICE
+                          </Text>
+                          <Text
+                            b
+                            size={15}
+                            css={{
+                              lineHeight: 1.1,
+                              "@media only screen and (max-width: 768px)": {
+                                fontSize: 15,
+                              },
+                            }}
+                          >
+                            (in ₹)
+                          </Text>
+                        </div>
+                        <Text
+                          b
+                          css={{
+                            flex: 1,
+                            textAlign: "right",
+                            "@media only screen and (max-width: 768px)": {
+                              fontSize: 30,
+                            },
+                          }}
+                          size={22}
+                        >
+                          {`${stock.entry_price}` || <Loading /> || "-"}
+                        </Text>
+                      </div>
+                      <Divider
+                        height={2}
+                        style={{
+                          backgroundColor: "#ffa12e",
+                          marginTop: "10px",
+                          marginBottom: "10px",
+                        }}
+                      />
                       <div
                         style={{
                           display: "flex",

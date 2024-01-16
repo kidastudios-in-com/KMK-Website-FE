@@ -437,34 +437,37 @@ const WhyUs = () => {
 					Track Record
 				</Text>
 
-				<Text
-					b
-					size={18}
-					css={{
-						marginTop: 0,
-						marginBottom: "10px",
-						maxWidth: "50rem" /* 1280px */,
-						textAlign: "center",
-						color: "#000",
-						lineHeight: 1.2,
-						paddingLeft: "15px",
-						paddingRight: "15px",
-						"@media only screen and (max-width: 764px)": {
-							fontSize: 20,
-							maxWidth: "100%",
-							paddingLeft: "5px",
-							paddingRight: "5px",
-							marginTop: "0px",
+				{isLoggedIn && (
+					<Text
+						b
+						size={18}
+						css={{
+							marginTop: 0,
 							marginBottom: "10px",
-							textAlign: "left",
+							maxWidth: "50rem" /* 1280px */,
+							textAlign: "center",
 							color: "#000",
-						},
-					}}
-				>
-					We present our scorecard. Our victories, our misses - all in the open.
-					<br />
-					Your trust is earned, not assumed.
-				</Text>
+							lineHeight: 1.2,
+							paddingLeft: "15px",
+							paddingRight: "15px",
+							"@media only screen and (max-width: 764px)": {
+								fontSize: 20,
+								maxWidth: "100%",
+								paddingLeft: "5px",
+								paddingRight: "5px",
+								marginTop: "0px",
+								marginBottom: "10px",
+								textAlign: "left",
+								color: "#000",
+							},
+						}}
+					>
+						We present our scorecard. Our victories, our misses - all in the
+						open.
+						<br />
+						Your trust is earned, not assumed.
+					</Text>
+				)}
 				{!isLoggedIn ? (
 					<Text
 						b
