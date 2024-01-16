@@ -1106,7 +1106,7 @@ const StockCardSME = () => {
                   "@media only screen and (max-width: 768px)": {
                     width: "92.5vw",
                     maxWidth: "620px",
-                    height: "690px",
+                    // height: "690px",
                     borderRadius: "35px",
                   },
                 }}
@@ -1126,7 +1126,7 @@ const StockCardSME = () => {
                     "@media only screen and (max-width: 768px)": {
                       marginLeft: "5px",
                       marginRight: "5px",
-                      height: "auto",
+                    //   height: "auto",
                       marginBottom: "30px",
                     },
                   }}
@@ -1175,7 +1175,7 @@ const StockCardSME = () => {
                           },
                         }}
                       >
-                        {stock.stock_industry.length > 23 ? (
+                        {stock.stock_industry.length > 29 ? (
                           <Marquee
                             delay={2}
                             speed={30}
@@ -1205,7 +1205,7 @@ const StockCardSME = () => {
                         },
                       }}
                     >
-                      {stock.stock_name.length > 15 ? (
+                      {stock.stock_name.length > 18 ? (
                         <Marquee
                           delay={2}
                           speed={30}
@@ -1741,7 +1741,7 @@ const StockCardSME = () => {
                     marginBottom: "25px",
                     "@media only screen and (max-width: 768px)": {
                       width: "90%",
-                      height: "50px",
+                    //   height: "50px",
                       justifyContent: "center",
                     },
                   }}
@@ -1764,7 +1764,7 @@ const StockCardSME = () => {
                             fontSize: 18,
                             height: "20px",
                             "@media only screen and (max-width: 768px)": {
-                                top: "20px",
+                                // top: "20px",
                                 lineHeight: 1,
                                 height: "20px",
                                 fontSize: 18,

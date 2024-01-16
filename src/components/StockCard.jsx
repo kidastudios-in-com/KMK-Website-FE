@@ -1038,7 +1038,7 @@ const StockCard = () => {
                   "@media only screen and (max-width: 768px)": {
                     width: "92.5vw",
                     maxWidth: "620px",
-                    height: "650px",
+                    // height: "650px",
                     borderRadius: "35px",
                   },
                 }}
@@ -1104,7 +1104,7 @@ const StockCard = () => {
                           },
                         }}
                       >
-                        {stock.stock_industry.length > 23 ? (
+                        {stock.stock_industry.length > 29 ? (
                           <Marquee
                             delay={2}
                             speed={30}
@@ -1134,7 +1134,7 @@ const StockCard = () => {
                         },
                       }}
                     >
-                      {stock.stock_name.length > 15 ? (
+                      {stock.stock_name.length > 18 ? (
                         <Marquee
                           delay={2}
                           speed={30}
@@ -1522,7 +1522,7 @@ const StockCard = () => {
                     marginBottom: "25px",
                     "@media only screen and (max-width: 768px)": {
                       width: "90%",
-                      height: "50px",
+                      // height: "50px",
                       justifyContent: "center",
                     },
                   }}
