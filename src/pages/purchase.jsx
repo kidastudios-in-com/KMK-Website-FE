@@ -525,7 +525,7 @@ export default function PreviewPage() {
 										},
 									}}
 								>
-									NAME *
+									FULL NAME *
 								</Text>
 								<Input
 									required
