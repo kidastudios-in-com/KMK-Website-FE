@@ -21,7 +21,7 @@ import pincodeData from "../Data/pincode_db.json";
 import { ArrowBack, TaskAltOutlined } from "@mui/icons-material";
 import { useRouter } from "next/router";
 import Confetti from "react-confetti";
-import { CODE_VALID } from "./api/URLs";
+import { CODE_VALID, SUBSCRIBE_URL } from "./api/URLs";
 import PageVisibility from "../components/PageVisibility";
 
 export default function PreviewPage() {
@@ -205,17 +205,14 @@ export default function PreviewPage() {
 			};
 
 			// Make API call to BILLING_URL
-			const billingResponse = await fetch(
-				"https://test-server.kamayakya.in/user/subscribe/",
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-						Authorization: `token ${refreshToken}`,
-					},
-					body: JSON.stringify(billingData),
-				}
-			);
+			const billingResponse = await fetch(SUBSCRIBE_URL, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `token ${refreshToken}`,
+				},
+				body: JSON.stringify(billingData),
+			});
 			console.log(billingResponse);
 			if (billingResponse.ok) {
 				const responseData = await billingResponse.json();
@@ -235,7 +232,8 @@ export default function PreviewPage() {
 	const [discountApplied, setDiscountApplied] = useState(false);
 
 	const validateDiscountCode = async () => {
-		console.log(discountCode);
+		// console.log(discountCode);
+		setLoading(true);
 		try {
 			const discountCodeValidation = await fetch(CODE_VALID, {
 				method: "POST",
@@ -250,6 +248,7 @@ export default function PreviewPage() {
 			if (discountCodeValidation.ok) {
 				const responseData = await discountCodeValidation.json();
 				// console.log(responseData);
+				setLoading(false);
 				setDiscountAmount(responseData.discount);
 				setTotalAmount(responseData.total_amount);
 				setDiscountApplied(true);
@@ -257,10 +256,13 @@ export default function PreviewPage() {
 			} else if (discountCodeValidation.status === 400) {
 				setDiscountCode("");
 				alert("Code not applicable");
+				setLoading(false);
 			}
 		} catch (error) {
 			console.error("Error:", error);
+			setLoading(false);
 		}
+		setLoading(false);
 	};
 
 	const handleRemoveDiscount = () => {
@@ -496,11 +498,11 @@ export default function PreviewPage() {
 						variant="bordered"
 						css={{
 							shadow: "none",
-							width: "380px",
+							width: "370px",
 							// background: "#f4f4f5",
 							background: "#fff",
 							borderRadius: "10px",
-							paddingTop: "40px",
+							paddingTop: "25px",
 							"@media only screen and (max-width: 764px)": {
 								width: "98vw !important",
 								maxWidth: "380px !important",
@@ -538,7 +540,7 @@ export default function PreviewPage() {
 										marginBottom: "15px",
 										alignSelf: "center",
 										width: "300px",
-										// height: "48px",
+										height: "47px",
 										borderRadius: "10px",
 										border: "1px solid",
 										borderColor: billingName === "" ? "red" : "lightgrey",
@@ -622,7 +624,7 @@ export default function PreviewPage() {
 										marginBottom: "15px",
 										alignSelf: "center",
 										width: "300px",
-										// height: "47px",
+										height: "47px",
 										border: "1px solid",
 										borderColor: emailValid ? "lightgrey" : "red",
 										borderRadius: "10px",
@@ -657,7 +659,7 @@ export default function PreviewPage() {
 										marginBottom: "15px",
 										alignSelf: "center",
 										width: "300px",
-										height: "48px",
+										height: "47px",
 										border: "1px solid",
 										borderColor:
 											userCity && userState !== "" ? "lightgrey" : "red",
@@ -702,7 +704,7 @@ export default function PreviewPage() {
 										borderRadius: "10px",
 									}}
 								/>
-								<Text
+								{/*<Text
 									b
 									css={{
 										textAlign: "start",
@@ -717,8 +719,8 @@ export default function PreviewPage() {
 									}}
 								>
 									REFERRAL CODE
-								</Text>
-								<Input
+								</Text> */}
+								{/* <Input
 									clearable
 									animated={false}
 									size="lg"
@@ -735,7 +737,7 @@ export default function PreviewPage() {
 										borderRadius: "10px",
 										// transition: "none !important",
 									}}
-								/>
+								/> */}
 							</>
 						)}
 						{/* {step === 2 && (
@@ -889,9 +891,9 @@ export default function PreviewPage() {
 										backgroundColor: "#ff9f24",
 									}}
 									onClick={validateDiscountCode}
-									disabled={discountCode === ""}
+									disabled={discountCode === "" || loading}
 								>
-									Apply Code
+									{loading ? <Loading color={"white"} /> : "Apply Code"}
 								</Button>
 							</Box>
 						)}
@@ -962,16 +964,22 @@ export default function PreviewPage() {
 							</Box>
 							{discountApplied === true && (
 								<Box sx={{ display: "flex", justifyContent: "space-between" }}>
-									<Box sx={{ display: "flex", alignItems: "center", color: "#37b24d" }}>
+									<Box
+										sx={{
+											display: "flex",
+											alignItems: "center",
+											color: "#37b24d",
+										}}
+									>
 										Discount
 										{/* <img src="discount-img.png" alt="discount-png" width={20} height={20} /> */}
 									</Box>
-									<Box sx={{ color: "#37b24d" }} > - ₹{discountAmount}/-</Box>
+									<Box sx={{ color: "#37b24d" }}> - ₹{discountAmount}/- </Box>
 								</Box>
 							)}
 							<Box sx={{ display: "flex", justifyContent: "space-between" }}>
 								<Box>Taxable Amount</Box>
-								<Box>₹{12711.86 - discountAmount}/- </Box>
+								<Box>₹{(12711.86 - discountAmount).toFixed(2)}/- </Box>
 							</Box>
 							<Box sx={{ display: "flex", justifyContent: "space-between" }}>
 								<Box>Tax</Box>
@@ -1035,8 +1043,9 @@ export default function PreviewPage() {
 								₹{totalAmount}/-
 							</span>
 						</Box>
-						<Box sx={{ fontSize: 20, marginTop: "-20px", }}>
-							Discounted Price: ₹{((12711.86 - discountAmount) * 1.18).toFixed(2)}/-
+						<Box sx={{ fontSize: 20, marginTop: "-20px" }}>
+							Discounted Price: ₹
+							{((12711.86 - discountAmount) * 1.18).toFixed(2)}/-
 						</Box>
 
 						<Box sx={{ fontSize: 24, marginTop: "-10px", color: "#37b24d" }}>

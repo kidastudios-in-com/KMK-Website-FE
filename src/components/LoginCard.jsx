@@ -124,9 +124,10 @@ const LoginCard = () => {
         //   router.push("/stock-picks");
         // } else {
         setShowOtpModal(false);
-        if (router.pathname === "/") {
+        if(router.pathname === "/") {
           window.location.reload();
         }
+
       } else {
         setError("Failed to verify OTP. Please try again.");
         setShowOtpModal(true);

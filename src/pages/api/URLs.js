@@ -34,9 +34,10 @@ export const GET_SPECIFIC_STOCK_URL = `${USER_URL}/specificStock`;
 // export const GET_ALL_URL = `${ADMIN_URL}/getAllStocks/`;
 
 //Billing Info
-export const BILLING_URL = `${USER_URL}/payment_details/`;
-export const BILLING_DETAILS_URL = `${USER_URL}/payment_success_details/`;
+// export const BILLING_URL = `${USER_URL}/payment_details/`;
+// export const BILLING_DETAILS_URL = `${USER_URL}/payment_success_details/`;
 export const BILLING_INFO_URL = `${USER_URL}/ccavenue_transaction/`;
+export const SUBSCRIBE_URL = `${USER_URL}/subscribe/`;
 
 //Blogs URL
 export const GET_BLOGS = `${USER_URL}/all_blogs/`;
