@@ -257,6 +257,14 @@ export default function PreviewPage() {
 				setDiscountCode("");
 				alert("Code not applicable");
 				setLoading(false);
+			} else if (discountCodeValidation.status === 404) {
+				setDiscountCode("");
+				alert("Code not found");
+				setLoading(false);
+			} else if (!discountCodeValidation.ok) {
+				setDiscountCode("");
+				alert("Error applying the code");
+				setLoading(false);
 			}
 		} catch (error) {
 			console.error("Error:", error);
