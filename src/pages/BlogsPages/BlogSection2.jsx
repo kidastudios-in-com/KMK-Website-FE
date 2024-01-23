@@ -4,7 +4,7 @@ import { Button, Loading, Text } from "@nextui-org/react";
 import { BiChevronRight } from "react-icons/bi";
 import { GET_BLOGS } from "../api/URLs";
 import { useRouter } from "next/router";
-import Markdown from "markdown-to-jsx";
+// import Markdown from "markdown-to-jsx";
 
 const BlogSection2 = () => {
 	const [blogs, setBlogs] = useState([]);
@@ -28,7 +28,7 @@ const BlogSection2 = () => {
 			});
 			const data = await response.json();
 			setBlogs(data);
-			console.log(data);
+			// console.log(data);
 			setIsLoadingBlogs(false);
 		} catch (error) {
 			console.log("Error fetching blogs:", error);

@@ -547,7 +547,6 @@ export default function PreviewPage() {
 										// paddingRight: '10px'
 									}}
 								/>
-
 								<Text
 									b
 									css={{
