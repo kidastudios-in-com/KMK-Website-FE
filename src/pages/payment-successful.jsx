@@ -21,9 +21,10 @@ const paymentsuccessful = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [billingData, setBillingData] = useState({});
 	const router = useRouter();
+	const refreshToken = localStorage.getItem("refresh");
 
 	useEffect(() => {
-		const refreshToken = localStorage.getItem("refresh");
+		// const refreshToken = localStorage.getItem("refresh");
 		const GetPaymentInfo = async () => {
 			try {
 				const billingInfo = await fetch(BILLING_INFO_URL, {
@@ -45,7 +46,7 @@ const paymentsuccessful = () => {
 		};
 
 		GetPaymentInfo();
-	}, []);
+	}, [refreshToken]);
 
 	useEffect(() => {
 		const interval = setInterval(() => {
