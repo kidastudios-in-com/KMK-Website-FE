@@ -25,8 +25,11 @@ const paymentsuccessful = () => {
 
 	useEffect(() => {
 		// const refreshToken = localStorage.getItem("refresh");
+
 		const GetPaymentInfo = async () => {
+			console.log("Hit1", refreshToken);
 			try {
+				console.log("Hit2", refreshToken);
 				const billingInfo = await fetch(BILLING_INFO_URL, {
 					method: "GET",
 					headers: {
