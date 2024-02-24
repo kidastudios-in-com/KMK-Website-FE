@@ -1145,8 +1145,10 @@ const StockCardSME = () => {
                     }}
                   >
                       <div className="cr cr-top cr-right cr-sticky cr-subscription">
-                          {stock.action === "SELL" ? "SELL" : ""}
-                          {stock.action === "BUY" ? "BUY" : "HOLD"}
+                          {/*{stock.action === "SELL" ? "SELL" : ""}*/}
+                          {/*{stock.action === "BUY" ? "BUY" : ""}*/}
+                          {/*{stock.action === "HOLD" ? "HOLD" : ""}*/}
+                          {stock.action === "SELL" ? "SELL" : stock.action === "BUY" ? "BUY" : stock.action === "HOLD" ? "HOLD" : ""}
                       </div>
                     {/*<div className="sme sme-top sme-right sme-sticky sme-subscription">*/}
                     {/*  SME*/}
