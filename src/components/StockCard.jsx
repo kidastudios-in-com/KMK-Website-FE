@@ -1,47 +1,47 @@
 import React, { useState, useEffect, useContext } from "react";
 import {
-  Button,
-  Card,
-  Divider,
-  Text,
-  Loading,
-  Modal,
-  Dropdown,
+	Button,
+	Card,
+	Divider,
+	Text,
+	Loading,
+	Modal,
+	Dropdown,
 } from "@nextui-org/react";
 import { ArrowCircleUp, DocumentText, Lock, Lock1 } from "iconsax-react";
 import axios from "axios";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import {
-  GET_ALL_URL,
-  GET_SPECIFIC_STOCK_URL,
-  TRACK_RECORD_FOR_ALL,
-  TRACK_RECORD_FOR_USER,
+	GET_ALL_URL,
+	GET_SPECIFIC_STOCK_URL,
+	TRACK_RECORD_FOR_ALL,
+	TRACK_RECORD_FOR_USER,
 } from "../pages/api/URLs";
 import {
-  Box,
-  Grid,
-  Alert,
-  IconButton,
-  TextField,
-  InputBase,
-  SwipeableDrawer,
-  List,
-  ListItemButton,
-  ListItemText,
-  ListItem,
-  FormGroup,
-  FormControl,
-  FormLabel,
-  FormControlLabel,
-  Checkbox,
-  FormHelperText,
-  RadioGroup,
-  Radio,
+	Box,
+	Grid,
+	Alert,
+	IconButton,
+	TextField,
+	InputBase,
+	SwipeableDrawer,
+	List,
+	ListItemButton,
+	ListItemText,
+	ListItem,
+	FormGroup,
+	FormControl,
+	FormLabel,
+	FormControlLabel,
+	Checkbox,
+	FormHelperText,
+	RadioGroup,
+	Radio,
 } from "@mui/material";
 import SpeedIcon from "@mui/icons-material/Speed";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import { FaIndustry, FaRegArrowAltCircleUp } from "react-icons/fa";
-import { MdOutlineLock, MdFilterList } from "react-icons/md";
+import { MdOutlineLock, MdFilterList, MdOutlineFiberNew } from "react-icons/md";
 import { BiChevronRight } from "react-icons/bi";
 import { GrDocumentPdf } from "react-icons/gr";
 import { useRouter } from "next/router";
@@ -56,72 +56,73 @@ import Login from "./Login";
 import { SearchNormal, Filter } from "iconsax-react";
 import Marquee from "react-fast-marquee";
 import LoginForSubsribe from "./LoginForSubsribe";
+import { BsFire } from "react-icons/bs";
 
 const StockCard = () => {
-  const router = useRouter();
-  const [stocks, setStocks] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [isAlertVisible, setIsAlertVisible] = useState(false);
-  const [flipStates, setFlipStates] = useState([]);
-  const [showModal, setShowModal] = useState(false);
-  const [filteredStocks, setFilteredStocks] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedReportUrl, setSelectedReportUrl] = useState("");
-  const pdfjsVersion = packageJson.dependencies["pdfjs-dist"];
-  const { isLoggedIn } = useContext(AuthContext);
-  const { isSubscribed } = useContext(AuthContext);
-  // console.log(pdfjsVersion);
-  const [selectedStock, setSelectedStock] = useState(null);
-  const [showReportsModal, setShowReportsModal] = useState(false);
+	const router = useRouter();
+	const [stocks, setStocks] = useState([]);
+	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState("");
+	const [isAlertVisible, setIsAlertVisible] = useState(false);
+	const [flipStates, setFlipStates] = useState([]);
+	const [showModal, setShowModal] = useState(false);
+	const [filteredStocks, setFilteredStocks] = useState([]);
+	const [searchQuery, setSearchQuery] = useState("");
+	const [selectedReportUrl, setSelectedReportUrl] = useState("");
+	const pdfjsVersion = packageJson.dependencies["pdfjs-dist"];
+	const { isLoggedIn } = useContext(AuthContext);
+	const { isSubscribed } = useContext(AuthContext);
+	// console.log(pdfjsVersion);
+	const [selectedStock, setSelectedStock] = useState(null);
+	const [showReportsModal, setShowReportsModal] = useState(false);
 
-  const staticNumbers = [70, 68, 61];
-  const [showWhyModal, setShowWhyModal] = useState(false);
+	const staticNumbers = [70, 68, 61];
+	const [showWhyModal, setShowWhyModal] = useState(false);
 
-  const [record, setRecord] = useState([]);
+	const [record, setRecord] = useState([]);
 
-  const [showLoginModalForSubscribe, setShowLoginModalForSubscribe] =
-    useState(false);
+	const [showLoginModalForSubscribe, setShowLoginModalForSubscribe] =
+		useState(false);
 
-  const handleShowWhyModal = () => {
-    setShowWhyModal(true);
-  };
+	const handleShowWhyModal = () => {
+		setShowWhyModal(true);
+	};
 
-  const handleWhyModalClose = () => {
-    setShowWhyModal(false);
-  };
+	const handleWhyModalClose = () => {
+		setShowWhyModal(false);
+	};
 
-  const handleOpenModal = (documentUrl) => {
-    setSelectedReportUrl(documentUrl);
-    // console.log(selectedReportUrl);
-    setShowModal(true);
-  };
+	const handleOpenModal = (documentUrl) => {
+		setSelectedReportUrl(documentUrl);
+		// console.log(selectedReportUrl);
+		setShowModal(true);
+	};
 
-  const handleOpenDisclosure = (stock) => {
-    if (stock?.stock_disclosures?.length > 0) {
-      const disclosureUrl = stock.stock_disclosures[0].document;
-      window.open(`${disclosureUrl}#toolbar=0`, "_blank", "fullscreen=yes");
-    } else {
-      // If no disclosures available, open the dummy URL
-      window.open(
-        "https://6c20e9b8-4436-474a-a31f-665d7b41553d.usrfiles.com/ugd/6c20e9_b05424ae64794ddc84905b8a57e161a4.pdf#toolbar=0",
-        "_blank",
-        "fullscreen=yes"
-      );
-    }
-  };
+	const handleOpenDisclosure = (stock) => {
+		if (stock?.stock_disclosures?.length > 0) {
+			const disclosureUrl = stock.stock_disclosures[0].document;
+			window.open(`${disclosureUrl}#toolbar=0`, "_blank", "fullscreen=yes");
+		} else {
+			// If no disclosures available, open the dummy URL
+			window.open(
+				"https://6c20e9b8-4436-474a-a31f-665d7b41553d.usrfiles.com/ugd/6c20e9_b05424ae64794ddc84905b8a57e161a4.pdf#toolbar=0",
+				"_blank",
+				"fullscreen=yes"
+			);
+		}
+	};
 
-  const handleOpenReports = (stock) => {
-    setSelectedStock(stock);
-    // console.log(selectedStock);
-    setShowReportsModal(true);
-  };
-  const handleCloseReports = () => {
-    setSelectedStock(null);
-    setShowReportsModal(false);
-  };
+	const handleOpenReports = (stock) => {
+		setSelectedStock(stock);
+		// console.log(selectedStock);
+		setShowReportsModal(true);
+	};
+	const handleCloseReports = () => {
+		setSelectedStock(null);
+		setShowReportsModal(false);
+	};
 
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   // const handleTrackRecord = async () => {
   //   try {
@@ -161,217 +162,217 @@ const StockCard = () => {
   //   handleTrackRecord();
   // }, [isLoggedIn]);
 
-  const toggleDrawer = () => {
-    setIsDrawerOpen(!isDrawerOpen);
-  };
+	const toggleDrawer = () => {
+		setIsDrawerOpen(!isDrawerOpen);
+	};
 
-  const [showCert, setShowCert] = useState(false);
+	const [showCert, setShowCert] = useState(false);
 
-  const handleCert = () => {
-    // setShowCert(true);
-    var win = window.open(
-      "Kamayakya-SEBI-License.pdf#toolbar=0&fitH=1",
-      "_blank",
-      "fullscreen=yes"
-    );
-    // win.document.write('<PdfViewer pdf={PDF}/>');
-  };
+	const handleCert = () => {
+		// setShowCert(true);
+		var win = window.open(
+			"Kamayakya-SEBI-License.pdf#toolbar=0&fitH=1",
+			"_blank",
+			"fullscreen=yes"
+		);
+		// win.document.write('<PdfViewer pdf={PDF}/>');
+	};
 
-  const handleCertClose = () => {
-    setShowCert(false);
-  };
+	const handleCertClose = () => {
+		setShowCert(false);
+	};
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-    setSelectedPDF("");
-  };
+	const handleCloseModal = () => {
+		setShowModal(false);
+		setSelectedPDF("");
+	};
 
-  const handleCloseLoginModalForSubscribeNow = () => {
-    setShowLoginModalForSubscribe(false);
-  };
+	const handleCloseLoginModalForSubscribeNow = () => {
+		setShowLoginModalForSubscribe(false);
+	};
 
-  const handleAskPassword = (e) => {
-    e.verifyPassword("$420%69#kamayakya#69%420$");
-  };
+	const handleAskPassword = (e) => {
+		e.verifyPassword("$420%69#kamayakya#69%420$");
+	};
 
-  const handleClick = (index) => {
-    const newFlipStates = flipStates.map((state, i) =>
-      i == index ? !state : false
-    );
-    setFlipStates(newFlipStates);
-  };
+	const handleClick = (index) => {
+		const newFlipStates = flipStates.map((state, i) =>
+			i == index ? !state : false
+		);
+		setFlipStates(newFlipStates);
+	};
 
-  const [industries, setIndustries] = useState([]);
-  const [selectedIndustries, setSelectedIndustries] = useState([]);
-  const handleIndustrySelection = (industry) => {
-    if (selectedIndustries.includes(industry)) {
-      setSelectedIndustries(
-        selectedIndustries.filter((item) => item !== industry)
-      );
-    } else {
-      setSelectedIndustries([...selectedIndustries, industry]);
-    }
-  };
-  const selectedValue = React.useMemo(
-    () => Array.from(selectedIndustries).join(", ").replaceAll("_", " "),
-    [selectedIndustries]
-  );
+	const [industries, setIndustries] = useState([]);
+	const [selectedIndustries, setSelectedIndustries] = useState([]);
+	const handleIndustrySelection = (industry) => {
+		if (selectedIndustries.includes(industry)) {
+			setSelectedIndustries(
+				selectedIndustries.filter((item) => item !== industry)
+			);
+		} else {
+			setSelectedIndustries([...selectedIndustries, industry]);
+		}
+	};
+	const selectedValue = React.useMemo(
+		() => Array.from(selectedIndustries).join(", ").replaceAll("_", " "),
+		[selectedIndustries]
+	);
 
-  useEffect(() => {
-    const uniqueIndustries = [
-      ...new Set(stocks.map((stock) => stock.stock_industry)),
-    ];
-    setIndustries(uniqueIndustries);
-  }, [filteredStocks]);
+	useEffect(() => {
+		const uniqueIndustries = [
+			...new Set(stocks.map((stock) => stock.stock_industry)),
+		];
+		setIndustries(uniqueIndustries);
+	}, [filteredStocks]);
 
-  // const [timeSort, setTimeSort] = useState(new Set([""]));
-  const [timeSort, setTimeSort] = useState("");
-  // const [upsideSort, setUpsideSort] = useState(new Set([""]));
-  const [upsideSort, setUpsideSort] = useState("");
-  const [selectedPDF, setSelectedPDF] = useState(new Set([selectedReportUrl]));
+	// const [timeSort, setTimeSort] = useState(new Set([""]));
+	const [timeSort, setTimeSort] = useState("");
+	// const [upsideSort, setUpsideSort] = useState(new Set([""]));
+	const [upsideSort, setUpsideSort] = useState("");
+	const [selectedPDF, setSelectedPDF] = useState(new Set([selectedReportUrl]));
 
-  const PdfValue = React.useMemo(
-    () => Array.from(selectedPDF)[0] || "",
-    [selectedPDF]
-  );
+	const PdfValue = React.useMemo(
+		() => Array.from(selectedPDF)[0] || "",
+		[selectedPDF]
+	);
 
-  const timeSortValue = (event) => {
-    setTimeSort(event.target.value);
-    setUpsideSort("");
-  };
-  // React.useMemo(
-  // 	() => Array.from(timeSort)[0]?.replaceAll("_", " ") || "",
-  // 	[timeSort]
-  // );
+	const timeSortValue = (event) => {
+		setTimeSort(event.target.value);
+		setUpsideSort("");
+	};
+	// React.useMemo(
+	// 	() => Array.from(timeSort)[0]?.replaceAll("_", " ") || "",
+	// 	[timeSort]
+	// );
 
-  const upsideSortValue = (event) => {
-    setUpsideSort(event.target.value);
-    setTimeSort("");
-  };
+	const upsideSortValue = (event) => {
+		setUpsideSort(event.target.value);
+		setTimeSort("");
+	};
 
-  // React.useMemo(
-  // 	() => Array.from(upsideSort)[0]?.replaceAll("_", " ") || "",
-  // 	[upsideSort]
-  // );
+	// React.useMemo(
+	// 	() => Array.from(upsideSort)[0]?.replaceAll("_", " ") || "",
+	// 	[upsideSort]
+	// );
 
-  useEffect(() => {
-    // console.log(selectedIndustries);
-    const filteredAndSortedStocks = stocks
-      .filter((stock) => {
-        let passTimeFilter = true;
-        let passUpsideFilter = true;
-        let passSearchFilter = true;
+	useEffect(() => {
+		// console.log(selectedIndustries);
+		const filteredAndSortedStocks = stocks
+			.filter((stock) => {
+				let passTimeFilter = true;
+				let passUpsideFilter = true;
+				let passSearchFilter = true;
 
-        if (timeSort === "ascending") {
-          passTimeFilter = stock.time_left > 0;
-        } else if (timeSort === "descending") {
-          passTimeFilter = stock.time_left >= 0;
-        }
+				if (timeSort === "ascending") {
+					passTimeFilter = stock.time_left > 0;
+				} else if (timeSort === "descending") {
+					passTimeFilter = stock.time_left >= 0;
+				}
 
-        if (upsideSort === "ascending") {
-          passUpsideFilter = stock.upside_left > 0;
-        } else if (upsideSort === "descending") {
-          passUpsideFilter = stock.upside_left >= 0;
-        }
+				if (upsideSort === "ascending") {
+					passUpsideFilter = stock.upside_left > 0;
+				} else if (upsideSort === "descending") {
+					passUpsideFilter = stock.upside_left >= 0;
+				}
 
-        if (searchQuery.trim() !== "") {
-          // passSearchFilter =
-          //   stock.stock_name
-          //     .toLowerCase()
-          //     .includes(searchQuery.toLowerCase()) ||
-          //   stock.stock_symbol.includes(searchQuery);
+				if (searchQuery.trim() !== "") {
+					// passSearchFilter =
+					//   stock.stock_name
+					//     .toLowerCase()
+					//     .includes(searchQuery.toLowerCase()) ||
+					//   stock.stock_symbol.includes(searchQuery);
 
-          const lowercaseSearchQuery = searchQuery.toLowerCase();
-          const lowercaseStockName = stock.stock_name.toLowerCase();
-          const lowercaseStockSymbol = stock.stock_symbol
-            ? stock.stock_symbol.toLowerCase()
-            : null; // Ensure it's either a string in lowercase or null
+					const lowercaseSearchQuery = searchQuery.toLowerCase();
+					const lowercaseStockName = stock.stock_name.toLowerCase();
+					const lowercaseStockSymbol = stock.stock_symbol
+						? stock.stock_symbol.toLowerCase()
+						: null; // Ensure it's either a string in lowercase or null
 
-          passSearchFilter =
-            lowercaseStockName.includes(lowercaseSearchQuery) ||
-            (lowercaseStockSymbol !== null &&
-              lowercaseStockSymbol.includes(lowercaseSearchQuery));
+					passSearchFilter =
+						lowercaseStockName.includes(lowercaseSearchQuery) ||
+						(lowercaseStockSymbol !== null &&
+							lowercaseStockSymbol.includes(lowercaseSearchQuery));
 
-          // console.log(searchQuery)
-        }
+					// console.log(searchQuery)
+				}
 
-        return passTimeFilter && passUpsideFilter && passSearchFilter;
-      })
-      .filter((stock) => {
-        if (selectedValue.length === 0) {
-          return true; // Include all stocks if no industries are selected
-        } else {
-          return selectedValue.includes(stock.stock_industry);
-        }
-      })
-      .sort((stockA, stockB) => {
-        if (timeSort === "ascending") {
-          return stockA.time_left - stockB.time_left;
-        } else if (timeSort === "descending") {
-          return stockB.time_left - stockA.time_left;
-        } else if (upsideSort === "ascending") {
-          return stockA.upside_left - stockB.upside_left;
-        } else if (upsideSort === "descending") {
-          return stockB.upside_left - stockA.upside_left;
-        }
+				return passTimeFilter && passUpsideFilter && passSearchFilter;
+			})
+			.filter((stock) => {
+				if (selectedValue.length === 0) {
+					return true; // Include all stocks if no industries are selected
+				} else {
+					return selectedValue.includes(stock.stock_industry);
+				}
+			})
+			.sort((stockA, stockB) => {
+				if (timeSort === "ascending") {
+					return stockA.time_left - stockB.time_left;
+				} else if (timeSort === "descending") {
+					return stockB.time_left - stockA.time_left;
+				} else if (upsideSort === "ascending") {
+					return stockA.upside_left - stockB.upside_left;
+				} else if (upsideSort === "descending") {
+					return stockB.upside_left - stockA.upside_left;
+				}
 
-        return 0;
-      });
-    // console.log(filteredAndSortedStocks);
-    setFilteredStocks(filteredAndSortedStocks);
-  }, [stocks, timeSort, upsideSort, searchQuery, selectedIndustries]);
+				return 0;
+			});
+		// console.log(filteredAndSortedStocks);
+		setFilteredStocks(filteredAndSortedStocks);
+	}, [stocks, timeSort, upsideSort, searchQuery, selectedIndustries]);
 
-  const [showLoginModal, setShowLoginModal] = useState(false);
+	const [showLoginModal, setShowLoginModal] = useState(false);
 
-  useEffect(() => {
-    if (isLoggedIn === true) {
-      setShowLoginModal(false);
-    }
-  }, [isLoggedIn]);
-  const handleLogin = () => {
-    setShowLoginModal(true);
-  };
+	useEffect(() => {
+		if (isLoggedIn === true) {
+			setShowLoginModal(false);
+		}
+	}, [isLoggedIn]);
+	const handleLogin = () => {
+		setShowLoginModal(true);
+	};
 
-  const handleCloseLoginModal = () => {
-    setShowLoginModal(false);
-  };
+	const handleCloseLoginModal = () => {
+		setShowLoginModal(false);
+	};
 
-  const handleLoginOrSubForSubscribeNow = () => {
-    if (isLoggedIn === true && isSubscribed === false) {
-      const location = router.asPath;
-      localStorage.setItem("location", location);
-      router.push("/purchase");
-    }
-    if (isLoggedIn === true && isSubscribed === true) {
-      router.push("/stock-picks");
-    }
-    if (isLoggedIn === false) {
-      setShowLoginModalForSubscribe(true);
-    }
-  };
+	const handleLoginOrSubForSubscribeNow = () => {
+		if (isLoggedIn === true && isSubscribed === false) {
+			const location = router.asPath;
+			localStorage.setItem("location", location);
+			router.push("/purchase");
+		}
+		if (isLoggedIn === true && isSubscribed === true) {
+			router.push("/stock-picks");
+		}
+		if (isLoggedIn === false) {
+			setShowLoginModalForSubscribe(true);
+		}
+	};
 
-  const handleFirstCard = () => {
-    if (isLoggedIn) {
-      const location = router.asPath;
-      localStorage.setItem("location", location);
-      router.push("/purchase");
-    } else {
-      handleLogin();
-    }
-  };
+	const handleFirstCard = () => {
+		if (isLoggedIn) {
+			const location = router.asPath;
+			localStorage.setItem("location", location);
+			router.push("/purchase");
+		} else {
+			handleLogin();
+		}
+	};
 
-  const showAlert = () => {
-    setIsAlertVisible(true);
-    setTimeout(() => {
-      setIsAlertVisible(false);
-    }, 10000);
-  };
+	const showAlert = () => {
+		setIsAlertVisible(true);
+		setTimeout(() => {
+			setIsAlertVisible(false);
+		}, 10000);
+	};
 
-  useEffect(() => {
-    if (error) {
-      showAlert();
-    }
-  }, [error]);
+	useEffect(() => {
+		if (error) {
+			showAlert();
+		}
+	}, [error]);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -400,338 +401,350 @@ const StockCard = () => {
     }
   }, [isLoggedIn]);
 
-  const handleClearSelection = () => {
-    setSelectedIndustries([]);
-    setTimeSort("");
-    setUpsideSort("");
-  };
+	const handleClearSelection = () => {
+		setSelectedIndustries([]);
+		setTimeSort("");
+		setUpsideSort("");
+	};
 
-  return (
+	const isNewStock = (createdDateString) => {
+		const createdDate = new Date(createdDateString);
+		const twoMonthsAgo = new Date();
+		twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 2);
 
-    <div
-      style={{
-        // maxWidth: "80rem",
-        width: "100vw",
-        display: "flex",
-        flexDirection: "column",
-        paddingBottom: 100,
-        backgroundColor: "#fff",
-        alignItems: "center",
-        // backgroundImage: "url(coral_texture.svg)",
-        objectPosition: "center",
-        backgroundPositionY: "center",
-        backgroundPositionX: "center",
-        backgroundSize: "cover",
-        backgroundRepeat: "none",
-      }}
-    >
-      <Box
-        sx={{
-          width: "95%",
-          display: "flex",
-          flexDirection: "column",
-          flexWrap: "wrap",
-          alignItems: "center",
-          paddingTop: "5vh",
-          paddingBottom: "20px",
-          "@media only screen and (max-width: 764px)": {
-            // maxHeight: "100vh",
-            marginTop: "0px",
-            paddingTop: "0px",
-            justifyContent: "flex-start",
-            alignItems: "flex-start",
-            paddingLeft: "5px",
-            paddingRight: "5px",
-            paddingBottom: "10px",
-          },
-        }}
-      >
-        <Box
-          sx={{
-            cursor: "pointer",
-            // paddingLeft: "40px",
-            // paddingRight: "40px",
-            // paddingTop: "15px",
-            // paddingBottom: "15px",
-            padding: "0",
-            // marginTop: "25px",
-            display: "flex",
-            flexDirection: "column",
-            // backgroundImage: "linear-gradient(to top , #0d2c7b, #6067b5)",
-            // backgroundImage: "linear-gradient(to top , #fff, #fff)",
-            alignItems: "center",
-            // backgroundImage: "linear-gradient(to top , #106052, #0f734d)",
-            borderRadius: "1200.5px",
-            "@media only screen and (max-width: 764px)": {
-              paddingLeft: "5px",
-              paddingRight: "5px",
-              marginTop: "10px",
-              marginBottom: "10px",
-              borderRadius: "10px",
-              alignItems: "flex-start",
-              backgroundImage: "linear-gradient(to top , #fff, #fff)",
-            },
-          }}
-        >
-          <Text
-            b
-            size={18}
-            color="#FFF"
-            css={{
-              fontWeight: "bolder",
-              color: "#021C61",
-              "@media only screen and (max-width: 764px)": {
-                fontSize: 18,
-                width: "100%",
-                textAlign: "left",
-                color: "#021C61",
-              },
-            }}
-            onClick={handleCert}
-          >
-            SEBI Registered: INH000009843
-          </Text>
-        </Box>
-        <Modal
-          // width="790px"
-          blur
-          open={showCert}
-          onClose={handleCertClose}
-          css={{
-            width: "65vw",
-            maxWidth: "65vw",
-            alignSelf: "flex-end",
-            background: "transparent",
-            boxShadow: "none",
-            borderRadius: "15px",
-            "@media only screen and (max-width: 764px)": {
-              width: "95vw !important",
-              maxWidth: "95vw !important",
-            },
-          }}
-        >
-          <iframe
-            src="Kamayakya-SEBI-License.pdf#view=FitH&toolbar=0"
-            alt="SEBI Certificate"
-            style={{
-              width: "100%",
-              height: "75vh",
-              borderColor: "transparent",
-              borderRadius: "15px",
-              borderWidth: "0px",
-              zoom: "1",
-            }}
-            className="iframePdfMobile"
-          />
-          {/* <Modal.Footer justify="center"> */}
-          <Button
-            auto
-            onClick={handleCertClose}
-            css={{
-              // alignSelf: "end",
-              width: "100%",
-              backgroundColor: "#ffa12e",
-              color: "#fff",
-              fontSize: 19,
-              marginTop: "20px",
-              borderRadius: "10px",
-              height: "50px",
-              "@media only screen and (max-width: 768px)": {
-                width: "100%",
-                fontSize: 15,
-                height: "50px",
-                marginTop: "0px",
-                borderRadius: "0px 0px 10px",
-                "& span": {
-                  // display: "none",
-                },
-              },
-            }}
-          >
-            Close
-          </Button>
-          {/* </Modal.Footer> */}
-        </Modal>
-        <Text
-          b
-          size={70}
-          css={{
-            marginTop: "0px",
-            marginBottom: "0px",
-            // width: "90%",
-            maxWidth: "80rem" /* 1280px */,
-            textAlign: "center",
-            lineHeight: 1.2,
-            paddingLeft: "15px",
-            paddingRight: "15px",
-            "@media only screen and (max-width: 764px)": {
-              fontSize: 45,
-              lineHeight: 1.1,
-              paddingLeft: "5px",
-              paddingRight: "5px",
-              marginTop: "0px",
-              marginBottom: "10px",
-              maxWidth: "100%",
-              textAlign: "left",
-            },
-          }}
-        >
-          Stocks To Buy
-        </Text>
-      </Box>
-      {isLoggedIn ? (
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            flexDirection: "row",
-            gap: "5px",
-            marginBottom: "40px",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-          className="stockPicks-searchBar-box"
-        >
-          {/* Search Bar */}
-          <Box
-            sx={{
-              border: "1px solid #125a54",
-              borderRadius: "10000px",
-              padding: "0px 15px",
-              paddingTop: "2px",
-              display: "flex",
-              alignItems: "center",
-              // "@media only screen and (max-width: 768px)": {
-              //   padding: "0px 15px",
-              //   width: "500px",
-              // },
-            }}
-            className="stockPicks-searchBar"
-          >
-            <IconButton>
-              <SearchNormal size={25} color="#125a54" />
-            </IconButton>
-            <InputBase
-              placeholder="Ion Exchange (OR) IONEXCHANG"
-              variant="standard"
-              // size="large"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                fontSize: 18,
-                lineHeight: 1,
-                textAlign: "center",
-                width: "80vw",
-                maxWidth: "60rem",
-                padding: "10px 10px",
-                backgroundColor: "#fff",
-                borderRadius: "10000px",
-                "@media only screen and (max-width: 768px)": {
-                  width: "100vw",
-                  fontSize: 15,
-                  backgroundColor: "transparent",
-                },
-              }}
-            />
-          </Box>
+		const today = new Date();
+		// console.log(
+		// 	createdDate,
+		// 	createdDate >= twoMonthsAgo && createdDate <= today
+		// );
+		return createdDate >= twoMonthsAgo && createdDate <= today;
+	};
 
-          <IconButton
-            onClick={toggleDrawer}
-            css={{
-              width: "30px !important",
-              maxWidth: "30px !important",
-              backgroundColor: "red",
-              "@media only screen and (max-width: 768px)": {
-                width: "30px",
-                maxWidth: "30px",
-              },
-            }}
-          >
-            <Filter size={25} color="#125a54" />
-          </IconButton>
-          {/* Side Drawer Filtering & Sorting */}
-          <SwipeableDrawer
-            anchor="right"
-            open={isDrawerOpen}
-            onOpen={() => setIsDrawerOpen(true)}
-            onClose={toggleDrawer}
-            sx={{
-              width: {
-                xs: "100vw",
-                sm: "500px",
-              },
-              maxWidth: {
-                xs: "100%",
-                sm: "500px",
-              },
-              "& .MuiDrawer-paper": {
-                borderRadius: { xs: "0px", sm: "25px 0px 0px 25px" },
-                padding: "15px",
-                width: {
-                  xs: "100vw",
-                  sm: "500px",
-                },
-                maxWidth: {
-                  xs: "100%",
-                  sm: "500px",
-                },
-              },
-            }}
-          >
-            <List>
-              <ListItemButton
-                onClick={() => {
-                  toggleDrawer();
-                }}
-                sx={{
-                  justifyContent: "end",
-                  "&:hover": {
-                    backgroundColor: "#fff",
-                  },
-                }}
-              >
-                <CloseIcon />
-              </ListItemButton>
-              {/*<Text b size={21} css={{ paddingLeft: "30px" }}>*/}
-              {/*  Filter by industries :*/}
-              {/*</Text>*/}
-              <ListItem>
-                <FormControl
-                  sx={{ mt: "5px", ml: "15px" }}
-                  component="fieldset"
-                  variant="standard"
-                >
-                  <Text
-                    b
-                    size={19}
-                    css={{ paddingLeft: "30px", marginBottom: "15px" }}
-                  >
-                    Filter by industries:
-                  </Text>
-                  <FormGroup>
-                    {/* <Grid container spacing={2}> */}
-                    {industries.map((industry, index) => (
-                      // <Grid item xs={6} key={industry}>
-                      <FormControlLabel
-                        key={index}
-                        control={
-                          <Checkbox
-                            checked={selectedIndustries.includes(industry)}
-                            onChange={() => handleIndustrySelection(industry)}
-                          />
-                        }
-                        label={industry}
-                      />
-                      // </Grid>
-                    ))}
-                    {/* </Grid> */}
-                  </FormGroup>
-                  {/*<FormHelperText>Multiple Selection</FormHelperText>*/}
-                </FormControl>
-              </ListItem>
-              {/* <ListItem sx={{ justifyContent: "center" }}>
+	return (
+		<div
+			style={{
+				// maxWidth: "80rem",
+				width: "100vw",
+				display: "flex",
+				flexDirection: "column",
+				paddingBottom: 100,
+				backgroundColor: "#fff",
+				alignItems: "center",
+				// backgroundImage: "url(coral_texture.svg)",
+				objectPosition: "center",
+				backgroundPositionY: "center",
+				backgroundPositionX: "center",
+				backgroundSize: "cover",
+				backgroundRepeat: "none",
+			}}
+		>
+			<Box
+				sx={{
+					width: "95%",
+					display: "flex",
+					flexDirection: "column",
+					flexWrap: "wrap",
+					alignItems: "center",
+					paddingTop: "5vh",
+					paddingBottom: "20px",
+					"@media only screen and (max-width: 764px)": {
+						// maxHeight: "100vh",
+						marginTop: "0px",
+						paddingTop: "0px",
+						justifyContent: "flex-start",
+						alignItems: "flex-start",
+						paddingLeft: "5px",
+						paddingRight: "5px",
+						paddingBottom: "10px",
+					},
+				}}
+			>
+				<Box
+					sx={{
+						cursor: "pointer",
+						// paddingLeft: "40px",
+						// paddingRight: "40px",
+						// paddingTop: "15px",
+						// paddingBottom: "15px",
+						padding: "0",
+						// marginTop: "25px",
+						display: "flex",
+						flexDirection: "column",
+						// backgroundImage: "linear-gradient(to top , #0d2c7b, #6067b5)",
+						// backgroundImage: "linear-gradient(to top , #fff, #fff)",
+						alignItems: "center",
+						// backgroundImage: "linear-gradient(to top , #106052, #0f734d)",
+						borderRadius: "1200.5px",
+						"@media only screen and (max-width: 764px)": {
+							paddingLeft: "5px",
+							paddingRight: "5px",
+							marginTop: "10px",
+							marginBottom: "10px",
+							borderRadius: "10px",
+							alignItems: "flex-start",
+							backgroundImage: "linear-gradient(to top , #fff, #fff)",
+						},
+					}}
+				>
+					<Text
+						b
+						size={18}
+						color="#FFF"
+						css={{
+							fontWeight: "bolder",
+							color: "#021C61",
+							"@media only screen and (max-width: 764px)": {
+								fontSize: 18,
+								width: "100%",
+								textAlign: "left",
+								color: "#021C61",
+							},
+						}}
+						onClick={handleCert}
+					>
+						SEBI Registered: INH000009843
+					</Text>
+				</Box>
+				<Modal
+					// width="790px"
+					blur
+					open={showCert}
+					onClose={handleCertClose}
+					css={{
+						width: "65vw",
+						maxWidth: "65vw",
+						alignSelf: "flex-end",
+						background: "transparent",
+						boxShadow: "none",
+						borderRadius: "15px",
+						"@media only screen and (max-width: 764px)": {
+							width: "95vw !important",
+							maxWidth: "95vw !important",
+						},
+					}}
+				>
+					<iframe
+						src="Kamayakya-SEBI-License.pdf#view=FitH&toolbar=0"
+						alt="SEBI Certificate"
+						style={{
+							width: "100%",
+							height: "75vh",
+							borderColor: "transparent",
+							borderRadius: "15px",
+							borderWidth: "0px",
+							zoom: "1",
+						}}
+						className="iframePdfMobile"
+					/>
+					{/* <Modal.Footer justify="center"> */}
+					<Button
+						auto
+						onClick={handleCertClose}
+						css={{
+							// alignSelf: "end",
+							width: "100%",
+							backgroundColor: "#ffa12e",
+							color: "#fff",
+							fontSize: 19,
+							marginTop: "20px",
+							borderRadius: "10px",
+							height: "50px",
+							"@media only screen and (max-width: 768px)": {
+								width: "100%",
+								fontSize: 15,
+								height: "50px",
+								marginTop: "0px",
+								borderRadius: "0px 0px 10px",
+								"& span": {
+									// display: "none",
+								},
+							},
+						}}
+					>
+						Close
+					</Button>
+					{/* </Modal.Footer> */}
+				</Modal>
+				<Text
+					b
+					size={70}
+					css={{
+						marginTop: "0px",
+						marginBottom: "0px",
+						// width: "90%",
+						maxWidth: "80rem" /* 1280px */,
+						textAlign: "center",
+						lineHeight: 1.2,
+						paddingLeft: "15px",
+						paddingRight: "15px",
+						"@media only screen and (max-width: 764px)": {
+							fontSize: 45,
+							lineHeight: 1.1,
+							paddingLeft: "5px",
+							paddingRight: "5px",
+							marginTop: "0px",
+							marginBottom: "10px",
+							maxWidth: "100%",
+							textAlign: "left",
+						},
+					}}
+				>
+					Stocks To Buy
+				</Text>
+			</Box>
+			{isLoggedIn ? (
+				<Box
+					sx={{
+						display: "flex",
+						flexWrap: "wrap",
+						flexDirection: "row",
+						gap: "5px",
+						marginBottom: "40px",
+						justifyContent: "center",
+						alignItems: "center",
+					}}
+					className="stockPicks-searchBar-box"
+				>
+					{/* Search Bar */}
+					<Box
+						sx={{
+							border: "1px solid #125a54",
+							borderRadius: "10000px",
+							padding: "0px 15px",
+							paddingTop: "2px",
+							display: "flex",
+							alignItems: "center",
+							// "@media only screen and (max-width: 768px)": {
+							//   padding: "0px 15px",
+							//   width: "500px",
+							// },
+						}}
+						className="stockPicks-searchBar"
+					>
+						<IconButton>
+							<SearchNormal size={25} color="#125a54" />
+						</IconButton>
+						<InputBase
+							placeholder="Ion Exchange (OR) IONEXCHANG"
+							variant="standard"
+							// size="large"
+							value={searchQuery}
+							onChange={(e) => setSearchQuery(e.target.value)}
+							sx={{
+								display: "flex",
+								alignItems: "center",
+								fontSize: 18,
+								lineHeight: 1,
+								textAlign: "center",
+								width: "80vw",
+								maxWidth: "60rem",
+								padding: "10px 10px",
+								backgroundColor: "#fff",
+								borderRadius: "10000px",
+								"@media only screen and (max-width: 768px)": {
+									width: "100vw",
+									fontSize: 15,
+									backgroundColor: "transparent",
+								},
+							}}
+						/>
+					</Box>
+
+					<IconButton
+						onClick={toggleDrawer}
+						css={{
+							width: "30px !important",
+							maxWidth: "30px !important",
+							backgroundColor: "red",
+							"@media only screen and (max-width: 768px)": {
+								width: "30px",
+								maxWidth: "30px",
+							},
+						}}
+					>
+						<Filter size={25} color="#125a54" />
+					</IconButton>
+					{/* Side Drawer Filtering & Sorting */}
+					<SwipeableDrawer
+						anchor="right"
+						open={isDrawerOpen}
+						onOpen={() => setIsDrawerOpen(true)}
+						onClose={toggleDrawer}
+						sx={{
+							width: {
+								xs: "100vw",
+								sm: "500px",
+							},
+							maxWidth: {
+								xs: "100%",
+								sm: "500px",
+							},
+							"& .MuiDrawer-paper": {
+								borderRadius: { xs: "0px", sm: "25px 0px 0px 25px" },
+								padding: "15px",
+								width: {
+									xs: "100vw",
+									sm: "500px",
+								},
+								maxWidth: {
+									xs: "100%",
+									sm: "500px",
+								},
+							},
+						}}
+					>
+						<List>
+							<ListItemButton
+								onClick={() => {
+									toggleDrawer();
+								}}
+								sx={{
+									justifyContent: "end",
+									"&:hover": {
+										backgroundColor: "#fff",
+									},
+								}}
+							>
+								<CloseIcon />
+							</ListItemButton>
+							{/*<Text b size={21} css={{ paddingLeft: "30px" }}>*/}
+							{/*  Filter by industries :*/}
+							{/*</Text>*/}
+							<ListItem>
+								<FormControl
+									sx={{ mt: "5px", ml: "15px" }}
+									component="fieldset"
+									variant="standard"
+								>
+									<Text
+										b
+										size={19}
+										css={{ paddingLeft: "30px", marginBottom: "15px" }}
+									>
+										Filter by industries:
+									</Text>
+									<FormGroup>
+										{/* <Grid container spacing={2}> */}
+										{industries.map((industry, index) => (
+											// <Grid item xs={6} key={industry}>
+											<FormControlLabel
+												key={index}
+												control={
+													<Checkbox
+														checked={selectedIndustries.includes(industry)}
+														onChange={() => handleIndustrySelection(industry)}
+													/>
+												}
+												label={industry}
+											/>
+											// </Grid>
+										))}
+										{/* </Grid> */}
+									</FormGroup>
+									{/*<FormHelperText>Multiple Selection</FormHelperText>*/}
+								</FormControl>
+							</ListItem>
+							{/* <ListItem sx={{ justifyContent: "center" }}>
 								<Dropdown>
 									<Dropdown.Button
 										flat
@@ -871,37 +884,37 @@ const StockCard = () => {
 									</Dropdown.Menu>
 								</Dropdown>
 							</ListItem> */}
-              <ListItem>
-                <FormControl sx={{ ml: "15px" }}>
-                  {/*<FormLabel*/}
-                  {/*  id="controlled-radio-buttons"*/}
-                  {/*  style={{*/}
-                  {/*    fontSize: "15px",*/}
-                  {/*    fontWeight: "bold",*/}
-                  {/*    color: "#106352",*/}
-                  {/*  }}*/}
-                  {/*>*/}
-                  {/*  Potential upside*/}
-                  {/*</FormLabel>*/}
-                  <Text b size={19} css={{ paddingLeft: "30px" }}>
-                    Sort by potential upside:
-                  </Text>
-                  <RadioGroup value={upsideSort} onChange={upsideSortValue}>
-                    <FormControlLabel
-                      value="descending"
-                      control={<Radio />}
-                      label="Highest to Lowest (This means the stocks with the greatest potential upside are at the top)"
-                      style={{ paddingTop: "20px" }}
-                    />
-                    <FormControlLabel
-                      value="ascending"
-                      control={<Radio />}
-                      label="Lowest to Highest (This means the stocks with the least potential upside are at the top)"
-                      style={{ paddingTop: "20px" }}
-                    />
-                  </RadioGroup>
+							<ListItem>
+								<FormControl sx={{ ml: "15px" }}>
+									{/*<FormLabel*/}
+									{/*  id="controlled-radio-buttons"*/}
+									{/*  style={{*/}
+									{/*    fontSize: "15px",*/}
+									{/*    fontWeight: "bold",*/}
+									{/*    color: "#106352",*/}
+									{/*  }}*/}
+									{/*>*/}
+									{/*  Potential upside*/}
+									{/*</FormLabel>*/}
+									<Text b size={19} css={{ paddingLeft: "30px" }}>
+										Sort by potential upside:
+									</Text>
+									<RadioGroup value={upsideSort} onChange={upsideSortValue}>
+										<FormControlLabel
+											value="descending"
+											control={<Radio />}
+											label="Highest to Lowest (This means the stocks with the greatest potential upside are at the top)"
+											style={{ paddingTop: "20px" }}
+										/>
+										<FormControlLabel
+											value="ascending"
+											control={<Radio />}
+											label="Lowest to Highest (This means the stocks with the least potential upside are at the top)"
+											style={{ paddingTop: "20px" }}
+										/>
+									</RadioGroup>
 
-                  {/* {upsideSort !== "" && (
+									{/* {upsideSort !== "" && (
 										<Button variant="contained" onClick={handleClearSelection}>
 											Clear Selection
 										</Button>
@@ -916,28 +929,28 @@ const StockCard = () => {
 											Clear Selection
 										</Button>
 									)} */}
-                </FormControl>
-              </ListItem>
-              <ListItem sx={{ justifyContent: "center" }}>
-                {upsideSort !== "" ||
-                selectedIndustries.length > 0 ||
-                timeSort !== "" ? (
-                  <Button
-                    auto
-                    onPress={handleClearSelection}
-                    css={{
-                      background: "#ffa12e",
-                      fontSize: 17,
-                      width: "100%",
-                      borderRadius: "10000px",
-                      marginTop: "20px",
-                    }}
-                  >
-                    Clear Selection
-                  </Button>
-                ) : null}
-              </ListItem>
-              {/* <ListItem sx={{ justifyContent: "center" }}>
+								</FormControl>
+							</ListItem>
+							<ListItem sx={{ justifyContent: "center" }}>
+								{upsideSort !== "" ||
+								selectedIndustries.length > 0 ||
+								timeSort !== "" ? (
+									<Button
+										auto
+										onPress={handleClearSelection}
+										css={{
+											background: "#ffa12e",
+											fontSize: 17,
+											width: "100%",
+											borderRadius: "10000px",
+											marginTop: "20px",
+										}}
+									>
+										Clear Selection
+									</Button>
+								) : null}
+							</ListItem>
+							{/* <ListItem sx={{ justifyContent: "center" }}>
 								<Dropdown>
 									<Dropdown.Button
 										flat
@@ -983,706 +996,764 @@ const StockCard = () => {
 									</Dropdown.Menu>
 								</Dropdown>
 							</ListItem> */}
-            </List>
-          </SwipeableDrawer>
-        </Box>
-      ) : (
-        <></>
-      )}
-      {isLoading && (
-        <Loading type={"gradient"} style={{ marginBottom: "50px" }} />
-      )}
-      <Box
-        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
-      >
-        <Grid
-          container
-          justifyContent={"center"}
-          gap={"20px"}
-          sx={{
-            // background: "#fff",
-            boxShadow: "none",
-            "@media only screen and (max-width: 768px)": {
-              gap: "20px",
-            },
-          }}
-        >
-          {filteredStocks.map((stock, index) => (
-            <Grid
-              key={stock.id}
-              item
-              xs={"auto"}
-              sm={"auto"}
-              md={"auto"}
-              lg={"auto"}
-            >
-              {/* <ReactCardFlip
-                isFlipped={flipStates[index]}
-                flipDirection="horizontal"
-              > */}
-              {/* Front face */}
-              <Card
-                isHoverable
-                css={{
-                  // height: "580px",
-                  width: "285px",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  backgroundColor: "#fff",
-                  borderRadius: "40px",
-                  border: "4px solid",
-                  borderColor: "#ffa12e",
-                  marginBottom: "0px",
-                  boxShadow: "none",
-                  filter: "none",
-                  "@media only screen and (max-width: 768px)": {
-                    width: "92.5vw",
-                    maxWidth: "620px",
-                    // height: "650px",
-                    borderRadius: "35px",
-                  },
-                }}
-              >
-                <Box
-                  sx={{
-                    marginLeft: "5%",
-                    marginRight: "5%",
-                    marginTop: "20px",
-                    marginBottom: "20px",
-                    minWidth: "90%",
-                    maxWidth: "90%",
-                    // height: "600px",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    "@media only screen and (max-width: 768px)": {
-                      marginLeft: "5px",
-                      marginRight: "5px",
-                      height: "auto",
-                      marginBottom: "30px",
-                    },
-                  }}
-                >
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      textAlign: "center",
-                      backgroundColor: "#fff",
-                      marginBottom: "15px",
-                      width: "90%",
-                      "@media only screen and (max-width: 768px)": {
-                        width: "100%",
-                      },
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        width: "100%",
-                        height: "30px",
-                        paddingTop: "7.5px",
-                        paddingBottom: "7.5px",
-                        paddingLeft: "5px",
-                        paddingRight: "5px",
-                        backgroundImage:
-                          "linear-gradient(to top , #FF9D28, #ffa736)",
-                        marginBottom: "15px",
-                        marginTop: "5px",
-                        borderRadius: "10000px",
-                        lineHeight: 1,
-                      }}
-                      className="stockCardMobile-industry"
-                    >
-                      <Text
-                        b
-                        size={14}
-                        color="Black"
-                        css={{
-                          lineHeight: 1.2,
-                          "@media only screen and (max-width: 768px)": {
-                            fontSize: "16px",
-                          },
-                        }}
-                      >
-                        {stock.stock_industry.length > 29 ? (
-                          <Marquee
-                            delay={2}
-                            speed={30}
-                            style={{ marginRight: "20px" }}
-                          >
-                            <span style={{ paddingRight: "20px" }}>
-                              {stock.stock_industry}
-                            </span>
-                          </Marquee>
-                        ) : (
-                          <>{stock.stock_industry}</> || <Loading /> || "-"
-                        )}
-                      </Text>
-                    </Box>
-                    <Text
-                      b
-                      size={26}
-                      css={{
-                        minWidth: "100%",
-                        maxWidth: "100%",
-                        textAlign: "center",
-                        lineHeight: 1.2,
-                        "@media only screen and (max-width: 768px)": {
-                          fontSize: 25,
-                          paddingTop: "5px",
-                          paddingBottom: "5px",
-                        },
-                      }}
-                    >
-                      {stock.stock_name.length > 17 ? (
-                        <Marquee
-                          delay={2}
-                          speed={30}
-                          style={{ marginRight: "20px" }}
-                        >
-                          <span style={{ paddingRight: "40px" }}>
-                            {stock.stock_name}
-                          </span>
-                        </Marquee>
-                      ) : (
-                        <>{stock.stock_name}</>
-                      )}
-                    </Text>
-                  </Box>
-                  <Box
-                    sx={{
-                      width: "90%",
-                      backgroundImage:
-                        "linear-gradient(to top , #106052, #0f734d)",
-                      borderRadius: "17.5px",
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      paddingTop: "20px",
-                      paddingBottom: "20px",
-                      "@media only screen and (max-width: 768px)": {
-                        width: "100%",
-                        paddingTop: "20px",
-                        paddingBottom: "20px",
-                      },
-                    }}
-                  >
-                    <Text
-                      b
-                      size={20}
-                      color="#fff"
-                      css={{
-                        lineHeight: 1.5,
-                        "@media only screen and (max-width: 768px)": {
-                          fontSize: 19,
-                        },
-                      }}
-                    >
-                      Upside Left
-                    </Text>
-                    <div style={{ display: "flex", alignItems: "center" }}>
-                      <ArrowCircleUp size={25} color="#fff" />
-                      <Text
-                        b
-                        size={48}
-                        color="#fff"
-                        css={{
-                          lineHeight: 1,
-                          marginLeft: "3px",
-                          marginRight: "3px",
-                          "@media only screen and (max-width: 768px)": {
-                            fontSize: 60,
-                          },
-                        }}
-                      >
-                        {`${Math.ceil(stock.upside_left)}` || <Loading /> ||
-                          "-"}
-                      </Text>
-                      <span
-                        style={{
-                          fontSize: 25,
-                          color: "#FFF",
-                          "@media only screen and (max-width: 768px)": {
-                            fontSize: 10,
-                          },
-                        }}
-                      >
-                        %
-                      </span>
-                    </div>
-                  </Box>
-                  <Box
-                    sx={{
-                      mt: "20px",
-                      width: "90%",
-                      "@media only screen and (max-width: 768px)": {
-                        width: "100%",
-                      },
-                    }}
-                  >
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                      }}
-                    >
-                      <div style={{ display: "flex", flexDirection: "column" }}>
-                        <Text
-                          b
-                          css={{
-                            lineHeight: 1.1,
-                            "@media only screen and (max-width: 768px)": {
-                              fontSize: 21,
-                            },
-                          }}
-                          size={15}
-                        >
-                          MKT. CAP.
-                        </Text>
-                        <Text
-                          b
-                          size={15}
-                          css={{
-                            lineHeight: 1.1,
-                            "@media only screen and (max-width: 768px)": {
-                              fontSize: 15,
-                            },
-                          }}
-                        >
-                          (IN Cr.)
-                        </Text>
-                      </div>
-                      <Text
-                        b
-                        css={{
-                          flex: 1,
-                          textAlign: "right",
-                          "@media only screen and (max-width: 768px)": {
-                            fontSize: 30,
-                          },
-                        }}
-                        size={22}
-                      >
-                        {`${stock.market_cap}` || <Loading /> || "-"}
-                      </Text>
-                    </div>
-                    <Divider
-                      height={2}
-                      style={{
-                        backgroundColor: "#ffa12e",
-                        marginTop: "10px",
-                        marginBottom: "10px",
-                      }}
-                    />
-                    <div
-                      style={{
-                        display: "flex",
-                        width: "100%",
-                        flexDirection: "column",
-                      }}
-                    >
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                        }}
-                      >
-                        <div
-                          style={{ display: "flex", flexDirection: "column" }}
-                        >
-                          <Text
-                            b
-                            css={{
-                              lineHeight: 1.1,
-                              "@media only screen and (max-width: 768px)": {
-                                fontSize: 21,
-                              },
-                            }}
-                            size={15}
-                          >
-                            ENTRY PRICE
-                          </Text>
-                          <Text
-                            b
-                            size={15}
-                            css={{
-                              lineHeight: 1.1,
-                              "@media only screen and (max-width: 768px)": {
-                                fontSize: 15,
-                              },
-                            }}
-                          >
-                            (in ₹)
-                          </Text>
-                        </div>
-                        <Text
-                          b
-                          css={{
-                            flex: 1,
-                            textAlign: "right",
-                            "@media only screen and (max-width: 768px)": {
-                              fontSize: 30,
-                            },
-                          }}
-                          size={22}
-                        >
-                          {`${stock.entry_price}` || <Loading /> || "-"}
-                        </Text>
-                      </div>
-                      <Divider
-                        height={2}
-                        style={{
-                          backgroundColor: "#ffa12e",
-                          marginTop: "10px",
-                          marginBottom: "10px",
-                        }}
-                      />
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                        }}
-                      >
-                        <div
-                          style={{ display: "flex", flexDirection: "column" }}
-                        >
-                          <Text
-                            b
-                            css={{
-                              lineHeight: 1.1,
-                              "@media only screen and (max-width: 768px)": {
-                                fontSize: 21,
-                              },
-                            }}
-                            size={15}
-                          >
-                            CMP
-                          </Text>
-                          <Text
-                            b
-                            size={15}
-                            css={{
-                              lineHeight: 1.1,
-                              "@media only screen and (max-width: 768px)": {
-                                fontSize: 15,
-                              },
-                            }}
-                          >
-                            (in ₹)
-                          </Text>
-                        </div>
-                        <Text
-                          b
-                          css={{
-                            flex: 1,
-                            textAlign: "right",
-                            "@media only screen and (max-width: 768px)": {
-                              fontSize: 30,
-                            },
-                          }}
-                          size={22}
-                        >
-                          {`${stock.live_price}` || <Loading /> || "-"}
-                        </Text>
-                      </div>
-                      <Divider
-                        height={2}
-                        style={{
-                          backgroundColor: "#ffa12e",
-                          marginTop: "10px",
-                          marginBottom: "10px",
-                        }}
-                      />
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                        }}
-                      >
-                        <div
-                          style={{ display: "flex", flexDirection: "column" }}
-                        >
-                          <Text
-                            b
-                            css={{
-                              lineHeight: 1.1,
-                              "@media only screen and (max-width: 768px)": {
-                                fontSize: 21,
-                              },
-                            }}
-                            size={15}
-                          >
-                            TARGET PRICE
-                          </Text>
-                          <Text
-                            b
-                            size={15}
-                            css={{
-                              lineHeight: 1.1,
-                              "@media only screen and (max-width: 768px)": {
-                                fontSize: 15,
-                              },
-                            }}
-                          >
-                            (IN ₹)
-                          </Text>
-                        </div>
-                        <Text
-                          b
-                          css={{
-                            flex: 1,
-                            textAlign: "right",
-                            "@media only screen and (max-width: 768px)": {
-                              fontSize: 30,
-                            },
-                          }}
-                          size={22}
-                        >
-                          {/* {stock.stock_targets.length > 0
+						</List>
+					</SwipeableDrawer>
+				</Box>
+			) : (
+				<></>
+			)}
+			{isLoading && (
+				<Loading type={"gradient"} style={{ marginBottom: "50px" }} />
+			)}
+			<Box
+				sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+			>
+				<Grid
+					container
+					justifyContent={"center"}
+					gap={"20px"}
+					sx={{
+						// background: "#fff",
+						boxShadow: "none",
+						"@media only screen and (max-width: 768px)": {
+							gap: "20px",
+						},
+					}}
+				>
+					{filteredStocks.map((stock, index) => (
+						<Grid
+							key={stock.id}
+							item
+							xs={"auto"}
+							sm={"auto"}
+							md={"auto"}
+							lg={"auto"}
+						>
+							{isSubscribed && stock.recommended_stock === true ? (
+								<Box
+									sx={{
+										display: "flex",
+										justifyContent: "center",
+										width: "100%",
+									}}
+								>
+									<Box
+										sx={{
+											position: "absolute",
+											zIndex: 99,
+											padding: "2px 20px",
+											borderRadius: "20px",
+											background: "#fff",
+											border: "4px solid #ff9702",
+											alignSelf: "center",
+											color: "#cc0000",
+											display: "flex",
+											alignItems: "center",
+											fontSize: 18,
+										}}
+									>
+										<BsFire style={{ marginRight: "5px" }} /> Hot Stock{" "}
+										<BsFire style={{ marginLeft: "5px" }} />
+									</Box>
+								</Box>
+							) : (
+								""
+							)}
+							<Card
+								isHoverable
+								css={{
+									// height: "580px",
+									width: "285px",
+									display: "flex",
+									flexDirection: "column",
+									alignItems: "center",
+									backgroundColor: "#fff",
+									borderRadius: "40px",
+									border: "4px solid",
+									borderColor: "#ffa12e",
+									marginBottom: "0px",
+									boxShadow: "none",
+									filter: "none",
+									"@media only screen and (max-width: 768px)": {
+										width: "92.5vw",
+										maxWidth: "620px",
+										// height: "650px",
+										borderRadius: "35px",
+									},
+								}}
+							>
+								<Box
+									sx={{
+										marginLeft: "5%",
+										marginRight: "5%",
+										marginTop: "20px",
+										marginBottom: "20px",
+										minWidth: "90%",
+										maxWidth: "90%",
+										// height: "600px",
+										display: "flex",
+										flexDirection: "column",
+										alignItems: "center",
+										"@media only screen and (max-width: 768px)": {
+											marginLeft: "5px",
+											marginRight: "5px",
+											height: "auto",
+											marginBottom: "30px",
+										},
+									}}
+								>
+									<Box
+										sx={{
+											display: "flex",
+											flexDirection: "column",
+											textAlign: "center",
+											backgroundColor: "#fff",
+											marginBottom: "15px",
+											width: "90%",
+											"@media only screen and (max-width: 768px)": {
+												width: "100%",
+											},
+										}}
+									>
+										<Box
+											sx={{
+												width: "100%",
+												height: "30px",
+												paddingTop: "7.5px",
+												paddingBottom: "7.5px",
+												paddingLeft: "5px",
+												paddingRight: "5px",
+												backgroundImage:
+													"linear-gradient(to top , #FF9D28, #ffa736)",
+												marginBottom: "15px",
+												marginTop: "5px",
+												borderRadius: "10000px",
+												lineHeight: 1,
+											}}
+											className="stockCardMobile-industry"
+										>
+											<Text
+												b
+												size={14}
+												color="Black"
+												css={{
+													zIndex: 9999,
+													lineHeight: 1.2,
+													"@media only screen and (max-width: 768px)": {
+														fontSize: "16px",
+													},
+												}}
+											>
+												{stock.stock_industry.length > 29 ? (
+													<Marquee
+														delay={2}
+														speed={30}
+														style={{ marginRight: "20px" }}
+													>
+														<span style={{ paddingRight: "20px" }}>
+															{stock.stock_industry}
+														</span>
+													</Marquee>
+												) : (
+													<>{stock.stock_industry}</> || <Loading /> || "-"
+												)}
+											</Text>
+										</Box>
+										<Text
+											b
+											size={26}
+											css={{
+												minWidth: "100%",
+												maxWidth: "100%",
+												textAlign: "center",
+												lineHeight: 1.2,
+												"@media only screen and (max-width: 768px)": {
+													fontSize: 25,
+													paddingTop: "5px",
+													paddingBottom: "5px",
+												},
+											}}
+										>
+											{stock.stock_name.length > 17 ? (
+												<Marquee
+													delay={2}
+													speed={30}
+													style={{ marginRight: "20px" }}
+												>
+													<span style={{ paddingRight: "40px" }}>
+														{stock.stock_name}
+													</span>
+												</Marquee>
+											) : (
+												<>{stock.stock_name}</>
+											)}
+										</Text>
+									</Box>
+									<Box
+										sx={{
+											width: "90%",
+											backgroundImage:
+												"linear-gradient(to top , #106052, #0f734d)",
+											borderRadius: "17.5px",
+											display: "flex",
+											flexDirection: "column",
+											alignItems: "center",
+											justifyContent: "center",
+											paddingTop: "20px",
+											paddingBottom: "20px",
+											"@media only screen and (max-width: 768px)": {
+												width: "100%",
+												paddingTop: "20px",
+												paddingBottom: "20px",
+											},
+										}}
+									>
+										{isSubscribed && isNewStock(stock.created) ? (
+											<Box
+												sx={{
+													display: "flex",
+													justifyContent: "center",
+													width: "100%",
+												}}
+											>
+												<div
+													style={{
+														position: "absolute",
+														width: "80px",
+														marginTop: "-30px",
+														background: "#cc0000",
+														color: "#fff",
+														height: "20px",
+														display: "flex",
+														alignItems: "center",
+														justifyContent: "center",
+														borderRadius: "10px",
+													}}
+												>
+													{isNewStock(stock.created) && (
+														<div>NEW</div>
+													)}
+												</div>
+											</Box>
+										) : (
+											""
+										)}
+										<Text
+											b
+											size={20}
+											color="#fff"
+											css={{
+												lineHeight: 1.5,
+												"@media only screen and (max-width: 768px)": {
+													fontSize: 19,
+												},
+											}}
+										>
+											Upside Left
+										</Text>
+										<div style={{ display: "flex", alignItems: "center" }}>
+											<ArrowCircleUp size={25} color="#fff" />
+											<Text
+												b
+												size={48}
+												color="#fff"
+												css={{
+													lineHeight: 1,
+													marginLeft: "3px",
+													marginRight: "3px",
+													"@media only screen and (max-width: 768px)": {
+														fontSize: 60,
+													},
+												}}
+											>
+												{`${Math.ceil(stock.upside_left)}` || <Loading /> ||
+													"-"}
+											</Text>
+											<span
+												style={{
+													fontSize: 25,
+													color: "#FFF",
+													"@media only screen and (max-width: 768px)": {
+														fontSize: 10,
+													},
+												}}
+											>
+												%
+											</span>
+										</div>
+									</Box>
+									<Box
+										sx={{
+											mt: "20px",
+											width: "90%",
+											"@media only screen and (max-width: 768px)": {
+												width: "100%",
+											},
+										}}
+									>
+										<div
+											style={{
+												display: "flex",
+												justifyContent: "space-between",
+												alignItems: "center",
+											}}
+										>
+											<div style={{ display: "flex", flexDirection: "column" }}>
+												<Text
+													b
+													css={{
+														lineHeight: 1.1,
+														"@media only screen and (max-width: 768px)": {
+															fontSize: 21,
+														},
+													}}
+													size={15}
+												>
+													MKT. CAP.
+												</Text>
+												<Text
+													b
+													size={15}
+													css={{
+														lineHeight: 1.1,
+														"@media only screen and (max-width: 768px)": {
+															fontSize: 15,
+														},
+													}}
+												>
+													(IN Cr.)
+												</Text>
+											</div>
+											<Text
+												b
+												css={{
+													flex: 1,
+													textAlign: "right",
+													"@media only screen and (max-width: 768px)": {
+														fontSize: 30,
+													},
+												}}
+												size={22}
+											>
+												{`${stock.market_cap}` || <Loading /> || "-"}
+											</Text>
+										</div>
+										<Divider
+											height={2}
+											style={{
+												backgroundColor: "#ffa12e",
+												marginTop: "10px",
+												marginBottom: "10px",
+											}}
+										/>
+										<div
+											style={{
+												display: "flex",
+												width: "100%",
+												flexDirection: "column",
+											}}
+										>
+											<div
+												style={{
+													display: "flex",
+													justifyContent: "space-between",
+													alignItems: "center",
+												}}
+											>
+												<div
+													style={{ display: "flex", flexDirection: "column" }}
+												>
+													<Text
+														b
+														css={{
+															lineHeight: 1.1,
+															"@media only screen and (max-width: 768px)": {
+																fontSize: 21,
+															},
+														}}
+														size={15}
+													>
+														ENTRY PRICE
+													</Text>
+													<Text
+														b
+														size={15}
+														css={{
+															lineHeight: 1.1,
+															"@media only screen and (max-width: 768px)": {
+																fontSize: 15,
+															},
+														}}
+													>
+														(in ₹)
+													</Text>
+												</div>
+												<Text
+													b
+													css={{
+														flex: 1,
+														textAlign: "right",
+														"@media only screen and (max-width: 768px)": {
+															fontSize: 30,
+														},
+													}}
+													size={22}
+												>
+													{`${stock.entry_price}` || <Loading /> || "-"}
+												</Text>
+											</div>
+											<Divider
+												height={2}
+												style={{
+													backgroundColor: "#ffa12e",
+													marginTop: "10px",
+													marginBottom: "10px",
+												}}
+											/>
+											<div
+												style={{
+													display: "flex",
+													justifyContent: "space-between",
+													alignItems: "center",
+												}}
+											>
+												<div
+													style={{ display: "flex", flexDirection: "column" }}
+												>
+													<Text
+														b
+														css={{
+															lineHeight: 1.1,
+															"@media only screen and (max-width: 768px)": {
+																fontSize: 21,
+															},
+														}}
+														size={15}
+													>
+														CMP
+													</Text>
+													<Text
+														b
+														size={15}
+														css={{
+															lineHeight: 1.1,
+															"@media only screen and (max-width: 768px)": {
+																fontSize: 15,
+															},
+														}}
+													>
+														(in ₹)
+													</Text>
+												</div>
+												<Text
+													b
+													css={{
+														flex: 1,
+														textAlign: "right",
+														"@media only screen and (max-width: 768px)": {
+															fontSize: 30,
+														},
+													}}
+													size={22}
+												>
+													{`${stock.live_price}` || <Loading /> || "-"}
+												</Text>
+											</div>
+											<Divider
+												height={2}
+												style={{
+													backgroundColor: "#ffa12e",
+													marginTop: "10px",
+													marginBottom: "10px",
+												}}
+											/>
+											<div
+												style={{
+													display: "flex",
+													justifyContent: "space-between",
+													alignItems: "center",
+												}}
+											>
+												<div
+													style={{ display: "flex", flexDirection: "column" }}
+												>
+													<Text
+														b
+														css={{
+															lineHeight: 1.1,
+															"@media only screen and (max-width: 768px)": {
+																fontSize: 21,
+															},
+														}}
+														size={15}
+													>
+														TARGET PRICE
+													</Text>
+													<Text
+														b
+														size={15}
+														css={{
+															lineHeight: 1.1,
+															"@media only screen and (max-width: 768px)": {
+																fontSize: 15,
+															},
+														}}
+													>
+														(IN ₹)
+													</Text>
+												</div>
+												<Text
+													b
+													css={{
+														flex: 1,
+														textAlign: "right",
+														"@media only screen and (max-width: 768px)": {
+															fontSize: 30,
+														},
+													}}
+													size={22}
+												>
+													{/* {stock.stock_targets.length > 0
                             ? `${
                                 stock.stock_targets[
                                   stock.stock_targets.length - 1
                                 ].target_price
                               }`
                             : `${stock.target_price}`} */}
-                            {stock.latest_target_price}
-                        </Text>
-                      </div>
-                      <Divider
-                        height={2}
-                        style={{
-                          backgroundColor: "#ffa12e",
-                          marginTop: "10px",
-                          marginBottom: "10px",
-                        }}
-                      />
+													{stock.latest_target_price}
+												</Text>
+											</div>
+											<Divider
+												height={2}
+												style={{
+													backgroundColor: "#ffa12e",
+													marginTop: "10px",
+													marginBottom: "10px",
+												}}
+											/>
 
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                        }}
-                      >
-                        <div
-                          style={{ display: "flex", flexDirection: "column" }}
-                        >
-                          <Text
-                            b
-                            css={{
-                              lineHeight: 1.1,
-                              "@media only screen and (max-width: 768px)": {
-                                fontSize: 21,
-                              },
-                            }}
-                            size={15}
-                          >
-                            TIME LEFT
-                          </Text>
-                          <Text
-                            b
-                            size={15}
-                            css={{
-                              lineHeight: 1.1,
-                              "@media only screen and (max-width: 768px)": {
-                                fontSize: 15,
-                              },
-                            }}
-                          >
-                            (IN DAYS)
-                          </Text>
-                        </div>
-                        <Text
-                          b
-                          css={{
-                            flex: 1,
-                            textAlign: "right",
-                            "@media only screen and (max-width: 768px)": {
-                              fontSize: 30,
-                            },
-                          }}
-                          size={22}
-                        >
-                          {`${Math.ceil(stock.time_left)}` || <Loading /> ||
-                            "-"}
-                        </Text>
-                      </div>
-                    </div>
-                  </Box>
-                </Box>
-                <Box
-                  sx={{
-                    bottom: "5px",
-                    width: "85%",
-                    marginBottom: "25px",
-                    "@media only screen and (max-width: 768px)": {
-                      width: "90%",
-                      // height: "50px",
-                      justifyContent: "center",
-                    },
-                  }}
-                >
-                  <Button
-                    auto
-                    onPress={() => handleOpenReports(stock)}
-                    css={{
-                      top: "0px",
-                      alignSelf: "center",
-                      width: "100%",
-                      borderRadius: "10000px",
-                      backgroundImage:
-                        "linear-gradient(to top , #FF9D28, #ffa736)",
-                      fontSize: 18,
-                      "@media only screen and (max-width: 768px)": {
-                        fontSize: 18,
-                        lineHeight: 1,
-                        height: "40px",
-                        color: "black",
-                      },
-                    }}
-                  >
-                    View reports
-                  </Button>
-                  <Button
-                    auto
-                    onPress={() => handleOpenDisclosure(stock)}
-                    css={{
-                      top: "10px",
-                      // marginTop: "10%",
-                      color: "#106052",
-                      width: "100%",
-                      borderRadius: "10000px",
-                      backgroundColor: "#fff",
-                      // backgroundImage:
-                      //   "linear-gradient(to top , #106052, #0f734d)",
-                      fontSize: 15,
-                      height: "20px",
-                      "@media only screen and (max-width: 768px)": {
-                        top: "10px",
-                        lineHeight: 1,
-                        height: "20px",
-                        fontSize: 15,
-                      },
-                    }}
-                  >
-                    Disclosure
-                  </Button>
-                </Box>
-              </Card>
-              <Modal
-                // blur
-                open={showReportsModal}
-                onClose={handleCloseReports}
-                aria-labelledby="modal-title"
-                aria-describedby="modal-description"
-                css={{
-                  width: "100%",
-                  borderRadius: "15px",
-                  background: "transparent",
-                  boxShadow: "none",
-                  // backdropFilter: "blur(8px)",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-                className="iframePdfMobile"
-              >
-                <Card
-                  css={{
-                    height: "fit-content",
-                    width: "fit-content",
-                    maxWidth: "80rem",
-                    minWidth: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    flexDirection: "column",
-                    padding: "50px 30px",
-                    borderRadius: "25px",
-                    // backgroundImage: "url(symbol-scatter-haikei-3.svg)",
-                    objectPosition: "center",
-                    backgroundPositionY: "center",
-                    backgroundSize: "cover",
-                    "@media only screen and (max-width: 764px)": {
-                      minWidth: "100px",
-                      width: "100vw !important",
-                    },
-                  }}
-                >
-                  <IconButton
-                    sx={{ position: "absolute", top: "5px", right: "5px" }}
-                    onClick={handleCloseReports}
-                  >
-                    <CloseIcon color="error" />
-                  </IconButton>
-                  <Box
-                    sx={{
-                      width: "100%",
-                      // height: "350px",
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "20px",
-                    }}
-                  >
-                    <Text b size={27}>
-                      {selectedStock?.stock_name}
-                    </Text>
+											<div
+												style={{
+													display: "flex",
+													justifyContent: "space-between",
+													alignItems: "center",
+												}}
+											>
+												<div
+													style={{ display: "flex", flexDirection: "column" }}
+												>
+													<Text
+														b
+														css={{
+															lineHeight: 1.1,
+															"@media only screen and (max-width: 768px)": {
+																fontSize: 21,
+															},
+														}}
+														size={15}
+													>
+														TIME LEFT
+													</Text>
+													<Text
+														b
+														size={15}
+														css={{
+															lineHeight: 1.1,
+															"@media only screen and (max-width: 768px)": {
+																fontSize: 15,
+															},
+														}}
+													>
+														(IN DAYS)
+													</Text>
+												</div>
+												<Text
+													b
+													css={{
+														flex: 1,
+														textAlign: "right",
+														"@media only screen and (max-width: 768px)": {
+															fontSize: 30,
+														},
+													}}
+													size={22}
+												>
+													{`${Math.ceil(stock.time_left)}` || <Loading /> ||
+														"-"}
+												</Text>
+											</div>
+										</div>
+									</Box>
+								</Box>
+								<Box
+									sx={{
+										bottom: "5px",
+										width: "85%",
+										marginBottom: "25px",
+										"@media only screen and (max-width: 768px)": {
+											width: "90%",
+											// height: "50px",
+											justifyContent: "center",
+										},
+									}}
+								>
+									<Button
+										auto
+										onPress={() => handleOpenReports(stock)}
+										css={{
+											top: "0px",
+											alignSelf: "center",
+											width: "100%",
+											borderRadius: "10000px",
+											color: "#000",
+											backgroundImage:
+												"linear-gradient(to top , #FF9D28, #ffa736)",
+											fontSize: 18,
+											"@media only screen and (max-width: 768px)": {
+												fontSize: 18,
+												lineHeight: 1,
+												height: "40px",
+												color: "black",
+											},
+										}}
+									>
+										View reports
+									</Button>
+									<Button
+										auto
+										onPress={() => handleOpenDisclosure(stock)}
+										css={{
+											top: "10px",
+											// marginTop: "10%",
+											color: "#106052",
+											width: "100%",
+											borderRadius: "10000px",
+											backgroundColor: "#fff",
+											// backgroundImage:
+											//   "linear-gradient(to top , #106052, #0f734d)",
+											fontSize: 15,
+											height: "20px",
+											"@media only screen and (max-width: 768px)": {
+												top: "10px",
+												lineHeight: 1,
+												height: "20px",
+												fontSize: 15,
+											},
+										}}
+									>
+										Disclosure
+									</Button>
+								</Box>
+								{/* <div style={{ position: 'absolute', bottom: "0px" }}>{stock.recommended_stock === true ? "#recommended" : ""}</div> */}
+							</Card>
+							<Modal
+								// blur
+								open={showReportsModal}
+								onClose={handleCloseReports}
+								aria-labelledby="modal-title"
+								aria-describedby="modal-description"
+								css={{
+									width: "100%",
+									borderRadius: "15px",
+									background: "transparent",
+									boxShadow: "none",
+									// backdropFilter: "blur(8px)",
+									alignItems: "center",
+									justifyContent: "center",
+								}}
+								className="iframePdfMobile"
+							>
+								<Card
+									css={{
+										height: "fit-content",
+										width: "fit-content",
+										maxWidth: "80rem",
+										minWidth: "100%",
+										display: "flex",
+										alignItems: "center",
+										flexDirection: "column",
+										padding: "50px 30px",
+										borderRadius: "25px",
+										// backgroundImage: "url(symbol-scatter-haikei-3.svg)",
+										objectPosition: "center",
+										backgroundPositionY: "center",
+										backgroundSize: "cover",
+										"@media only screen and (max-width: 764px)": {
+											minWidth: "100px",
+											width: "100vw !important",
+										},
+									}}
+								>
+									<IconButton
+										sx={{ position: "absolute", top: "5px", right: "5px" }}
+										onClick={handleCloseReports}
+									>
+										<CloseIcon color="error" />
+									</IconButton>
+									<Box
+										sx={{
+											width: "100%",
+											// height: "350px",
+											display: "flex",
+											flexDirection: "column",
+											gap: "20px",
+										}}
+									>
+										<Text b size={27}>
+											{selectedStock?.stock_name}
+										</Text>
 
-                    {selectedStock?.stock_reports?.length > 0 ? (
-                      selectedStock.stock_reports.map((report) => (
-                        <div key={report.report_name} style={{}}>
-                          <IconButton
-                            key={report.report_name}
-                            onClick={() =>
-                              window.open(
-                                `${report.document}#view=FitH&toolbar=0`,
-                                "_blank",
-                                "fullscreen=yes"
-                              )
-                            }
-                            // onClick={() => handleOpenModal(report.document)}
-                            sx={{
-                              "&:hover": { background: "#fff" },
-                              borderRadius: "0px",
-                              paddingLeft: "0px",
-                            }}
-                          >
-                            <DocumentText size={25} />
-                            <Text
-                              b
-                              size={21}
-                              css={{
-                                marginLeft: "5px",
-                                alignSelf: "start",
-                                lineHeight: 1.5,
-                              }}
-                            >
-                              {report.report_name}
-                            </Text>
-                          </IconButton>
-                        </div>
-                      ))
-                    ) : (
-                      <Text
-                        b
-                        size={20}
-                        css={{
-                          // position: "absolute",
-                          paddingTop: "50px",
-                          paddingBottom: "50px",
-                          // left: "22.5%",
-                        }}
-                      >
-                        No Reports Available!
-                      </Text>
-                    )}
-                  </Box>
-                </Card>
-                {/* <Button
+										{selectedStock?.stock_reports?.length > 0 ? (
+											selectedStock.stock_reports.map((report) => (
+												<div key={report.report_name} style={{}}>
+													<IconButton
+														key={report.report_name}
+														onClick={() =>
+															window.open(
+																`${report.document}#view=FitH&toolbar=0`,
+																"_blank",
+																"fullscreen=yes"
+															)
+														}
+														// onClick={() => handleOpenModal(report.document)}
+														sx={{
+															"&:hover": { background: "#fff" },
+															borderRadius: "0px",
+															paddingLeft: "0px",
+														}}
+													>
+														<DocumentText size={25} />
+														<Text
+															b
+															size={21}
+															css={{
+																marginLeft: "5px",
+																alignSelf: "start",
+																lineHeight: 1.5,
+															}}
+														>
+															{report.report_name}
+														</Text>
+													</IconButton>
+												</div>
+											))
+										) : (
+											<Text
+												b
+												size={20}
+												css={{
+													// position: "absolute",
+													paddingTop: "50px",
+													paddingBottom: "50px",
+													// left: "22.5%",
+												}}
+											>
+												No Reports Available!
+											</Text>
+										)}
+									</Box>
+								</Card>
+								{/* <Button
 									flat
 									onPress={handleCloseReports}
 									css={{
@@ -1708,115 +1779,115 @@ const StockCard = () => {
 								>
 									Close
 								</Button> */}
-              </Modal>
-              <Modal
-                // blur
-                open={showModal}
-                onClose={handleCloseModal}
-                aria-labelledby="modal-title"
-                aria-describedby="modal-description"
-                css={{
-                  height: "95vh",
-                  borderRadius: "15px",
-                  background: "transparent",
-                  boxShadow: "none",
-                  alignSelf: "center",
-                  alignContent: "center",
-                  justifyContent: "center",
-                  // backdropFilter: "blur(8px)",
-                }}
-                className="iframePdfMobile"
-              >
-                <Worker
-                  // workerUrl={`https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsVersion}/pdf.worker.min.js`}
-                  workerUrl={`https://unpkg.com/pdfjs-dist@${pdfjsVersion}/build/pdf.worker.min.js`}
-                >
-                  <Box
-                    sx={{
-                      height: "75vh",
-                      borderRadius: "15px",
-                    }}
-                  >
-                    {/* {console.log(PdfValue)} */}
-                    <Viewer
-                      fileUrl={`${
-                        PdfValue ? PdfValue : selectedReportUrl
-                      }#view=FitH&toolbar=0`}
-                      onDocumentAskPassword={handleAskPassword}
-                    />
-                  </Box>
-                </Worker>
-                <Button
-                  flat
-                  onPress={handleCloseModal}
-                  css={{
-                    alignSelf: "center",
-                    // width: "100%",
-                    backgroundColor: "#ffa12e",
-                    color: "#fff",
-                    fontSize: 19,
-                    marginTop: "20px",
-                    borderRadius: "10px",
-                    height: "50px",
-                    width: "100%",
-                    "@media only screen and (max-width: 768px)": {
-                      width: "100%",
-                      fontSize: 15,
-                      height: "50px",
-                      marginTop: "0px",
-                      borderRadius: "0px 0px 10px",
-                      "& span": {
-                        // display: "none",
-                      },
-                    },
-                  }}
-                >
-                  Close
-                </Button>
-              </Modal>
-            </Grid>
-          ))}
-          {!isLoggedIn || !isSubscribed ? (
-            <Grid>
-              <Card
-                isHoverable
-                css={{
-                  height: "617px",
-                  width: "285px",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  borderRadius: "35px",
-                  background: "#fff",
-                  filter: "none",
-                  justifyContent: "center",
-                  paddingTop: "50px",
-                  paddingBottom: "50px",
-                  paddingLeft: "15px",
-                  paddingRight: "15px",
-                  backgroundImage:
-                    "linear-gradient(to top , #105B54, #0F734D, #0F734D)",
-                }}
-                className="stocksPage-subscribe-mobile"
-              >
-                <div className="cr cr-top cr-right cr-sticky cr-subscription">
-                  VIP+
-                </div>
-                <img
-                  src="kamayakya-logo-white-vip.png"
-                  style={{ marginTop: "5px", width: "75%" }}
-                  alt="kamayakya"
-                />
+							</Modal>
+							<Modal
+								// blur
+								open={showModal}
+								onClose={handleCloseModal}
+								aria-labelledby="modal-title"
+								aria-describedby="modal-description"
+								css={{
+									height: "95vh",
+									borderRadius: "15px",
+									background: "transparent",
+									boxShadow: "none",
+									alignSelf: "center",
+									alignContent: "center",
+									justifyContent: "center",
+									// backdropFilter: "blur(8px)",
+								}}
+								className="iframePdfMobile"
+							>
+								<Worker
+									// workerUrl={`https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsVersion}/pdf.worker.min.js`}
+									workerUrl={`https://unpkg.com/pdfjs-dist@${pdfjsVersion}/build/pdf.worker.min.js`}
+								>
+									<Box
+										sx={{
+											height: "75vh",
+											borderRadius: "15px",
+										}}
+									>
+										{/* {console.log(PdfValue)} */}
+										<Viewer
+											fileUrl={`${
+												PdfValue ? PdfValue : selectedReportUrl
+											}#view=FitH&toolbar=0`}
+											onDocumentAskPassword={handleAskPassword}
+										/>
+									</Box>
+								</Worker>
+								<Button
+									flat
+									onPress={handleCloseModal}
+									css={{
+										alignSelf: "center",
+										// width: "100%",
+										backgroundColor: "#ffa12e",
+										color: "#fff",
+										fontSize: 19,
+										marginTop: "20px",
+										borderRadius: "10px",
+										height: "50px",
+										width: "100%",
+										"@media only screen and (max-width: 768px)": {
+											width: "100%",
+											fontSize: 15,
+											height: "50px",
+											marginTop: "0px",
+											borderRadius: "0px 0px 10px",
+											"& span": {
+												// display: "none",
+											},
+										},
+									}}
+								>
+									Close
+								</Button>
+							</Modal>
+						</Grid>
+					))}
+					{!isLoggedIn || !isSubscribed ? (
+						<Grid>
+							<Card
+								isHoverable
+								css={{
+									height: "617px",
+									width: "285px",
+									display: "flex",
+									flexDirection: "column",
+									alignItems: "center",
+									borderRadius: "35px",
+									background: "#fff",
+									filter: "none",
+									justifyContent: "center",
+									paddingTop: "50px",
+									paddingBottom: "50px",
+									paddingLeft: "15px",
+									paddingRight: "15px",
+									backgroundImage:
+										"linear-gradient(to top , #105B54, #0F734D, #0F734D)",
+								}}
+								className="stocksPage-subscribe-mobile"
+							>
+								<div className="cr cr-top cr-right cr-sticky cr-subscription">
+									VIP+
+								</div>
+								<img
+									src="kamayakya-logo-white-vip.png"
+									style={{ marginTop: "5px", width: "75%" }}
+									alt="kamayakya"
+								/>
 
-                <Divider
-                  css={{
-                    background: "#fff",
-                    opacity: "0.5",
-                    width: "30px",
-                    height: "3px",
-                    marginTop: "20px",
-                  }}
-                />
+								<Divider
+									css={{
+										background: "#fff",
+										opacity: "0.5",
+										width: "30px",
+										height: "3px",
+										marginTop: "20px",
+									}}
+								/>
 
                 <Box
                   sx={{
