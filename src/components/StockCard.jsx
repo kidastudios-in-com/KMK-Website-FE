@@ -374,32 +374,38 @@ const StockCard = () => {
 		}
 	}, [error]);
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      const refresh = localStorage.getItem("refresh");
-      setIsLoading(true);
-      const fetchData = async () => {
-        try {
-          const response = await axios.get(GET_ALL_URL, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `token ${refresh}`,
-            },
-          });
-          // console.log(response.data);
-          setStocks(response.data);
-          setFlipStates(new Array(response.data.length).fill(false));
-        } catch (error) {
-          setError("Please Login First to see our stock picks!");
-          showAlert();
-        } finally {
-          setIsLoading(false);
-        }
-      };
-      fetchData();
-    }
-  }, [isLoggedIn]);
+	useEffect(() => {
+		if (isLoggedIn) {
+			const refresh = localStorage.getItem("refresh");
+			setIsLoading(true);
+			const fetchData = async () => {
+				try {
+					const response = await axios.get(GET_ALL_URL, {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: `token ${refresh}`,
+						},
+					});
+					// console.log(response.data);
+					const sortedStocks = response.data.sort((a, b) => {
+						if (a.recommended_stock === b.recommended_stock) return 0;
+						return a.recommended_stock ? -1 : 1;
+					});
+
+					setStocks(sortedStocks);
+					// setStocks(response.data);
+					setFlipStates(new Array(response.data.length).fill(false));
+				} catch (error) {
+					setError("Please Login First to see our stock picks!");
+					showAlert();
+				} finally {
+					setIsLoading(false);
+				}
+			};
+			fetchData();
+		}
+	}, [isLoggedIn]);
 
 	const handleClearSelection = () => {
 		setSelectedIndustries([]);

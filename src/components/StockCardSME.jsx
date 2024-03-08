@@ -401,7 +401,12 @@ const StockCardSME = () => {
 							Authorization: `token ${refresh}`,
 						},
 					});
-					setStocks(response.data);
+                    const sortedStocks = response.data.sort((a, b) => {
+                        if (a.recommended_stock === b.recommended_stock) return 0;
+                        return a.recommended_stock ? -1 : 1;
+                    });
+
+                    setStocks(sortedStocks);
 					// console.log(response.data);
 					setFlipStates(new Array(response.data.length).fill(false));
 				} catch (error) {
