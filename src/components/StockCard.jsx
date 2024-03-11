@@ -1564,9 +1564,9 @@ const StockCard = () => {
 														}}
 														size={15}
 													>
-														TIME LEFT
+														TIME TO
 													</Text>
-													{/* <Text
+													<Text
 														b
 														size={15}
 														css={{
@@ -1576,8 +1576,8 @@ const StockCard = () => {
 															},
 														}}
 													>
-														(IN DAYS)
-													</Text> */}
+														TARGET
+													</Text>
 												</div>
 												<Text
 													b
@@ -1918,159 +1918,159 @@ const StockCard = () => {
 									}}
 								/>
 
-                <Box
-                  sx={{
-                    width: "100%",
-                    alignSelf: "start",
-                    marginTop: "20px",
-                    marginBottom: "10px",
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    paddingLeft: "30px",
-                    paddingRight: "30px",
-                  }}
-                >
-                  <CheckCircleIcon
-                    sx={{
-                      marginRight: "10px",
-                      color: "#fff",
-                      fontSize: 20,
-                      alignSelf: "start",
-                      marginTop: "5px",
-                      opacity: 0.9,
-                    }}
-                  />
-                  <Text
-                    b
-                    color="#fff"
-                    size={20}
-                    css={{ lineHeight: 1.2, opacity: 0.9 }}
-                  >
-                    2-4 individual stock picks every month
-                  </Text>
-                </Box>
-                <Box
-                  sx={{
-                    width: "100%",
-                    alignSelf: "start",
-                    marginBottom: "10px",
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    paddingLeft: "30px",
-                    paddingRight: "30px",
-                  }}
-                >
-                  <CheckCircleIcon
-                    sx={{
-                      marginRight: "10px",
-                      color: "#fff",
-                      fontSize: 20,
-                      alignSelf: "start",
-                      marginTop: "5px",
-                      opacity: 0.9,
-                    }}
-                  />
-                  <Text
-                    b
-                    color="#fff"
-                    size={20}
-                    css={{ lineHeight: 1.2, opacity: 0.9 }}
-                  >
-                    NSE + BSE + SME stock picks
-                  </Text>
-                </Box>
-                <Box
-                  sx={{
-                    width: "100%",
-                    alignSelf: "start",
-                    // marginTop: "20px",
-                    marginBottom: "10px",
-                    // marginLeft: "5%",
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    paddingLeft: "30px",
-                    paddingRight: "30px",
-                  }}
-                >
-                  <CheckCircleIcon
-                    sx={{
-                      marginRight: "10px",
-                      color: "#fff",
-                      fontSize: 20,
-                      alignSelf: "start",
-                      marginTop: "5px",
-                      opacity: 0.9,
-                    }}
-                  />
-                  <Text
-                    b
-                    color="#fff"
-                    size={20}
-                    css={{ lineHeight: 1.2, opacity: 0.9 }}
-                  >
-                    WhatsApp & Email updates
-                  </Text>
-                </Box>
-                <Divider
-                  css={{
-                    background: "#fff",
-                    opacity: "0.5",
-                    width: "30px",
-                    height: "3px",
-                    marginTop: "20px",
-                    marginBottom: "20px",
-                  }}
-                />
-                <Button
-                  // variant="contained"
-                  css={{
-                    width: "75%",
-                    background: "linear-gradient(to top , #fb7716,#fe9807)",
-                    paddingTop: "5px",
-                    paddingBottom: "5px",
-                    borderRadius: "10000px",
-                    boxShadow: "none",
-                    "&:hover": {
-                      backgroundImage:
-                        "linear-gradient(to top , #FF9D28, #ffa736)",
-                    },
-                  }}
-                  onClick={handleLoginOrSubForSubscribeNow}
-                >
-                  <Text b color="#FFF" size={18}>
-                    Subscribe Now
-                  </Text>
-                </Button>
-                <Modal
-                  width="450px"
-                  open={showLoginModalForSubscribe}
-                  onClose={handleCloseLoginModalForSubscribeNow}
-                >
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "row",
-                      width: "100%",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                    }}
-                  >
-                    <img src="kmk-k.png" style={{ maxWidth: "260px" }} />
-                    <IconButton
-                      sx={{
-                        width: "40px",
-                        "&:hover": { background: "#fff" },
-                        // alignSelf: "end",
-                        right: "20px",
-                      }}
-                      onClick={() => handleCloseLoginModalForSubscribeNow()}
-                    >
-                      <CloseIcon sx={{ color: "#e81123" }} />
-                    </IconButton>
-                  </Box>
+								<Box
+									sx={{
+										width: "100%",
+										alignSelf: "start",
+										marginTop: "20px",
+										marginBottom: "10px",
+										display: "flex",
+										flexDirection: "row",
+										alignItems: "center",
+										paddingLeft: "30px",
+										paddingRight: "30px",
+									}}
+								>
+									<CheckCircleIcon
+										sx={{
+											marginRight: "10px",
+											color: "#fff",
+											fontSize: 20,
+											alignSelf: "start",
+											marginTop: "5px",
+											opacity: 0.9,
+										}}
+									/>
+									<Text
+										b
+										color="#fff"
+										size={20}
+										css={{ lineHeight: 1.2, opacity: 0.9 }}
+									>
+										2-4 individual stock picks every month
+									</Text>
+								</Box>
+								<Box
+									sx={{
+										width: "100%",
+										alignSelf: "start",
+										marginBottom: "10px",
+										display: "flex",
+										flexDirection: "row",
+										alignItems: "center",
+										paddingLeft: "30px",
+										paddingRight: "30px",
+									}}
+								>
+									<CheckCircleIcon
+										sx={{
+											marginRight: "10px",
+											color: "#fff",
+											fontSize: 20,
+											alignSelf: "start",
+											marginTop: "5px",
+											opacity: 0.9,
+										}}
+									/>
+									<Text
+										b
+										color="#fff"
+										size={20}
+										css={{ lineHeight: 1.2, opacity: 0.9 }}
+									>
+										NSE + BSE + SME stock picks
+									</Text>
+								</Box>
+								<Box
+									sx={{
+										width: "100%",
+										alignSelf: "start",
+										// marginTop: "20px",
+										marginBottom: "10px",
+										// marginLeft: "5%",
+										display: "flex",
+										flexDirection: "row",
+										alignItems: "center",
+										paddingLeft: "30px",
+										paddingRight: "30px",
+									}}
+								>
+									<CheckCircleIcon
+										sx={{
+											marginRight: "10px",
+											color: "#fff",
+											fontSize: 20,
+											alignSelf: "start",
+											marginTop: "5px",
+											opacity: 0.9,
+										}}
+									/>
+									<Text
+										b
+										color="#fff"
+										size={20}
+										css={{ lineHeight: 1.2, opacity: 0.9 }}
+									>
+										WhatsApp & Email updates
+									</Text>
+								</Box>
+								<Divider
+									css={{
+										background: "#fff",
+										opacity: "0.5",
+										width: "30px",
+										height: "3px",
+										marginTop: "20px",
+										marginBottom: "20px",
+									}}
+								/>
+								<Button
+									// variant="contained"
+									css={{
+										width: "75%",
+										background: "linear-gradient(to top , #fb7716,#fe9807)",
+										paddingTop: "5px",
+										paddingBottom: "5px",
+										borderRadius: "10000px",
+										boxShadow: "none",
+										"&:hover": {
+											backgroundImage:
+												"linear-gradient(to top , #FF9D28, #ffa736)",
+										},
+									}}
+									onClick={handleLoginOrSubForSubscribeNow}
+								>
+									<Text b color="#FFF" size={18}>
+										Subscribe Now
+									</Text>
+								</Button>
+								<Modal
+									width="450px"
+									open={showLoginModalForSubscribe}
+									onClose={handleCloseLoginModalForSubscribeNow}
+								>
+									<Box
+										sx={{
+											display: "flex",
+											flexDirection: "row",
+											width: "100%",
+											justifyContent: "space-between",
+											alignItems: "center",
+										}}
+									>
+										<img src="kmk-k.png" style={{ maxWidth: "260px" }} />
+										<IconButton
+											sx={{
+												width: "40px",
+												"&:hover": { background: "#fff" },
+												// alignSelf: "end",
+												right: "20px",
+											}}
+											onClick={() => handleCloseLoginModalForSubscribeNow()}
+										>
+											<CloseIcon sx={{ color: "#e81123" }} />
+										</IconButton>
+									</Box>
 
 									<Modal.Body>
 										<LoginForSubsribe />

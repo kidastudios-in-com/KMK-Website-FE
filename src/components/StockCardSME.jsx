@@ -1237,11 +1237,17 @@ const StockCardSME = () => {
                           {/*{stock.action === "SELL" ? "SELL" : ""}*/}
                           {/*{stock.action === "BUY" ? "BUY" : ""}*/}
                           {/*{stock.action === "HOLD" ? "HOLD" : ""}*/}
-                          {stock.action === "SELL" ? "SELL" : stock.action === "BUY" ? "BUY" : stock.action === "HOLD" ? "HOLD" : ""}
+                          {stock.action === "SELL"
+                              ? "SELL"
+                              : stock.action === "BUY"
+                                  ? "BUY"
+                                  : stock.action === "HOLD"
+                                      ? "HOLD"
+                                      : ""}
                       </div>
-                    {/*<div className="sme sme-top sme-right sme-sticky sme-subscription">*/}
-                    {/*  SME*/}
-                    {/*</div>*/}
+                      {/* <div className="sme sme-top sme-right sme-sticky sme-subscription">
+										 SME
+										</div> */}
                     <Box
                       sx={{
                         width: "100%",
@@ -1356,9 +1362,7 @@ const StockCardSME = () => {
                                       borderRadius: "10px",
                                   }}
                               >
-                                  {isNewStock(stock.created) && (
-                                      <div>NEW</div>
-                                  )}
+                                  {isNewStock(stock.created) && <div>NEW</div>}
                               </div>
                           </Box>
                       ) : (
@@ -1736,7 +1740,7 @@ const StockCardSME = () => {
                             }}
                             size={15}
                           >
-                            TIME LEFT
+                            TIME TO
                           </Text>
                           <Text
                             b
@@ -1748,7 +1752,7 @@ const StockCardSME = () => {
                               },
                             }}
                           >
-                            (IN DAYS)
+                            TARGET
                           </Text>
                         </div>
                         <Text
