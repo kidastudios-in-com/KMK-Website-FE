@@ -124,43 +124,43 @@ const StockCard = () => {
 
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  // const handleTrackRecord = async () => {
-  //   try {
-  //     const refreshToken = localStorage.getItem("refresh");
-  //
-  //     const url = isLoggedIn ? TRACK_RECORD_FOR_USER : TRACK_RECORD_FOR_ALL;
-  //
-  //     const headers = {
-  //       "Content-Type": "application/json",
-  //     };
-  //
-  //     if (isLoggedIn) {
-  //       headers.Authorization = `token ${refreshToken}`;
-  //     }
-  //
-  //     const response = await fetch(url, {
-  //       method: "GET",
-  //       headers,
-  //     });
-  //
-  //     if (response.ok) {
-  //       const data = await response.json();
-  //       setRecord(data);
-  //       console.log(data);
-  //     } else {
-  //       // Handle API call error
-  //       console.error("Error Getting Track Records | Track Record Page");
-  //     }
-  //   } catch (error) {
-  //     // Handle any other error
-  //     console.error(error);
-  //     // console.log("no call");
-  //   }
-  // };
-  //
-  // useEffect(() => {
-  //   handleTrackRecord();
-  // }, [isLoggedIn]);
+	// const handleTrackRecord = async () => {
+	//   try {
+	//     const refreshToken = localStorage.getItem("refresh");
+	//
+	//     const url = isLoggedIn ? TRACK_RECORD_FOR_USER : TRACK_RECORD_FOR_ALL;
+	//
+	//     const headers = {
+	//       "Content-Type": "application/json",
+	//     };
+	//
+	//     if (isLoggedIn) {
+	//       headers.Authorization = `token ${refreshToken}`;
+	//     }
+	//
+	//     const response = await fetch(url, {
+	//       method: "GET",
+	//       headers,
+	//     });
+	//
+	//     if (response.ok) {
+	//       const data = await response.json();
+	//       setRecord(data);
+	//       console.log(data);
+	//     } else {
+	//       // Handle API call error
+	//       console.error("Error Getting Track Records | Track Record Page");
+	//     }
+	//   } catch (error) {
+	//     // Handle any other error
+	//     console.error(error);
+	//     // console.log("no call");
+	//   }
+	// };
+	//
+	// useEffect(() => {
+	//   handleTrackRecord();
+	// }, [isLoggedIn]);
 
 	const toggleDrawer = () => {
 		setIsDrawerOpen(!isDrawerOpen);
@@ -389,10 +389,18 @@ const StockCard = () => {
 					});
 					// console.log(response.data);
 					const sortedStocks = response.data.sort((a, b) => {
-						if (a.recommended_stock === b.recommended_stock) return 0;
-						return a.recommended_stock ? -1 : 1;
-					});
+						// if (a.recommended_stock === b.recommended_stock) return 0;
+						// return a.recommended_stock ? -1 : 1;
 
+						if (a.recommended_stock && !b.recommended_stock) return -1;
+						if (!a.recommended_stock && b.recommended_stock) return 1;
+
+						// Then check for new stocks
+						const isNewStockA = isNewStock(a.created);
+						const isNewStockB = isNewStock(b.created);
+						if (isNewStockA && !isNewStockB) return -1;
+						if (!isNewStockA && isNewStockB) return 1;
+					});
 					setStocks(sortedStocks);
 					// setStocks(response.data);
 					setFlipStates(new Array(response.data.length).fill(false));
@@ -800,50 +808,50 @@ const StockCard = () => {
 								</Dropdown>
 							</ListItem> */}
 
-              <Divider
-                css={{
-                  width: "50%",
-                  height: "4px",
-                  borderRadius: "1000px",
-                  backgroundColor: "#FF9E24",
-                  margin: "20px 25px 15px",
-                }}
-              />
-              {/*<Text b size={21} css={{ paddingLeft: "30px" }}>*/}
-              {/*  Sort by time left:*/}
-              {/*</Text>*/}
-              <ListItem>
-                <FormControl sx={{ mt: "5px", ml: "15px" }}>
-                  {/*<FormLabel*/}
-                  {/*  id="demo-controlled-radio-buttons-group"*/}
-                  {/*  style={{*/}
-                  {/*    fontSize: "15px",*/}
-                  {/*    fontWeight: "bold",*/}
-                  {/*    color: "#106352",*/}
-                  {/*  }}*/}
-                  {/*>*/}
-                  {/*  Time left*/}
-                  {/*</FormLabel>*/}
-                  <Text b size={19} css={{ paddingLeft: "30px" }}>
-                    Sort by time left:
-                  </Text>
-                  <RadioGroup value={timeSort} onChange={timeSortValue}>
-                    <FormControlLabel
-                      value="descending"
-                      control={<Radio />}
-                      label="Most Time Remaining (This means the stocks with the most time left are at the top)"
-                      style={{ paddingTop: "20px" }}
-                    />
-                    <FormControlLabel
-                      value="ascending"
-                      control={<Radio />}
-                      label="Least Time Remaining (This means the stocks with the least time left are at the top)"
-                      style={{ paddingTop: "20px" }}
-                    />
-                  </RadioGroup>
-                </FormControl>
-              </ListItem>
-              {/* <ListItem sx={{ justifyContent: "center" }}>
+							<Divider
+								css={{
+									width: "50%",
+									height: "4px",
+									borderRadius: "1000px",
+									backgroundColor: "#FF9E24",
+									margin: "20px 25px 15px",
+								}}
+							/>
+							{/*<Text b size={21} css={{ paddingLeft: "30px" }}>*/}
+							{/*  Sort by time left:*/}
+							{/*</Text>*/}
+							<ListItem>
+								<FormControl sx={{ mt: "5px", ml: "15px" }}>
+									{/*<FormLabel*/}
+									{/*  id="demo-controlled-radio-buttons-group"*/}
+									{/*  style={{*/}
+									{/*    fontSize: "15px",*/}
+									{/*    fontWeight: "bold",*/}
+									{/*    color: "#106352",*/}
+									{/*  }}*/}
+									{/*>*/}
+									{/*  Time left*/}
+									{/*</FormLabel>*/}
+									<Text b size={19} css={{ paddingLeft: "30px" }}>
+										Sort by time left:
+									</Text>
+									<RadioGroup value={timeSort} onChange={timeSortValue}>
+										<FormControlLabel
+											value="descending"
+											control={<Radio />}
+											label="Most Time Remaining (This means the stocks with the most time left are at the top)"
+											style={{ paddingTop: "20px" }}
+										/>
+										<FormControlLabel
+											value="ascending"
+											control={<Radio />}
+											label="Least Time Remaining (This means the stocks with the least time left are at the top)"
+											style={{ paddingTop: "20px" }}
+										/>
+									</RadioGroup>
+								</FormControl>
+							</ListItem>
+							{/* <ListItem sx={{ justifyContent: "center" }}>
 								<Dropdown>
 									<Dropdown.Button
 										flat
@@ -1068,7 +1076,7 @@ const StockCard = () => {
 							<Card
 								isHoverable
 								css={{
-									// height: "580px",
+									// height: "650px",
 									width: "285px",
 									display: "flex",
 									flexDirection: "column",
@@ -1236,9 +1244,7 @@ const StockCard = () => {
 														borderRadius: "10px",
 													}}
 												>
-													{isNewStock(stock.created) && (
-														<div>NEW</div>
-													)}
+													{isNewStock(stock.created) && <div>NEW</div>}
 												</div>
 											</Box>
 										) : (
@@ -1560,7 +1566,7 @@ const StockCard = () => {
 													>
 														TIME LEFT
 													</Text>
-													<Text
+													{/* <Text
 														b
 														size={15}
 														css={{
@@ -1571,7 +1577,7 @@ const StockCard = () => {
 														}}
 													>
 														(IN DAYS)
-													</Text>
+													</Text> */}
 												</div>
 												<Text
 													b
@@ -1584,7 +1590,24 @@ const StockCard = () => {
 													}}
 													size={22}
 												>
-													{`${Math.ceil(stock.time_left)}` || <Loading /> ||
+													{/* {`${Math.ceil(stock.time_left)}` || <Loading /> ||
+														"-"} */}
+													{(() => {
+														const timeLeft = Math.ceil(stock.time_left);
+														const years = Math.floor(timeLeft / 365);
+														const months = Math.floor((timeLeft % 365) / 30);
+														const days = Math.floor((timeLeft % 365) % 30);
+
+														if (timeLeft < 30) {
+															return `${days} days`;
+														} else if (years === 0) {
+															return `${months} month${
+																months !== 1 ? "s" : ""
+															}`;
+														} else {
+															return `${years} yr ${months} mo.`;
+														}
+													})() || <Loading /> ||
 														"-"}
 												</Text>
 											</div>
@@ -2049,30 +2072,30 @@ const StockCard = () => {
                     </IconButton>
                   </Box>
 
-                  <Modal.Body>
-                    <LoginForSubsribe />
-                  </Modal.Body>
-                </Modal>
+									<Modal.Body>
+										<LoginForSubsribe />
+									</Modal.Body>
+								</Modal>
 
-                <Text
-                  b
-                  size={20}
-                  color="#fff"
-                  css={{
-                    textAlign: "center",
-                    marginTop: "10px",
-                    "@media only screen and (max-width: 768px)": {
-                      fontSize: "20px",
-                    },
-                  }}
-                >
-                  for ₹
-                  <span
-                    style={{ color: "#fff", fontSize: 30, lineHeight: 1.2 }}
-                  >
-                    15,000/year
-                  </span>
-                </Text>
+								<Text
+									b
+									size={20}
+									color="#fff"
+									css={{
+										textAlign: "center",
+										marginTop: "10px",
+										"@media only screen and (max-width: 768px)": {
+											fontSize: "20px",
+										},
+									}}
+								>
+									for ₹
+									<span
+										style={{ color: "#fff", fontSize: 30, lineHeight: 1.2 }}
+									>
+										15,000/year
+									</span>
+								</Text>
 
                 <Text
                   b
@@ -2172,16 +2195,16 @@ const StockCard = () => {
                   </IconButton>
                 </Box>
 
-                <Modal.Body>
-                  <Login />
-                </Modal.Body>
-              </Modal>
-            </Grid>
-          ) : (
-            ""
-          )}
-          {/* {stocks.length <= 3 && stocks.map((stock) => ( */}
-          {/* {stocks.length <= 3 &&
+								<Modal.Body>
+									<Login />
+								</Modal.Body>
+							</Modal>
+						</Grid>
+					) : (
+						""
+					)}
+					{/* {stocks.length <= 3 && stocks.map((stock) => ( */}
+					{/* {stocks.length <= 3 &&
 					Array.from({ length: 4 }).map((_, index) => ( */}
           {!isLoggedIn || !isSubscribed
             ? staticNumbers.map((number, index) => (
@@ -2358,46 +2381,46 @@ const StockCard = () => {
                         </div>
                       </Box>
 
-                      <Box sx={{ minWidth: "90%", maxWidth: "90%" }}>
-                        <div
-                          style={{
-                            display: "flex",
-                            width: "100%",
-                            flexDirection: "column",
-                          }}
-                        >
-                          <Divider
-                            height={4}
-                            style={{
-                              backgroundColor: "#ffa736",
-                              marginTop: "30px",
-                              marginBottom: "10px",
-                              width: "50px",
-                              alignSelf: "center",
-                            }}
-                          />
+											<Box sx={{ minWidth: "90%", maxWidth: "90%" }}>
+												<div
+													style={{
+														display: "flex",
+														width: "100%",
+														flexDirection: "column",
+													}}
+												>
+													<Divider
+														height={4}
+														style={{
+															backgroundColor: "#ffa736",
+															marginTop: "30px",
+															marginBottom: "10px",
+															width: "50px",
+															alignSelf: "center",
+														}}
+													/>
 
-                          <div
-                            style={{
-                              zIndex: 1,
-                              display: "flex",
-                              alignItems: "center",
-                              justifyContent: "center",
-                              flexDirection: "column",
-                              marginTop: "0px",
-                            }}
-                          >
-                            <MdOutlineLock color="#ffa12e" size={50} />
-                            <div
-                              style={{
-                                display: "flex",
-                                alignItems: "center",
-                                flexDirection: "row",
-                                marginTop: "20px",
-                              }}
-                              className="stocksPage-card-loginSection"
-                            >
-                              {/* <Button
+													<div
+														style={{
+															zIndex: 1,
+															display: "flex",
+															alignItems: "center",
+															justifyContent: "center",
+															flexDirection: "column",
+															marginTop: "0px",
+														}}
+													>
+														<MdOutlineLock color="#ffa12e" size={50} />
+														<div
+															style={{
+																display: "flex",
+																alignItems: "center",
+																flexDirection: "row",
+																marginTop: "20px",
+															}}
+															className="stocksPage-card-loginSection"
+														>
+															{/* <Button
 																on
 																onPress={handleFirstCard}
 																css={{
@@ -2504,31 +2527,31 @@ const StockCard = () => {
                                 </div>
                               )}
 
-                              {/*<BiChevronRight size={24} color="#000000" />*/}
-                              {/* </Button> */}
-                            </div>
-                          </div>
-                          <Divider
-                            height={4}
-                            style={{
-                              backgroundColor: "#ffa736",
-                              marginTop: "30px",
-                              marginBottom: "10px",
-                              width: "50px",
-                              alignSelf: "center",
-                            }}
-                          />
-                        </div>
-                      </Box>
-                    </Box>
-                  </Card>
-                </Grid>
-              ))
-            : ""}
-        </Grid>
-      </Box>
-    </div>
-  );
+															{/*<BiChevronRight size={24} color="#000000" />*/}
+															{/* </Button> */}
+														</div>
+													</div>
+													<Divider
+														height={4}
+														style={{
+															backgroundColor: "#ffa736",
+															marginTop: "30px",
+															marginBottom: "10px",
+															width: "50px",
+															alignSelf: "center",
+														}}
+													/>
+												</div>
+											</Box>
+										</Box>
+									</Card>
+								</Grid>
+						  ))
+						: ""}
+				</Grid>
+			</Box>
+		</div>
+	);
 };
 
 export default StockCard;
