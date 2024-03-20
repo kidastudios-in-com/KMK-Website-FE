@@ -8,6 +8,8 @@ COPY package*.json ./
 
 RUN npm install --production
 
+ENV NEXT_PUBLIC_BASEPATH=https://test-server.kamayakya.in
+
 COPY . .
 
 RUN npm run build
