@@ -64,7 +64,7 @@ const Section3 = () => {
 
   const handleGuficOnePage = () => {
 		var win = window.open(
-			"Gufic BioScience - One Page Report.pdf#toolbar=0&fitH=1",
+			"Gufic Bioscience - One Page Report.pdf#toolbar=0&fitH=1",
 			"_blank",
 			"fullscreen=yes"
 		);
