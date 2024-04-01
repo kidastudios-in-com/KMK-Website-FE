@@ -1,10 +1,7 @@
 //AUTH BASE
-// console.log(process.env.NEXT_PUBLIC_STRIPE_KEY);
 export const BASE_URL = 'https://test-server.kamayakya.in';
 // export const BASE_URL = 'https://api-server.kamayakya.in';
-// export const BASE_URL = process.env.NEXT_PUBLIC_BASEPATH;
-// console.log(process.env.NEXT_PUBLIC_BASEPATH);
-// console.log(BASE_URL);
+
 export const ADMIN_URL = `${BASE_URL}/kmkadmin`;
 export const MASTER_URL = `${BASE_URL}/master`;
 export const USER_URL = `${BASE_URL}/user`;
@@ -34,10 +31,9 @@ export const GET_SPECIFIC_STOCK_URL = `${USER_URL}/specificStock`;
 // export const GET_ALL_URL = `${ADMIN_URL}/getAllStocks/`;
 
 //Billing Info
-// export const BILLING_URL = `${USER_URL}/payment_details/`;
-// export const BILLING_DETAILS_URL = `${USER_URL}/payment_success_details/`;
 export const BILLING_INFO_URL = `${USER_URL}/ccavenue_transaction/`;
 export const SUBSCRIBE_URL = `${USER_URL}/subscribe/`;
+export const SUBSCRIBE_RAZORPAY = `${USER_URL}/subscribe_through_razorpay/`;
 
 //Blogs URL
 export const GET_BLOGS = `${USER_URL}/all_blogs/`;
@@ -56,16 +52,9 @@ export const GET_ADMINS = `${ADMIN_URL}/getAllAdmin/`;
 
 //upload Invoice
 export const INVOICE_UPLOAD = `${ADMIN_URL}/upload_invoice/`;
-// export const INVOICE_DETAILS = `${ADMIN_URL}/generate_invoice/`;
 
-//Stripe Key
-export const STRIPE_KEY = process.env.NEXT_PUBLIC_STRIPE_KEY;
-// ||  'pk_test_51N3dAPSFPooNZtZaCwGwRUC1IHpC4HqARVbxMBia13Fqan4H6SoLZUhLz21xqqMhtDU5Kiurtzia2uznSEbGSADk00LRBh1V2p'
-
-// export const TEST_URL = "https://test-server.kamayakya.in";
 export const USER_URL1 = `${BASE_URL}/user`;
 export const SUBS_URL1 = `${USER_URL1}/subscribe/`;
-
 
 // Discount Code Validation
 export const CODE_VALID = `${USER_URL}/validate_discount_code/`;

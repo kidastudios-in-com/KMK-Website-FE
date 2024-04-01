@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { GET_USER } from "@/pages/api/URLs";
+// import { loadStripe } from "@stripe/stripe-js";
 import {
 	Button,
 	Card,
@@ -10,6 +11,7 @@ import {
 	Text,
 } from "@nextui-org/react";
 import { Box, IconButton } from "@mui/material";
+// import { Elements } from "@stripe/react-stripe-js";
 import NavBar2 from "@/components/Navbar2";
 import FaqsNew from "../pages/screens/FaqsNew";
 import Footer from "../pages/screens/Footer";
@@ -21,8 +23,10 @@ import pincodeData from "../Data/pincode_db.json";
 import { ArrowBack, TaskAltOutlined } from "@mui/icons-material";
 import { useRouter } from "next/router";
 import Confetti from "react-confetti";
-import { CODE_VALID, SUBSCRIBE_URL } from "./api/URLs";
+import { TextInput } from "@mantine/core";
+import { CODE_VALID, SUBSCRIBE_RAZORPAY, SUBSCRIBE_URL } from "./api/URLs";
 import PageVisibility from "../components/PageVisibility";
+// import '@mantine/core/styles.css';
 
 export default function PreviewPage() {
 	// const [productID, setProductID] = useState("");
@@ -162,6 +166,7 @@ export default function PreviewPage() {
 	};
 
 	const updateFormValidity = () => {
+		// console.log("Nope", billingNumber, billingEmail, billingName, userPincode);
 		setIsFormValid(
 			billingNumber !== "" &&
 				billingEmail !== "" &&
@@ -184,6 +189,63 @@ export default function PreviewPage() {
 		setDiscountCode(e.target.value.toUpperCase());
 	};
 
+	// const handleSaveAndPay = async () => {
+	// 	try {
+	// 		setLoading(true);
+
+	// 		const billingData = {
+	// 			name: billingName,
+	// 			whatsapp_no: billingNumber,
+	// 			email: billingEmail,
+	// 			pincode: userPincode,
+	// 			city: userCity,
+	// 			state: userState,
+	// 			gst_number: gstNo ? gstNo : "",
+	// 			referral_code: referralCode ? referralCode : "",
+	// 			discount_code: discountCode,
+	// 		};
+
+	// 		// Make API call to BILLING_URL
+	// 		const billingResponse = await fetch(SUBSCRIBE_URL, {
+	// 			method: "POST",
+	// 			headers: {
+	// 				"Content-Type": "application/json",
+	// 				Authorization: `token ${refreshToken}`,
+	// 			},
+	// 			body: JSON.stringify(billingData),
+	// 		});
+	// 		console.log(billingResponse);
+	// 		if (billingResponse.ok) {
+	// 			const responseData = await billingResponse.json();
+	// 			console.log(responseData);
+	// 			window.open(responseData, "_self");
+	// 		}
+
+	// 		setLoading(false);
+	// 	} catch (error) {
+	// 		console.error("Error:", error);
+	// 		setLoading(false);
+	// 	}
+	// };
+
+	const loadScript = (src) => {
+		return new Promise((resolve) => {
+		  const script = document.createElement("script");
+		  script.src = src;
+		  script.onload = () => {
+			resolve(true);
+		  };
+		  script.onerror = () => {
+			resolve(false);
+		  };
+		 document.body.appendChild(script);
+	   });
+	};
+
+	useEffect(() => {
+		loadScript("https://checkout.razorpay.com/v1/checkout.js");
+	},[]);
+
 	const handleSaveAndPay = async () => {
 		try {
 			setLoading(true);
@@ -200,21 +262,47 @@ export default function PreviewPage() {
 				discount_code: discountCode,
 			};
 
-			// Make API call to BILLING_URL
-			const billingResponse = await fetch(SUBSCRIBE_URL, {
+			// Make API call to create a Razorpay order
+			const orderResponse = await fetch(SUBSCRIBE_RAZORPAY, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
-					Authorization: `token ${refreshToken}`,
+					Authorization: `token ${refreshToken}`, // Use your Razorpay API key here
 				},
 				body: JSON.stringify(billingData),
 			});
-			console.log(billingResponse);
-			if (billingResponse.ok) {
-				const responseData = await billingResponse.json();
-				console.log(responseData);
-				window.open(responseData, "_self");
+
+			if (!orderResponse.ok) {
+				throw new Error("Failed to create Razorpay order");
 			}
+
+			const orderData = await orderResponse.json();
+			console.log(orderData, "ID", orderData.id);
+			// Initialize Razorpay
+			const options = {
+				key: 'rzp_test_YteVuBPrLvOKSg', // Your Razorpay API key
+				amount: orderData.amount * 100,
+				currency: orderData.currency,
+				order_id: orderData.order_id,
+				// redirect: true,
+				callback_url: `http://192.168.0.157:8000/user/razorpay_callback/`,
+				handler: function (response) {
+					// Handle success callback
+					console.log("Payment successful:", response);
+					// Redirect to success page or perform further actions
+					router.push("/payment-successful");
+				},
+				prefill: {
+					name: billingName,
+					email: billingEmail,
+					contact: billingNumber,
+				},
+			};
+
+			const rzp = new Razorpay(options);
+
+			// Open Razorpay checkout form
+			rzp.open();
 
 			setLoading(false);
 		} catch (error) {
@@ -223,9 +311,14 @@ export default function PreviewPage() {
 		}
 	};
 
+
 	const [discountAmount, setDiscountAmount] = useState("");
 	const [totalAmount, setTotalAmount] = useState("");
 	const [discountApplied, setDiscountApplied] = useState(false);
+	// const [checkingAPICall, setCheckingAPICall] = useState(false);
+
+
+
 
 	const validateDiscountCode = async () => {
 		// console.log(discountCode);

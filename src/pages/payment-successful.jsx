@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import {
 	BILLING_DETAILS_URL,
 	BILLING_INFO_URL,
@@ -8,8 +8,6 @@ import {
 import { Loading, Text } from "@nextui-org/react";
 import AuthContext from "@/components/AuthContext";
 import { useRouter } from "next/router";
-import { pdf } from "@react-pdf/renderer";
-// import InvoicePDF from "./UserDetails/InvoicePDF";
 
 const paymentsuccessful = () => {
 	// const { isLoggedIn } = useContext(AuthContext);
@@ -29,7 +27,6 @@ const paymentsuccessful = () => {
 		const GetPaymentInfo = async () => {
 			console.log("Hit1", refreshToken);
 			try {
-				console.log("Hit2", refreshToken);
 				const billingInfo = await fetch(BILLING_INFO_URL, {
 					method: "GET",
 					headers: {
