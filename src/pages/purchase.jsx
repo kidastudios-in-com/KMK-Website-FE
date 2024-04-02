@@ -290,7 +290,7 @@ export default function PreviewPage() {
 					// Handle success callback
 					console.log("Payment successful:", response);
 					// Redirect to success page or perform further actions
-					router.push("/payment-successful");
+					// router.push("/payment-successful");
 				},
 				prefill: {
 					name: billingName,
