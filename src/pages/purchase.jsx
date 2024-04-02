@@ -284,7 +284,7 @@ export default function PreviewPage() {
 				amount: orderData.amount * 100,
 				currency: orderData.currency,
 				order_id: orderData.order_id,
-				// redirect: true,
+				redirect: true,
 				callback_url: `https://test-server.kamayakya.in/user/razorpay_callback/`,
 				handler: function (response) {
 					// Handle success callback
