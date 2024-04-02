@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import {
-	BILLING_DETAILS_URL,
 	BILLING_INFO_URL,
 	GET_USER,
-	INVOICE_UPLOAD,
+	BILLING_URL_RAZORPAY
 } from "./api/URLs";
 import { Loading, Text } from "@nextui-org/react";
 import AuthContext from "@/components/AuthContext";
@@ -21,13 +20,40 @@ const paymentsuccessful = () => {
 	const router = useRouter();
 	const refreshToken = localStorage.getItem("refresh");
 
+	// useEffect(() => {
+	// 	// const refreshToken = localStorage.getItem("refresh");
+
+	// 	const GetPaymentInfo = async () => {
+	// 		console.log("Hit", refreshToken);
+	// 		try {
+	// 			const billingInfo = await fetch(BILLING_INFO_URL, {
+	// 				method: "GET",
+	// 				headers: {
+	// 					"Content-Type": "application/json",
+	// 					Authorization: `token ${refreshToken}`,
+	// 				},
+	// 			});
+	// 			console.log(billingInfo);
+	// 			if (billingInfo.ok) {
+	// 				const billingInfoResponse = await billingInfo.json();
+	// 				console.log(billingInfoResponse);
+	// 				setBillingData(billingInfoResponse);
+	// 			}
+	// 		} catch (error) {
+	// 			console.error("Error:", error);
+	// 		}
+	// 	};
+
+	// 	GetPaymentInfo();
+	// }, [refreshToken]);
+
 	useEffect(() => {
 		// const refreshToken = localStorage.getItem("refresh");
 
 		const GetPaymentInfo = async () => {
-			console.log("Hit1", refreshToken);
+			console.log("Hit", refreshToken);
 			try {
-				const billingInfo = await fetch(BILLING_INFO_URL, {
+				const billingInfo = await fetch(BILLING_URL_RAZORPAY, {
 					method: "GET",
 					headers: {
 						"Content-Type": "application/json",
