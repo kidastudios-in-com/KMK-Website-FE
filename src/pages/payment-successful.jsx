@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-	BILLING_INFO_URL,
-	GET_USER,
-	BILLING_URL_RAZORPAY
-} from "./api/URLs";
+import { BILLING_INFO_URL, GET_USER, BILLING_URL_RAZORPAY } from "./api/URLs";
 import { Loading, Text } from "@nextui-org/react";
 import AuthContext from "@/components/AuthContext";
 import { useRouter } from "next/router";
@@ -114,17 +110,19 @@ const paymentsuccessful = () => {
 			<Text b size={34}>
 				Payment Successful!
 			</Text>
-			<Text
-				b
-				size={22}
-				css={{
-					"@media only screen and (max-width: 764px)": {
-						fontSize: 18,
-					},
-				}}
-			>
-				Order Number:{billingData?.order_number}
-			</Text>
+			{billingData?.order_number && (
+				<Text
+					b
+					size={22}
+					css={{
+						"@media only screen and (max-width: 764px)": {
+							fontSize: 18,
+						},
+					}}
+				>
+					Order Number:{billingData?.order_number}
+				</Text>
+			)}
 			{showMessage ? (
 				""
 			) : (
@@ -143,9 +141,11 @@ const paymentsuccessful = () => {
 					{/* Please wait while your invoice is being generated... */}
 				</Text>
 			)}
-			<Text b size={34}>
-				Amount: ₹ {billingData?.amount}/-
-			</Text>
+			{billingData?.amount && (
+				<Text b size={34}>
+					Amount: ₹ {billingData?.amount}/-
+				</Text>
+			)}
 			{isLoading ? <Loading size="lg" color={"success"} type="gradient" /> : ""}
 			{showMessage ? (
 				<Text b size={20}>

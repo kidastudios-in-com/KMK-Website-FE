@@ -315,10 +315,6 @@ export default function PreviewPage() {
 	const [discountAmount, setDiscountAmount] = useState("");
 	const [totalAmount, setTotalAmount] = useState("");
 	const [discountApplied, setDiscountApplied] = useState(false);
-	// const [checkingAPICall, setCheckingAPICall] = useState(false);
-
-
-
 
 	const validateDiscountCode = async () => {
 		// console.log(discountCode);
@@ -504,8 +500,6 @@ export default function PreviewPage() {
 			</section>
 		);
 	}
-
-	//Adding this comment line for backend script run test
 
 	return (
 		// <PageVisibility>
