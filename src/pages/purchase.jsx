@@ -277,7 +277,7 @@ export default function PreviewPage() {
 			}
 
 			const orderData = await orderResponse.json();
-			console.log(orderData, "ID", orderData.id);
+			console.log(orderData, "ID", orderData.order_id);
 			// Initialize Razorpay
 			const options = {
 				key: 'rzp_test_YteVuBPrLvOKSg', // Your Razorpay API key
@@ -285,7 +285,7 @@ export default function PreviewPage() {
 				currency: orderData.currency,
 				order_id: orderData.order_id,
 				// redirect: true,
-				callback_url: `http://192.168.0.157:8000/user/razorpay_callback/`,
+				callback_url: `https://test-server.kamayakya.in/user/razorpay_callback/`,
 				handler: function (response) {
 					// Handle success callback
 					console.log("Payment successful:", response);
