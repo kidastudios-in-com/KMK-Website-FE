@@ -26,7 +26,7 @@ import Confetti from "react-confetti";
 // import { TextInput } from "@mantine/core";
 import { CODE_VALID, SUBSCRIBE_RAZORPAY, SUBSCRIBE_URL } from "./api/URLs";
 import PageVisibility from "../components/PageVisibility";
-import '@mantine/core/styles.css';
+// import '@mantine/core/styles.css';
 
 export default function PreviewPage() {
 	// const [productID, setProductID] = useState("");
