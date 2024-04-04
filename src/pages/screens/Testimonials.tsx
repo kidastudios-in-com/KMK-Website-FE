@@ -219,6 +219,9 @@ const Testimonials = () => {
 								padding: "20px",
 								boxShadow: "0 10px 26px rgba(0, 0, 0, 0.1)",
 								gap: "25px",
+								"@media only screen and (max-width: 768px)": {
+									width: '350px',
+								},
 							}}
 						>
 							<div

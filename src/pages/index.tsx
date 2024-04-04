@@ -11,6 +11,7 @@ import Footer from "./screens/Footer";
 import FaqsNew from "./screens/FaqsNew";
 // import Process2 from "./screens/Process2";
 import Testimonials from "./screens/Testimonials";
+import TestimonialsNew from './screens/TestimonialsNew';
 import SubscriptionNew from "../components/SubscriptionNew";
 import NavBar2 from "@/components/Navbar2";
 import AuthProvider from "@/components/AuthContext";
@@ -34,6 +35,7 @@ const Home: NextPage = () => {
 			{/* <WhyUs /> */}
 			{/* <Blogs2 /> */}
 			<Testimonials />
+			<TestimonialsNew />
 			{/*<Solutions />*/}
 			<FaqsNew />
 			<Footer />

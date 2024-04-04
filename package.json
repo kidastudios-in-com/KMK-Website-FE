@@ -34,6 +34,7 @@
     "next": "^13.2.4",
     "pdfjs-dist": "^3.4.120",
     "react": "^18.2.0",
+    "react-alice-carousel": "^2.9.0",
     "react-card-flip": "^1.2.0",
     "react-confetti": "^6.1.0",
     "react-dom": "18.2.0",
