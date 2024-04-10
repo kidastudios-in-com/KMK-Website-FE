@@ -590,7 +590,7 @@ export default function App() {
 							w: "12%",
 							jc: "flex-end",
 						},
-						position: "fixed",
+						// position: "fixed",
 						right: 20,
 					}}
 				>
