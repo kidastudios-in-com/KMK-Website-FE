@@ -330,6 +330,7 @@ const NavBar2 = () => {
 							padding: "0px 8px",
 							lineHeight: 2,
 							display: "flex",
+							gap: "5px",
 							alignItems: "center",
 							background:
 								window.location.pathname === "/sme" ? "#094f48" : "#fff",
