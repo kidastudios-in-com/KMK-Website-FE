@@ -20,7 +20,8 @@ const FaqsNew = () => {
 	};
 
 	return (
-		<main
+		<section
+		id="FAQs"
 			style={{
 				backgroundColor: "#195B54",
 				display: "flex",
@@ -673,7 +674,7 @@ const FaqsNew = () => {
 					</Box>
 				</div>
 			</div>
-		</main>
+		</section>
 	);
 };
 

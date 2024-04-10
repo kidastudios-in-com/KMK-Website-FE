@@ -48,7 +48,7 @@ const TestimonialsNew = () => {
 		>
 			<div
 				style={{
-					background: "#f0f0f0",
+					background: "#fff",
 					display: "flex",
 					flexDirection: "column",
 					borderTopRightRadius: "15px",
@@ -109,7 +109,7 @@ const TestimonialsNew = () => {
 			<Text b css={{ marginTop: "10px", textAlign: "center" }}>
 				Kiran Sanghvi, Indus Properties
 			</Text>
-			<Text
+			{/* <Text
 				css={{
 					marginTop: "10px",
 					textAlign: "center",
@@ -117,7 +117,7 @@ const TestimonialsNew = () => {
 				}}
 			>
 				⭐⭐⭐⭐
-			</Text>
+			</Text> */}
 		</Card>,
 		<Card
 		data-value="2"
@@ -200,88 +200,88 @@ const TestimonialsNew = () => {
 				⭐⭐⭐⭐⭐
 			</Text>
 		</Card>,
-		<Card
-		data-value="3"
-			variant="flat"
-			css={{
-				background: "#fff",
-				boxShadow: "0 10px 26px rgba(0, 0, 0, 0.1)",
-				padding: "15px",
-				borderRadius: "20px",
-				maxWidth: "450px",
-			}}
-		>
-			<div
-				style={{
-					background: "#f0f0f0",
-					display: "flex",
-					flexDirection: "column",
-					borderTopRightRadius: "15px",
-					borderTopLeftRadius: "15px",
-					padding: "8px",
-				}}
-			>
-				<FaQuoteLeft
-					color="#0f734d"
-					size={20}
-					style={{ marginTop: "0px", marginLeft: "0px" }}
-				/>
-				<Text
-					b
-					css={{
-						display: "flex",
-						whiteSpace: "normal",
-						marginTop: "10px",
-						paddingBottom: "10px",
-						lineHeight: 1.2,
-						textAlign: "center",
-						maxWidth: "95%",
-						alignSelf: "center",
-						"@media only screen and (max-width: 768px)": {
-							fontSize: "10px",
-						},
-					}}
-				>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer urna
-					magna, porttitor vel nisi et, fringilla pellentesque enim. Nunc
-					facilisis tincidunt accumsan. Vestibulum non erat vel ipsum viverra
-					gravida. Maecenas vestibulum magna ante, sed tincidunt metus iaculis
-					eu. Curabitur aliquam consectetur ligula ut efficitur
-				</Text>
-				<FaQuoteRight
-					color="#0f734d"
-					size={20}
-					style={{
-						marginTop: 0,
-						marginRight: 0,
-						alignSelf: "flex-end",
-					}}
-				/>
-			</div>
-			<img
-				src="/UserAvatar-lion.png"
-				style={{
-					width: "80px",
-					height: "80px",
-					borderRadius: "1000px",
-					boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-					alignSelf: "center",
-					marginTop: "-30px",
-				}}
-			/>
-			<Text b css={{ marginTop: "10px", textAlign: "center" }}>
-				Ken Adams, YRF Pvt. Ltd
-			</Text>
-			<Text
-				css={{
-					marginTop: "10px",
-					textAlign: "center",
-					color: "#f5c813",
-				}}
-			>
-				⭐⭐⭐
-			</Text>
-		</Card>,
+		// <Card
+		// data-value="3"
+		// 	variant="flat"
+		// 	css={{
+		// 		background: "#fff",
+		// 		boxShadow: "0 10px 26px rgba(0, 0, 0, 0.1)",
+		// 		padding: "15px",
+		// 		borderRadius: "20px",
+		// 		maxWidth: "450px",
+		// 	}}
+		// >
+		// 	<div
+		// 		style={{
+		// 			background: "#fff",
+		// 			display: "flex",
+		// 			flexDirection: "column",
+		// 			borderTopRightRadius: "15px",
+		// 			borderTopLeftRadius: "15px",
+		// 			padding: "8px",
+		// 		}}
+		// 	>
+		// 		<FaQuoteLeft
+		// 			color="#0f734d"
+		// 			size={20}
+		// 			style={{ marginTop: "0px", marginLeft: "0px" }}
+		// 		/>
+		// 		<Text
+		// 			b
+		// 			css={{
+		// 				display: "flex",
+		// 				whiteSpace: "normal",
+		// 				marginTop: "10px",
+		// 				paddingBottom: "10px",
+		// 				lineHeight: 1.2,
+		// 				textAlign: "center",
+		// 				maxWidth: "95%",
+		// 				alignSelf: "center",
+		// 				"@media only screen and (max-width: 768px)": {
+		// 					fontSize: "10px",
+		// 				},
+		// 			}}
+		// 		>
+		// 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer urna
+		// 			magna, porttitor vel nisi et, fringilla pellentesque enim. Nunc
+		// 			facilisis tincidunt accumsan. Vestibulum non erat vel ipsum viverra
+		// 			gravida. Maecenas vestibulum magna ante, sed tincidunt metus iaculis
+		// 			eu. Curabitur aliquam consectetur ligula ut efficitur
+		// 		</Text>
+		// 		<FaQuoteRight
+		// 			color="#0f734d"
+		// 			size={20}
+		// 			style={{
+		// 				marginTop: 0,
+		// 				marginRight: 0,
+		// 				alignSelf: "flex-end",
+		// 			}}
+		// 		/>
+		// 	</div>
+		// 	<img
+		// 		src="/UserAvatar-lion.png"
+		// 		style={{
+		// 			width: "80px",
+		// 			height: "80px",
+		// 			borderRadius: "1000px",
+		// 			boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+		// 			alignSelf: "center",
+		// 			marginTop: "-30px",
+		// 		}}
+		// 	/>
+		// 	<Text b css={{ marginTop: "10px", textAlign: "center" }}>
+		// 		Ken Adams, YRF Pvt. Ltd
+		// 	</Text>
+		// 	{/* <Text
+		// 		css={{
+		// 			marginTop: "10px",
+		// 			textAlign: "center",
+		// 			color: "#f5c813",
+		// 		}}
+		// 	>
+		// 		⭐⭐⭐
+		// 	</Text> */}
+		// </Card>,
 	];
 
 	const responsive = {
@@ -292,7 +292,7 @@ const TestimonialsNew = () => {
 			items: 2
 		},
 		1024: {
-			items: 3, 
+			items: 2,
 			// itemsFit: 'cover'
 		},
 	};
