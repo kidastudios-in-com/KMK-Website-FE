@@ -280,7 +280,7 @@ export default function PreviewPage() {
 			console.log(orderData, "ID", orderData.order_id);
 			// Initialize Razorpay
 			const options = {
-				key: 'rzp_test_YteVuBPrLvOKSg', // Your Razorpay API key
+				key: process.env.NEXT_PUBLIC_RAZORPAY_KEY || rzp_live_XxyaONaRC20Cra, // Your Razorpay API key
 				amount: orderData.amount * 100,
 				currency: orderData.currency,
 				order_id: orderData.order_id,
