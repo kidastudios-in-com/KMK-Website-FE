@@ -591,7 +591,7 @@ export default function App() {
 							jc: "flex-end",
 						},
 						// position: "fixed",
-						right: 20,
+						// right: 20,
 					}}
 				>
 					{router.pathname !== "/login" && (
