@@ -357,7 +357,7 @@ export default function App() {
 						display: "flex",
 						justifyContent: "center",
 						width: "100%",
-						marginLeft: "-16%",
+						// marginLeft: "-16%",
 					}}
 				>
 					<Navbar.Content
