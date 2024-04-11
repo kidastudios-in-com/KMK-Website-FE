@@ -165,6 +165,7 @@ const HomePage = () => {
         backgroundSize: "contain",
         backgroundRepeat: "repeat-x",
         // minHeight: "100vh",
+        // paddingTop: "80px",
         height: "fit-content",
       }}
       className={"waveBackground-mobile"}
@@ -178,12 +179,9 @@ const HomePage = () => {
           justifyContent: "center",
           alignItems: "center",
           width: "100vw",
-          // minHeight: "fit-content",
-          // height: "fit-content",
           maxWidth: "80rem",
-          // maxHeight: "900px",
           "@media only screen and (min-width: 764px)": {
-            paddingTop: "50px",
+            // paddingTop: "85px",
             paddingBottom: "10vh",
             // marginTop: "0px",
           },
@@ -348,7 +346,7 @@ const HomePage = () => {
             },
           }}
         >
-          <Button
+          {/* <Button
             auto
             size={"xl"}
             onPress={() => setVisible(true)}
@@ -385,7 +383,7 @@ const HomePage = () => {
             >
               Sample Reports
             </Text>
-          </Button>
+          </Button> */}
           <Modal
             blur
             aria-labelledby="modal-pdf"
