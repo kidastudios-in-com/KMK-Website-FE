@@ -329,19 +329,20 @@ const HomePage = () => {
 
         <Box
           sx={{
-            marginTop: "10px",
+            // marginTop: "10px",
             maxWidth: "80rem",
             display: "flex",
             flexDirection: "row",
             flexWrap: "wrap",
+            justifyContent: 'center',
             "@media only screen and (min-width: 600px)": {
               justifyContent: "center",
               alignItems: "center",
             },
             "@media only screen and (max-width: 764px)": {
-              width: "90vw",
+              width: "100%",
               marginTop: "0",
-              justifyContent: "flex-start",
+              // justifyContent: "flex-start",
               alignItems: "flex-start",
             },
           }}
@@ -701,7 +702,7 @@ const HomePage = () => {
 							borderRadius: "10000px",
 							display: isLoggedIn ? "none" : "block",
 							marginTop: 10,
-							marginLeft: 30,
+							// marginLeft: 30,
 							// backgroundColor: "#0a5b53",
 							backgroundImage: "linear-gradient(to top , #106052, #0f734d)",
 							zIndex: 0,
@@ -713,8 +714,10 @@ const HomePage = () => {
 								paddingRight: 15,
 								marginLeft: 0,
 								marginBottom: 0,
-								marginTop: "25px",
+								// marginTop: "25px",
 								height: "55px",
+                width: "70%",
+                maxWidth: "300px",
 							},
 						}}
 						onPress={handleLogin}
@@ -781,9 +784,9 @@ const HomePage = () => {
 						"@media only screen and (max-width: 764px)": {
 							marginTop: "20px",
 							marginBottom: "10vh",
-							marginLeft: "15px",
-							alignItems: "flex-start",
-							justifyContent: "flex-start",
+							// marginLeft: "15px",
+							// alignItems: "flex-start",0
+							// justifyContent: "flex-start",
 						},
 					}}
 				>
