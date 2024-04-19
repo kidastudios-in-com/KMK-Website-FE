@@ -10,7 +10,7 @@ const Section2 = () => {
 			sx={{
 				display: "flex",
 				flexDirection: "column",
-				marginBottom: "50px",
+				// marginBottom: "50px",
 				maxWidth: "300px",
 				alignItems: "flex-start",
 				marginRight: "8px",
@@ -98,7 +98,7 @@ const Section2 = () => {
 			sx={{
 				display: "flex",
 				flexDirection: "column",
-				marginBottom: "50px",
+				// marginBottom: "50px",
 				maxWidth: "300px",
 				alignItems: "flex-start",
 				"@media only screen and (max-width: 764px)": {
@@ -186,7 +186,7 @@ const Section2 = () => {
 			sx={{
 				display: "flex",
 				flexDirection: "column",
-				marginBottom: "50px",
+				// marginBottom: "50px",
 				maxWidth: "300px",
 				alignItems: "flex-start",
 				"@media only screen and (max-width: 764px)": {
@@ -276,7 +276,7 @@ Advisory in the past. */}
 			sx={{
 				display: "flex",
 				flexDirection: "column",
-				marginBottom: "50px",
+				// marginBottom: "50px",
 				maxWidth: "300px",
 				alignItems: "flex-start",
 				"@media only screen and (max-width: 764px)": {
@@ -364,7 +364,7 @@ Advisory in the past. */}
 			sx={{
 				display: "flex",
 				flexDirection: "column",
-				marginBottom: "50px",
+				// marginBottom: "50px",
 				maxWidth: "300px",
 				alignItems: "flex-start",
 				"@media only screen and (max-width: 764px)": {
@@ -449,7 +449,7 @@ Advisory in the past. */}
 			sx={{
 				display: "flex",
 				flexDirection: "column",
-				marginBottom: "50px",
+				// marginBottom: "50px",
 				maxWidth: "300px",
 				alignItems: "flex-start",
 				"@media only screen and (max-width: 764px)": {
@@ -537,7 +537,7 @@ Advisory in the past. */}
 			sx={{
 				display: "flex",
 				flexDirection: "column",
-				marginBottom: "50px",
+				// marginBottom: "50px",
 				maxWidth: "300px",
 				alignItems: "flex-start",
 				"@media only screen and (max-width: 764px)": {
